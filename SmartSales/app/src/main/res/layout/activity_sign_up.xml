@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/welcome_bg"
-    tools:context="com.hyundai.teli.smartsales.activities.SignUpActivity">
+    tools:context="com.hyundai.teli.smartsales.activities.SignUp">
 
     <View
         android:id="@+id/center_line"

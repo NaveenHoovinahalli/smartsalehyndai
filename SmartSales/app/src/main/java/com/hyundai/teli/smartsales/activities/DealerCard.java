@@ -47,7 +47,7 @@ public class DealerCard extends ActionBarActivity {
 
     @OnClick(R.id.btn_ok)
     public void onOkClicked(View view){
-        Intent openHome = new Intent(this, HomeActivity.class);
+        Intent openHome = new Intent(this, Home.class);
         startActivity(openHome);
     }
 }
