@@ -1,9 +1,9 @@
 package com.hyundai.teli.smartsales.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class Home extends ActionBarActivity {
+public class Home extends Activity {
 
     @InjectView(R.id.movie)
     VideoView mVideoView;
@@ -35,11 +35,11 @@ public class Home extends ActionBarActivity {
 
     private void playVideo() {
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/video");
+        mVideoView.setVideoURI(videoUri);
         DisplayMetrics metrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(metrics);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mVideoView.getLayoutParams();
         params.width =  metrics.widthPixels;
         params.height = metrics.heightPixels;
-        mVideoView.setVideoURI(videoUri);
         mVideoView.setLayoutParams(params);
         mVideoView.requestFocus();
         mVideoView.seekTo(0);

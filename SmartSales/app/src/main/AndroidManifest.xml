@@ -28,7 +28,7 @@
             android:name=".activities.Home"
             android:label="@string/title_activity_home"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         </activity>
         <activity
             android:name=".activities.DealerCard"

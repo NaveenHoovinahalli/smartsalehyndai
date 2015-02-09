@@ -5,12 +5,15 @@
     <VideoView
         android:id="@+id/movie"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"/>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/bg_net" />
+        android:background="@drawable/bg_net"
+        android:layout_alignParentBottom="true" />
 
     <ImageView
         android:layout_width="wrap_content"
