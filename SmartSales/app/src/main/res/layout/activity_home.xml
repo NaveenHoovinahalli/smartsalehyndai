@@ -15,37 +15,37 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="horizontal">
 
         <com.hyundai.teli.smartsales.views.HTextView
             android:id="@+id/show_room"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:text="SHOWROOM"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
-            android:gravity="right"
+            android:gravity="center"
             android:layout_weight="1"/>
 
         <com.hyundai.teli.smartsales.views.HTextView
             android:id="@+id/estimate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:text="ESTIMATE"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
-            android:gravity="right"
+            android:gravity="center"
             android:layout_weight="1"/>
 
         <com.hyundai.teli.smartsales.views.HTextView
             android:id="@+id/photo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:text="PHOTO"
             android:textColor="@android:color/white"
             android:layout_gravity="center"
-            android:gravity="right"
+            android:gravity="center"
             android:layout_weight="1"/>
 
         <ImageView
@@ -90,6 +90,57 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
     </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuListView"
+        android:visibility="gone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/frame_container"
+        android:layout_toLeftOf="@+id/hyundai_bar"
+        android:layout_toStartOf="@+id/hyundai_bar">
+
+        <ImageView
+            android:id="@+id/menuHome"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:src="@drawable/home"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/menuCatalog"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:scaleType="fitXY"
+            android:src="@drawable/catalogue"
+            android:layout_below="@+id/menuHome"/>
+
+        <ImageView
+            android:id="@+id/menuDealerLocation"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:scaleType="fitXY"
+            android:src="@drawable/dealer_location"
+            android:layout_below="@+id/menuCatalog"/>
+
+        <ImageView
+            android:id="@+id/menuRequestTD"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:scaleType="fitXY"
+            android:src="@drawable/test_drive"
+            android:layout_below="@+id/menuDealerLocation"/>
+
+        <ImageView
+            android:id="@+id/menuGame"
+            android:layout_width="130px"
+            android:layout_height="130px"
+            android:scaleType="fitXY"
+            android:src="@drawable/game"
+            android:layout_below="@+id/menuRequestTD"/>
+    </RelativeLayout>
 
 
 

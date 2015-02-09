@@ -13,11 +13,11 @@ import butterknife.ButterKnife;
 /**
  * Created by nith on 2/8/15.
  */
-public class Photo extends BaseFragment {
+public class Settings extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_photo,null);
+        View view = inflater.inflate(R.layout.fragment_settings,null);
         ButterKnife.inject(this, view);
         return view;
     }

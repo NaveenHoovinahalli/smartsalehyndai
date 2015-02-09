@@ -20,9 +20,9 @@
         android:src="@drawable/pic_view"
         android:scaleType="fitXY"
         android:layout_marginRight="5dp"
-        android:layout_alignBottom="@+id/dealer_phone_no"
         android:layout_toLeftOf="@+id/dealer_email"
-        android:layout_alignTop="@+id/input_first_name" />
+        android:layout_alignTop="@+id/input_first_name"
+        android:layout_alignBottom="@+id/dealer_mobile_no" />
     <!-- first name -->
 
     <Spinner
