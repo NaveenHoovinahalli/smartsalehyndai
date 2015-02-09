@@ -1,41 +1,59 @@
 package com.hyundai.teli.smartsales.activities;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.hyundai.teli.smartsales.R;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class SplashActivity extends ActionBarActivity {
+
+public class SplashActivity extends Activity implements MediaPlayer.OnCompletionListener {
+
+    @InjectView(R.id.video_view)
+    VideoView mVideoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        ButterKnife.inject(this);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/intro");
+        mVideoView.setVideoURI(videoUri);
+
+        DisplayMetrics metrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mVideoView.getLayoutParams();
+        params.width =  metrics.widthPixels;
+        params.height = metrics.heightPixels;
+        mVideoView.setLayoutParams(params);
+
+        mVideoView.requestFocus();
+        mVideoView.seekTo(0);
+        mVideoView.start();
+        mVideoView.setOnCompletionListener(this);
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_splash, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onCompletion(MediaPlayer mp) {
+        Toast.makeText(getApplicationContext(), "Splash Ended", Toast.LENGTH_SHORT).show();
+        boolean isRegistered = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE).getBoolean("SIGN_UP", false);
+        if(isRegistered){
+            Intent openHome = new Intent(this, HomeActivity.class);
+            startActivity(openHome);
+        }else{
+            Intent openSignUp = new Intent(this, SignUpActivity.class);
+            startActivity(openSignUp);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }

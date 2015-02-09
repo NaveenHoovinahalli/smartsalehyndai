@@ -1,0 +1,97 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hyundai.teli.smartsales.activities.HomeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/action_bar_bg"
+        android:id="@+id/view"
+        android:layout_toEndOf="@+id/hyundai_bar"
+        android:layout_toRightOf="@+id/hyundai_bar">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/show_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHOWROOM"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:layout_weight="1"/>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ESTIMATE"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:layout_weight="1"/>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHOTO"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_overflow_setting"
+            android:layout_weight="1"
+            />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/catalogueMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/view" />
+
+    <ImageView
+        android:id="@+id/hyundai_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gateway_header"
+        android:background="@drawable/action_bar_bg"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/catalogueMenu"
+        android:layout_toRightOf="@+id/catalogueMenu"
+        android:layout_toEndOf="@+id/catalogueMenu"
+        android:paddingLeft="30dp"/>
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/catalogueMenu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </FrameLayout>
+
+
+
+
+</RelativeLayout>

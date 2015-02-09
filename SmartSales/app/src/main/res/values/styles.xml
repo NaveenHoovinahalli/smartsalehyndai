@@ -5,4 +5,28 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="SettingInputBox02">
+        <item name="android:textColor">@color/text_dark_grey</item>
+        <item name="android:textColorHint">@color/text_grey03</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/kia_bg_input_h40</item>
+        <item name="android:selectAllOnFocus">true</item>
+    </style>
+
+    <style name="BtnBlack">
+        <item name="android:background">@drawable/kia_btn_black_h48</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

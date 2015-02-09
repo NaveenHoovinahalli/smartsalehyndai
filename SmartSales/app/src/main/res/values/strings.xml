@@ -4,5 +4,25 @@
     <string name="app_name">SmartSales</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="prompt_input_full_name">Full Name</string>
+    <string name="prompt_input_mobile">Mobile</string>
+    <string name="prompt_input_phone">Branch Tel.</string>
+    <string name="prompt_input_branch">Branch</string>
+    <string name="prompt_input_branch_tel">Branch Tel.</string>
+    <string name="prompt_input_email">E-mail Address</string>
+    <string name="complete">OK</string>
+    <string name="title_activity_dealer_card">DealerCard</string>
+    <string name="dealer_id">Dealer ID</string>
+    <string name="virtual_reality">360° VR</string>
+    <string name="style">STYLE</string>
+    <string name="safety_convenience">SAFETY/CONVENIENCE</string>
+    <string name="specification">SPECIFICATION</string>
+    <string name="brochure">BROCHURE</string>
+    <string name="estimate">ESTIMATE</string>
+    <string name="comparing">COMPARING</string>
+    <string name="catalog">CATALOG</string>
+    <string name="performance">PERFORMANCE</string>
 
 </resources>
