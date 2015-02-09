@@ -1,40 +1,73 @@
 package com.hyundai.teli.smartsales.activities;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.fragments.BrandStoryPager;
+
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class BrandStory extends ActionBarActivity {
+
+    @InjectView(R.id.brand_pager)
+    ViewPager brandPager;
+
+    private ArrayList<BrandStoryPager> fragments=new ArrayList<BrandStoryPager>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.inject(this);
         setContentView(R.layout.activity_brand_story);
+        setFragment();
+        setPager();
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_brand_story, menu);
-        return true;
+
+    private void setFragment() {
+
+        for(int i=0;i<4;i++){
+            BrandStoryPager brandStoryPager=BrandStoryPager.newInstance();
+            fragments.add(brandStoryPager);
+        }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void setPager() {
+        if(fragments.size()!=0){
+            PagerAdapter pagerAdapter=new PagerAdapter(getSupportFragmentManager(),fragments);
+            brandPager.setAdapter(pagerAdapter);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        }
+    }
+
+    public class PagerAdapter extends FragmentPagerAdapter{
+
+        ArrayList<BrandStoryPager> fragments=new ArrayList<BrandStoryPager>();
+        public PagerAdapter(android.support.v4.app.FragmentManager fm,ArrayList<BrandStoryPager> fragments) {
+            super(fm);
+            this.fragments=fragments;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public Fragment getItem(int i) {
+            return fragments.get(i);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
     }
+
+
+
 }
