@@ -55,5 +55,6 @@ public class Splash extends Activity implements MediaPlayer.OnCompletionListener
             Intent openSignUp = new Intent(this, SignUp.class);
             startActivity(openSignUp);
         }
+        finish();
     }
 }

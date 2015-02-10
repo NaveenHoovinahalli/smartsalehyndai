@@ -28,5 +28,9 @@
     <string name="title_activity_nde">NDE</string>
     <string name="title_activity_message_board">MessageBoard</string>
     <string name="title_activity_consultation">Consultation</string>
+    <string name="check_for_update">Check For Update</string>
+    <string name="my_info">My Info</string>
+    <string name="customer_manager">Customer Manager</string>
+    <string name="survey">Survey</string>
 
 </resources>
