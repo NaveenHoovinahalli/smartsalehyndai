@@ -20,7 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
-
+import com.hyundai.teli.smartsales.activities.PlayVideoActivity;
+import com.hyundai.teli.smartsales.utils.Constants;
 
 
 /**
@@ -54,7 +55,6 @@ public class Videofragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -79,15 +79,14 @@ public class Videofragment extends Fragment {
 
         SharedPreferences prefs = getActivity().getSharedPreferences("SharingUrlKPCC", getActivity().MODE_PRIVATE);
         String restoredText = prefs.getString(videoId, null);
-        if(restoredText==null){
+
             Log.d("VIDEO", "Downloading first time");
 
 
             mPbar.setVisibility(View.VISIBLE);
 //            mPbar.show();
 
-//            Uri uri= Uri.parse(Constants.BASE_URL + videoUrl);
-            Uri uri=Uri.parse("");
+            Uri uri= Uri.parse(Constants.BASE_URL + videoUrl);
             DownloadManager.Request request=new DownloadManager.Request(uri);
 //            request.setDescription("Video Download").
 //                    setTitle("downloading");
@@ -104,18 +103,7 @@ public class Videofragment extends Fragment {
 
             myDownloadReference=downloadManager.enqueue(request);
 
-        }else {
-            Log.d("VIDEO", "Video Already downloaded");
-            mPbar.setVisibility(View.INVISIBLE);
-//            mPbar.dismiss();
 
-//            Intent intent;
-//
-////            intent=new Intent(getActivity(),PlayVideoActivity.class);
-//            intent.putExtra("video_id",videoId);
-////            intent.putExtra("video_url", Constants.BASE_URL+videoUrl);
-//            startActivity(intent);
-        }
 
     }
 
@@ -185,14 +173,10 @@ public class Videofragment extends Fragment {
                             editor.apply();
                             mPbar.setVisibility(View.GONE);
 //                            mPbar.dismiss();
-//                            isDownloadig=false;
-//                            intent=new Intent(getActivity(),PlayVideoActivity.class);
-//            intent.putExtra("video_id",videoId);
-//            intent.putExtra("video_url", Constants.BASE_URL+videoUrl);
-//            startActivity(intent);
-
-
-
+                            intent=new Intent(getActivity(),PlayVideoActivity.class);
+                            intent.putExtra("video_id",videoId);
+                            intent.putExtra("video_url", Constants.BASE_URL+videoUrl);
+                             startActivity(intent);
                             break;
                         case DownloadManager.STATUS_FAILED:
                             Toast.makeText(getActivity(),

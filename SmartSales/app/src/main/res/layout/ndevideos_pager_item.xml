@@ -2,24 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hmc_bg"
-    android:weightSum="2">
-    <RelativeLayout
-        android:id="@+id/brand_rl"
-        android:layout_width="630dp"
-        android:layout_height="330dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="250dp"
-        >
-
+    android:background="@drawable/hmc_bg">
+    <VideoView
+        android:id="@+id/nde_videos_pager_item"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/hmc_btn_play"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
+        />
 
 </RelativeLayout>

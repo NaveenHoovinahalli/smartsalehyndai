@@ -1,0 +1,52 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/menuListView"
+    android:visibility="gone"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignTop="@+id/frame_container"
+    android:layout_toLeftOf="@+id/hyundai_bar"
+    android:layout_toStartOf="@+id/hyundai_bar">
+
+    <ImageView
+        android:id="@+id/menuHome"
+        android:layout_width="130px"
+        android:layout_height="130px"
+        android:src="@drawable/home"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/menuCatalog"
+        android:layout_width="130px"
+        android:layout_height="130px"
+        android:scaleType="fitXY"
+        android:src="@drawable/catalogue"
+        android:layout_below="@+id/menuHome"/>
+
+    <ImageView
+        android:id="@+id/menuDealerLocation"
+        android:layout_width="130px"
+        android:layout_height="130px"
+        android:scaleType="fitXY"
+        android:src="@drawable/dealer_location"
+        android:layout_below="@+id/menuCatalog"/>
+
+    <ImageView
+        android:id="@+id/menuRequestTD"
+        android:layout_width="130px"
+        android:layout_height="130px"
+        android:scaleType="fitXY"
+        android:src="@drawable/test_drive"
+        android:layout_below="@+id/menuDealerLocation"/>
+
+    <ImageView
+        android:id="@+id/menuGame"
+        android:layout_width="130px"
+        android:layout_height="130px"
+        android:scaleType="fitXY"
+        android:src="@drawable/game"
+        android:layout_below="@+id/menuRequestTD"/>
+</RelativeLayout>
