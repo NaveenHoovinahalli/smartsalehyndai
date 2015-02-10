@@ -31,19 +31,15 @@ public class NDEVideos extends BaseFragment {
         View view=inflater.inflate(R.layout.ndevideos_pager,null);
         ButterKnife.inject(this,view);
         Toast.makeText(getActivity(),"Inside NDE Videos",Toast.LENGTH_SHORT).show();
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         setFragments();
         setPager();
+        return view;
     }
 
     private void setFragments() {
 
         for(int i=0;i<4;i++){
+            Toast.makeText(getActivity(),"Inside NDE Videos",Toast.LENGTH_SHORT).show();
             NDEVideosPager ndeVideosPager=NDEVideosPager.newInstance();
             fragments.add(ndeVideosPager);
         }
@@ -55,4 +51,17 @@ public class NDEVideos extends BaseFragment {
             videoPager.setAdapter(videoAdapter);
         }
     }
+
+    /*@Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        videoPager.removeAllViews();
+        for(int i=0;i<fragments.size();i++){
+            fragments.remove(i);
+        }
+        if(videoPager!=null)
+            videoPager=null;
+        if(fragments!=null)
+            fragments=null;
+    }*/
 }

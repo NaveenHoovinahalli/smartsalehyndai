@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class NDEPagerAdapter extends FragmentPagerAdapter {
 
-    ArrayList<NDEVideosPager> fragments=new ArrayList<NDEVideosPager>();
+    ArrayList<NDEVideosPager> fragments=new ArrayList<>();
     public NDEPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<NDEVideosPager> fragments) {
         super(fm);
         this.fragments=fragments;
