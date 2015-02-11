@@ -30,7 +30,7 @@
                 android:layout_weight="1"/>
 
             <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/nde_dealer_v"
+                android:id="@+id/nde_dealer_vision"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="DEALER VISION AND MISSION"
@@ -50,7 +50,7 @@
                 android:layout_weight="1"/>
 
             <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/nde_dealer_experience"
+                android:id="@+id/nde_dealership_experience"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="NEW DEALERSHIP EXPERIENCE"

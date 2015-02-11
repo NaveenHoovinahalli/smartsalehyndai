@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.fragments.DealerVision;
+import com.hyundai.teli.smartsales.fragments.NDESales;
 import com.hyundai.teli.smartsales.fragments.NDEVideos;
+import com.hyundai.teli.smartsales.fragments.NewDealership;
 import com.hyundai.teli.smartsales.views.HTextView;
 
 import butterknife.ButterKnife;
@@ -22,13 +25,13 @@ public class NDE extends ActionBarActivity {
     @InjectView(R.id.nde_video)
     HTextView ndeVideos;
 
-    @InjectView(R.id.nde_dealer_v)
+    @InjectView(R.id.nde_dealer_vision)
     HTextView ndeDealerVision;
 
     @InjectView(R.id.nde_sales)
     HTextView ndeSales;
 
-    @InjectView(R.id.nde_dealer_experience)
+    @InjectView(R.id.nde_dealership_experience)
     HTextView ndeDealerExperience;
 
     private boolean menuClicked=false;
@@ -49,7 +52,7 @@ public class NDE extends ActionBarActivity {
        }
 
 
-    @OnClick({R.id.catalogueMenu,R.id.nde_video,R.id.nde_dealer_v,R.id.nde_sales,R.id.nde_dealer_experience})
+    @OnClick({R.id.catalogueMenu,R.id.nde_video,R.id.nde_dealer_vision,R.id.nde_sales,R.id.nde_dealership_experience})
     public void onTabClickListner(View view){
 
         switch (view.getId()){
@@ -63,17 +66,23 @@ public class NDE extends ActionBarActivity {
                 }
                 break;
             case R.id.nde_video:
-                setSelected(view.getId());
                 loadNdeVideos();
-                break;
-            case R.id.nde_dealer_v:
                 setSelected(view.getId());
+                break;
+            case R.id.nde_dealer_vision:
+                setSelected(view.getId());
+                DealerVision dealerVision = new DealerVision();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, dealerVision).commit();
                 break;
             case R.id.nde_sales:
                 setSelected(view.getId());
+                NDESales ndeSales = new NDESales();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, ndeSales).commit();
                 break;
-            case R.id.nde_dealer_experience:
+            case R.id.nde_dealership_experience:
                 setSelected(view.getId());
+                NewDealership newDealership = new NewDealership();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, newDealership).commit();
                 break;
         }
 
@@ -89,13 +98,13 @@ public class NDE extends ActionBarActivity {
             case R.id.nde_video:
                 ndeVideos.setTextColor(Color.parseColor("#657FBD"));
                 break;
-            case R.id.nde_dealer_v:
+            case R.id.nde_dealer_vision:
                 ndeDealerVision.setTextColor(Color.parseColor("#657FBD"));
                 break;
             case R.id.nde_sales:
                 ndeSales.setTextColor(Color.parseColor("#657FBD"));
                 break;
-            case R.id.nde_dealer_experience:
+            case R.id.nde_dealership_experience:
                 ndeDealerExperience.setTextColor(Color.parseColor("#657FBD"));
                 break;
         }
