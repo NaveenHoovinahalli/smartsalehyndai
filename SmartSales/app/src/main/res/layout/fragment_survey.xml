@@ -26,6 +26,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
                 android:entries="@array/address_as"
                 android:layout_marginTop="50dp" />
 
@@ -246,6 +247,15 @@
                 android:layout_below="@+id/survey_question9"
                 android:layout_alignLeft="@+id/survey_question9"
                 android:layout_alignStart="@+id/survey_question9"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:layout_alignLeft="@+id/survey_question10"
+                android:layout_alignStart="@+id/survey_question10"
+                android:layout_below="@+id/survey_question10" />
 
         </RelativeLayout>
 

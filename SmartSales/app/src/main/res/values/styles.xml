@@ -35,4 +35,11 @@
         <item name="android:layout_marginTop">25dp</item>
     </style>
 
+    <style name="ProgressBarDataUpdateStyle" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">13dip</item>
+        <item name="android:max">100</item>
+        <item name="android:progressDrawable">@drawable/progress_bar_data_update</item>
+    </style>
+
 </resources>
