@@ -34,4 +34,15 @@
     <string name="customer_manager">Customer Manager</string>
     <string name="survey">Survey</string>
 
+    <string name="survey_text1">1. Did your dealer fully answer your questions kindly?</string>
+    <string name="survey_text2">2. Do you think your dealer gave you enough car information?</string>
+    <string name="survey_text3">3. Do you think this tablet app was helpful getting car information?</string>
+    <string name="survey_text4">4. Was this tablet app convenient enough for you?</string>
+    <string name="survey_text5">5. What is your overall rate for this tablet app?</string>
+    <string name="survey_text6">6. What was your impression about this visitation?</string>
+    <string name="survey_text7">7. Did this visit affect your desire to buy Hyundai cars?</string>
+    <string name="survey_text8">8. How much is your interest about Hyundai brand?</string>
+    <string name="survey_text9">9. Do you think that Hyundai brand is well known to people?</string>
+    <string name="survey_text10">10. Would you recommend Hyundai car to others?</string>
+
 </resources>

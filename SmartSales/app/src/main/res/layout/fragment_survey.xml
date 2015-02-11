@@ -5,13 +5,260 @@
     android:layout_height="match_parent"
     android:background="@drawable/settings_bg">
 
+    <ScrollView
+        android:id="@+id/survey_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="520dp"
+        android:background="@drawable/survey_bg"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp">
 
-    <TextView
+        <RelativeLayout
+            android:id="@+id/survey_relative"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/input_first_name"
+                style="@style/SettingInputBox02"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="50dp"
+                android:entries="@array/address_as"
+                android:layout_marginTop="50dp" />
+
+            <com.hyundai.teli.smartsales.views.HEditText
+                android:id="@+id/surveyor_name"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                style="@style/SettingInputBox02"
+                android:hint="FULL NAME"
+                android:layout_alignBottom="@+id/input_first_name"
+                android:layout_toRightOf="@+id/input_first_name"
+                android:layout_toEndOf="@+id/input_first_name" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text1"
+                android:layout_below="@+id/input_first_name"
+                android:layout_alignLeft="@+id/input_first_name"
+                android:layout_alignStart="@+id/input_first_name"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/input_first_name"
+                android:layout_alignStart="@+id/input_first_name"
+                android:layout_below="@+id/survey_question1" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text2"
+                android:layout_below="@+id/survey_question1"
+                android:layout_alignLeft="@+id/survey_question1"
+                android:layout_alignStart="@+id/survey_question1"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question2"
+                android:layout_alignStart="@+id/survey_question2"
+                android:layout_below="@+id/survey_question2" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text3"
+                android:layout_below="@+id/survey_question2"
+                android:layout_alignLeft="@+id/survey_question2"
+                android:layout_alignStart="@+id/survey_question2"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question3"
+                android:layout_alignStart="@+id/survey_question3"
+                android:layout_below="@+id/survey_question3" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text4"
+                android:layout_below="@+id/survey_question3"
+                android:layout_alignLeft="@+id/survey_question3"
+                android:layout_alignStart="@+id/survey_question3"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question4"
+                android:layout_alignStart="@+id/survey_question4"
+                android:layout_below="@+id/survey_question4" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text5"
+                android:layout_below="@+id/survey_question4"
+                android:layout_alignLeft="@+id/survey_question4"
+                android:layout_alignStart="@+id/survey_question4"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question5"
+                android:layout_alignStart="@+id/survey_question5"
+                android:layout_below="@+id/survey_question5" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text6"
+                android:layout_below="@+id/survey_question5"
+                android:layout_alignLeft="@+id/survey_question5"
+                android:layout_alignStart="@+id/survey_question5"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question6"
+                android:layout_alignStart="@+id/survey_question6"
+                android:layout_below="@+id/survey_question6" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text7"
+                android:layout_below="@+id/survey_question6"
+                android:layout_alignLeft="@+id/survey_question6"
+                android:layout_alignStart="@+id/survey_question6"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question7"
+                android:layout_alignStart="@+id/survey_question7"
+                android:layout_below="@+id/survey_question7" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text8"
+                android:layout_below="@+id/survey_question7"
+                android:layout_alignLeft="@+id/survey_question7"
+                android:layout_alignStart="@+id/survey_question7"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question8"
+                android:layout_alignStart="@+id/survey_question8"
+                android:layout_below="@+id/survey_question8" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text8"
+                android:layout_below="@+id/survey_question8"
+                android:layout_alignLeft="@+id/survey_question8"
+                android:layout_alignStart="@+id/survey_question8"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/survey_question9"
+                android:layout_alignStart="@+id/survey_question9"
+                android:layout_below="@+id/survey_question9" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_question10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_text10"
+                android:layout_below="@+id/survey_question9"
+                android:layout_alignLeft="@+id/survey_question9"
+                android:layout_alignStart="@+id/survey_question9"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SURVEY"
-        android:id="@+id/textView"
-        android:textSize="30sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/btn_register" />
+
 </RelativeLayout>
