@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <ImageView 
+        android:id="@+id/survey_rating1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_rating_1"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        />
+    <ImageView 
+        android:id="@+id/survey_rating2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/btn_rating_2"
+        />
+    <ImageView 
+        android:id="@+id/survey_rating3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/btn_rating_3"
+        />
+    <ImageView 
+        android:id="@+id/survey_rating4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/btn_rating_4"
+        />
+    <ImageView 
+        android:id="@+id/survey_rating5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/btn_rating_5"
+        />
+</LinearLayout>
