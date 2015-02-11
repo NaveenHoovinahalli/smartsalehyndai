@@ -24,13 +24,18 @@ public class NDEVideos extends BaseFragment {
     @InjectView(R.id.nde_videos_pager)
     ViewPager videoPager;
 
-    ArrayList<NDEVideosPager> fragments=new ArrayList<NDEVideosPager>();
+    ArrayList<NDEVideosPager> fragments;
+    ArrayList<String> images;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.ndevideos_pager,null);
         ButterKnife.inject(this,view);
         Toast.makeText(getActivity(),"Inside NDE Videos",Toast.LENGTH_SHORT).show();
+        images=new ArrayList<String>();
+        fragments=new ArrayList<NDEVideosPager>();
         setFragments();
         setPager();
         return view;
@@ -38,9 +43,14 @@ public class NDEVideos extends BaseFragment {
 
     private void setFragments() {
 
+        images.add("android.resource://" + getActivity().getPackageName() + "/raw/performance/1");
+        images.add("android.resource://" + getActivity().getPackageName() + "/raw/performance/2");
+        images.add("android.resource://" + getActivity().getPackageName() + "/raw/performance/3");
+        images.add("android.resource://" + getActivity().getPackageName() + "/raw/performance/4");
+
         for(int i=0;i<4;i++){
             Toast.makeText(getActivity(),"Inside NDE Videos",Toast.LENGTH_SHORT).show();
-            NDEVideosPager ndeVideosPager=NDEVideosPager.newInstance();
+            NDEVideosPager ndeVideosPager=NDEVideosPager.newInstance(images);
             fragments.add(ndeVideosPager);
         }
 

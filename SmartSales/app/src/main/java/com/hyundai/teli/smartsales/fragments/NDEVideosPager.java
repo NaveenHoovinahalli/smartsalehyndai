@@ -4,18 +4,19 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.hyundai.teli.smartsales.R;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -27,7 +28,7 @@ import butterknife.OnClick;
 public class NDEVideosPager extends Fragment{
 
     @InjectView(R.id.nde_videos_pager_item)
-    VideoView playVideo;
+    ImageView playVideo;
     ProgressDialog mPbar;
     MediaController controller;
     public DownloadManager downloadManager;
@@ -40,7 +41,8 @@ public class NDEVideosPager extends Fragment{
     static final String VIDEO_URL="video_url";
     static final String VIDEO_ID="video_id";
 
-    public static NDEVideosPager newInstance(){
+
+    public static NDEVideosPager newInstance(ArrayList<String> images){
         NDEVideosPager fragment=new NDEVideosPager();
         return fragment;
     }
@@ -68,9 +70,9 @@ public class NDEVideosPager extends Fragment{
     @OnClick(R.id.nde_videos_pager_item)
     public void onVideoButtonClicked(){
 
-        Uri videoUri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/intro");
-            playVideo.setVideoURI(videoUri);
-            playVideo.start();
+//        Uri videoUri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/intro");
+//            playVideo.setVideoURI(videoUri);
+//            playVideo.start();
 
     }
 }

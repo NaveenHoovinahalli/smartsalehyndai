@@ -3,7 +3,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hmc_bg">
-    <VideoView
+    <ImageView
         android:id="@+id/nde_videos_pager_item"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
