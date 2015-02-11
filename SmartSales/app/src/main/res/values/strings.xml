@@ -33,6 +33,9 @@
     <string name="my_info">My Info</string>
     <string name="customer_manager">Customer Manager</string>
     <string name="survey">Survey</string>
+    <string name="update_started">Standby</string>
+    <string name="update_fetching">Downloading...</string>
+    <string name="update_lately_version">All data has been updated</string>
 
     <string name="survey_text1">1. Did your dealer fully answer your questions kindly?</string>
     <string name="survey_text2">2. Do you think your dealer gave you enough car information?</string>
@@ -44,5 +47,9 @@
     <string name="survey_text8">8. How much is your interest about Hyundai brand?</string>
     <string name="survey_text9">9. Do you think that Hyundai brand is well known to people?</string>
     <string name="survey_text10">10. Would you recommend Hyundai car to others?</string>
+    <string name="vehicle_update">The Vehicle Update</string>
+    <string name="delete_account">Delete</string>
+    <string name="desc_profile_result">Information is entered, the next will look like the above quote</string>
+    <string name="fullscreen">FullScreen</string>
 
 </resources>

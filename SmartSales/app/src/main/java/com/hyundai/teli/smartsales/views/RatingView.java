@@ -92,7 +92,6 @@ public class RatingView extends LinearLayout implements OnClickListener {
 
 		case R.id.survey_rating5:
 			surveyRating5.setSelected(true);
-				
 			surveyRating1.setSelected(false);
 			surveyRating2.setSelected(false);
 			surveyRating3.setSelected(false);
