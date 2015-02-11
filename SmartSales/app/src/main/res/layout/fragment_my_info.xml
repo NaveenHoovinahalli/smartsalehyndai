@@ -1,8 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:background="@drawable/settings_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+
+        <View
+            android:id="@+id/center_line"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true" />
+
+
+        <ImageView
+            android:id="@+id/pic_view"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pic_view"
+            android:scaleType="fitXY"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/dealer_email"
+            android:layout_alignTop="@+id/input_first_name"
+            android:layout_alignBottom="@+id/dealer_mobile_no" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_edit_photo_normal"
+            android:layout_alignRight="@+id/pic_view"
+            android:layout_alignEnd="@+id/pic_view"
+            android:layout_alignBottom="@+id/pic_view"
+            android:layout_alignLeft="@+id/pic_view"
+            android:layout_alignStart="@+id/pic_view"
+            android:scaleType="fitXY"/>
+        <!-- first name -->
+
+        <Spinner
+            android:id="@+id/input_first_name"
+            style="@style/SettingInputBox02"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="259dp"
+            android:layout_marginTop="57dp"
+            android:entries="@array/address_as"
+            android:maxLength="20"
+            android:singleLine="true" />
+        <!-- last name -->
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/full_name"
+            style="@style/SettingInputBox02"
+            android:layout_width="168dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@id/input_first_name"
+            android:layout_toRightOf="@id/input_first_name"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="6dp"
+            android:hint="@string/prompt_input_full_name"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:layout_alignRight="@+id/dealer_email"
+            android:layout_alignEnd="@+id/dealer_email" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/dealer_email"
+            style="@style/SettingInputBox02"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/input_first_name"
+            android:layout_below="@id/full_name"
+            android:layout_marginBottom="6dp"
+            android:hint="@string/prompt_input_email"
+            android:maxLength="30"
+            android:inputType="textEmailAddress" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/dealer_id"
+            style="@style/SettingInputBox02"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/input_first_name"
+            android:layout_below="@id/dealer_email"
+            android:layout_marginBottom="6dp"
+            android:hint="@string/dealer_id"
+            android:maxLength="30"
+            android:inputType="textEmailAddress" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/dealer_branch"
+            style="@style/SettingInputBox02"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@id/input_first_name"
+            android:layout_below="@id/dealer_id"
+            android:layout_marginBottom="6dp"
+            android:hint="@string/prompt_input_branch"
+            android:maxLength="20"
+            android:singleLine="true" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/dealer_branch_tel"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            style="@style/SettingInputBox02"
+            android:layout_alignLeft="@id/input_first_name"
+            android:layout_below="@id/dealer_branch"
+            android:layout_marginBottom="6dp"
+            android:hint="@string/prompt_input_branch_tel"
+            android:maxLength="20"
+            android:inputType="phone"
+            android:singleLine="true" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/dealer_mobile_no"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            style="@style/SettingInputBox02"
+            android:layout_alignLeft="@id/input_first_name"
+            android:layout_below="@id/dealer_branch_tel"
+            android:layout_marginBottom="6dp"
+            android:hint="@string/prompt_input_mobile"
+            android:maxLength="20"
+            android:inputType="phone"
+            android:visibility="visible"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="OK"
+            android:id="@+id/button"
+            android:layout_below="@+id/dealer_mobile_no"
+            android:layout_marginLeft="480dp"
+            android:layout_marginTop="30dp"
+            android:layout_alignRight="@+id/dealer_mobile_no"
+            android:layout_alignEnd="@+id/dealer_mobile_no" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_bcard"/>
 
 
 
-</RelativeLayout>
+        </RelativeLayout>
+
+
+
+</LinearLayout>
