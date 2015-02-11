@@ -132,7 +132,7 @@
             android:visibility="visible"/>
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="OK"
@@ -155,11 +155,87 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/profile_bcard"/>
+            android:background="@drawable/profile_bcard"
+            android:layout_marginTop="58dp"
+            android:layout_marginLeft="43dp"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="43dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_centerHorizontal="true">
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/dealer_name_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="name"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/dealer_phone_no_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="8dp"
+                android:text="1111"
+                android:textColor="#434343"
+                android:textSize="16sp" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/dealer_mobile_no_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="7dp"
+                android:text="22222"
+                android:textColor="#434343"
+                android:textSize="16sp" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/dealer_email_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="7dp"
+                android:text="xxx@xxxx.com"
+                android:textColor="#434343"
+                android:textSize="16sp" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/dealer_branch_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="City Name"
+                android:textColor="#434343"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Full Screen"
+            android:id="@+id/button2"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_marginTop="90dp" />
 
 
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 
 
