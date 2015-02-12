@@ -43,8 +43,8 @@ public class Registration extends BaseFragment {
 
     private void showDialog() {
         final Dialog dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_customer_delivery);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_customer_delivery);
         Button dialogCancel = (Button) dialog.findViewById(R.id.btn_cancel);
         Button dialogRegister = (Button) dialog.findViewById(R.id.btn_register);
 
