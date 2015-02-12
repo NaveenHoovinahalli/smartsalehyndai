@@ -56,6 +56,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
         ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,performancelistValuse);
         performanceList.setAdapter(listAdapter);
+
         performanceList.setOnItemClickListener(this);
 
     }
@@ -79,6 +80,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        performanceList.setSelection(position);
         performancePager.setCurrentItem(position);
         view.setBackgroundColor((Color.parseColor("#657FBD")));
 
@@ -95,12 +97,25 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 //        Log.d("Performance","Current page"+i);
 
 //        Log.d("Performance","Position "+performanceList.getItemAtPosition(i));
-
+       Log.d("Performance","VIEW "+getViewByPosition(i,performanceList));
+        getViewByPosition(i,performanceList).setBackgroundColor((Color.parseColor("#657FBD")));
 
     }
 
     @Override
     public void onPageScrollStateChanged(int i) {
 
+    }
+
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
     }
 }
