@@ -14,7 +14,7 @@ import com.hyundai.teli.smartsales.R;
 public class Style extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.style_main,null);
+        View view =inflater.inflate(R.layout.fragment_style,null);
         return view;
     }
 }

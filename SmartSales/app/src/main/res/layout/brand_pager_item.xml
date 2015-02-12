@@ -6,10 +6,10 @@
     android:weightSum="2">
     <RelativeLayout
         android:id="@+id/brand_rl"
-        android:layout_width="630dp"
-        android:layout_height="330dp"
+        android:layout_width="1280px"
+        android:layout_height="730px"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="225dp"
         >
 
     <ImageButton

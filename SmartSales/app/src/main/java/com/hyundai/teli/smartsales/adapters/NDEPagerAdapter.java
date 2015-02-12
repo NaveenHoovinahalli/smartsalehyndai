@@ -1,30 +1,35 @@
 package com.hyundai.teli.smartsales.adapters;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.hyundai.teli.smartsales.fragments.NDEVideosPager;
+import com.hyundai.teli.smartsales.fragments.NDEVideos;
+import com.hyundai.teli.smartsales.models.NDEMain;
 
 import java.util.ArrayList;
 
 /**
  * Created by naveen on 10/2/15.
  */
-public class NDEPagerAdapter extends FragmentPagerAdapter {
+public class NDEPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<NDEVideosPager> fragments=new ArrayList<>();
-    public NDEPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<NDEVideosPager> fragments) {
+    ArrayList<NDEVideos> fragments=new ArrayList<>();
+    NDEMain ndeMain;
+    public NDEPagerAdapter(FragmentManager fm, NDEMain ndeMain) {
         super(fm);
-        this.fragments=fragments;
+        this.ndeMain=ndeMain;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return fragments.get(i);
+//        return fragments.get(i);
+        return new NDEVideos(ndeMain.getContents().get(i));
     }
 
     @Override
     public int getCount() {
-        return fragments.size();
+//        return fragments.size();
+        return ndeMain.getContents().size();
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="7">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/performance_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"/>
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="5">
+
+      <ImageButton
+          android:id="@+id/performance_button"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:src="@drawable/bg_perfo_top_bar"/>
+
+
+      <ListView
+          android:id="@+id/performance_list"
+          android:layout_below="@id/performance_button"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:background="#ffffff"
+
+
+          />
+      </RelativeLayout>
+
+</LinearLayout>
