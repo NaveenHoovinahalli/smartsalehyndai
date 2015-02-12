@@ -1,5 +1,6 @@
 package com.hyundai.teli.smartsales.adapters;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -14,13 +15,15 @@ import com.hyundai.teli.smartsales.fragments.Survey;
  */
 public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 
+    Activity mContext;
     Fragment[] fragments = {new CheckUpdate(),new MyInfo(),new CustomerManagement(),new Survey()};
 
     FragmentManager mFragmentManager;
 
-    public TabsPagerAdapter(FragmentManager fm) {
+    public TabsPagerAdapter(Activity context, FragmentManager fm) {
         super(fm);
         mFragmentManager = fm;
+        this.mContext = context;
     }
 
     @Override

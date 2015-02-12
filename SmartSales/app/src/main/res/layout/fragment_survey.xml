@@ -21,7 +21,7 @@
             android:gravity="center">
 
             <Spinner
-                android:id="@+id/input_first_name"
+                android:id="@+id/tv_name"
                 style="@style/SettingInputBox02"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
@@ -36,9 +36,9 @@
                 android:layout_height="wrap_content"
                 style="@style/SettingInputBox02"
                 android:hint="FULL NAME"
-                android:layout_alignBottom="@+id/input_first_name"
-                android:layout_toRightOf="@+id/input_first_name"
-                android:layout_toEndOf="@+id/input_first_name" />
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_toRightOf="@+id/tv_name"
+                android:layout_toEndOf="@+id/tv_name" />
 
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/survey_question1"
@@ -46,9 +46,9 @@
                 android:layout_height="wrap_content"
                 style="@style/survey_text"
                 android:text="@string/survey_text1"
-                android:layout_below="@+id/input_first_name"
-                android:layout_alignLeft="@+id/input_first_name"
-                android:layout_alignStart="@+id/input_first_name"/>
+                android:layout_below="@+id/tv_name"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_alignStart="@+id/tv_name"/>
 
             <View
                 android:layout_width="fill_parent"
@@ -58,8 +58,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_alignLeft="@+id/input_first_name"
-                android:layout_alignStart="@+id/input_first_name"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_alignStart="@+id/tv_name"
                 android:layout_below="@+id/survey_question1" />
 
             <com.hyundai.teli.smartsales.views.HTextView
