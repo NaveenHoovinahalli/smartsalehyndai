@@ -37,13 +37,12 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     int[] image;
     String[] performancelistValuse;
     int position=0;
+    View previousView;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_performance,null);
         ButterKnife.inject(this,view);
-        fragments=new ArrayList<PerformanceFragment>();
-        images=new ArrayList<String>();
         setList();
         setFragment();
         setPager();
@@ -56,7 +55,6 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
         ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,performancelistValuse);
         performanceList.setAdapter(listAdapter);
-
         performanceList.setOnItemClickListener(this);
 
     }
@@ -69,37 +67,48 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     }
     private void setPager() {
 
-         PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image,position);
+        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image,position);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
             performancePager.setAdapter(mPagerAdapter);
             Log.d("Performance","Position"+performancePager.getCurrentItem());
 
+        Log.d("Performance ","VIEW first"+getViewByPosition(0, performanceList));
+        ViewSelection(getViewByPosition(1,performanceList));
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        ViewSelection(view);
         performanceList.setSelection(position);
         performancePager.setCurrentItem(position);
         view.setBackgroundColor((Color.parseColor("#657FBD")));
 
     }
 
-    @Override
-    public void onPageScrolled(int i, float v, int i2) {
+    private void ViewSelection(View view) {
+       if(previousView!=null) {
+           Log.d("Performance ","VIEW first"+view);
 
+           previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
+       }
+
+        Log.d("Performance ","VIEW all"+view);
+
+        view.setBackgroundColor((Color.parseColor("#657FBD")));
+        previousView=view;
 
     }
 
+
+    @Override
+    public void onPageScrolled(int i, float v, int i2) { }
+
     @Override
     public void onPageSelected(int i) {
-//        Log.d("Performance","Current page"+i);
-
-//        Log.d("Performance","Position "+performanceList.getItemAtPosition(i));
-       Log.d("Performance","VIEW "+getViewByPosition(i,performanceList));
-        getViewByPosition(i,performanceList).setBackgroundColor((Color.parseColor("#657FBD")));
-
+       Log.d("Performance", "VIEW " + getViewByPosition(i, performanceList));
+        ViewSelection(getViewByPosition(i,performanceList));
     }
 
     @Override
