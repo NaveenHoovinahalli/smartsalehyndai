@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
-import com.hyundai.teli.smartsales.fragments.Estimate;
+import com.hyundai.teli.smartsales.fragments.Performance;
 import com.hyundai.teli.smartsales.fragments.Photo;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
@@ -69,8 +69,10 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.estimate:
                 setSelected(view.getId());
-                Estimate estimate = new Estimate();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
+                Performance performance=new Performance();
+               getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,performance).commit();
+//                Estimate estimate = new Estimate();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
                 break;
             case R.id.photo:
                 setSelected(view.getId());

@@ -19,7 +19,7 @@ import butterknife.InjectView;
  * Created by naveen on 11/2/15.
  */
 @SuppressLint("ValidFragment")
-public class PerformancePager extends Fragment {
+public class PerformanceFragment extends Fragment {
 
     @InjectView(R.id.performance_pager_image)
     ImageView imageView;
@@ -27,7 +27,7 @@ public class PerformancePager extends Fragment {
     int imagepth;
 
     @SuppressLint("ValidFragment")
-    public PerformancePager(int imagepath){
+    public PerformanceFragment(int imagepath){
         this.imagepth=imagepath;
     }
 

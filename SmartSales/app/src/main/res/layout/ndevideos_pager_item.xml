@@ -4,16 +4,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/hmc_bg">
     <ImageView
-        android:id="@+id/nde_videos_pager_item"
+        android:id="@+id/nde_pager_image"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:src="@drawable/nde1"
+
         />
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/hmc_btn_play"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+    <VideoView
+        android:id="@+id/nde_pager_video"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
         />
 
 </RelativeLayout>

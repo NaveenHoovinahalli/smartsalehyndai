@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
@@ -25,7 +24,7 @@ import butterknife.InjectView;
 /**
  * Created by nith on 2/8/15.
  */
-public class Performance extends BaseFragment implements AdapterView.OnItemClickListener {
+public class Performance extends BaseFragment implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener {
 
     @InjectView(R.id.performance_pager)
     ViewPager performancePager;
@@ -34,7 +33,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     ListView performanceList;
 
    ArrayList<String> images;
-    ArrayList<NDEVideosPager> fragments;
+    ArrayList<PerformanceFragment> fragments;
     int[] image;
     String[] performancelistValuse;
     int position=0;
@@ -43,11 +42,12 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
         View view=inflater.inflate(R.layout.fragment_performance,null);
         ButterKnife.inject(this,view);
-        fragments=new ArrayList<NDEVideosPager>();
+        fragments=new ArrayList<PerformanceFragment>();
         images=new ArrayList<String>();
         setList();
         setFragment();
         setPager();
+        performancePager.setOnPageChangeListener(this);
         return view;
     }
 
@@ -65,29 +65,42 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
         image= new int[]{R.drawable.btn_brand_story_normal, R.drawable.btn_gateway_message_normal,
                 R.drawable.btn_gateway_nde, R.drawable.btn_gateway_showroom_normal};
 
-        for(int i=0;i<4;i++){
-            Toast.makeText(getActivity(), "Inside NDE Videos", Toast.LENGTH_SHORT).show();
-            NDEVideosPager ndeVideosPager=NDEVideosPager.newInstance(images);
-            fragments.add(ndeVideosPager);
-        }
-
     }
     private void setPager() {
-        if(fragments.size()!=0){
+
          PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image,position);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
             performancePager.setAdapter(mPagerAdapter);
             Log.d("Performance","Position"+performancePager.getCurrentItem());
 
-        }
+
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         performancePager.setCurrentItem(position);
-
         view.setBackgroundColor((Color.parseColor("#657FBD")));
+
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+//        Log.d("Performance","Current page"+i);
+
+//        Log.d("Performance","Position "+performanceList.getItemAtPosition(i));
+
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
 
     }
 }

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
-import com.hyundai.teli.smartsales.fragments.PerformancePager;
+import com.hyundai.teli.smartsales.fragments.PerformanceFragment;
 
 /**
  * Created by naveen on 11/2/15.
@@ -23,7 +23,7 @@ public class PerformanceAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         Log.d("PerformanceAdapter", "ImagePath" +images[i]);
 
-        return new PerformancePager(images[i]);
+        return new PerformanceFragment(images[i]);
     }
 
     @Override
