@@ -1,10 +1,12 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.Consultation;
@@ -24,7 +26,7 @@ public class Registration extends BaseFragment {
         return view;
     }
 
-    @OnClick({R.id.okButton, R.id.cancelButton})
+    @OnClick({R.id.okButton, R.id.cancelButton, R.id.deliveryCheckListBtn})
     public void OnClickListener(View view){
         switch (view.getId()){
             case R.id.okButton:
@@ -33,6 +35,32 @@ public class Registration extends BaseFragment {
             case R.id.cancelButton:
                 ((Consultation)getActivity()).hideRegistration();
                 break;
+            case R.id.deliveryCheckListBtn:
+                showDialog();
         }
+    }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_customer_delivery);
+
+        Button dialogCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+        Button dialogRegister = (Button) dialog.findViewById(R.id.btn_register);
+
+        dialog.show();
+
+        dialogCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialogRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 }
