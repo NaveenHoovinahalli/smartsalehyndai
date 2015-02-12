@@ -21,4 +21,6 @@ public class Showroom extends BaseFragment {
         ButterKnife.inject(this, view);
         return view;
     }
+
+
 }

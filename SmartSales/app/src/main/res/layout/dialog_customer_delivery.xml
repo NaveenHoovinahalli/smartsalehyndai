@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Setting.CustomerDeliveryActivity" >
+
+    <LinearLayout
+        android:layout_width="1280dp"
+        android:layout_height="595dp"
+        android:orientation="vertical" >
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/titleTextView"
+            style="@style/CustomerText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="CUSTOMER DELIVERY CHECKLIST" />
+
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="1200dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@drawable/delivery_top_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="13dp" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/customerNameTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/customerFristnameEditText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/customerFristnameEditText"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="Customer Name" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/customerFristnameEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/customerNameTextView"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/customerLastnameEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/customerFristnameEditText"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/customerFristnameEditText"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
+
+                <ImageView
+                    android:id="@+id/divider2"
+                    android:layout_width="1200dp"
+                    android:layout_height="2dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/customerLastnameEditText"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/delivery_bottom_line"
+                    android:visibility="gone" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/modelTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/modelEditText"
+                    android:layout_alignLeft="@id/customerNameTextView"
+                    android:layout_alignTop="@+id/modelEditText"
+                    android:gravity="center_vertical"
+                    android:text="Model" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/modelEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/customerFristnameEditText"
+                    android:layout_alignRight="@id/customerLastnameEditText"
+                    android:layout_below="@id/divider2"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/customerNameTextView"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/sellerNameTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/customerLastnameEditText"
+                    android:layout_alignTop="@id/customerFristnameEditText"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/customerLastnameEditText"
+                    android:gravity="center_vertical"
+                    android:text="Sales Consultant" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/sellerFristnameEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/customerLastnameEditText"
+                    android:layout_alignTop="@id/customerFristnameEditText"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/sellerNameTextView"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/sellerLastnameEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/customerFristnameEditText"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/sellerFristnameEditText"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/deliveryDateTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/modelEditText"
+                    android:layout_alignTop="@id/modelEditText"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/modelEditText"
+                    android:gravity="center_vertical"
+                    android:text="Delivery Date" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/deliveryDateEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/modelEditText"
+                    android:layout_alignLeft="@id/sellerFristnameEditText"
+                    android:layout_alignRight="@id/sellerFristnameEditText"
+                    android:layout_alignTop="@id/modelEditText"
+                    android:layout_toRightOf="@id/deliveryDateTextView"
+                    android:gravity="center_vertical"
+                    android:inputType="date"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/vinNumTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/modelEditText"
+                    android:layout_alignTop="@id/modelEditText"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/deliveryDateEditText"
+                    android:gravity="center_vertical"
+                    android:text="Vin#" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/vinNumEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/sellerLastnameEditText"
+                    android:layout_alignTop="@id/modelEditText"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/vinNumTextView"
+                    android:inputType="text"
+                    android:paddingLeft="10dp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1200dp"
+                android:layout_height="2dp"
+                android:background="@drawable/delivery_bottom_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/abcTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/abcCheckedTextView1"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/abcTextView"
+                    android:layout_below="@id/abcTextView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Explain all support materials" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/abcCheckedTextView2"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/abcCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/abcCheckedTextView1"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Explain keys including spare one" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/abcCheckedTextView3"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/abcCheckedTextView2"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/abcCheckedTextView2"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Sign invoices" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/abcCheckedTextView4"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/abcCheckedTextView3"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/abcCheckedTextView3"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Financial documents" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/aftersalesTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/abcCheckedTextView1"
+                    android:layout_marginTop="15dp"
+                    android:text="Aftersales" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/aftersalesCheckedTextView1"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/aftersalesTextView"
+                    android:layout_below="@id/aftersalesTextView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Introduce Service Advisior" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/aftersalesCheckedTextView2"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/aftersalesCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/aftersalesCheckedTextView1"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Explain service warranty ＆ terms" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/aftersalesCheckedTextView3"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/aftersalesCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/aftersalesCheckedTextView2"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Explain emergency service" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/aftersalesCheckedTextView4"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/aftersalesCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/aftersalesCheckedTextView3"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Explain maintenance schedule" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/featuresTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aftersalesCheckedTextView1"
+                    android:layout_marginTop="15dp"
+                    android:text="Features ＆ Controls" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView1"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/featuresTextView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Seat adjustment" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView2"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView1"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Gear change" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView3"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView2"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Indicator ＆ Dip lights" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView4"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView3"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Windshield wiper" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView5"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView1"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView4"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Bluetooth connectivity" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView6"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/featuresCheckedTextView1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Clock" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView7"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView6"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView6"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Defrost" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView8"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView6"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView7"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Warning/Service indicator" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView9"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView6"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView8"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Seat belt" />
+
+                <com.hyundai.teli.smartsales.views.HCheckBox
+                    android:id="@+id/featuresCheckedTextView10"
+                    style="@style/DeliveryText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/featuresCheckedTextView6"
+                    android:layout_marginLeft="28dp"
+                    android:layout_toRightOf="@id/featuresCheckedTextView9"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="- Bluelink" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="1200dp"
+                android:layout_height="2dp"
+                android:background="@drawable/delivery_bottom_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="12dp" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/descTextView"
+                    style="@style/DeliveryText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All the above items have been explained to me and I understand completely features and controls of the vehicle" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/signatureTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/signatureImageView"
+                    android:layout_alignTop="@+id/signatureImageView"
+                    android:gravity="center_vertical"
+                    android:text="Customer Signature" />
+
+                <ImageView
+                    android:id="@+id/signatureImageView"
+                    android:layout_width="200dp"
+                    android:layout_height="36dp"
+                    android:layout_below="@id/descTextView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/signatureTextView"
+                    android:background="@drawable/delivery_icon" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/dateTextView"
+                    style="@style/CustomerText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/dateEditText"
+                    android:layout_alignTop="@+id/dateEditText"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@id/signatureImageView"
+                    android:gravity="center_vertical"
+                    android:text="Date" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/dateEditText"
+                    style="@style/CustomerDeliveryInput"
+                    android:layout_width="200dp"
+                    android:layout_height="36dp"
+                    android:layout_below="@id/descTextView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/dateTextView"
+                    android:inputType="date"
+                    android:paddingLeft="10dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/descTextView2"
+                    style="@style/DeliveryText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/signatureTextView"
+                    android:layout_marginTop="15dp"
+                    android:text="(If the vehicle comes with model-specific checklist, you can use it instead)" />
+
+                <Button
+                    android:id="@+id/okButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/descTextView2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="42dp"
+                    android:background="@drawable/customer_btn_ok"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/okButton"
+                    android:layout_toLeftOf="@+id/okButton"
+                    android:background="@drawable/customer_btn_delete_black_selector"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/descTextView2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="42dp"
+                    android:background="@drawable/customer_btn_register" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/saveButton"
+                    android:layout_toLeftOf="@+id/saveButton"
+                    android:background="@drawable/customer_btn_cancel_black" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

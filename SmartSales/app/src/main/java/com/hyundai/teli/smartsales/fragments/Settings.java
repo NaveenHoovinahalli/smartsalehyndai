@@ -6,7 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.TabsPagerAdapter;
@@ -22,6 +24,9 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
 
     @InjectView(R.id.settings_container)
     ViewPager viewPager;
+
+    @InjectView(R.id.registration_container)
+    FrameLayout registrationContainer;
 
     @InjectView(R.id.check_update)
     LinearLayout mCheckUpdate;
@@ -41,7 +46,7 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings,null);
         ButterKnife.inject(this, view);
-        mAdapter = new TabsPagerAdapter(getActivity().getSupportFragmentManager());
+        mAdapter = new TabsPagerAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(mAdapter);
         viewPager.setOnPageChangeListener(this);
         mCheckUpdate.setSelected(true);
@@ -54,10 +59,12 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     public void onSettingsTabClick(View view){
         switch(view.getId()){
             case R.id.check_update:
+                removeRegistrationFragment();
                 viewPager.setCurrentItem(0);
                 break;
 
             case R.id.my_info:
+                removeRegistrationFragment();
                 viewPager.setCurrentItem(1);
                 break;
 
@@ -66,13 +73,15 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
                 break;
 
             case R.id.survey:
+                removeRegistrationFragment();
                 viewPager.setCurrentItem(3);
                 break;
         }
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
     public void onPageSelected(int position) {
@@ -107,4 +116,17 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
 
     @Override
     public void onPageScrollStateChanged(int state) {}
+
+    public void addRegistrationFragment(){
+        viewPager.setVisibility(View.GONE);
+        registrationContainer.setVisibility(View.VISIBLE);
+        Registration registration = new Registration();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.registration_container, registration).commit();
+        Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show();
+    }
+
+    public void removeRegistrationFragment() {
+        registrationContainer.setVisibility(View.GONE);
+        viewPager.setVisibility(View.VISIBLE);
+    }
 }

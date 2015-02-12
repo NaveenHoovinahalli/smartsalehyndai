@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.fragments.Estimate;
@@ -19,6 +20,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class Consultation extends ActionBarActivity {
+
+    @InjectView(R.id.consultation_layout)
+    RelativeLayout consultationLayout;
 
     @InjectView(R.id.menuListView)
     RelativeLayout menuList;
@@ -36,6 +40,7 @@ public class Consultation extends ActionBarActivity {
     ImageView mSettings;
 
     private boolean menuClicked;
+    private Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +84,7 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.settings:
                 setSelected(view.getId());
-                Settings settings = new Settings();
+                settings = new Settings();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, settings).commit();
                 break;
         }
@@ -106,4 +111,14 @@ public class Consultation extends ActionBarActivity {
         this.menuClicked = false;
         menuList.setVisibility(View.GONE);
     }
+
+    public void showRegistration(){
+        Toast.makeText(getApplicationContext(), "Consultation", Toast.LENGTH_SHORT).show();
+        settings.addRegistrationFragment();
+    }
+
+    public void hideRegistration(){
+        settings.removeRegistrationFragment();
+    }
+
 }

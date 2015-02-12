@@ -51,5 +51,9 @@
     <string name="delete_account">Delete</string>
     <string name="desc_profile_result">Information is entered, the next will look like the above quote</string>
     <string name="fullscreen">FullScreen</string>
+    <string name="prompt_input_memo">Please enter your memo...</string>
+    <string name="model">Enter Model Name</string>
+    <string name="model_of">\t\t\t\tModel Of Interest</string>
+    <string name="age">Age</string>
 
 </resources>
