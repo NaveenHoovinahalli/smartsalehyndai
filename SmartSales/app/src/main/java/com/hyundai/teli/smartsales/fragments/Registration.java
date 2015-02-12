@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import com.hyundai.teli.smartsales.R;
@@ -43,7 +44,7 @@ public class Registration extends BaseFragment {
     private void showDialog() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_customer_delivery);
-
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         Button dialogCancel = (Button) dialog.findViewById(R.id.btn_cancel);
         Button dialogRegister = (Button) dialog.findViewById(R.id.btn_register);
 
