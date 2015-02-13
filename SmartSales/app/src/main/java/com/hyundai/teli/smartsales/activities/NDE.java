@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
@@ -58,12 +59,22 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nde);
         ButterKnife.inject(this);
-        readJson();
+
+        checkFile();
+    }
+
+    public void checkFile(){
+
+         if(readJson()) {
 //        DownloadFile();/mnt/sdcard/Download/nde.zip///mnt/sdcard/Download/nde.json
-        loadNdeVideos();
-        ndePagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(),ndeMain);
-        ndePager.setAdapter(ndePagerAdapter);
-        ndePager.setOnPageChangeListener(this);
+             loadNdeVideos();
+             ndePagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
+             ndePager.setAdapter(ndePagerAdapter);
+             ndePager.setOnPageChangeListener(this);
+         }else {
+//             Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
+             finish();
+         }
 
     }
 
@@ -124,20 +135,27 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         }
     }
 
-    public void readJson() {
+    public boolean readJson() {
 
 
             String parcedJson=loadJSONFromFile();
             Log.d("Specification","JSON"+parcedJson);
-      ndeMain= new Gson().fromJson(parcedJson.toString(), NDEMain.class);
+        if(!parcedJson.isEmpty()) {
+            ndeMain = new Gson().fromJson(parcedJson.toString(), NDEMain.class);
 
-        for(int i=0;i<ndeMain.getContents().size();i++){
-          Log.d("Specification", "" + ndeMain.getContents().get(i).getCategory());
-            Log.d("Specification",""+ ndeMain.getContents().get(i).getId());
-            Log.d("Specification",""+ ndeMain.getContents().get(i).getIsVideo());
-            Log.d("Specification",""+ ndeMain.getContents().get(i).getPath());
+            for (int i = 0; i < ndeMain.getContents().size(); i++) {
+                Log.d("Specification", "" + ndeMain.getContents().get(i).getCategory());
+                Log.d("Specification", "" + ndeMain.getContents().get(i).getId());
+                Log.d("Specification", "" + ndeMain.getContents().get(i).getIsVideo());
+                Log.d("Specification", "" + ndeMain.getContents().get(i).getPath());
 
-            ndeTabPage.add(ndeMain.getContents().get(i).getCategory());
+                ndeTabPage.add(ndeMain.getContents().get(i).getCategory());
+            }
+            return true;
+        }else {
+            Log.d("Specification","JSON is empty -"+parcedJson);
+            return false;
+
         }
     }
 
@@ -162,7 +180,6 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
 
                 String content = String.valueOf(myReader.read());
 
-                Log.d("Specification", "HTML content" + content);
 
                 String aDataRow = "";
                 String aBuffer = "{";
@@ -170,7 +187,7 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                     aBuffer += aDataRow + "\n";
                 }
 
-                Log.d("Specification", "HTML content::" + aBuffer);
+                Log.d("Specification", "Buffer::" + aBuffer);
 
                 String replacedString = "";
 
@@ -179,6 +196,9 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                 return aBuffer;
 
 
+            }
+            else {
+                Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
             }
         } catch (IOException e) {
             e.printStackTrace();

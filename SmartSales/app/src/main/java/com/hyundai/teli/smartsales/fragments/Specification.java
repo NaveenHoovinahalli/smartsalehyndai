@@ -29,7 +29,7 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
     @InjectView(R.id.specification_pager)
     ViewPager specificationPager;
 
-    @InjectView(R.id.performance_list)
+    @InjectView(R.id.specification_list)
     ListView specificationList;
 
     ArrayList<String> images;
