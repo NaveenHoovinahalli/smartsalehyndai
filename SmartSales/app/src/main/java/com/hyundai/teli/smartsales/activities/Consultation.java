@@ -9,8 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
-import com.hyundai.teli.smartsales.fragments.Performance;
-import com.hyundai.teli.smartsales.fragments.Safety;
+import com.hyundai.teli.smartsales.fragments.Estimate;
+import com.hyundai.teli.smartsales.fragments.Photo;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
 import com.hyundai.teli.smartsales.views.HTextView;
@@ -74,17 +74,15 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.estimate:
                 setSelected(view.getId());
-                Performance performance=new Performance();
-               getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,performance).commit();
-//                Estimate estimate = new Estimate();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
+
+                Estimate estimate = new Estimate();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
                 break;
             case R.id.photo:
                 setSelected(view.getId());
-                Safety safety=new Safety();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,safety).commit();
-//                Photo photo = new Photo();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
+
+                Photo photo = new Photo();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
                 break;
             case R.id.settings:
                 setSelected(view.getId());

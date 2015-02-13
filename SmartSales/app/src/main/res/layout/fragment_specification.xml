@@ -18,8 +18,8 @@
         android:paddingRight="10dp"
         android:background="@null">
 
-        <ImageButton
-            android:id="@+id/performance_button"
+        <ImageView
+            android:id="@+id/specification_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#3f3f3f"
@@ -28,8 +28,8 @@
             />
 
         <ListView
-            android:id="@+id/performance_list"
-            android:layout_below="@id/performance_button"
+            android:id="@+id/specification_list"
+            android:layout_below="@id/specification_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
