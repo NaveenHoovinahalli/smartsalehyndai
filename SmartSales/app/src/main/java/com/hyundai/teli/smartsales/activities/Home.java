@@ -49,6 +49,7 @@ public class Home extends Activity {
     @OnClick({R.id.brand_story, R.id.consultation, R.id.nde, R.id.message_board,
             R.id.myInfo, R.id.customer_management, R.id.survey})
     public void onClickListener(View view){
+                Intent openConsultation = new Intent(Home.this, Consultation.class);
         switch(view.getId()){
             case R.id.brand_story:
                 Intent openBrandStory = new Intent(Home.this, BrandStory.class);
@@ -56,7 +57,7 @@ public class Home extends Activity {
                 break;
 
             case R.id.consultation:
-                Intent openConsultation = new Intent(Home.this, Consultation.class);
+                openConsultation.putExtra("SCREEN", "CONSULTATION");
                 startActivity(openConsultation);
                 break;
 
@@ -71,12 +72,18 @@ public class Home extends Activity {
                 break;
 
             case R.id.myInfo:
+                openConsultation.putExtra("SCREEN", "MY_INFO");
+                startActivity(openConsultation);
                 break;
 
             case R.id.customer_management:
+                openConsultation.putExtra("SCREEN", "CUSTOMER_MANAGEMENT");
+                startActivity(openConsultation);
                 break;
 
             case R.id.survey:
+                openConsultation.putExtra("SCREEN", "SURVEY");
+                startActivity(openConsultation);
                 break;
         }
     }

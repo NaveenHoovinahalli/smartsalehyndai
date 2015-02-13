@@ -49,7 +49,31 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
         mAdapter = new TabsPagerAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(mAdapter);
         viewPager.setOnPageChangeListener(this);
-        mCheckUpdate.setSelected(true);
+        Bundle bundle = getArguments();
+        if (bundle.containsKey("TAB")){
+            String tab = bundle.getString("TAB");
+            switch (tab){
+                case "UPDATE":
+                    mCheckUpdate.setSelected(true);
+                    break;
+                case "MY_INFO":
+                    viewPager.setCurrentItem(1);
+                    mMyInfo.setSelected(true);
+                    break;
+                case "CUSTOMER_MANAGEMENT":
+                    viewPager.setCurrentItem(2);
+                    mCustomerManagement.setSelected(true);
+                    break;
+                case "SURVEY":
+                    viewPager.setCurrentItem(3);
+                    mSurvey.setSelected(true);
+                    break;
+            }
+        }else{
+            mCheckUpdate.setSelected(true);
+        }
+
+
 
         return view;
     }

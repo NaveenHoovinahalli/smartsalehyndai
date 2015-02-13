@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="706dp"
+    android:layout_height="303dp"
+    android:background="@drawable/bg_customer_dialog"
+    android:orientation="vertical"
+    tools:context=".Setting.CustomerDeliveryActivity$SignatureDialog" >
+
+    <ImageView
+        android:id="@+id/pencilImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/icon_pencil" />
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/pencilImageView"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/pencilImageView"
+        android:text="@string/input_pencil"
+        android:textColor="#363636"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/divider1"
+        android:layout_width="625dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/pencilImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:src="#c1c1c1" />
+
+    <ImageView
+        android:id="@+id/divider2"
+        android:layout_width="625dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/divider1"
+        android:layout_centerHorizontal="true"
+        android:src="#ffffff" />
+
+    <com.hyundai.teli.smartsales.views.DrawingView
+        android:id="@+id/drawingView1"
+        android:layout_width="625dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/divider2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/customer_drawing_bg" />
+
+    <ImageButton
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/drawingView1"
+        android:layout_below="@+id/drawingView1"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/customer_btn_ok" />
+
+    <ImageButton
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/okButton"
+        android:layout_marginRight="6dp"
+        android:layout_toLeftOf="@id/okButton"
+        android:background="@drawable/btn_customer_black_cancel" />
+
+</RelativeLayout>

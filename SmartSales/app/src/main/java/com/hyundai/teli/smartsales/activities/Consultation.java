@@ -1,5 +1,6 @@
 package com.hyundai.teli.smartsales.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -47,13 +48,44 @@ public class Consultation extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultation);
         ButterKnife.inject(this);
-        loadShowRoom();
+        Intent receivedIntent = getIntent();
+        if(receivedIntent.hasExtra("SCREEN")){
+            String category = receivedIntent.getStringExtra("SCREEN");
+            switch (category){
+
+                case "CONSULTATION":
+                    loadShowRoom();
+                    break;
+
+                case "MY_INFO":
+                    loadSettings(category);
+                    break;
+
+                case "CUSTOMER_MANAGEMENT":
+                    loadSettings(category);
+                    break;
+
+                case "SURVEY":
+                    loadSettings(category);
+                    break;
+            }
+        }else{
+            loadShowRoom();
+        }
     }
 
     private void loadShowRoom() {
         mShowRoom.setTextColor(Color.parseColor("#657FBD"));
         Showroom showroom = new Showroom();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, showroom).commit();
+    }
+
+    private void loadSettings(String tab) {
+        Bundle bundle = new Bundle();
+        bundle.putString("TAB", tab);
+        settings = new Settings();
+        settings.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, settings).commit();
     }
 
     @OnClick({R.id.catalogueMenu,R.id.show_room, R.id.estimate, R.id.photo, R.id.settings})
@@ -75,7 +107,7 @@ public class Consultation extends ActionBarActivity {
             case R.id.estimate:
                 setSelected(view.getId());
                 Performance performance=new Performance();
-               getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,performance).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,performance).commit();
 //                Estimate estimate = new Estimate();
 //                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
                 break;
@@ -85,12 +117,11 @@ public class Consultation extends ActionBarActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
                 break;
             case R.id.settings:
-                setSelected(view.getId());
-                settings = new Settings();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, settings).commit();
+                loadSettings("UPDATE");
                 break;
         }
     }
+
 
     private void setSelected(int id) {
         mShowRoom.setTextColor(Color.parseColor("#FFFFFF"));
