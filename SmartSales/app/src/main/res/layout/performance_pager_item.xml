@@ -6,6 +6,7 @@
     <ImageView
         android:id="@+id/performance_pager_image"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"/>
 
 </RelativeLayout>

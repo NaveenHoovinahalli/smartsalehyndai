@@ -34,7 +34,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
    ArrayList<String> images;
     ArrayList<PerformanceFragment> fragments;
-    int[] image;
+    int[] image= new int[]{R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
     String[] performancelistValuse;
     int position=0;
     View previousView;
@@ -44,14 +44,25 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
         View view=inflater.inflate(R.layout.fragment_performance,null);
         ButterKnife.inject(this,view);
         setList();
-        setFragment();
         setPager();
         performancePager.setOnPageChangeListener(this);
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ViewSelection(getViewByPosition(1,performanceList));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
     private void setList(){
-        performancelistValuse=new String[]{"Brand Story","Message","NDE","Showroom"};
+        performancelistValuse=new String[]{"Performance 1","Performance 2","Performance 3","Performance 4"};
         ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,performancelistValuse);
         performanceList.setAdapter(listAdapter);
@@ -59,21 +70,12 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     }
 
-    private void setFragment() {
+      private void setPager() {
 
-        image= new int[]{R.drawable.btn_brand_story_normal, R.drawable.btn_gateway_message_normal,
-                R.drawable.btn_gateway_nde, R.drawable.btn_gateway_showroom_normal};
-
-    }
-    private void setPager() {
-
-        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image,position);
+        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
             performancePager.setAdapter(mPagerAdapter);
             Log.d("Performance","Position"+performancePager.getCurrentItem());
-
-        Log.d("Performance ","VIEW first"+getViewByPosition(0, performanceList));
-        ViewSelection(getViewByPosition(1,performanceList));
 
     }
 

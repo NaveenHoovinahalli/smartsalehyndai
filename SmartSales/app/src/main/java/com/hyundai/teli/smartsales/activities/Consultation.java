@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.fragments.Performance;
-import com.hyundai.teli.smartsales.fragments.Photo;
+import com.hyundai.teli.smartsales.fragments.Safety;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
 import com.hyundai.teli.smartsales.views.HTextView;
@@ -81,8 +81,10 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.photo:
                 setSelected(view.getId());
-                Photo photo = new Photo();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
+                Safety safety=new Safety();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,safety).commit();
+//                Photo photo = new Photo();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
                 break;
             case R.id.settings:
                 setSelected(view.getId());

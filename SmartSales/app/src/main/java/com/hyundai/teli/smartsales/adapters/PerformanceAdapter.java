@@ -14,7 +14,7 @@ public class PerformanceAdapter extends FragmentStatePagerAdapter {
 //    ArrayList<String> images=new ArrayList<>();
     int[] images;
     int position;
-    public PerformanceAdapter(android.support.v4.app.FragmentManager fm, int[] images,int position) {
+    public PerformanceAdapter(android.support.v4.app.FragmentManager fm, int[] images) {
         super(fm);
         this.images=images;
     }

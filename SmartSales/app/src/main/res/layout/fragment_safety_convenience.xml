@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/bg_consultation"
     android:weightSum="3"
     >
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/safety_pager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
        android:layout_weight="1">
@@ -16,56 +18,48 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="2"
-        android:background="#000000">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
 
         <LinearLayout
-            android:id="@+id/style_main_names_ll"
+            android:id="@+id/safety_main_names_ll"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
             <ImageButton
+                android:id="@+id/safety_button"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:src="@drawable/btn_style_exterior_disable"
-                android:background="@null"
+                android:src="@drawable/btn_safety_select"
+                android:background="#3f3f3f"
+                android:scaleType="fitXY"
+                android:layout_marginRight="5dp"
+
                 />
             <ImageButton
+                android:id="@+id/convenience_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/btn_style_interior_disable"
-                android:background="@null"/>
-            </LinearLayout>
-        
-        <LinearLayout
-            android:id="@+id/style_interior_exterior_ll"
-            android:layout_below="@id/style_main_names_ll"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/btn_add_plus"
-                android:background="@null"
+                android:src="@drawable/btn_conv_normal"
+                android:layout_marginLeft="5dp"
+                android:scaleType="fitXY"
+                android:background="#3f3f3f"
                 />
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Exterior"
-                android:layout_marginTop="40dp"
-                android:textColor="@android:color/white"
-                android:layout_marginLeft="30dp"/>
             </LinearLayout>
 
         <ListView
-            android:id="@+id/style_list"
-            android:layout_below="@id/style_interior_exterior_ll"
+            android:id="@+id/safety_list"
+            android:layout_below="@id/safety_main_names_ll"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:dividerHeight="8dp"
+            android:layout_marginTop="8dp"
+            android:choiceMode="singleChoice"
+            android:saveEnabled="true"
             />
 
         </RelativeLayout>
