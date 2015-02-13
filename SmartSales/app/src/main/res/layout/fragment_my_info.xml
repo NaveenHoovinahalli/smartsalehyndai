@@ -132,12 +132,14 @@
             android:inputType="phone"
             android:visibility="visible"/>
 
-        <Button
+        <com.hyundai.teli.smartsales.views.HButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="OK"
             android:id="@+id/button"
+            android:background="@drawable/btn_white_h48"
+            android:text="@string/complete"
+            android:textColor="#626262"
             android:layout_below="@+id/dealer_mobile_no"
             android:layout_marginLeft="480dp"
             android:layout_marginTop="30dp"
@@ -224,10 +226,12 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <ImageButton
+        <com.hyundai.teli.smartsales.views.HButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_full_screen_normal"
+            android:background="@drawable/btn_white_h48"
+            android:text="FULLSCREEN"
+            android:textColor="#626262"
             android:id="@+id/button2"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
