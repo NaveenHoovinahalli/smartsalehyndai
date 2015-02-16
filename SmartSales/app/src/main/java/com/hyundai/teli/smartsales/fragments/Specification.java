@@ -34,8 +34,7 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 
     ArrayList<String> images;
     ArrayList<PerformanceFragment> fragments;
-    int[] image= new int[]{R.drawable.spec1,R.drawable.spec2,R.drawable.spec3,R.drawable.spec4,
-            R.drawable.spec5,R.drawable.spec6};
+    int[] image= new int[]{R.drawable.spec1,R.drawable.spec2,R.drawable.spec3,R.drawable.spec4};
     String[] specificationListValues;
     View previousView;
 
@@ -62,8 +61,7 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
     }
 
     private void setList(){
-        specificationListValues=new String[]{"Specification 1","Specification 2","Specification 3","Specification 4",
-                "Specification 5","Specification 6"};
+        specificationListValues=new String[]{"Specification 1","Specification 2","Specification 3","Specification 4"};
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,specificationListValues);
 

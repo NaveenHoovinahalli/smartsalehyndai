@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.hyundai.teli.smartsales.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,7 +39,7 @@ public class SpecificationFragment  extends Fragment {
         Log.d("PerformancePager", "ImagePath" + imagepth);
 //        Picasso.with(getActivity()).load(imagepth).
 //                placeholder(R.drawable.btn_add_plus).into(imageView);
-        imageView.setImageResource(imagepth);
+        Picasso.with(getActivity()).load(imagepth).into(imageView);
 
         return view;
     }

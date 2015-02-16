@@ -40,9 +40,9 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     PagerAdapter pagerAdapter;
     View previousView;
 
-    int[] safetyImages={R.drawable.s1, R.drawable.s2,R.drawable.s3};
-    int[] convenienceImages={R.drawable.c1,R.drawable.c2,R.drawable.c3,R.drawable.c4,R.drawable.c5,R.drawable.c6,R.drawable.c7};
-    String[] safetyListValues={"Safety 1","Safety 2","Safety 3"};
+    int[] safetyImages={R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4,R.drawable.s5,R.drawable.s6};
+    int[] convenienceImages={R.drawable.c1,R.drawable.c2,R.drawable.c3,R.drawable.c4,R.drawable.c5,R.drawable.c6};
+    String[] safetyListValues={"Safety 1","Safety 2","Safety 3","Safety 4","Safety 5","Safety 6"};
     String[] conveienceListValues={"Convenience 1","Convenience 2","Convenience 3","Convenience 4","Convenience 5","Convenience 6"};
 
     @Override

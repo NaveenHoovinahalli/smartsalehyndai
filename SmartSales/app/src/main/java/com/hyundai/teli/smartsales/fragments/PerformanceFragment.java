@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.hyundai.teli.smartsales.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -39,7 +40,7 @@ public class PerformanceFragment extends Fragment {
 //        Picasso.with(getActivity()).load(imagepth).
 //                placeholder(R.drawable.btn_add_plus).into(imageView);
         try {
-            imageView.setImageResource(imagepth);
+            Picasso.with(getActivity()).load(imagepth).into(imageView);
         }catch (Exception e){
             Log.d("IMAGEVIEW","error"+e);
 

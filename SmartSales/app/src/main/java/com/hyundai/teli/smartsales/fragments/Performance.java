@@ -34,7 +34,8 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
    ArrayList<String> images;
     ArrayList<PerformanceFragment> fragments;
-    int[] image= new int[]{R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
+    int[] image= new int[]{R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
+            R.drawable.p6,R.drawable.p7};
     String[] performancelistValuse;
     int position=0;
     View previousView=null;
@@ -61,7 +62,8 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     }
 
     private void setList(){
-        performancelistValuse=new String[]{"Performance 1","Performance 2","Performance 3","Performance 4"};
+        performancelistValuse=new String[]{"Performance 1","Performance 2","Performance 3","Performance 4",
+                "Performance 5","Performance 6","Performance 7"};
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,performancelistValuse);
 
