@@ -11,10 +11,10 @@ import com.hyundai.teli.smartsales.R;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class Style extends BaseFragment {
+public class StyleInterior extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_style,null);
+        View view =inflater.inflate(R.layout.fragment_style_exterior,null);
         return view;
     }
 }
