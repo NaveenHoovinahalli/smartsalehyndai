@@ -18,10 +18,10 @@ import butterknife.InjectView;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class VirtualReality extends BaseFragment implements View.OnTouchListener{
+public class StyleExterior extends BaseFragment implements View.OnTouchListener{
 
-    @InjectView(R.id.vr_flipper)
-    ViewFlipper mVRFlipper;
+    @InjectView(R.id.exterior_flipper)
+    ViewFlipper mExteriorFlipper;
 
     private static final int SWIPE_MIN_DISTANCE = 10;
     private static final int SWIPE_THRESHOLD_VELOCITY = 20;
@@ -51,18 +51,18 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_virtual_reality, null);
+        View view = inflater.inflate(R.layout.fragment_style_exterior, null);
         ButterKnife.inject(this, view);
-        mVRFlipper.setOnTouchListener(this);
+        mExteriorFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
         for(int i=0;i<convenience_car_array.length;i++)
         {
             ImageView image = new ImageView(getActivity());
             image.setImageResource(convenience_car_array[i]);
-            mVRFlipper.addView(image);
+            mExteriorFlipper.addView(image);
 //            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
         }
-        mVRFlipper.setDisplayedChild(0);
+        mExteriorFlipper.setDisplayedChild(0);
         return view;
     }
 
@@ -78,16 +78,14 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         public boolean onScroll(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
             try {
                 if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE) {
-                    mVRFlipper.showPrevious();
+                    mExteriorFlipper.showPrevious();
                 } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
-                    mVRFlipper.showNext();
+                    mExteriorFlipper.showNext();
                 }
                     return true;
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             return false;
         }
     }

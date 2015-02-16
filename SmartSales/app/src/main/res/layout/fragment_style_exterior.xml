@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/settings_bg"
+    android:weightSum="3"
+    >
+
+    <ViewFlipper
+        android:id="@+id/exterior_flipper"
+        android:layout_width="940dp"
+        android:layout_height="fill_parent"
+        android:layout_margin="6dp" >
+
+    </ViewFlipper>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:background="#000000">
+
+        <LinearLayout
+            android:id="@+id/style_main_names_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:src="@drawable/btn_style_exterior_enable"
+                android:background="@null"
+                />
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/btn_style_interior_disable"
+                android:background="@null"/>
+            </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/style_interior_exterior_ll"
+            android:layout_below="@id/style_main_names_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/btn_add_plus"
+                android:background="@null"
+                />
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Exterior"
+                android:layout_marginTop="40dp"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="30dp"/>
+            </LinearLayout>
+
+        <ListView
+            android:id="@+id/style_list"
+            android:layout_below="@id/style_interior_exterior_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+
+        </RelativeLayout>
+
+</LinearLayout>

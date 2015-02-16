@@ -17,7 +17,7 @@ import com.hyundai.teli.smartsales.fragments.Estimate;
 import com.hyundai.teli.smartsales.fragments.Performance;
 import com.hyundai.teli.smartsales.fragments.Safety;
 import com.hyundai.teli.smartsales.fragments.Specification;
-import com.hyundai.teli.smartsales.fragments.Style;
+import com.hyundai.teli.smartsales.fragments.StyleExterior;
 import com.hyundai.teli.smartsales.fragments.VirtualReality;
 import com.hyundai.teli.smartsales.views.HTextView;
 
@@ -93,7 +93,7 @@ public class CarDetails extends ActionBarActivity {
                 break;
             case R.id.style:
                 setSelected(view.getId());
-                Style style = new Style();
+                StyleExterior style = new StyleExterior();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, style).commit();
                 break;
             case R.id.performance:
