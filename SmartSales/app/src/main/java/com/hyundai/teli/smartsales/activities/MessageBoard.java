@@ -11,6 +11,9 @@ import com.hyundai.teli.smartsales.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class MessageBoard extends ActionBarActivity {
 
     @InjectView(R.id.webview)

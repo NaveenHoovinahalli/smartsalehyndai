@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class HEditText extends EditText {
 
 	public HEditText(Context context) {

@@ -10,7 +10,7 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.views.HTextView;
 
 /**
- * Created by naveen on 13/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class ListAdapter extends BaseAdapter {
 

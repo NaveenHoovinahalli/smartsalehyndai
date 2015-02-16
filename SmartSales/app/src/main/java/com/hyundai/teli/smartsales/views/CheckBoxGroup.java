@@ -4,6 +4,9 @@ import android.widget.CheckBox;
 
 import java.util.ArrayList;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class CheckBoxGroup {
 	
 	private ArrayList<CheckBox> checkBoxList = new ArrayList<CheckBox>();

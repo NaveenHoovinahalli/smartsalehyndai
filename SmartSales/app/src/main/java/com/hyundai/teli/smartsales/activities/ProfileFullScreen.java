@@ -5,6 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.hyundai.teli.smartsales.R;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class ProfileFullScreen extends ActionBarActivity {
 
     @Override

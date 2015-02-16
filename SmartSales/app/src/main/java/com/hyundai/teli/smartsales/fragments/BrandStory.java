@@ -18,9 +18,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by naveen on 9/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
-public class BrandStoryPager extends Fragment {
+public class BrandStory extends Fragment {
 
 //    @InjectView(R.id.brand_video_icon)
 //    ImageButton brandVideo;
@@ -31,8 +31,8 @@ public class BrandStoryPager extends Fragment {
     @InjectView(R.id.brand_rl)
     RelativeLayout playButton;
 
-    public static  BrandStoryPager newInstance(){
-        BrandStoryPager bBragment=new BrandStoryPager();
+    public static BrandStory newInstance(){
+        BrandStory bBragment=new BrandStory();
         return bBragment;
 
     }

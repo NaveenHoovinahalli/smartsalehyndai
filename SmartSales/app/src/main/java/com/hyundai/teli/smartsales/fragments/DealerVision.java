@@ -11,7 +11,7 @@ import com.hyundai.teli.smartsales.R;
 import butterknife.ButterKnife;
 
 /**
- * Created by naveen on 10/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class DealerVision extends BaseFragment{
 

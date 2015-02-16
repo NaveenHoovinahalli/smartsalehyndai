@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.hyundai.teli.smartsales.R;
 
 /**
- * Created by nith on 2/8/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class Style extends BaseFragment {
     @Override

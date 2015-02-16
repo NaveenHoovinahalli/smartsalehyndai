@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.BrandStoryPagerAdapter;
-import com.hyundai.teli.smartsales.fragments.BrandStoryPager;
 
 import java.util.ArrayList;
 
@@ -20,6 +19,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class BrandStory extends ActionBarActivity {
 
     @InjectView(R.id.brand_pager)
@@ -29,7 +31,7 @@ public class BrandStory extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
-    ArrayList<BrandStoryPager> fragments;
+    ArrayList<com.hyundai.teli.smartsales.fragments.BrandStory> fragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,9 @@ public class BrandStory extends ActionBarActivity {
     }
 
     private void setFragment() {
-        fragments = new ArrayList<BrandStoryPager>();
+        fragments = new ArrayList<com.hyundai.teli.smartsales.fragments.BrandStory>();
         for (int i = 0; i < 4; i++) {
-            BrandStoryPager brandStoryPager = BrandStoryPager.newInstance();
+            com.hyundai.teli.smartsales.fragments.BrandStory brandStoryPager = com.hyundai.teli.smartsales.fragments.BrandStory.newInstance();
             fragments.add(brandStoryPager);
         }
     }

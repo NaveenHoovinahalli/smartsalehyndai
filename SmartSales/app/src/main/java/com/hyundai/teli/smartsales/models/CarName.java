@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by nith on 2/6/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class CarName implements Parcelable {
 

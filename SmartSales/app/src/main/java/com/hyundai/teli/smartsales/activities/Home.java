@@ -15,6 +15,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class Home extends Activity {
 
     @InjectView(R.id.movie)

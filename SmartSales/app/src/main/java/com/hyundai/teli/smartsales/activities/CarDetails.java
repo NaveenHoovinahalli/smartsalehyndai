@@ -25,6 +25,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class CarDetails extends ActionBarActivity {
 
     @InjectView(R.id.modelName)

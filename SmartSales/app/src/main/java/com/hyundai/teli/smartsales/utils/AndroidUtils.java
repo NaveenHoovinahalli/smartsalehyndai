@@ -24,7 +24,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Locale;
 
-
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public abstract class AndroidUtils {
 
     private AndroidUtils() {

@@ -6,7 +6,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 /**
- * Created by nith on 1/25/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class HyRequestQueue {
     private static HyRequestQueue mInstance;

@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by nith on 2/8/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class Specification extends BaseFragment implements ViewPager.OnPageChangeListener, AdapterView.OnItemClickListener {
 

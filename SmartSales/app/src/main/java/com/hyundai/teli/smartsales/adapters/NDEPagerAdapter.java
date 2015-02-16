@@ -10,7 +10,7 @@ import com.hyundai.teli.smartsales.models.NDEMain;
 import java.util.ArrayList;
 
 /**
- * Created by naveen on 10/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class NDEPagerAdapter extends FragmentStatePagerAdapter {
 

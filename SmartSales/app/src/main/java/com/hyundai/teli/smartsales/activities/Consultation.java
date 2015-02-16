@@ -22,6 +22,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class Consultation extends ActionBarActivity {
 
     @InjectView(R.id.show_room)

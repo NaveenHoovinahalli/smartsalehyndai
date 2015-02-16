@@ -3,7 +3,7 @@ package com.hyundai.teli.smartsales.models;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by naveen on 12/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class NDEDetail {
 

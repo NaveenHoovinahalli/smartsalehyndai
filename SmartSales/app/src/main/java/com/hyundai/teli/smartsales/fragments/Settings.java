@@ -18,7 +18,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by nith on 2/8/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class Settings extends BaseFragment implements ViewPager.OnPageChangeListener{
 

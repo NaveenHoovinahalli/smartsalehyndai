@@ -1,7 +1,7 @@
 package com.hyundai.teli.smartsales.utils;
 
 /**
- * Created by nith on 1/25/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class Constants {
 

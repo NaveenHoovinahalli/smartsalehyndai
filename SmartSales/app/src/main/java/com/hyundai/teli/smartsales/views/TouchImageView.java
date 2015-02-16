@@ -18,6 +18,9 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.ImageView;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class TouchImageView extends ImageView {
 
     Matrix matrix = new Matrix();
