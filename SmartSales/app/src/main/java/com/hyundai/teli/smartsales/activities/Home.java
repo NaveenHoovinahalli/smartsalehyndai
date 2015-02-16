@@ -67,7 +67,7 @@ public class Home extends Activity {
                 break;
 
             case R.id.message_board:
-                Intent openMessageBoard = new Intent(Home.this, BrandStory.class);
+                Intent openMessageBoard = new Intent(Home.this, MessageBoard.class);
                 startActivity(openMessageBoard);
                 break;
 

@@ -56,5 +56,19 @@
     <string name="age">Age</string>
     <string name="input_pencil">Please write using a tablet pen</string>
     <string name="title_activity_car_details">CarDetails</string>
+    <string name="tel">Tel</string>
+    <string name="mobile">Mobile</string>
+    <string name="email_lower">E-mail</string>
+    <string name="area">Area</string>
+    <string name="title_activity_profile_full_screen">ProfileFullScreen</string>
+    <string name="update_info">Please update your software first!</string>
+    <string name="zero">0</string>
+    <string name="edit">EDIT</string>
+    <string name="send_email2">SEND E-MAIL</string>
+    <string name="basic_trim">BASIC TRIM</string>
+    <string name="option">OPTION</string>
+    <string name="discount">DISCOUNT</string>
+    <string name="email2">Email</string>
+    <string name="total_price">Total Price</string>
 
 </resources>

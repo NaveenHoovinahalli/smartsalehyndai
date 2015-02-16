@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="941dp"
+    android:layout_height="526dp"
+    android:background="@color/send_email_popup_bg" >
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/titleTextView"
+        style="@style/quote_final_pop_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/titleDivider1"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/email_lower" />
+
+    <ImageView
+        android:id="@+id/titleDivider1"
+        android:layout_width="861dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:src="@color/send_email_popup_divider" />
+
+    <ImageView
+        android:id="@+id/titleDivider2"
+        android:layout_width="861dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleDivider1"
+        android:layout_centerHorizontal="true"
+        android:src="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/emailForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/titleDivider1"
+        android:layout_below="@id/titleDivider2"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="23dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/firstNameTextView"
+                    style="@style/send_email_form_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prompt_input_full_name" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/firstNameEditText"
+                    style="@style/send_email_input_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:hint="@string/prompt_input_full_name" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/emailTextView"
+            style="@style/send_email_form_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:text="@string/prompt_input_email" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/emailEditText"
+            style="@style/send_email_input_form"
+            android:layout_width="271dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:hint="@string/prompt_input_email"
+            android:inputType="textEmailAddress" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/send_email_btn_send" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/send_email_btn_cancel" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleDivider2"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="19dp"
+        android:layout_toRightOf="@id/emailForm"
+        android:background="@drawable/send_email_bg" >
+
+        <RelativeLayout
+            android:id="@+id/estimate_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="11dp" >
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/subTitleTextView"
+                style="@style/send_email_send_form"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:text="@string/estimate" />
+
+            <ImageView
+                android:id="@+id/subTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/subTitleTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:src="@color/send_email_popup_sub_divider" />
+
+            <RelativeLayout
+                android:id="@id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/subTitleDivider"
+                android:background="@drawable/send_email_bg" >
+
+                <LinearLayout
+                    android:id="@+id/selectTrimLayout"
+                    android:layout_width="440dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal" >
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/selectTrimTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/send_email_bg3"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="4dp" />
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/trimPriceTextView"
+                        android:layout_width="74dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/send_email_bg3"
+                        android:gravity="right|center_vertical"
+                        android:paddingBottom="4dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:textColor="#6b6b6b" />
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/trimFinalPriceTextView"
+                        android:layout_width="74dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/send_email_bg3"
+                        android:gravity="right|center_vertical"
+                        android:paddingBottom="4dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:textColor="#3a84c8" />
+                </LinearLayout>
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/basicTrimTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/selectTrimLayout"
+                    android:layout_alignTop="@id/selectTrimLayout"
+                    android:layout_toLeftOf="@id/selectTrimLayout"
+                    android:background="@drawable/send_email_bg2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/basic_trim" />
+
+                <com.hyundai.teli.smartsales.views.NonScrollableListView
+                    android:id="@+id/optionListView"
+                    android:layout_width="440dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/selectTrimLayout"
+                    android:divider="@color/send_email_popup_name_card_divider"
+                    android:dividerHeight="1dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/optionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/optionListView"
+                    android:layout_alignTop="@id/optionListView"
+                    android:layout_toLeftOf="@id/optionListView"
+                    android:background="@drawable/send_email_bg2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/option" />
+
+                <com.hyundai.teli.smartsales.views.NonScrollableListView
+                    android:id="@+id/discountListView"
+                    android:layout_width="440dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/optionListView"
+                    android:divider="@color/send_email_popup_name_card_divider"
+                    android:dividerHeight="1dp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/discountTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/discountListView"
+                    android:layout_alignTop="@id/discountListView"
+                    android:layout_toLeftOf="@id/discountListView"
+                    android:background="@drawable/send_email_bg2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/discount" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/nameCardLayout"
+                android:layout_width="248dp"
+                android:layout_height="113dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/contentLayout"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/send_email_bg" >
+
+                <ImageView
+                    android:id="@+id/hyImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/send_email_icon_hy" />
+
+                <ImageView
+                    android:id="@+id/photoImageView"
+                    android:layout_width="66dp"
+                    android:layout_height="82dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:background="#d9d9d9" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/photoImageView"
+                    android:text="TextView"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/telTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_below="@id/nameTextView"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/tel"
+                    android:textSize="8sp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/userTelTextView"
+                    style="@style/send_email_name_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/userEmailTextView"
+                    android:layout_below="@id/nameTextView"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@id/telTextView"
+                    android:text="@string/tel" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_alignRight="@id/hyImageView"
+                    android:layout_below="@id/telTextView"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/send_email_popup_name_card_divider" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/mobileTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_below="@id/telTextView"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/mobile"
+                    android:textSize="8sp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/userMobileTextView"
+                    style="@style/send_email_name_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/userEmailTextView"
+                    android:layout_below="@id/telTextView"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@id/mobileTextView"
+                    android:text="@string/mobile" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_alignRight="@id/hyImageView"
+                    android:layout_below="@id/mobileTextView"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/send_email_popup_name_card_divider" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/emailTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_below="@id/mobileTextView"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/email2"
+                    android:textSize="8sp" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/userEmailTextView"
+                    style="@style/send_email_name_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/userEmailTextView"
+                    android:layout_below="@id/mobileTextView"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@id/emailTextView2"
+                    android:text="@string/email2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_alignRight="@id/hyImageView"
+                    android:layout_below="@id/emailTextView2"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/send_email_popup_name_card_divider" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/branchTextView"
+                    style="@style/send_email_name_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/nameTextView"
+                    android:layout_below="@id/emailTextView2"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/email2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignLeft="@id/nameTextView"
+                    android:layout_alignRight="@id/hyImageView"
+                    android:layout_below="@id/branchTextView"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/send_email_popup_name_card_divider" />
+            </RelativeLayout>
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/totalTextView"
+                style="@style/send_email_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/nameCardLayout"
+                android:layout_marginLeft="25dp"
+                android:text="@string/total_price" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/priceTextView"
+                style="@style/send_email_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/nameCardLayout"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/totalTextView" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignLeft="@id/totalTextView"
+                android:layout_alignRight="@id/priceTextView"
+                android:layout_below="@id/priceTextView"
+                android:layout_marginTop="5dp"
+                android:src="@color/send_email_popup_price" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

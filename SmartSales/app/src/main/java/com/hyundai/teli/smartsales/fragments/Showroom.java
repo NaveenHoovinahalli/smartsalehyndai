@@ -35,6 +35,7 @@ public class Showroom extends BaseFragment {
     public void onClick(View view){
         Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
         startActivity(openCarDetails);
+        getActivity().finish();
     }
 
 

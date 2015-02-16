@@ -19,7 +19,7 @@
         android:scaleType="fitXY"/>
 
     <ImageView
-        android:id="@+id/menuCatalog"
+        android:id="@+id/menuBrandStory"
         android:layout_width="130px"
         android:layout_height="130px"
         android:scaleType="fitXY"
@@ -27,12 +27,12 @@
         android:layout_below="@+id/menuHome"/>
 
     <ImageView
-        android:id="@+id/menuDealerLocation"
+        android:id="@+id/menuConsultation"
         android:layout_width="130px"
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/dealer_location"
-        android:layout_below="@+id/menuCatalog"/>
+        android:layout_below="@+id/menuBrandStory"/>
 
     <ImageView
         android:id="@+id/menuRequestTD"
@@ -40,7 +40,7 @@
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/test_drive"
-        android:layout_below="@+id/menuDealerLocation"/>
+        android:layout_below="@+id/menuConsultation"/>
 
     <ImageView
         android:id="@+id/menuGame"

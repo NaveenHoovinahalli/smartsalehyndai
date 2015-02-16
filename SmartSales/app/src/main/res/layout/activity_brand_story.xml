@@ -23,6 +23,7 @@
            android:layout_weight="1"/>
 
         </android.support.v7.widget.Toolbar>
+
     <ImageView
         android:id="@+id/catalogueMenu"
         android:layout_width="wrap_content"
@@ -32,8 +33,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/view" />
-
-
 
     <android.support.v4.view.ViewPager
         android:id="@+id/brand_pager"
