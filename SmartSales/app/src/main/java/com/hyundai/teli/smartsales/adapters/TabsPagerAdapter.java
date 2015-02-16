@@ -11,7 +11,7 @@ import com.hyundai.teli.smartsales.fragments.MyInfo;
 import com.hyundai.teli.smartsales.fragments.Survey;
 
 /**
- * Created by nith on 1/12/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 

@@ -15,6 +15,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class Home extends Activity {
 
     @InjectView(R.id.movie)
@@ -67,7 +70,7 @@ public class Home extends Activity {
                 break;
 
             case R.id.message_board:
-                Intent openMessageBoard = new Intent(Home.this, BrandStory.class);
+                Intent openMessageBoard = new Intent(Home.this, MessageBoard.class);
                 startActivity(openMessageBoard);
                 break;
 

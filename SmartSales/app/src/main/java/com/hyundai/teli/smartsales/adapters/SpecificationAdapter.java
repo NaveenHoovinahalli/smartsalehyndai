@@ -7,7 +7,7 @@ import android.util.Log;
 import com.hyundai.teli.smartsales.fragments.PerformanceFragment;
 
 /**
- * Created by naveen on 11/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class SpecificationAdapter extends FragmentStatePagerAdapter {
 

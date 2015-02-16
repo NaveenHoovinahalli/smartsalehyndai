@@ -15,6 +15,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class DrawingView extends View {
 
 	private Canvas mCanvas;

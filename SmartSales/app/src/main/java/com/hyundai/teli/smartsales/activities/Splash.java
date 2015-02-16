@@ -17,7 +17,9 @@ import com.hyundai.teli.smartsales.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class Splash extends Activity implements MediaPlayer.OnCompletionListener {
 
     @InjectView(R.id.video_view)

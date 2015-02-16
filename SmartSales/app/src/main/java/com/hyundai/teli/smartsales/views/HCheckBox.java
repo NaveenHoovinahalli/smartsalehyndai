@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class HCheckBox extends CheckBox {
 
 	public HCheckBox(Context context) {

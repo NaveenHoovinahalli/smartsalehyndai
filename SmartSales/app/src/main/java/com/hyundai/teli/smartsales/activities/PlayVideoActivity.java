@@ -25,7 +25,7 @@ import butterknife.InjectView;
 ;
 
 /**
- * Created by naveen on 9/1/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class PlayVideoActivity extends ActionBarActivity {
 

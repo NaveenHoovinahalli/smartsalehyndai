@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@drawable/bg_estimate_model_option" >
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="4dp" >
+
+        <CheckBox
+            android:id="@+id/use_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:button="@drawable/estimate_checkbox" />
+    </RelativeLayout>
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/type_view"
+        style="@style/estimateOptionText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical" />
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/name_view"
+        style="@style/estimateOptionText"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center_vertical|right"
+        android:background="@drawable/divider_estimate_option" />
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/price_view"
+        style="@style/estimateOptionPrice"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|right"
+        android:paddingRight="21dp" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="27dp"
+        android:layout_gravity="center_vertical|right"
+        android:background="@drawable/divider_estimate_option" />
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/discount_view"
+        style="@style/estimateOptionPrice"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|right"
+        android:paddingRight="21dp" />
+
+</LinearLayout>

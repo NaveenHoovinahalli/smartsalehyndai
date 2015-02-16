@@ -133,10 +133,10 @@
             android:visibility="visible"/>
 
         <com.hyundai.teli.smartsales.views.HButton
+            android:id="@+id/ok_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:id="@+id/button"
             android:background="@drawable/btn_white_h48"
             android:text="@string/complete"
             android:textColor="#626262"
@@ -227,12 +227,12 @@
         </LinearLayout>
 
         <com.hyundai.teli.smartsales.views.HButton
+            android:id="@+id/full_screen"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_white_h48"
             android:text="FULLSCREEN"
             android:textColor="#626262"
-            android:id="@+id/button2"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:layout_below="@+id/imageView"

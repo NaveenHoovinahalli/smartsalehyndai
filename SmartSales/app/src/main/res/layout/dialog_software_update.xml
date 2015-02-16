@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:paddingBottom="50dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="50dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="122dp"
+            android:layout_height="118dp"
+            android:scaleType="fitXY"/>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/update_info"
+            android:textColor="@color/light_grey"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            />
+
+        <Button
+            android:id="@+id/button_dlg_ok"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="확인"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</RelativeLayout>

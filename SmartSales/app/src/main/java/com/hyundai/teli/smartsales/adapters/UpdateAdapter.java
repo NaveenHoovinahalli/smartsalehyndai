@@ -14,7 +14,7 @@ import com.hyundai.teli.smartsales.views.HTextView;
 import java.util.ArrayList;
 
 /**
- * Created by nith on 2/11/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class UpdateAdapter extends BaseAdapter {
 

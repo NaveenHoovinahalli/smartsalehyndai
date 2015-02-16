@@ -1,40 +1,39 @@
 package com.hyundai.teli.smartsales.activities;
 
-import android.support.v7.app.ActionBarActivity;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
+import android.webkit.WebView;
 
 import com.hyundai.teli.smartsales.R;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class MessageBoard extends ActionBarActivity {
 
+    @InjectView(R.id.webview)
+    WebView webview;
+
+    String Url = "http://www.google.co.in";
+    String temp_Url = "file:///android_asset/html/List.html";
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_board);
-    }
+        setContentView(R.layout.webview_popup);
+        ButterKnife.inject(this);
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_message_board, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setAllowContentAccess(true);
+        webview.getSettings().setAllowFileAccess(true);
+        webview.getSettings().setAllowFileAccessFromFileURLs(true);
+        webview.getSettings().setAllowUniversalAccessFromFileURLs(true);
+        webview.loadUrl(temp_Url);
     }
 }

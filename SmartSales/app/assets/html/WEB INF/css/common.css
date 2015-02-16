@@ -1,0 +1,32 @@
+@font-face 
+{font-family:ModernH;
+src:local(※), url('../../font/modernh.woff') format('woff');}
+
+@charset "utf-8";
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select {margin:0;padding:0;line-height:1em;}
+body, th, td, div, p, li, dt, dd, input, textarea, select, button {color:#666;font-size:20px;font-family:ModernH;}
+fieldset, img, area {border:0 none;vertical-align:top;}
+ul, ol {list-style:none;} 
+h1,h2,h3,h4,h5,h6 {font-size:12px;font-weight:normal;text-align:left;}
+hr {display:none;}
+a:link, a:visited, a:active {color:#666;text-decoration:none;}
+a:hover {color:#666;text-decoration:underline;}
+
+caption, th {text-align:left;font-weight:normal;}
+legend, caption {display:none;overflow:hidden;left:0;top:-5000px;width:0;height:0;font-size:0;line-height:0;}
+
+button,label{cursor:pointer;}
+button {display:inline-block;border:0;vertical-align:top;vertical-align:middle;}
+button * {position:relative;}
+button img{left:-3px;*left:auto}
+button span {z-index:-1;display:none;}
+textarea{*margin:-1px 0}
+em,address{font-style:normal}
+
+body {background-color:#fff;color:#000;}
+
+table {width:100%;}
+table, table th, table td {border-collapse:collapse;border-spacing:0;}
+table p {line-height:20px;}
+
+

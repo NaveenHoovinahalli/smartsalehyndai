@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 
 import com.hyundai.teli.smartsales.R;
 
+/**
+ * Created by Nitish Kulkarni on 2/8/15.
+ */
 public class RatingView extends LinearLayout implements OnClickListener {
 
 	private ImageView surveyRating1;

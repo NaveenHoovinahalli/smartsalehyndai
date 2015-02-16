@@ -16,7 +16,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by nith on 2/8/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class Showroom extends BaseFragment {
 
@@ -35,6 +35,7 @@ public class Showroom extends BaseFragment {
     public void onClick(View view){
         Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
         startActivity(openCarDetails);
+        getActivity().finish();
     }
 
 

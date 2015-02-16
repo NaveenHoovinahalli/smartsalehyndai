@@ -3,17 +3,17 @@ package com.hyundai.teli.smartsales.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.hyundai.teli.smartsales.fragments.BrandStoryPager;
+import com.hyundai.teli.smartsales.fragments.BrandStory;
 
 import java.util.ArrayList;
 
 /**
- * Created by naveen on 10/2/15.
+ * Created by Nitish Kulkarni on 2/8/15.
  */
 public class BrandStoryPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<BrandStoryPager> fragments=new ArrayList<BrandStoryPager>();
-    public BrandStoryPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<BrandStoryPager> fragments) {
+    ArrayList<BrandStory> fragments=new ArrayList<BrandStory>();
+    public BrandStoryPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<BrandStory> fragments) {
         super(fm);
         this.fragments=fragments;
     }

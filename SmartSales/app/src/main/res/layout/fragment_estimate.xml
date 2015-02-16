@@ -1,17 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_consultation">
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/trimview"
+        android:layout_width="363dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_estimate_right"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="21dp" >
+
+            <RelativeLayout
+                android:layout_width="322dp"
+                android:layout_height="199dp" >
+
+                <ImageView
+                    android:id="@+id/car_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/et_sample" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/estimateCarDivider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    style="@style/estimateCarPrice2"
+                    android:layout_width="0dp"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="4dp"
+                    android:text="Total Price" />
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/total_price_view"
+                    style="@style/estimateCarPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="59dp"
+                    android:text="00,000,000" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/trim_name"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:visibility="gone" />
+
+        <ExpandableListView
+            android:id="@+id/trim_list01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_estimate_right_list"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:paddingLeft="20dp"
+            android:paddingRight="21dp"
+            android:groupIndicator="@drawable/btn_estimate_trim_plus"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            />
 
 
-    <TextView
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/contentLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ESTIMATE"
-        android:id="@+id/textView"
-        android:textSize="30sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:background="@color/estimateModelOptionBg" >
+
+        <LinearLayout
+            android:id="@+id/option_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/base_trim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/estimateModelOptionBg"
+                android:orientation="vertical" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:layout_width="333dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/title_base"
+                    android:gravity="center" />
+
+                <ListView
+                    android:id="@+id/base_trim_list"
+                    android:layout_width="333dp"
+                    android:layout_height="553dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp" >
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/option_group_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@color/estimateModelOptionBg"
+                android:orientation="vertical" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:layout_width="524dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/title_option"
+                    android:gravity="center" />
+
+                <ListView
+                    android:id="@+id/option_listview"
+                    android:layout_width="524dp"
+                    android:layout_height="384dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp" >
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/option_modify_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/option_view"
+            android:background="@color/estimateModelOptionBg"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <com.hyundai.teli.smartsales.views.HTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/title_option_modify"
+                android:gravity="center" />
+
+            <ListView
+                android:id="@+id/option_Modify_listview"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp" >
+            </ListView>
+        </LinearLayout>
+
+        <com.hyundai.teli.smartsales.views.HButton
+            android:id="@+id/btn_edit"
+            style="@style/BtnBlackMaxico"
+            android:layout_width="147dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/edit" />
+
+        <com.hyundai.teli.smartsales.views.HButton
+            android:id="@+id/send_email"
+            style="@style/BtnBlackMaxico"
+            android:layout_width="167dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/send_email2" />
+
+        <LinearLayout
+            android:id="@+id/calculate_group"
+            android:layout_width="524dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="98dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/estimate_result"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/trim_price_view"
+                    style="@style/estimate_Calcualte"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center|right"
+                    android:paddingRight="50dp"
+                    android:text="@string/zero" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/option_price_view"
+                    style="@style/estimate_Calcualte"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center|right"
+                    android:paddingRight="50dp"
+                    android:text="@string/zero" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/discout_price_view"
+                    style="@style/estimate_Calcualte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center|right"
+                    android:paddingRight="50dp"
+                    android:text="@string/zero" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

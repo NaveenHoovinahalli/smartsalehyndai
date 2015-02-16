@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="361dp"
+    android:layout_height="380dp"
+    android:background="@drawable/send_email_bg" >
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/titleTextView"
+        style="@style/quote_final_pop_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/email_lower" />
+
+    <ImageView
+        android:id="@+id/titleDivider1"
+        android:layout_width="281dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:src="@color/send_email_popup_divider" />
+
+    <ImageView
+        android:id="@+id/titleDivider2"
+        android:layout_width="281dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleDivider1"
+        android:layout_centerHorizontal="true"
+        android:src="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/emailForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/titleDivider1"
+        android:layout_below="@id/titleDivider2"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="22dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/firstNameTextView"
+                    style="@style/send_email_form_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prompt_input_full_name" />
+
+                <com.hyundai.teli.smartsales.views.HEditText
+                    android:id="@+id/firstNameEditText"
+                    style="@style/send_email_input_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:hint="@string/prompt_input_full_name" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/emailTextView"
+            style="@style/send_email_form_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="@string/prompt_input_email" />
+
+        <com.hyundai.teli.smartsales.views.HEditText
+            android:id="@+id/emailEditText"
+            style="@style/send_email_input_form"
+            android:layout_width="271dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:hint="@string/prompt_input_email"
+            android:inputType="textEmailAddress" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/send_email_btn_send" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/send_email_btn_cancel" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
