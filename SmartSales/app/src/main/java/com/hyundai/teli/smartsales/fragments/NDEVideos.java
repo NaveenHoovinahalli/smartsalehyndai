@@ -63,7 +63,13 @@ public class NDEVideos extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.ndevideos_pager_item,null);
         ButterKnife.inject(this,view);
-        imageView.setImageResource(images[Integer.parseInt(id)]);
+
+        try {
+            imageView.setImageResource(images[Integer.parseInt(id)]);
+        }catch(Exception e){
+            Log.d("IMAGEVIEW","error"+e);
+
+        }
         Toast.makeText(getActivity(),"Inside Pager",Toast.LENGTH_SHORT).show();
         return view;
     }

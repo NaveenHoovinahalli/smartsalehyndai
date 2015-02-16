@@ -38,7 +38,12 @@ public class PerformanceFragment extends Fragment {
         Log.d("PerformancePager","ImagePath"+imagepth);
 //        Picasso.with(getActivity()).load(imagepth).
 //                placeholder(R.drawable.btn_add_plus).into(imageView);
-        imageView.setImageResource(imagepth);
+        try {
+            imageView.setImageResource(imagepth);
+        }catch (Exception e){
+            Log.d("IMAGEVIEW","error"+e);
+
+        }
 
         return view;
     }

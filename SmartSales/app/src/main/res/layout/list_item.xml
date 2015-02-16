@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3f3f3f"
+
     >
 
     <com.hyundai.teli.smartsales.views.HTextView
@@ -12,6 +14,5 @@
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:text="Hello"
-        android:background="@drawable/listitem_selector"
         android:focusable="false"/>
 </LinearLayout>

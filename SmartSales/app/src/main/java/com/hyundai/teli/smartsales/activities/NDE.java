@@ -185,6 +185,7 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                 String aBuffer = "{";
                 while ((aDataRow = myReader.readLine()) != null) {
                     aBuffer += aDataRow + "\n";
+
                 }
 
                 Log.d("Specification", "Buffer::" + aBuffer);

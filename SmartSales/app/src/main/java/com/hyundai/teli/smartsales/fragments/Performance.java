@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     int[] image= new int[]{R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
     String[] performancelistValuse;
     int position=0;
-    View previousView;
+    View previousView=null;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -52,7 +52,6 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ViewSelection(getViewByPosition(1,performanceList));
     }
 
     @Override
@@ -63,9 +62,10 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     private void setList(){
         performancelistValuse=new String[]{"Performance 1","Performance 2","Performance 3","Performance 4"};
-        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,performancelistValuse);
-        performanceList.setAdapter(listAdapter);
+//        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1,performancelistValuse);
+
+        performanceList.setAdapter(new ListAdapter(performancelistValuse,getActivity()));
         performanceList.setOnItemClickListener(this);
 
     }
@@ -83,20 +83,16 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         ViewSelection(view);
-        performanceList.setSelection(position);
         performancePager.setCurrentItem(position);
-        view.setBackgroundColor((Color.parseColor("#657FBD")));
 
     }
 
     private void ViewSelection(View view) {
-       if(previousView!=null) {
-           Log.d("Performance ","VIEW first"+view);
-
-           previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
-       }
-
-        Log.d("Performance ","VIEW all"+view);
+        if(previousView!=null) {
+            previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
+        }else{
+            getViewByPosition(0,performanceList).setBackgroundColor((Color.parseColor("#3f3f3f")));
+        }
 
         view.setBackgroundColor((Color.parseColor("#657FBD")));
         previousView=view;

@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.SpecificationAdapter;
 
 import java.util.ArrayList;
@@ -53,7 +53,6 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ViewSelection(getViewByPosition(1,specificationList));
     }
 
     @Override
@@ -64,10 +63,11 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 
     private void setList(){
         specificationListValues=new String[]{"Specification 1","Specification 2","Specification 3","Specification 4",
-                "Specification 6","Specification 6"};
-        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,specificationListValues);
-        specificationList.setAdapter(listAdapter);
+                "Specification 5","Specification 6"};
+//        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1,specificationListValues);
+
+        specificationList.setAdapter(new ListAdapter(specificationListValues,getActivity()));
         specificationList.setOnItemClickListener(this);
 
     }
@@ -93,12 +93,10 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 
     private void ViewSelection(View view) {
         if(previousView!=null) {
-            Log.d("Performance ","VIEW first"+view);
-
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
+        }else{
+            getViewByPosition(0,specificationList).setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
-
-        Log.d("Performance ","VIEW all"+view);
 
         view.setBackgroundColor((Color.parseColor("#657FBD")));
         previousView=view;

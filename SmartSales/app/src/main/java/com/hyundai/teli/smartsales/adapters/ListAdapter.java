@@ -1,6 +1,7 @@
 package com.hyundai.teli.smartsales.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,10 @@ public class ListAdapter extends BaseAdapter {
         View view=View.inflate(context,
                 R.layout.list_item,
                 null);
+
+        if(position==0){
+            view.setBackgroundColor((Color.parseColor("#657FBD")));
+        }
         HTextView textView= (HTextView) view.findViewById(R.id.list_item_text);
         textView.setText(listValues[position]);
         return view;

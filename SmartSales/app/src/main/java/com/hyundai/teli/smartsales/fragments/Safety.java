@@ -62,6 +62,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     @OnClick(R.id.safety_button)
     public void onSafetyClicked(){
+        previousView=null;
         convenienceButton.setImageResource(R.drawable.btn_conv_normal);
         safetyButton.setImageResource(R.drawable.btn_safety_select);
         setForSafety();
@@ -69,6 +70,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     @OnClick(R.id.convenience_button)
     public void onConvenienceClicked(){
+        previousView=null;
          convenienceButton.setImageResource(R.drawable.btn_conv_select);
         safetyButton.setImageResource(R.drawable.btn_safety_normal);
         setForConvenience();
@@ -89,7 +91,6 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 //                android.R.layout.simple_list_item_1,listValues);
 
         listView.setAdapter(new ListAdapter(listValues,getActivity()));
-//        listView.setSelection(0);
         listView.setOnItemClickListener(this);
     }
 
@@ -107,7 +108,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     @Override
     public void onPageSelected(int i) {
-//       listView.setSelection(i);
+      ViewSelection(getViewByPosition(i,listView));
     }
 
     @Override
@@ -121,7 +122,10 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
         if(previousView!=null) {
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
+        }else{
+            getViewByPosition(0,listView).setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
+
         view.setBackgroundColor((Color.parseColor("#657FBD")));
         previousView=view;
 
@@ -129,9 +133,20 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        ViewSelection(view);
-//        view.setBackgroundColor((Color.parseColor("#ffffff")));
-        view.setSelected(true);
+        ViewSelection(view);
         viewPager.setCurrentItem(position);
+    }
+
+
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
     }
 }
