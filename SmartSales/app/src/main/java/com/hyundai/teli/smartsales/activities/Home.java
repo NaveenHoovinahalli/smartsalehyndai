@@ -59,7 +59,7 @@ public class Home extends Activity {
     }
 
     @OnLongClick(R.id.logo_hyundai)
-    public boolean ObLogoClicked(View view){
+    public boolean OnLogoClicked(View view){
         if(!logoHyundai.isSelected()){
             homeIconsLayout.setVisibility(View.GONE);
             logoHyundai.setSelected(true);
@@ -69,6 +69,7 @@ public class Home extends Activity {
         }
         return true;
     }
+    
     @OnClick({R.id.brand_story, R.id.consultation, R.id.nde, R.id.message_board,
             R.id.myInfo, R.id.customer_management, R.id.survey})
     public void onClickListener(View view){
