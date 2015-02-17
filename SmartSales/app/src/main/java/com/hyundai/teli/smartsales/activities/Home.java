@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
@@ -14,6 +16,7 @@ import com.hyundai.teli.smartsales.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 /**
  * Created by Nitish Kulkarni on 2/8/15.
@@ -22,6 +25,12 @@ public class Home extends Activity {
 
     @InjectView(R.id.movie)
     VideoView mVideoView;
+
+    @InjectView(R.id.logo_hyundai)
+    ImageView logoHyundai;
+
+    @InjectView(R.id.home_icons_layout)
+    LinearLayout homeIconsLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,17 @@ public class Home extends Activity {
         mVideoView.start();
     }
 
+    @OnLongClick(R.id.logo_hyundai)
+    public boolean ObLogoClicked(View view){
+        if(!logoHyundai.isSelected()){
+            homeIconsLayout.setVisibility(View.GONE);
+            logoHyundai.setSelected(true);
+        }else {
+            homeIconsLayout.setVisibility(View.VISIBLE);
+            logoHyundai.setSelected(false);
+        }
+        return true;
+    }
     @OnClick({R.id.brand_story, R.id.consultation, R.id.nde, R.id.message_board,
             R.id.myInfo, R.id.customer_management, R.id.survey})
     public void onClickListener(View view){
