@@ -14,6 +14,7 @@ import com.hyundai.teli.smartsales.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by Nitish Kulkarni on 2/8/15.
@@ -62,8 +63,20 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
             mVRFlipper.addView(image);
 //            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
         }
-        mVRFlipper.setDisplayedChild(0);
+
         return view;
+    }
+
+    @OnClick(R.id.vr_play)
+    public void OnVrPlayClicked(View view){
+        if(!mVRFlipper.isSelected()){
+            mVRFlipper.setFlipInterval(750);
+            mVRFlipper.startFlipping();
+            mVRFlipper.setSelected(true);
+        }else{
+            mVRFlipper.stopFlipping();
+            mVRFlipper.setSelected(false);
+        }
     }
 
     @Override

@@ -42,6 +42,12 @@ public class SignUp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.inject(this);
+        signUpUser();
+    }
+
+    private void signUpUser() {
+
+
     }
 
     @OnClick(R.id.btn_next)
