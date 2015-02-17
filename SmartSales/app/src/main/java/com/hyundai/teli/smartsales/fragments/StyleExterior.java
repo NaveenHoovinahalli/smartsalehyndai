@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
@@ -14,6 +15,7 @@ import com.hyundai.teli.smartsales.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by Nitish Kulkarni on 2/8/15.
@@ -22,6 +24,10 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
 
     @InjectView(R.id.exterior_flipper)
     ViewFlipper mExteriorFlipper;
+
+    @InjectView(R.id.interior_button)
+    ImageButton interiourButton;
+
 
     private static final int SWIPE_MIN_DISTANCE = 10;
     private static final int SWIPE_THRESHOLD_VELOCITY = 20;
@@ -70,6 +76,11 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
     public boolean onTouch(View v, MotionEvent event) {
         detector.onTouchEvent(event);
         return true;
+    }
+
+    @OnClick(R.id.interior_button)
+    public void CallInteriorFragment(){
+
     }
 
     class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {

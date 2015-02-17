@@ -18,9 +18,11 @@ public class ListAdapter extends BaseAdapter {
     String[] listValues;
     LayoutInflater inflater;
     Context context;
-    public ListAdapter(String[] listValues, Context context){
+    boolean viewColor;
+    public ListAdapter(String[] listValues, Context context,boolean viewColor){
         this.listValues=listValues;
         this.context=context;
+        this.viewColor=viewColor;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
@@ -45,7 +47,7 @@ public class ListAdapter extends BaseAdapter {
                 R.layout.list_item,
                 null);
 
-        if(position==0){
+        if(position==0 && viewColor){
             view.setBackgroundColor((Color.parseColor("#657FBD")));
         }
         HTextView textView= (HTextView) view.findViewById(R.id.list_item_text);

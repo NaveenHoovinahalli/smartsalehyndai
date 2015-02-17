@@ -65,7 +65,7 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,specificationListValues);
 
-        specificationList.setAdapter(new ListAdapter(specificationListValues,getActivity()));
+        specificationList.setAdapter(new ListAdapter(specificationListValues,getActivity(),true));
         specificationList.setOnItemClickListener(this);
 
     }

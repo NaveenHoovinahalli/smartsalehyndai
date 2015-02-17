@@ -90,7 +90,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,listValues);
 
-        listView.setAdapter(new ListAdapter(listValues,getActivity()));
+        listView.setAdapter(new ListAdapter(listValues,getActivity(),true));
         listView.setOnItemClickListener(this);
     }
 

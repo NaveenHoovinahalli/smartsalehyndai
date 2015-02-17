@@ -67,7 +67,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,performancelistValuse);
 
-        performanceList.setAdapter(new ListAdapter(performancelistValuse,getActivity()));
+        performanceList.setAdapter(new ListAdapter(performancelistValuse,getActivity(),true));
         performanceList.setOnItemClickListener(this);
 
     }

@@ -34,6 +34,7 @@
                 android:background="@null"
                 />
             <ImageButton
+                android:id="@+id/interior_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,6 +59,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Exterior"
+                android:gravity="center"
                 android:layout_marginTop="40dp"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="30dp"/>
