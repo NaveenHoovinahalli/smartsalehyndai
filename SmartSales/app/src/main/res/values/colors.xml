@@ -169,4 +169,9 @@
     <color name="white">#fafafa</color>
     <color name="white_pressed">#f1f1f1</color>
 
+    <color name="grey">#3d4049</color>
+    <color name="grey_pressed">#3d4049</color>
+
+
+
 </resources>

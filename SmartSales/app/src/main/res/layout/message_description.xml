@@ -117,12 +117,11 @@
         android:id="@+id/image_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/customer_btn_list_normal"
+        android:background="@drawable/btn_customer_list"
         android:layout_below="@+id/scrollView_header"
         android:layout_alignRight="@+id/scrollView_header"
         android:layout_alignEnd="@+id/scrollView_header"
-        android:scaleType="fitXY"/>
-
-    <include layout="@layout/menu_layout"/>
+        android:scaleType="fitCenter"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
