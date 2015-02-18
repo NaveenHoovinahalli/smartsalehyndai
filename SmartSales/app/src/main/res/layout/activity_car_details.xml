@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +19,9 @@
         android:textSize="15sp"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:paddingRight="30dp"
+        android:paddingEnd="30dp"
         android:textStyle="bold"
         android:background="@drawable/action_bar_bg"
         android:layout_toRightOf="@+id/catalogueMenu"
@@ -27,118 +29,188 @@
         android:layout_above="@+id/frame_container"
         android:layout_alignParentTop="true"/>
 
-    <HorizontalScrollView
-        android:id="@+id/horizontal"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/action_bar_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/action_bar_bg"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/modelName"
         android:layout_toEndOf="@+id/modelName"
+        android:layout_toRightOf="@+id/modelName"
+        android:background="@drawable/action_bar_bg"
         android:layout_above="@+id/frame_container">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/action_bar_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/virtualReality"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/virtual_reality"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/style"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/style"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/performance"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/performance"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/safetyConvenience"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/safety_convenience"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:padding="15dp"
-                    />
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/specification"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/specification"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/estimate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/estimate"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">\
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/comparing"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/comparing"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                ripple:rv_type="doubleRipple"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/catalog"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:text="@string/catalog"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingRight="30dp"/>
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
-            </android.support.v7.widget.Toolbar>
+            </com.andexert.library.RippleView>
 
-    </HorizontalScrollView>
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/frame_container"

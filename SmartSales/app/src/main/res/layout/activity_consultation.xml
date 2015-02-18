@@ -1,5 +1,5 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,52 +10,89 @@
         android:id="@+id/view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/action_bar_bg"
         android:layout_toEndOf="@+id/hyundai_bar"
-        android:layout_toRightOf="@+id/hyundai_bar">
+        android:layout_toRightOf="@+id/hyundai_bar"
+        android:background="@drawable/action_bar_bg">
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/show_room"
+            <com.andexert.library.RippleView
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:text="SHOWROOM"
-                android:textColor="@android:color/white"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/estimate"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="ESTIMATE"
-                android:textColor="@android:color/white"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/photo"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="PHOTO"
-                android:textColor="@android:color/white"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:id="@+id/settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/btn_overflow_setting"
                 android:layout_weight="1"
-                />
+                android:gravity="center"
+                ripple:rv_type="doubleRipple">
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/show_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="SHOWROOM"
+                    android:textColor="@android:color/white" />
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                ripple:rv_type="doubleRipple">
+
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/estimate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="ESTIMATE"
+                    android:textColor="@android:color/white" />
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                ripple:rv_type="doubleRipple">
+
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:id="@+id/photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="PHOTO"
+                    android:textColor="@android:color/white" />
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                ripple:rv_type="doubleRipple">
+
+                <ImageView
+                    android:id="@+id/settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_overflow_setting" />
+
+            </com.andexert.library.RippleView>
 
         </LinearLayout>
 
@@ -65,31 +102,30 @@
         android:id="@+id/catalogueMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/menu_icon"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/view"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/view" />
+        android:layout_alignParentTop="true"
+        android:background="@drawable/menu_icon" />
 
     <ImageView
         android:id="@+id/hyundai_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gateway_header"
-        android:background="@drawable/action_bar_bg"
-        android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/catalogueMenu"
-        android:layout_toRightOf="@+id/catalogueMenu"
+        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/catalogueMenu"
-        android:paddingLeft="30dp"/>
+        android:layout_toRightOf="@+id/catalogueMenu"
+        android:background="@drawable/action_bar_bg"
+        android:paddingLeft="30dp"
+        android:src="@drawable/gateway_header" />
 
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/catalogueMenu"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </FrameLayout>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/catalogueMenu"></FrameLayout>
 
 </RelativeLayout>

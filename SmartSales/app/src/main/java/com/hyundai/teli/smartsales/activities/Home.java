@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.hyundai.teli.smartsales.R;
 
 import butterknife.ButterKnife;
@@ -32,6 +34,18 @@ public class Home extends Activity {
     @InjectView(R.id.home_icons_layout)
     LinearLayout homeIconsLayout;
 
+    @InjectView(R.id.multiple_actions_left)
+    FloatingActionsMenu mFloatingActionsMenu;
+
+    @InjectView(R.id.myInfo)
+    FloatingActionButton mMyInfo;
+
+    @InjectView(R.id.customer_management)
+    FloatingActionButton mCustomerManagement;
+
+    @InjectView(R.id.survey)
+    FloatingActionButton mSurvey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +56,16 @@ public class Home extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        setFloatingIcons();
         playVideo();
+
+    }
+
+    private void setFloatingIcons() {
+        mFloatingActionsMenu.collapse();
+        mMyInfo.setImageResource(R.drawable.btn_my_info);
+        mCustomerManagement.setImageResource(R.drawable.btn_survey);
+        mSurvey.setImageResource(R.drawable.btn_customer);
     }
 
     private void playVideo() {
@@ -69,7 +92,7 @@ public class Home extends Activity {
         }
         return true;
     }
-    
+
     @OnClick({R.id.brand_story, R.id.consultation, R.id.nde, R.id.message_board,
             R.id.myInfo, R.id.customer_management, R.id.survey})
     public void onClickListener(View view){

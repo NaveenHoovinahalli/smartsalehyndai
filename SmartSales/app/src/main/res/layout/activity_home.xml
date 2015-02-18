@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <VideoView
         android:id="@+id/movie"
@@ -65,22 +66,68 @@
             android:src="@drawable/btn_gateway_message_normal" />
     </LinearLayout>
 
-    <LinearLayout
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_addButtonColorNormal="@color/white"
+        fab:fab_addButtonColorPressed="@color/white_pressed"
+        fab:fab_addButtonPlusIconColor="@color/half_black"
+        fab:fab_addButtonStrokeVisible="false"
+        fab:fab_expandDirection="left"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="60dp">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/myInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_size="mini"
+            android:layout_marginBottom="10dp"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/customer_management"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_size="mini"
+            android:layout_marginBottom="10dp"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/survey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/black"
+            fab:fab_colorPressed="@color/black_pressed"
+            fab:fab_size="mini"
+            android:layout_marginBottom="10dp"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="69dp"
         android:layout_marginBottom="52dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-        <ImageButton android:id="@+id/myInfo"
+        &lt;!&ndash;android:id="@+id/myInfo"&ndash;&gt;
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_my_info"
             android:background="@android:color/transparent" />
 
-        <ImageButton android:id="@+id/customer_management"
+            &lt;!&ndash;android:id="@+id/customer_management"&ndash;&gt;
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_customer"
@@ -88,11 +135,12 @@
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp" />
 
-        <ImageButton android:id="@+id/survey"
+            &lt;!&ndash;android:id="@+id/survey"&ndash;&gt;
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_survey"
             android:background="@android:color/transparent" />
-    </LinearLayout>
+    </LinearLayout>-->
 
 </RelativeLayout>

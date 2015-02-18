@@ -51,9 +51,9 @@ public class Consultation extends ActionBarActivity {
         setContentView(R.layout.activity_consultation);
         ButterKnife.inject(this);
         Intent receivedIntent = getIntent();
-        if(receivedIntent.hasExtra("SCREEN")){
+        if (receivedIntent.hasExtra("SCREEN")) {
             String category = receivedIntent.getStringExtra("SCREEN");
-            switch (category){
+            switch (category) {
 
                 case "CONSULTATION":
                     loadShowRoom();
@@ -71,7 +71,7 @@ public class Consultation extends ActionBarActivity {
                     loadSettings(category);
                     break;
             }
-        }else{
+        } else {
             loadShowRoom();
         }
     }
@@ -90,9 +90,9 @@ public class Consultation extends ActionBarActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, settings).commit();
     }
 
-    @OnClick({R.id.catalogueMenu,R.id.show_room, R.id.estimate, R.id.photo, R.id.settings})
-    public void OnTabClickListener(View view){
-        switch(view.getId()){
+    @OnClick({R.id.catalogueMenu, R.id.show_room, R.id.estimate, R.id.photo, R.id.settings})
+    public void OnTabClickListener(View view) {
+        switch (view.getId()) {
             case R.id.catalogueMenu:
                 if (mQuickMenu == null || !mQuickMenu.isShowing())
                     showQuickMenu();
@@ -115,6 +115,7 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.settings:
                 loadSettings("UPDATE");
+                setSelected(view.getId());
                 break;
         }
     }
@@ -124,7 +125,8 @@ public class Consultation extends ActionBarActivity {
         mShowRoom.setTextColor(Color.parseColor("#FFFFFF"));
         mEstimate.setTextColor(Color.parseColor("#FFFFFF"));
         mPhoto.setTextColor(Color.parseColor("#FFFFFF"));
-        switch (id){
+        mSettings.setSelected(false);
+        switch (id) {
             case R.id.show_room:
                 mShowRoom.setTextColor(Color.parseColor("#657FBD"));
                 break;
@@ -134,15 +136,18 @@ public class Consultation extends ActionBarActivity {
             case R.id.photo:
                 mPhoto.setTextColor(Color.parseColor("#657FBD"));
                 break;
+            case R.id.settings:
+                mSettings.setSelected(true);
+                break;
         }
     }
 
-    public void showRegistration(){
+    public void showRegistration() {
         Toast.makeText(getApplicationContext(), "Consultation", Toast.LENGTH_SHORT).show();
         settings.addRegistrationFragment();
     }
 
-    public void hideRegistration(){
+    public void hideRegistration() {
         settings.removeRegistrationFragment();
     }
 
@@ -156,19 +161,19 @@ public class Consultation extends ActionBarActivity {
             mQuickMenu.setOutsideTouchable(true);
             mQuickMenu.setBackgroundDrawable(getResources().getDrawable(R.drawable.no_bg));
 
-            ImageView menuFake          = (ImageView) popupView.findViewById(R.id.fakeButton);
-            ImageView menuHome          = (ImageView) popupView.findViewById(R.id.menuHome);
-            ImageView menuBrandStory    = (ImageView) popupView.findViewById(R.id.menuBrandStory);
-            ImageView menuConsultation  = (ImageView) popupView.findViewById(R.id.menuConsultation);
-            ImageView menuNDE           = (ImageView) popupView.findViewById(R.id.menuNDE);
-            ImageView menuBoard         = (ImageView) popupView.findViewById(R.id.menuBoard);
+            ImageView menuFake = (ImageView) popupView.findViewById(R.id.fakeButton);
+            ImageView menuHome = (ImageView) popupView.findViewById(R.id.menuHome);
+            ImageView menuBrandStory = (ImageView) popupView.findViewById(R.id.menuBrandStory);
+            ImageView menuConsultation = (ImageView) popupView.findViewById(R.id.menuConsultation);
+            ImageView menuNDE = (ImageView) popupView.findViewById(R.id.menuNDE);
+            ImageView menuBoard = (ImageView) popupView.findViewById(R.id.menuBoard);
 
-            menuFake        .setOnClickListener(menuClickListener);
-            menuHome        .setOnClickListener(menuClickListener);
-            menuBrandStory  .setOnClickListener(menuClickListener);
+            menuFake.setOnClickListener(menuClickListener);
+            menuHome.setOnClickListener(menuClickListener);
+            menuBrandStory.setOnClickListener(menuClickListener);
             menuConsultation.setOnClickListener(menuClickListener);
-            menuNDE         .setOnClickListener(menuClickListener);
-            menuBoard       .setOnClickListener(menuClickListener);
+            menuNDE.setOnClickListener(menuClickListener);
+            menuBoard.setOnClickListener(menuClickListener);
         }
 
         if (!mQuickMenu.isShowing()) {
@@ -182,7 +187,7 @@ public class Consultation extends ActionBarActivity {
 
             mQuickMenu.dismiss();
 
-            switch (view.getId()){
+            switch (view.getId()) {
 
                 case R.id.fakeButton:
                     mQuickMenu.dismiss();

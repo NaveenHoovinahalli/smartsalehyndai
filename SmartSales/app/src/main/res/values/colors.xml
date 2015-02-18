@@ -162,4 +162,11 @@
     <!-- profile -->
     <color name="profile_title_blue">#0090ff</color>
 
+    <color name="black">#0a0a0a</color>
+    <color name="black_pressed">#010101</color>
+    <color name="half_black">#808080</color>
+
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+
 </resources>
