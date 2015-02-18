@@ -10,7 +10,7 @@
         android:id="@+id/exterior_flipper"
         android:layout_width="940dp"
         android:layout_height="fill_parent"
-        android:layout_margin="6dp" >
+         >
 
     </ViewFlipper>
 

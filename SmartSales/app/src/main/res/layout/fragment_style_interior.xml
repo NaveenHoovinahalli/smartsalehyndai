@@ -19,7 +19,8 @@
       <ImageView
           android:id="@+id/interior_main_image"
           android:layout_width="940dp"
-          android:layout_height="fill_parent" />
+          android:layout_height="fill_parent"
+          android:scaleType="fitXY"/>
     </RelativeLayout>
 
 

@@ -108,7 +108,7 @@ public class Consultation extends ActionBarActivity {
                 Estimate estimate = new Estimate();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
                 break;
-            case R.id.photo:
+                case R.id.photo:
                 setSelected(view.getId());
                 Photo photo = new Photo();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();

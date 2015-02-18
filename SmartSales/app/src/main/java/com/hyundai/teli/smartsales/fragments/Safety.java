@@ -64,6 +64,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     public void onSafetyClicked(){
         previousView=null;
         convenienceButton.setImageResource(R.drawable.btn_conv_normal);
+        convenienceButton.setBackgroundColor(Color.parseColor("#000000"));
         safetyButton.setImageResource(R.drawable.btn_safety_select);
         setForSafety();
     }
@@ -73,6 +74,8 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         previousView=null;
          convenienceButton.setImageResource(R.drawable.btn_conv_select);
         safetyButton.setImageResource(R.drawable.btn_safety_normal);
+        safetyButton.setBackgroundColor(Color.parseColor("#000000"));
+
         setForConvenience();
 
     }

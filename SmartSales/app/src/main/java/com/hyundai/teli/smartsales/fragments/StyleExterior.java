@@ -80,6 +80,8 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
 
     @OnClick(R.id.interior_button)
     public void CallInteriorFragment(){
+        StyleInterior styleInterior = new StyleInterior();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, styleInterior).commit();
 
     }
 

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
@@ -25,13 +26,13 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class StyleInterior extends BaseFragment implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener {
+public class StyleInterior extends BaseFragment implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener, View.OnClickListener {
 
     @InjectView(R.id.interior_pager)
     ViewPager interiorPager;
 
     @InjectView(R.id.interior_button)
-    ImageButton interiourButton;
+    ImageButton interiorButton;
 
     @InjectView(R.id.exterior_button)
      ImageButton exteriorButton;
@@ -66,13 +67,42 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     private void setFragment() {
 
        linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
-        setImage();
         setList();
         setPager();
-
     }
 
-    private void setImage() {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setImageHotSpot();
+    }
+
+    private void setImageHotSpot() {
+
+
+        for(int i=1;i<7;i++){
+            final RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin=30*i;
+            params.rightMargin=35*i;
+            params.topMargin=30*i;
+            final ImageView imageView=new ImageView(getActivity());
+            imageView.setImageResource(R.drawable.btn_add_plus);
+            imageView.setTag(i);
+            layoutHotspot.addView(imageView,params);
+            imageView.setOnClickListener(this);
+//            imageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int position= (int) imageView.getTag();
+//                    setPager();
+//                    interiorPager.setCurrentItem(position-1);
+//                    Toast.makeText(getActivity(),"Position"+position,Toast.LENGTH_SHORT).show();
+//                    ViewSelection(getViewByPosition((position-1),styleInteriorList));
+//
+//                }
+//            });
+
+        }
 
     }
 
@@ -95,6 +125,12 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
         if(previousView!=null)
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
 
+    }
+
+    @OnClick(R.id.exterior_button)
+    public void OnEtreriorClicked(){
+        StyleExterior styleExterior = new StyleExterior();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, styleExterior).commit();
     }
 
     @Override
@@ -146,4 +182,15 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
         }
     }
 
+    @Override
+    public void onClick(View v) {
+
+
+        int position= (int) v.getTag();
+//                    setPager();
+                    interiorPager.setCurrentItem(position-1);
+                    Toast.makeText(getActivity(), "Position" + position, Toast.LENGTH_SHORT).show();
+                    ViewSelection(getViewByPosition((position-1),styleInteriorList));
+
+    }
 }

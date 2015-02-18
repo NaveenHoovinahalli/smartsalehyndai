@@ -70,6 +70,13 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
         </activity>
+
+        <activity
+            android:name=".activities.MessageDescription"
+            android:label="@string/title_activity_message_board"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+        </activity>
         <activity
             android:name=".activities.Consultation"
             android:label="@string/title_activity_consultation"

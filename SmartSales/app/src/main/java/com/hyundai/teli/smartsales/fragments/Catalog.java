@@ -1,6 +1,7 @@
 package com.hyundai.teli.smartsales.fragments;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.hyundai.teli.smartsales.R;
 import com.joanzapata.pdfview.PDFView;
+
+import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,19 +27,25 @@ public class Catalog extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_catalog,null);
         ButterKnife.inject(this, view);
-//        setPdf();
+        setPdf();
         return view;
     }
 
     private void setPdf() {
-
-        pdfView.fromAsset("catalog.pdf")
-//               .pages(0, 2, 1, 3, 3, 3)
-                .defaultPage(1)
-                .showMinimap(false)
-                .enableSwipe(true)
+//        File file=new File("/mnt/sdcard/Download/catalog.pdf");
+        File file=new File( Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
+        if(!file.exists()) {
+           file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
+        }
+        if(file.exists()) {
+            pdfView.fromFile(file)
+                    .pages(0, 2, 1, 3, 3, 3)
+                    .defaultPage(1)
+                    .showMinimap(false)
+                    .enableSwipe(true)
 //               .onLoad(onLoadCompleteListener)
 //               .onPageChange(onPageChangeListener)
-                .load();
+                    .load();
+        }
     }
 }

@@ -76,7 +76,7 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
              ndePager.setOnPageChangeListener(this);
          }else {
 //             Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
-             finish();
+//             finish();
          }
 
     }

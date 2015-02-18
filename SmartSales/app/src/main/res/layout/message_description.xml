@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/action_bar_bg"
+        android:id="@+id/view">
+    </android.support.v7.widget.Toolbar>
+
+
+    <ImageView
+        android:id="@+id/catalogueMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/view" />
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/hyundai_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MESSAGE BOARD"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/action_bar_bg"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/catalogueMenu"
+        android:layout_toRightOf="@+id/catalogueMenu"
+        android:layout_toEndOf="@+id/catalogueMenu"
+        android:paddingLeft="15dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/linear_header"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="30dp"
+        android:layout_width="1150dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        >
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="150dp"
+            android:layout_height="fill_parent"
+            android:text="Title"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="600dp"
+            android:layout_height="fill_parent"
+            android:text="Notice"
+            android:textColor="#000000"
+            android:gravity="left|center"
+            />
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text="Date"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="150dp"
+            android:layout_height="fill_parent"
+            android:text="22-22-2"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text="No"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:text="1"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scrollView_header"
+        android:layout_below="@id/linear_header"
+        android:layout_width="1150dp"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:background="#D3D3D3">
+        <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Hello Desc"
+        android:padding="5dp"
+        />
+
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/image_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/customer_btn_list_normal"
+        android:layout_below="@+id/scrollView_header"
+        android:layout_alignRight="@+id/scrollView_header"
+        android:layout_alignEnd="@+id/scrollView_header"
+        android:scaleType="fitXY"/>
+
+    <include layout="@layout/menu_layout"/>
+
+</RelativeLayout>
