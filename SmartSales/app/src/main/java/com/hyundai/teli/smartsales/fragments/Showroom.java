@@ -26,16 +26,15 @@ public class Showroom extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_showroom,null);
+        View view = inflater.inflate(R.layout.fragment_showroom, null);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @OnClick(R.id.imageView0)
-    public void onClick(View view){
+    public void onClick(View view) {
         Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
         startActivity(openCarDetails);
-        getActivity().finish();
     }
 
 

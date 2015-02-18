@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.hyundai.teli.smartsales"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -28,5 +28,6 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.+'
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.+@aar'
-
+    compile 'com.github.traex.rippleeffect:library:1.2.3'
+    compile 'com.getbase:floatingactionbutton:1.8.0'
 }

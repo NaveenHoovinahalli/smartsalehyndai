@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
 import com.hyundai.teli.smartsales.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -19,12 +22,15 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class VirtualReality extends BaseFragment implements View.OnTouchListener{
+public class VirtualReality extends BaseFragment implements View.OnTouchListener {
 
     @InjectView(R.id.vr_flipper)
     ViewFlipper mVRFlipper;
 
-    private static final int SWIPE_MIN_DISTANCE = 10;
+    @InjectView(R.id.vr_layout)
+    RelativeLayout vrLayout;
+
+    private static final int SWIPE_MIN_DISTANCE = 150;
     private static final int SWIPE_THRESHOLD_VELOCITY = 20;
 
     private int[] convenience_car_array = {
@@ -56,24 +62,29 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         ButterKnife.inject(this, view);
         mVRFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
-        for(int i=0;i<convenience_car_array.length;i++)
-        {
+        for (int i = 0; i < convenience_car_array.length; i++) {
             ImageView image = new ImageView(getActivity());
-            image.setImageResource(convenience_car_array[i]);
+            ImageView hotspot_image = new ImageView(getActivity());
+            hotspot_image.setImageResource(R.drawable.hotspot_blue);
+            hotspot_image.setX(150.0f + (i * 50));
+            hotspot_image.setY(150.0f + (i * 50));
+
+            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
+//            image.setImageResource(convenience_car_array[i]);
             mVRFlipper.addView(image);
-//            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
+            vrLayout.addView(hotspot_image);
         }
 
         return view;
     }
 
     @OnClick(R.id.vr_play)
-    public void OnVrPlayClicked(View view){
-        if(!mVRFlipper.isSelected()){
-            mVRFlipper.setFlipInterval(750);
+    public void OnVrPlayClicked(View view) {
+        if (!mVRFlipper.isSelected()) {
+            mVRFlipper.setFlipInterval(100);
             mVRFlipper.startFlipping();
             mVRFlipper.setSelected(true);
-        }else{
+        } else {
             mVRFlipper.stopFlipping();
             mVRFlipper.setSelected(false);
         }
@@ -91,11 +102,15 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         public boolean onScroll(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
             try {
                 if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE) {
+                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_in));
+                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_out));
                     mVRFlipper.showPrevious();
                 } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
+                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_in));
+                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_out));
                     mVRFlipper.showNext();
                 }
-                    return true;
+                return true;
 
             } catch (Exception e) {
                 e.printStackTrace();

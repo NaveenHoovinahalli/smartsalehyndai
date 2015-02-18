@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vr_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_vr">
 
-    <ImageButton
-        android:id="@+id/vr_play"
-        android:layout_margin="10dp"
+    <com.andexert.library.RippleView
+        android:id="@+id/vr_play_ripple"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/vr_play_square"
+        android:layout_alignEnd="@+id/vr_flipper"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/vr_flipper"
-        android:layout_alignEnd="@+id/vr_flipper" />
+        android:layout_margin="10dp"
+        ripple:rv_type="doubleRipple">
+
+        <ImageButton
+            android:id="@+id/vr_play"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/vr_play_square" />
+
+    </com.andexert.library.RippleView>
 
     <ViewFlipper
         android:id="@+id/vr_flipper"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
+        android:layout_below="@+id/vr_play_ripple"
         android:layout_marginBottom="6dp"
-        android:layout_below="@+id/vr_play">
-
-    </ViewFlipper>
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp" />
 
 </RelativeLayout>
