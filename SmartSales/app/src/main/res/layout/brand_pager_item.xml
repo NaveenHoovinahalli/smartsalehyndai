@@ -10,6 +10,7 @@
         android:layout_height="730px"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="225dp"
+
         >
 
     <ImageButton
@@ -20,6 +21,9 @@
         android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
 
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.BrandStoryPagerAdapter;
+import com.hyundai.teli.smartsales.fragments.BrandStoryItem;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class BrandStory extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
-    ArrayList<com.hyundai.teli.smartsales.fragments.BrandStory> fragments;
+    ArrayList<BrandStoryItem> fragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,9 @@ public class BrandStory extends ActionBarActivity {
     }
 
     private void setFragment() {
-        fragments = new ArrayList<com.hyundai.teli.smartsales.fragments.BrandStory>();
+        fragments = new ArrayList<BrandStoryItem>();
         for (int i = 0; i < 4; i++) {
-            com.hyundai.teli.smartsales.fragments.BrandStory brandStoryPager = com.hyundai.teli.smartsales.fragments.BrandStory.newInstance();
+            BrandStoryItem brandStoryPager = BrandStoryItem.newInstance();
             fragments.add(brandStoryPager);
         }
     }

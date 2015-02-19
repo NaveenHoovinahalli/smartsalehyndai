@@ -39,6 +39,13 @@
         android:layout_toEndOf="@+id/catalogueMenu"
         android:paddingLeft="15dp"/>
 
+    <View
+        android:layout_below="@+id/view"
+        android:layout_width="1150dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:background="@color/profile_title_blue"/>
 
     <LinearLayout
         android:id="@+id/linear_header"
@@ -49,6 +56,7 @@
         android:orientation="horizontal"
         android:layout_centerInParent="true"
         >
+
 
         <com.hyundai.teli.smartsales.views.HTextView
             android:layout_width="150dp"
