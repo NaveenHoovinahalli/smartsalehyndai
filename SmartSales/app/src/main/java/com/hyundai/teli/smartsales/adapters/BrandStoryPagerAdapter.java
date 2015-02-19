@@ -3,7 +3,7 @@ package com.hyundai.teli.smartsales.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.hyundai.teli.smartsales.fragments.BrandStoryItem;
+import com.hyundai.teli.smartsales.fragments.BrandStoryFragment;
 
 import java.util.ArrayList;
 
@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public class BrandStoryPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<BrandStoryItem> fragments = new ArrayList<BrandStoryItem>();
+    ArrayList<BrandStoryFragment> fragments = new ArrayList<BrandStoryFragment>();
 
-    public BrandStoryPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<BrandStoryItem> fragments) {
+    public BrandStoryPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<BrandStoryFragment> fragments) {
         super(fm);
         this.fragments = fragments;
     }

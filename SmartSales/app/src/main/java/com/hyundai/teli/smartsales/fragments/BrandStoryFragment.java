@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class BrandStoryItem extends Fragment {
+public class BrandStoryFragment extends Fragment {
 
 //    @InjectView(R.id.brand_video_icon)
 //    ImageButton brandVideo;
@@ -31,8 +31,8 @@ public class BrandStoryItem extends Fragment {
     @InjectView(R.id.brand_rl)
     RelativeLayout playButton;
 
-    public static BrandStoryItem newInstance() {
-        BrandStoryItem bBragment = new BrandStoryItem();
+    public static BrandStoryFragment newInstance() {
+        BrandStoryFragment bBragment = new BrandStoryFragment();
         return bBragment;
 
     }
