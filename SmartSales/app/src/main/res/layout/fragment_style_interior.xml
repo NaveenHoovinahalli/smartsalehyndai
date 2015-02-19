@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/settings_bg"
-    android:weightSum="3"
-    >
+    android:weightSum="3">
+
     <RelativeLayout
         android:id="@+id/relativeLayout_hotspot"
         android:layout_width="940dp"
         android:layout_height="fill_parent">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/interior_pager"
-        android:layout_width="940dp"
-        android:layout_height="fill_parent"
-        android:visibility="invisible"
-         />
-      <ImageView
-          android:id="@+id/interior_main_image"
-          android:layout_width="940dp"
-          android:layout_height="fill_parent"
-          android:scaleType="fitXY"/>
-    </RelativeLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/interior_pager"
+            android:layout_width="940dp"
+            android:layout_height="fill_parent"
+            android:visibility="invisible" />
 
+        <ImageView
+            android:id="@+id/interior_main_image"
+            android:layout_width="940dp"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -37,21 +37,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <ImageButton
                 android:id="@+id/exterior_button"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:src="@drawable/btn_style_exterior_disable"
-                android:background="@null"
-                />
+                android:background="@null" />
+
             <ImageButton
                 android:id="@+id/interior_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/btn_style_interior_enable"
-                android:background="@null"/>
+                android:background="@null" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,14 +60,15 @@
             android:layout_below="@id/style_main_names_ll"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:padding="10dp"
                 android:src="@drawable/btn_add_plus"
-                android:background="@null"
-                />
+                android:background="@null" />
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +76,7 @@
                 android:textSize="20sp"
                 android:padding="10dp"
                 android:textColor="@android:color/white"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp" />
         </LinearLayout>
 
         <ListView
@@ -83,8 +85,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
-            android:dividerHeight="8dp"
-            />
+            android:dividerHeight="8dp" />
 
     </RelativeLayout>
 

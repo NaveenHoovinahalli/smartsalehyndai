@@ -18,6 +18,7 @@ public class MessageDescription extends ActionBarActivity {
 
     @InjectView(R.id.image_list)
     ImageButton callButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +26,16 @@ public class MessageDescription extends ActionBarActivity {
         ButterKnife.inject(this);
     }
 
- @OnClick(R.id.image_list)
-    public void callActivity(){
-     Intent intent=new Intent(this,MessageBoard.class);
-     startActivity(intent);
-     finish();
- }
+    @OnClick(R.id.image_list)
+    public void callActivity() {
+        Intent intent = new Intent(this, MessageBoard.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(this,MessageBoard.class);
+        Intent intent = new Intent(this, MessageBoard.class);
         startActivity(intent);
         super.onBackPressed();
 

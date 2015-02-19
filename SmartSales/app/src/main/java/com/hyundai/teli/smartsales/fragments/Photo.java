@@ -17,7 +17,7 @@ public class Photo extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_photo,null);
+        View view = inflater.inflate(R.layout.fragment_photo, null);
         ButterKnife.inject(this, view);
         return view;
     }

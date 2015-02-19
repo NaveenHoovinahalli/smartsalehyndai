@@ -6,7 +6,7 @@
     android:layout_height="303dp"
     android:background="@drawable/bg_customer_dialog"
     android:orientation="vertical"
-    tools:context=".Setting.CustomerDeliveryActivity$SignatureDialog" >
+    tools:context=".Setting.CustomerDeliveryActivity$SignatureDialog">
 
     <ImageView
         android:id="@+id/pencilImageView"

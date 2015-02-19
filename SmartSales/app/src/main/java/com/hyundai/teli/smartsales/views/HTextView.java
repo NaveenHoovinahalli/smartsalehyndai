@@ -9,20 +9,15 @@ import android.widget.TextView;
  */
 public class HTextView extends TextView {
 
-	public HTextView(Context context) {
-		super(context);
-	}
+    public HTextView(Context context) {
+        super(context);
+    }
 
-	public HTextView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-//		if(!isInEditMode())
-//			FontManager.setFontFromAttributeSet(context, attrs, this);
-	}
+    public HTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public HTextView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-//		if(!isInEditMode())
-//			FontManager.setFontFromAttributeSet(context, attrs, this);
-	}
-	
+    public HTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
 }

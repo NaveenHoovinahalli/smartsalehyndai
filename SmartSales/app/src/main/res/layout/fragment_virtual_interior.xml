@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vr_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/settings_bg">
+
+    <ViewFlipper
+        android:id="@+id/vr_int_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/btn_vr_exterior" />
+
+    <ImageButton
+        android:id="@+id/btn_vr_exterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_outside"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

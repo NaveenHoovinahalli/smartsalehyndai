@@ -2,29 +2,11 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Non focused states -->
-    <item
-        android:state_focused="false"
-        android:state_selected="false"
-        android:state_pressed="false"
-        android:drawable="@drawable/settings_tab_unselected">
-    </item>
+    <item android:state_focused="false" android:state_selected="false" android:state_pressed="false" android:drawable="@drawable/settings_tab_unselected"></item>
 
-    <item
-        android:state_focused="false"
-        android:state_selected="true"
-        android:state_pressed="false"
-        android:drawable="@drawable/settings_tab_selected">
-    </item>
+    <item android:state_focused="false" android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/settings_tab_selected"></item>
     <!-- Focused states -->
-    <item
-        android:state_focused="true"
-        android:state_selected="true"
-        android:state_pressed="false"
-        android:drawable="@drawable/settings_tab_focused">
-    </item>
+    <item android:state_focused="true" android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/settings_tab_focused"></item>
     <!-- Pressed state -->
-    <item
-        android:state_pressed="true"
-        android:drawable="@drawable/settings_tab_pressed">
-    </item>
+    <item android:state_pressed="true" android:drawable="@drawable/settings_tab_pressed"></item>
 </selector>

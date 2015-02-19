@@ -20,13 +20,13 @@ public class MyInfo extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_my_info,null);
+        View view = inflater.inflate(R.layout.fragment_my_info, null);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @OnClick({R.id.ok_button, R.id.full_screen})
-    public void OnClickListener(View view){
+    public void OnClickListener(View view) {
         Intent openFullScreen = new Intent(getActivity(), ProfileFullScreen.class);
         startActivity(openFullScreen);
     }

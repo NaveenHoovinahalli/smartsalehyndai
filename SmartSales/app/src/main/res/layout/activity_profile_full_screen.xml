@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bg_Layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/bc_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_consultation" >
+        android:background="@drawable/bg_consultation">
 
         <RelativeLayout
             android:id="@+id/pic_group"
@@ -16,7 +16,7 @@
             android:layout_height="618dp"
             android:layout_marginLeft="67dp"
             android:layout_marginTop="75dp"
-            android:background="@drawable/pic_bg" >
+            android:background="@drawable/pic_bg">
 
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/name_view"
@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/pic_group"
             android:layout_marginTop="168dp"
-            android:layout_marginLeft="40dp" >
-            
+            android:layout_marginLeft="40dp">
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/titleTel"
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                 style="@style/profileTitle"
                 android:layout_marginBottom="6dp"
                 android:text="@string/tel" />
-            
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/tel_view"
                 android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
                 style="@style/profileText"
                 android:drawableLeft="@drawable/icon_tel"
                 android:text="02-0011-6543" />
-            
-            
+
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/titleMobile"
                 android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/mobile" />
-            
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/mobile_view"
                 android:layout_width="wrap_content"
@@ -84,9 +84,9 @@
                 android:layout_below="@id/titleMobile"
                 style="@style/profileText"
                 android:drawableLeft="@drawable/icon_mobile"
-                android:text="010-0011-6543" />            
-            
-            
+                android:text="010-0011-6543" />
+
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/titleEmail"
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/email_lower" />
-            
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/email_view"
                 android:layout_width="wrap_content"
@@ -107,8 +107,8 @@
                 style="@style/profileText"
                 android:drawableLeft="@drawable/icon_email"
                 android:text="a-branderas@hyundai.mx" />
-            
-            
+
+
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/titleArea"
                 android:layout_width="wrap_content"

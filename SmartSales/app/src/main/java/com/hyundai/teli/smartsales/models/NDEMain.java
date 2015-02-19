@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class NDEMain implements Parcelable {
 
     @SerializedName("contents")
-    ArrayList<NDEDetail> contents=new ArrayList<NDEDetail>();
+    ArrayList<NDEDetail> contents = new ArrayList<NDEDetail>();
 
     public ArrayList<NDEDetail> getContents() {
         return contents;

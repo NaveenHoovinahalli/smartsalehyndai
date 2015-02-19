@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_consultation"
-    >
+    android:background="@drawable/bg_consultation">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/specification_pager"
         android:layout_width="930dp"
         android:layout_height="fill_parent"
-        android:isScrollContainer="true"
-       />
+        android:isScrollContainer="true" />
 
 
     <RelativeLayout
@@ -28,8 +27,7 @@
             android:background="#3f3f3f"
             android:src="@drawable/spec_list_view_top_bar"
             android:scaleType="fitXY"
-            android:layout_alignParentTop="true"
-            />
+            android:layout_alignParentTop="true" />
 
         <ListView
             android:id="@+id/specification_list"
@@ -38,13 +36,9 @@
             android:layout_height="wrap_content"
             android:background="#3f3f3f"
             android:layout_marginTop="10dp"
-            android:dividerHeight="8dp"
-            />
+            android:dividerHeight="8dp" />
 
     </RelativeLayout>
-
-
-
 
 
 </RelativeLayout>

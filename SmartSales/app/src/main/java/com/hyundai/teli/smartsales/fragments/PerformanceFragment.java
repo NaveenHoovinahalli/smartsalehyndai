@@ -28,21 +28,21 @@ public class PerformanceFragment extends Fragment {
     int imagepth;
 
     @SuppressLint("ValidFragment")
-    public PerformanceFragment(int imagepath){
-        this.imagepth=imagepath;
+    public PerformanceFragment(int imagepath) {
+        this.imagepth = imagepath;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.performance_pager_item,null);
+        View view = inflater.inflate(R.layout.performance_pager_item, null);
         ButterKnife.inject(this, view);
-        Log.d("PerformancePager","ImagePath"+imagepth);
+        Log.d("PerformancePager", "ImagePath" + imagepth);
 //        Picasso.with(getActivity()).load(imagepth).
 //                placeholder(R.drawable.btn_add_plus).into(imageView);
         try {
             Picasso.with(getActivity()).load(imagepth).into(imageView);
-        }catch (Exception e){
-            Log.d("IMAGEVIEW","error"+e);
+        } catch (Exception e) {
+            Log.d("IMAGEVIEW", "error" + e);
 
         }
 

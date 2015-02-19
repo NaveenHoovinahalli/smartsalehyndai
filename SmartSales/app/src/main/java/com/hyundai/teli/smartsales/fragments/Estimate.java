@@ -17,7 +17,7 @@ public class Estimate extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_estimate,null);
+        View view = inflater.inflate(R.layout.fragment_estimate, null);
         ButterKnife.inject(this, view);
         return view;
     }

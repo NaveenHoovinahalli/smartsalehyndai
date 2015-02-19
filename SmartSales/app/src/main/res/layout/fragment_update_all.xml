@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="10dp">
 
         <ProgressBar
             android:id="@+id/quote_result_progress_event"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -42,7 +42,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginTop="10dp"
         android:background="#FFFFFF"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <com.hyundai.teli.smartsales.views.HTextView
             android:layout_width="wrap_content"

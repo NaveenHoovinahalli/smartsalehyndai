@@ -27,7 +27,7 @@
             android:layout_toLeftOf="@+id/okButton"
             android:layout_toStartOf="@+id/okButton"
             android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp" />
 
         <Button
             android:id="@+id/okButton"
@@ -59,14 +59,14 @@
             android:paddingBottom="10dp"
             android:paddingLeft="60dp"
             android:paddingRight="90dp"
-            android:paddingTop="35dp" >
+            android:paddingTop="35dp">
 
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/tv_name"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="NAME"
-                android:gravity="center"/>
+                android:gravity="center" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/full_name"
@@ -91,7 +91,7 @@
                 android:layout_marginLeft="75dp"
                 android:layout_toRightOf="@+id/full_name"
                 android:layout_toEndOf="@+id/full_name"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/age"
@@ -103,7 +103,7 @@
                 android:hint="@string/age"
                 android:maxLength="20"
                 android:singleLine="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true" />
 
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/tv_email"
@@ -112,7 +112,7 @@
                 android:text="Email"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:layout_below="@+id/tv_name"/>
+                android:layout_below="@+id/tv_name" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/customer_email"
@@ -148,20 +148,20 @@
                 android:layout_alignTop="@+id/tv_sex"
                 android:layout_alignLeft="@+id/age"
                 android:layout_alignStart="@+id/age">
+
                 <RadioButton
                     android:id="@+id/radio_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:layout_marginRight="50dp"/>
+                    android:layout_marginRight="50dp" />
 
                 <RadioButton
                     android:id="@+id/radio_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female"/>
-                </RadioGroup>
-
+                    android:text="Female" />
+            </RadioGroup>
 
 
             <com.hyundai.teli.smartsales.views.HTextView
@@ -171,7 +171,7 @@
                 android:text="Mobile"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:layout_below="@+id/tv_email"/>
+                android:layout_below="@+id/tv_email" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/customer_mobile"
@@ -197,7 +197,7 @@
                 android:gravity="center"
                 android:layout_alignTop="@+id/customer_mobile"
                 android:layout_alignLeft="@+id/tv_sex"
-                android:layout_alignStart="@+id/tv_sex"/>
+                android:layout_alignStart="@+id/tv_sex" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/model_of_interest"
@@ -220,7 +220,7 @@
                 android:text="Memo"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:layout_below="@+id/tv_mobile"/>
+                android:layout_below="@+id/tv_mobile" />
 
             <com.hyundai.teli.smartsales.views.HEditText
                 android:id="@+id/customer_memo"

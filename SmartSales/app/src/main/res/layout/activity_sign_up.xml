@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -113,7 +112,7 @@
         android:hint="@string/prompt_input_mobile"
         android:maxLength="20"
         android:inputType="phone"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
     <com.hyundai.teli.smartsales.views.HButton
         android:id="@+id/btn_next"

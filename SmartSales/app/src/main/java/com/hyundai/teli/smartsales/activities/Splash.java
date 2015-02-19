@@ -34,9 +34,10 @@ public class Splash extends Activity implements MediaPlayer.OnCompletionListener
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/intro");
         mVideoView.setVideoURI(videoUri);
 
-        DisplayMetrics metrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mVideoView.getLayoutParams();
-        params.width =  metrics.widthPixels;
+        params.width = metrics.widthPixels;
         params.height = metrics.heightPixels;
         mVideoView.setLayoutParams(params);
 
@@ -50,10 +51,10 @@ public class Splash extends Activity implements MediaPlayer.OnCompletionListener
     public void onCompletion(MediaPlayer mp) {
         Toast.makeText(getApplicationContext(), "Splash Ended", Toast.LENGTH_SHORT).show();
         boolean isRegistered = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE).getBoolean("SIGN_UP", false);
-        if(isRegistered){
+        if (isRegistered) {
             Intent openHome = new Intent(this, Home.class);
             startActivity(openHome);
-        }else{
+        } else {
             Intent openSignUp = new Intent(this, SignUp.class);
             startActivity(openSignUp);
         }

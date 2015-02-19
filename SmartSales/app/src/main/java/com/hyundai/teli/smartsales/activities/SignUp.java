@@ -51,7 +51,7 @@ public class SignUp extends Activity {
     }
 
     @OnClick(R.id.btn_next)
-    public void OnNextClick(View view){
+    public void OnNextClick(View view) {
         DealerInfo dealerInfo = new DealerInfo();
 
         try {
@@ -61,11 +61,11 @@ public class SignUp extends Activity {
             dealerInfo.setBranch(mDealerBranch.getText().toString());
             dealerInfo.setBranchPhoneNo(mDealerBranchNo.getText().toString());
             dealerInfo.setMobileNo(mDealerMobileNo.getText().toString());
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             Toast.makeText(getApplicationContext(), "Next Button will be enabled Once all info is filled", Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent openDealerCard   = new Intent(this, DealerCard.class);
+        Intent openDealerCard = new Intent(this, DealerCard.class);
         openDealerCard.putExtra("DEALER_INFO", dealerInfo);
         startActivity(openDealerCard);
     }

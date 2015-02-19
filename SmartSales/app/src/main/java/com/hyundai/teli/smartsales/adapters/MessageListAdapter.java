@@ -16,11 +16,13 @@ import com.hyundai.teli.smartsales.activities.MessageDescription;
 public class MessageListAdapter extends BaseAdapter {
 
     Context context;
-    int size=5;
+    int size = 5;
     ViewHolder viewHolder;
-    public MessageListAdapter(Context context){
-        this.context=context;
+
+    public MessageListAdapter(Context context) {
+        this.context = context;
     }
+
     @Override
     public int getCount() {
         return 5;
@@ -39,30 +41,30 @@ public class MessageListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-      if(convertView==null) {
-          convertView = View.inflate(context, R.layout.message_list_item, null);
-          viewHolder=new ViewHolder();
-          viewHolder.no= (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_no);
-          viewHolder.title= (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_title);
-          viewHolder.date= (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_date);
-          viewHolder.button= (Button) convertView.findViewById(R.id.message_view);
-          viewHolder.button.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent=new Intent(context, MessageDescription.class);
-                  context.startActivity(intent);
-              }
-          });
-          convertView.setTag(viewHolder);
+        if (convertView == null) {
+            convertView = View.inflate(context, R.layout.message_list_item, null);
+            viewHolder = new ViewHolder();
+            viewHolder.no = (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_no);
+            viewHolder.title = (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_title);
+            viewHolder.date = (com.hyundai.teli.smartsales.views.HTextView) convertView.findViewById(R.id.message_date);
+            viewHolder.button = (Button) convertView.findViewById(R.id.message_view);
+            viewHolder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, MessageDescription.class);
+                    context.startActivity(intent);
+                }
+            });
+            convertView.setTag(viewHolder);
 
-      }else {
-          viewHolder= (ViewHolder) convertView.getTag();
-      }
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
         return convertView;
     }
 
-    class ViewHolder{
-        com.hyundai.teli.smartsales.views.HTextView no,title,date;
+    class ViewHolder {
+        com.hyundai.teli.smartsales.views.HTextView no, title, date;
         Button button;
     }
 }

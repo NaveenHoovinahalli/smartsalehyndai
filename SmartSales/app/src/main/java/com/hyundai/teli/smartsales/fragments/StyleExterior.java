@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class StyleExterior extends BaseFragment implements View.OnTouchListener{
+public class StyleExterior extends BaseFragment implements View.OnTouchListener {
 
     @InjectView(R.id.exterior_flipper)
     ViewFlipper mExteriorFlipper;
@@ -61,8 +61,7 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
         ButterKnife.inject(this, view);
         mExteriorFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
-        for(int i=0;i<convenience_car_array.length;i++)
-        {
+        for (int i = 0; i < convenience_car_array.length; i++) {
             ImageView image = new ImageView(getActivity());
             image.setImageResource(convenience_car_array[i]);
             mExteriorFlipper.addView(image);
@@ -79,7 +78,7 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
     }
 
     @OnClick(R.id.interior_button)
-    public void CallInteriorFragment(){
+    public void CallInteriorFragment() {
         StyleInterior styleInterior = new StyleInterior();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, styleInterior).commit();
 
@@ -95,7 +94,7 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener{
                 } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
                     mExteriorFlipper.showNext();
                 }
-                    return true;
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
             }

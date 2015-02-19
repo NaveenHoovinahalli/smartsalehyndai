@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/home"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/menuBrandStory"
@@ -24,7 +23,7 @@
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/catalogue"
-        android:layout_below="@+id/menuHome"/>
+        android:layout_below="@+id/menuHome" />
 
     <ImageView
         android:id="@+id/menuConsultation"
@@ -32,7 +31,7 @@
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/dealer_location"
-        android:layout_below="@+id/menuBrandStory"/>
+        android:layout_below="@+id/menuBrandStory" />
 
     <ImageView
         android:id="@+id/menuRequestTD"
@@ -40,7 +39,7 @@
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/test_drive"
-        android:layout_below="@+id/menuConsultation"/>
+        android:layout_below="@+id/menuConsultation" />
 
     <ImageView
         android:id="@+id/menuGame"
@@ -48,5 +47,5 @@
         android:layout_height="130px"
         android:scaleType="fitXY"
         android:src="@drawable/game"
-        android:layout_below="@+id/menuRequestTD"/>
+        android:layout_below="@+id/menuRequestTD" />
 </RelativeLayout>

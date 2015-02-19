@@ -16,7 +16,7 @@ import com.hyundai.teli.smartsales.fragments.Survey;
 public class TabsPagerAdapter extends FragmentStatePagerAdapter {
 
     Activity mContext;
-    Fragment[] fragments = {new CheckUpdate(),new MyInfo(),new CustomerManagement(),new Survey()};
+    Fragment[] fragments = {new CheckUpdate(), new MyInfo(), new CustomerManagement(), new Survey()};
 
     FragmentManager mFragmentManager;
 

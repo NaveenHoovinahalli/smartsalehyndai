@@ -71,9 +71,10 @@ public class Home extends Activity {
     private void playVideo() {
         Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/video");
         mVideoView.setVideoURI(videoUri);
-        DisplayMetrics metrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mVideoView.getLayoutParams();
-        params.width =  metrics.widthPixels;
+        params.width = metrics.widthPixels;
         params.height = metrics.heightPixels;
         mVideoView.setLayoutParams(params);
         mVideoView.requestFocus();
@@ -82,11 +83,11 @@ public class Home extends Activity {
     }
 
     @OnLongClick(R.id.logo_hyundai)
-    public boolean OnLogoClicked(View view){
-        if(!logoHyundai.isSelected()){
+    public boolean OnLogoClicked(View view) {
+        if (!logoHyundai.isSelected()) {
             homeIconsLayout.setVisibility(View.GONE);
             logoHyundai.setSelected(true);
-        }else {
+        } else {
             homeIconsLayout.setVisibility(View.VISIBLE);
             logoHyundai.setSelected(false);
         }
@@ -95,9 +96,9 @@ public class Home extends Activity {
 
     @OnClick({R.id.brand_story, R.id.consultation, R.id.nde, R.id.message_board,
             R.id.myInfo, R.id.customer_management, R.id.survey})
-    public void onClickListener(View view){
-                Intent openConsultation = new Intent(Home.this, Consultation.class);
-        switch(view.getId()){
+    public void onClickListener(View view) {
+        Intent openConsultation = new Intent(Home.this, Consultation.class);
+        switch (view.getId()) {
             case R.id.brand_story:
                 Intent openBrandStory = new Intent(Home.this, BrandStory.class);
                 startActivity(openBrandStory);

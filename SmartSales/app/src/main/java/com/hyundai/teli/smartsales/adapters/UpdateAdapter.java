@@ -44,7 +44,7 @@ public class UpdateAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        if (view == null){
+        if (view == null) {
             LayoutInflater inflater = mContext.getLayoutInflater();
             view = inflater.inflate(R.layout.update_element, null, true);
             viewHolder = new ViewHolder();
@@ -57,7 +57,7 @@ public class UpdateAdapter extends BaseAdapter {
             viewHolder.progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
             view.setTag(viewHolder);
 
-        }else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         viewHolder.carName.setText(mCarNames.get(position));

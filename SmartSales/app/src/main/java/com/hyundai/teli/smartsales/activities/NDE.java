@@ -57,7 +57,7 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
 
     private boolean menuClicked = false;
     NDEPagerAdapter ndePagerAdapter;
-    ArrayList<String> ndeTabPage=new ArrayList<String>();
+    ArrayList<String> ndeTabPage = new ArrayList<String>();
 
     NDEMain ndeMain;
     PopupWindow mQuickMenu;
@@ -71,18 +71,18 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         checkFile();
     }
 
-    public void checkFile(){
+    public void checkFile() {
 
-         if(readJson()) {
+        if (readJson()) {
 //        DownloadFile();/mnt/sdcard/Download/nde.zip///mnt/sdcard/Download/nde.json
-             loadNdeVideos();
-             ndePagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
-             ndePager.setAdapter(ndePagerAdapter);
-             ndePager.setOnPageChangeListener(this);
-         }else {
+            loadNdeVideos();
+            ndePagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
+            ndePager.setAdapter(ndePagerAdapter);
+            ndePager.setOnPageChangeListener(this);
+        } else {
 //             Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
 //             finish();
-         }
+        }
 
     }
 
@@ -143,9 +143,9 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     public boolean readJson() {
 
 
-            String parcedJson=loadJSONFromFile();
-            Log.d("Specification","JSON"+parcedJson);
-        if(!parcedJson.isEmpty()) {
+        String parcedJson = loadJSONFromFile();
+        Log.d("Specification", "JSON" + parcedJson);
+        if (!parcedJson.isEmpty()) {
             ndeMain = new Gson().fromJson(parcedJson.toString(), NDEMain.class);
 
             for (int i = 0; i < ndeMain.getContents().size(); i++) {
@@ -157,8 +157,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                 ndeTabPage.add(ndeMain.getContents().get(i).getCategory());
             }
             return true;
-        }else {
-            Log.d("Specification","JSON is empty -"+parcedJson);
+        } else {
+            Log.d("Specification", "JSON is empty -" + parcedJson);
             return false;
 
         }
@@ -202,9 +202,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                 return aBuffer;
 
 
-            }
-            else {
-                Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "File Not Found", Toast.LENGTH_SHORT).show();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -222,8 +221,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     @Override
     public void onPageSelected(int i) {
 
-        int item= Integer.parseInt(ndeTabPage.get(i));
-        switch (item){
+        int item = Integer.parseInt(ndeTabPage.get(i));
+        switch (item) {
             case 1:
                 setSelected(R.id.nde_video);
                 break;

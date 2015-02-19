@@ -23,12 +23,11 @@ public class HButton extends Button {
         init();
     }
 
-    public void init(){
-        if(!isInEditMode()){
+    public void init() {
+        if (!isInEditMode()) {
 
         }
     }
-
 
 
 }

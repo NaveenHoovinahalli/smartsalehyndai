@@ -12,10 +12,11 @@ import java.util.ArrayList;
  */
 public class BrandStoryPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<BrandStory> fragments=new ArrayList<BrandStory>();
+    ArrayList<BrandStory> fragments = new ArrayList<BrandStory>();
+
     public BrandStoryPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<BrandStory> fragments) {
         super(fm);
-        this.fragments=fragments;
+        this.fragments = fragments;
     }
 
     @Override

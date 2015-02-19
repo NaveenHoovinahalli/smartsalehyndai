@@ -22,7 +22,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class MessageBoard extends ActionBarActivity  {
+public class MessageBoard extends ActionBarActivity {
 
     @InjectView(R.id.list_message)
     ListView listMessage;
@@ -31,7 +31,6 @@ public class MessageBoard extends ActionBarActivity  {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
-
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -45,7 +44,7 @@ public class MessageBoard extends ActionBarActivity  {
     }
 
     @OnClick(R.id.catalogueMenu)
-    public void onMenuClicked(){
+    public void onMenuClicked() {
         if (mQuickMenu == null || !mQuickMenu.isShowing())
             showQuickMenu();
 
@@ -67,19 +66,19 @@ public class MessageBoard extends ActionBarActivity  {
             mQuickMenu.setOutsideTouchable(true);
             mQuickMenu.setBackgroundDrawable(getResources().getDrawable(R.drawable.no_bg));
 
-            ImageView menuFake          = (ImageView) popupView.findViewById(R.id.fakeButton);
-            ImageView menuHome          = (ImageView) popupView.findViewById(R.id.menuHome);
-            ImageView menuBrandStory    = (ImageView) popupView.findViewById(R.id.menuBrandStory);
-            ImageView menuConsultation  = (ImageView) popupView.findViewById(R.id.menuConsultation);
-            ImageView menuNDE           = (ImageView) popupView.findViewById(R.id.menuNDE);
-            ImageView menuBoard         = (ImageView) popupView.findViewById(R.id.menuBoard);
+            ImageView menuFake = (ImageView) popupView.findViewById(R.id.fakeButton);
+            ImageView menuHome = (ImageView) popupView.findViewById(R.id.menuHome);
+            ImageView menuBrandStory = (ImageView) popupView.findViewById(R.id.menuBrandStory);
+            ImageView menuConsultation = (ImageView) popupView.findViewById(R.id.menuConsultation);
+            ImageView menuNDE = (ImageView) popupView.findViewById(R.id.menuNDE);
+            ImageView menuBoard = (ImageView) popupView.findViewById(R.id.menuBoard);
 
-            menuFake        .setOnClickListener(menuClickListener);
-            menuHome        .setOnClickListener(menuClickListener);
-            menuBrandStory  .setOnClickListener(menuClickListener);
+            menuFake.setOnClickListener(menuClickListener);
+            menuHome.setOnClickListener(menuClickListener);
+            menuBrandStory.setOnClickListener(menuClickListener);
             menuConsultation.setOnClickListener(menuClickListener);
-            menuNDE         .setOnClickListener(menuClickListener);
-            menuBoard       .setOnClickListener(menuClickListener);
+            menuNDE.setOnClickListener(menuClickListener);
+            menuBoard.setOnClickListener(menuClickListener);
         }
 
         if (!mQuickMenu.isShowing()) {
@@ -93,7 +92,7 @@ public class MessageBoard extends ActionBarActivity  {
 
             mQuickMenu.dismiss();
 
-            switch (view.getId()){
+            switch (view.getId()) {
 
                 case R.id.fakeButton:
                     mQuickMenu.dismiss();

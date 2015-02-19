@@ -23,7 +23,7 @@
     <color name="style_list_text_select">#cdcfd3</color>
     <color name="style_bg_list_item_view_normal1">#993e414a</color>
     <color name="style_bg_list_item_view_select2">#1368aa</color>
-    
+
     <color name="style_bg_sub_first_item_normal">#4d525d</color>
 
     <!-- framework -->
@@ -158,7 +158,7 @@
     <color name="send_email_popup_name_card_text">#a4a4a4</color>
     <color name="send_email_popup_total_price">#494b58</color>
     <color name="send_email_popup_price">#3681c6</color>
-    
+
     <!-- profile -->
     <color name="profile_title_blue">#0090ff</color>
 
@@ -171,7 +171,6 @@
 
     <color name="grey">#3d4049</color>
     <color name="grey_pressed">#3d4049</color>
-
 
 
 </resources>
