@@ -20,9 +20,9 @@
             android:text="@string/title_activity_brand_story"
             android:textColor="@android:color/white"
             android:gravity="center"
-           android:layout_weight="1"/>
+            android:layout_weight="1" />
 
-        </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:id="@+id/catalogueMenu"

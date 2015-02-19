@@ -35,7 +35,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     ImageButton interiorButton;
 
     @InjectView(R.id.exterior_button)
-     ImageButton exteriorButton;
+    ImageButton exteriorButton;
 
     @InjectView(R.id.style_list)
     ListView styleInteriorList;
@@ -49,16 +49,16 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @InjectView(R.id.relativeLayout_hotspot)
     RelativeLayout layoutHotspot;
 
-    int[] images={R.drawable.int1,R.drawable.int2,R.drawable.int3,
-            R.drawable.int4,R.drawable.int5,R.drawable.int6};
-    String[] names={"Interior 1","Interior 2","Interior 3","Interior 4","Interior 5",
+    int[] images = {R.drawable.int1, R.drawable.int2, R.drawable.int3,
+            R.drawable.int4, R.drawable.int5, R.drawable.int6};
+    String[] names = {"Interior 1", "Interior 2", "Interior 3", "Interior 4", "Interior 5",
             "Interior 6"};
-    View previousView=null;
+    View previousView = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_style_interior,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.fragment_style_interior, null);
+        ButterKnife.inject(this, view);
         interiorMainImage.setImageResource(R.drawable.int0);
         setFragment();
         return view;
@@ -66,7 +66,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     private void setFragment() {
 
-       linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
+        linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
         setList();
         setPager();
     }
@@ -80,15 +80,15 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     private void setImageHotSpot() {
 
 
-        for(int i=1;i<7;i++){
-            final RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.leftMargin=30*i;
-            params.rightMargin=35*i;
-            params.topMargin=30*i;
-            final ImageView imageView=new ImageView(getActivity());
+        for (int i = 1; i < 7; i++) {
+            final RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = 30 * i;
+            params.rightMargin = 35 * i;
+            params.topMargin = 30 * i;
+            final ImageView imageView = new ImageView(getActivity());
             imageView.setImageResource(R.drawable.btn_add_plus);
             imageView.setTag(i);
-            layoutHotspot.addView(imageView,params);
+            layoutHotspot.addView(imageView, params);
             imageView.setOnClickListener(this);
 //            imageView.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -107,38 +107,38 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     }
 
     private void setPager() {
-        interiorPager.setAdapter(new StyleInteriorAdapter(getActivity().getSupportFragmentManager(),images));
-         interiorPager.setOnPageChangeListener(this);
+        interiorPager.setAdapter(new StyleInteriorAdapter(getActivity().getSupportFragmentManager(), images));
+        interiorPager.setOnPageChangeListener(this);
     }
 
     private void setList() {
-        styleInteriorList.setAdapter(new ListAdapter(names,getActivity(),false));
+        styleInteriorList.setAdapter(new ListAdapter(names, getActivity(), false));
         styleInteriorList.setOnItemClickListener(this);
     }
 
     @OnClick(R.id.style_interior_exterior_ll)
-    public void onMainImageButtonClicked(){
+    public void onMainImageButtonClicked() {
         interiorMainImage.setVisibility(View.VISIBLE);
         interiorPager.setVisibility(View.INVISIBLE);
 
         linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
-        if(previousView!=null)
+        if (previousView != null)
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
 
     }
 
     @OnClick(R.id.exterior_button)
-    public void OnEtreriorClicked(){
+    public void OnEtreriorClicked() {
         StyleExterior styleExterior = new StyleExterior();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, styleExterior).commit();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       if(interiorMainImage.getVisibility()==View.VISIBLE)
-        interiorMainImage.setVisibility(View.INVISIBLE);
-        if(interiorPager.getVisibility()==View.INVISIBLE)
-        interiorPager.setVisibility(View.VISIBLE);
+        if (interiorMainImage.getVisibility() == View.VISIBLE)
+            interiorMainImage.setVisibility(View.INVISIBLE);
+        if (interiorPager.getVisibility() == View.INVISIBLE)
+            interiorPager.setVisibility(View.VISIBLE);
         linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
         ViewSelection(view);
         interiorPager.setCurrentItem(position);
@@ -152,7 +152,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onPageSelected(int i) {
 
-        ViewSelection(getViewByPosition((i),styleInteriorList));
+        ViewSelection(getViewByPosition((i), styleInteriorList));
     }
 
     @Override
@@ -161,20 +161,20 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     }
 
     private void ViewSelection(View view) {
-        if(previousView!=null) {
+        if (previousView != null) {
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
-        }else{
+        } else {
             linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
         view.setBackgroundColor((Color.parseColor("#657FBD")));
-        previousView=view;
+        previousView = view;
     }
 
     public View getViewByPosition(int pos, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
             return listView.getAdapter().getView(pos, null, listView);
         } else {
             final int childIndex = pos - firstListItemPosition;
@@ -186,11 +186,11 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     public void onClick(View v) {
 
 
-        int position= (int) v.getTag();
+        int position = (int) v.getTag();
 //                    setPager();
-                    interiorPager.setCurrentItem(position-1);
-                    Toast.makeText(getActivity(), "Position" + position, Toast.LENGTH_SHORT).show();
-                    ViewSelection(getViewByPosition((position-1),styleInteriorList));
+        interiorPager.setCurrentItem(position - 1);
+        Toast.makeText(getActivity(), "Position" + position, Toast.LENGTH_SHORT).show();
+        ViewSelection(getViewByPosition((position - 1), styleInteriorList));
 
     }
 }

@@ -64,29 +64,36 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         detector = new GestureDetector(new SwipeGestureDetector());
         for (int i = 0; i < convenience_car_array.length; i++) {
             ImageView image = new ImageView(getActivity());
-            ImageView hotspot_image = new ImageView(getActivity());
-            hotspot_image.setImageResource(R.drawable.hotspot_blue);
-            hotspot_image.setX(150.0f + (i * 50));
-            hotspot_image.setY(150.0f + (i * 50));
-
             Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
 //            image.setImageResource(convenience_car_array[i]);
             mVRFlipper.addView(image);
-            vrLayout.addView(hotspot_image);
         }
+
+        ImageView hotspot_image = new ImageView(getActivity());
+        hotspot_image.setImageResource(R.drawable.hotspot_blue);
+        hotspot_image.setX(150.0f);
+        hotspot_image.setY(150.0f);
+        vrLayout.addView(hotspot_image);
 
         return view;
     }
 
-    @OnClick(R.id.vr_play)
+    @OnClick({R.id.vr_play, R.id.btn_vr_interior})
     public void OnVrPlayClicked(View view) {
-        if (!mVRFlipper.isSelected()) {
-            mVRFlipper.setFlipInterval(100);
-            mVRFlipper.startFlipping();
-            mVRFlipper.setSelected(true);
-        } else {
-            mVRFlipper.stopFlipping();
-            mVRFlipper.setSelected(false);
+        switch (view.getId()) {
+            case R.id.vr_play:
+                if (!mVRFlipper.isSelected()) {
+                    mVRFlipper.setFlipInterval(100);
+                    mVRFlipper.startFlipping();
+                    mVRFlipper.setSelected(true);
+                } else {
+                    mVRFlipper.stopFlipping();
+                    mVRFlipper.setSelected(false);
+                }
+                break;
+            case R.id.btn_vr_interior:
+                VirtualInterior virtualInterior = new VirtualInterior();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, virtualInterior).commit();
         }
     }
 

@@ -14,11 +14,12 @@ import java.util.ArrayList;
  */
 public class NDEPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<NDEVideos> fragments=new ArrayList<>();
+    ArrayList<NDEVideos> fragments = new ArrayList<>();
     NDEMain ndeMain;
+
     public NDEPagerAdapter(FragmentManager fm, NDEMain ndeMain) {
         super(fm);
-        this.ndeMain=ndeMain;
+        this.ndeMain = ndeMain;
     }
 
     @Override

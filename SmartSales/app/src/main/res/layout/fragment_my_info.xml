@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="100dp"
-        >
+        android:layout_marginTop="100dp">
 
         <View
             android:id="@+id/center_line"
@@ -30,6 +29,7 @@
             android:layout_toLeftOf="@+id/dealer_email"
             android:layout_alignTop="@+id/input_first_name"
             android:layout_alignBottom="@+id/dealer_mobile_no" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:layout_alignBottom="@+id/pic_view"
             android:layout_alignLeft="@+id/pic_view"
             android:layout_alignStart="@+id/pic_view"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
         <!-- first name -->
 
         <Spinner
@@ -130,7 +130,7 @@
             android:hint="@string/prompt_input_mobile"
             android:maxLength="20"
             android:inputType="phone"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
         <com.hyundai.teli.smartsales.views.HButton
             android:id="@+id/ok_button"
@@ -153,8 +153,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:layout_marginTop="100dp"
-        >
+        android:layout_marginTop="100dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -242,7 +241,6 @@
 
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

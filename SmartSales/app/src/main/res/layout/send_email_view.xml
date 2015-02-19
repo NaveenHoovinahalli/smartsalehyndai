@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="941dp"
     android:layout_height="526dp"
-    android:background="@color/send_email_popup_bg" >
+    android:background="@color/send_email_popup_bg">
 
     <com.hyundai.teli.smartsales.views.HTextView
         android:id="@+id/titleTextView"
@@ -39,18 +39,18 @@
         android:layout_below="@id/titleDivider2"
         android:layout_marginLeft="6dp"
         android:layout_marginTop="23dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="6dp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.hyundai.teli.smartsales.views.HTextView
                     android:id="@+id/firstNameTextView"
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
-            android:gravity="center_horizontal" >
+            android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/sendButton"
@@ -117,14 +117,14 @@
         android:layout_marginRight="45dp"
         android:layout_marginTop="19dp"
         android:layout_toRightOf="@id/emailForm"
-        android:background="@drawable/send_email_bg" >
+        android:background="@drawable/send_email_bg">
 
         <RelativeLayout
             android:id="@+id/estimate_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="11dp" >
+            android:paddingBottom="11dp">
 
             <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/subTitleTextView"
@@ -151,14 +151,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/subTitleDivider"
-                android:background="@drawable/send_email_bg" >
+                android:background="@drawable/send_email_bg">
 
                 <LinearLayout
                     android:id="@+id/selectTrimLayout"
                     android:layout_width="440dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <com.hyundai.teli.smartsales.views.HTextView
                         android:id="@+id/selectTrimTextView"
@@ -258,7 +258,7 @@
                 android:layout_below="@id/contentLayout"
                 android:layout_marginRight="14dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/send_email_bg" >
+                android:background="@drawable/send_email_bg">
 
                 <ImageView
                     android:id="@+id/hyImageView"

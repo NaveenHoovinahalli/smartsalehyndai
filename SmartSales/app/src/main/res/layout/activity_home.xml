@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true" />
 
     <View
         android:layout_width="fill_parent"
@@ -32,7 +32,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/brand_story"
@@ -87,7 +87,7 @@
             fab:fab_colorNormal="@color/white"
             fab:fab_colorPressed="@color/white_pressed"
             fab:fab_size="mini"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/customer_management"
@@ -96,7 +96,7 @@
             fab:fab_colorNormal="@color/white"
             fab:fab_colorPressed="@color/white_pressed"
             fab:fab_size="mini"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/survey"
@@ -105,9 +105,9 @@
             fab:fab_colorNormal="@color/black"
             fab:fab_colorPressed="@color/black_pressed"
             fab:fab_size="mini"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp" />
 
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <!--<LinearLayout
         android:layout_width="wrap_content"

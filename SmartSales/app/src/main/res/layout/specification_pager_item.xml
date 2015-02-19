@@ -4,11 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg_consultation">
+
     <ImageView
         android:id="@+id/specification_pager_image"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
 </ScrollView>

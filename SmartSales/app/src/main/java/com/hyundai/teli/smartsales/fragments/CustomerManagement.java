@@ -20,14 +20,14 @@ public class CustomerManagement extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_customer_management,null);
+        View view = inflater.inflate(R.layout.fragment_customer_management, null);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @OnClick(R.id.registerButton)
-    public void registerClick(View view){
+    public void registerClick(View view) {
         Toast.makeText(getActivity(), "Register", Toast.LENGTH_SHORT).show();
-        ((Consultation)getActivity()).showRegistration();
+        ((Consultation) getActivity()).showRegistration();
     }
 }

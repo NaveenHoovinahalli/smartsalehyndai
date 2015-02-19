@@ -32,7 +32,7 @@ public class Videofragment extends Fragment {
     String videoId;
 
     public DownloadManager downloadManager;
-    public long myDownloadReference ;
+    public long myDownloadReference;
     public BroadcastReceiver rceiverDownloadComplete;
     public BroadcastReceiver receiverDownloadClicked;
 //     public ProgressDialog mPbar;
@@ -43,10 +43,10 @@ public class Videofragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.videofragmantprogress,container,false);
-        mPbar= (ProgressBar) view.findViewById(R.id.ProgressBar01);
+        View view = inflater.inflate(R.layout.videofragmantprogress, container, false);
+        mPbar = (ProgressBar) view.findViewById(R.id.ProgressBar01);
 
-        downloadManager= (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+        downloadManager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
 
         return view;
 
@@ -64,45 +64,44 @@ public class Videofragment extends Fragment {
 //        mPbar.setTitle("Downloading video please wait...");
 //        mPbar.setCancelable(false);
 
-        String id=getArguments().getString("ID");
-        String url=getArguments().getString("URL");
-        downloadVideo(id,url);
+        String id = getArguments().getString("ID");
+        String url = getArguments().getString("URL");
+        downloadVideo(id, url);
 
     }
 
-    public void downloadVideo(String Id,String Url){
+    public void downloadVideo(String Id, String Url) {
 
-        videoUrl=Url;
-        videoId=Id;
+        videoUrl = Url;
+        videoId = Id;
         Log.d("VIDEOId,VideoURL", "" + videoId + " " + videoUrl);
 
 
         SharedPreferences prefs = getActivity().getSharedPreferences("SharingUrlKPCC", getActivity().MODE_PRIVATE);
         String restoredText = prefs.getString(videoId, null);
 
-            Log.d("VIDEO", "Downloading first time");
+        Log.d("VIDEO", "Downloading first time");
 
 
-            mPbar.setVisibility(View.VISIBLE);
+        mPbar.setVisibility(View.VISIBLE);
 //            mPbar.show();
 
-            Uri uri= Uri.parse(Constants.BASE_URL + videoUrl);
-            DownloadManager.Request request=new DownloadManager.Request(uri);
+        Uri uri = Uri.parse(Constants.BASE_URL + videoUrl);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
 //            request.setDescription("Video Download").
 //                    setTitle("downloading");
 
 //            request.setDestinationInExternalFilesDir(getActivity(),
 //                    Environment.DIRECTORY_DOWNLOADS, "kpccvideo.mp4");
 
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"hyundai.mp4");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "hyundai.mp4");
 
-            request.setVisibleInDownloadsUi(true);
+        request.setVisibleInDownloadsUi(true);
 
-            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
-                    DownloadManager.Request.NETWORK_MOBILE);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
+                DownloadManager.Request.NETWORK_MOBILE);
 
-            myDownloadReference=downloadManager.enqueue(request);
-
+        myDownloadReference = downloadManager.enqueue(request);
 
 
     }
@@ -113,8 +112,8 @@ public class Videofragment extends Fragment {
 
         Log.d("VideoURL", "" + videoUrl);
 
-        IntentFilter intentFilter=new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);
-        receiverDownloadClicked=new BroadcastReceiver() {
+        IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);
+        receiverDownloadClicked = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String extraId = DownloadManager
@@ -133,8 +132,8 @@ public class Videofragment extends Fragment {
         getActivity().registerReceiver(receiverDownloadClicked, intentFilter);
 
         // filter for download
-        IntentFilter intentFilter1=new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-        rceiverDownloadComplete=new BroadcastReceiver() {
+        IntentFilter intentFilter1 = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        rceiverDownloadComplete = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
@@ -169,14 +168,14 @@ public class Videofragment extends Fragment {
                             Log.d("TestDownload", "URL =" + savedFilePath);
 
                             SharedPreferences.Editor editor = getActivity().getSharedPreferences("SharingUrlKPCC", getActivity().MODE_PRIVATE).edit();
-                            editor.putString(videoId,savedFilePath);
+                            editor.putString(videoId, savedFilePath);
                             editor.apply();
                             mPbar.setVisibility(View.GONE);
 //                            mPbar.dismiss();
-                            intent=new Intent(getActivity(),PlayVideoActivity.class);
-                            intent.putExtra("video_id",videoId);
-                            intent.putExtra("video_url", Constants.BASE_URL+videoUrl);
-                             startActivity(intent);
+                            intent = new Intent(getActivity(), PlayVideoActivity.class);
+                            intent.putExtra("video_id", videoId);
+                            intent.putExtra("video_url", Constants.BASE_URL + videoUrl);
+                            startActivity(intent);
                             break;
                         case DownloadManager.STATUS_FAILED:
                             Toast.makeText(getActivity(),

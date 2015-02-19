@@ -22,19 +22,19 @@ public class Registration extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_registration,null);
+        View view = inflater.inflate(R.layout.fragment_registration, null);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @OnClick({R.id.okButton, R.id.cancelButton, R.id.deliveryCheckListBtn})
-    public void OnClickListener(View view){
-        switch (view.getId()){
+    public void OnClickListener(View view) {
+        switch (view.getId()) {
             case R.id.okButton:
-                ((Consultation)getActivity()).hideRegistration();
+                ((Consultation) getActivity()).hideRegistration();
                 break;
             case R.id.cancelButton:
-                ((Consultation)getActivity()).hideRegistration();
+                ((Consultation) getActivity()).hideRegistration();
                 break;
             case R.id.deliveryCheckListBtn:
                 showDialog();

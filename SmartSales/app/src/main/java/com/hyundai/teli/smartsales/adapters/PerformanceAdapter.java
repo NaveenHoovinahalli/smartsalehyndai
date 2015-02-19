@@ -11,17 +11,18 @@ import com.hyundai.teli.smartsales.fragments.PerformanceFragment;
  */
 public class PerformanceAdapter extends FragmentStatePagerAdapter {
 
-//    ArrayList<String> images=new ArrayList<>();
+    //    ArrayList<String> images=new ArrayList<>();
     int[] images;
     int position;
+
     public PerformanceAdapter(android.support.v4.app.FragmentManager fm, int[] images) {
         super(fm);
-        this.images=images;
+        this.images = images;
     }
 
     @Override
     public Fragment getItem(int i) {
-        Log.d("PerformanceAdapter", "ImagePath" +images[i]);
+        Log.d("PerformanceAdapter", "ImagePath" + images[i]);
 
         return new PerformanceFragment(images[i]);
     }

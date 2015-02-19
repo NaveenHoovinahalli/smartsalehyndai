@@ -32,18 +32,19 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     @InjectView(R.id.performance_list)
     ListView performanceList;
 
-   ArrayList<String> images;
+    ArrayList<String> images;
     ArrayList<PerformanceFragment> fragments;
-    int[] image= new int[]{R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
-            R.drawable.p6,R.drawable.p7};
+    int[] image = new int[]{R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5,
+            R.drawable.p6, R.drawable.p7};
     String[] performancelistValuse;
-    int position=0;
-    View previousView=null;
+    int position = 0;
+    View previousView = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_performance,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.fragment_performance, null);
+        ButterKnife.inject(this, view);
         setList();
         setPager();
         performancePager.setOnPageChangeListener(this);
@@ -61,23 +62,23 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     }
 
-    private void setList(){
-        performancelistValuse=new String[]{"Performance 1","Performance 2","Performance 3","Performance 4",
-                "Performance 5","Performance 6","Performance 7"};
+    private void setList() {
+        performancelistValuse = new String[]{"Performance 1", "Performance 2", "Performance 3", "Performance 4",
+                "Performance 5", "Performance 6", "Performance 7"};
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,performancelistValuse);
 
-        performanceList.setAdapter(new ListAdapter(performancelistValuse,getActivity(),true));
+        performanceList.setAdapter(new ListAdapter(performancelistValuse, getActivity(), true));
         performanceList.setOnItemClickListener(this);
 
     }
 
-      private void setPager() {
+    private void setPager() {
 
-        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),image);
+        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), image);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
-            performancePager.setAdapter(mPagerAdapter);
-            Log.d("Performance","Position"+performancePager.getCurrentItem());
+        performancePager.setAdapter(mPagerAdapter);
+        Log.d("Performance", "Position" + performancePager.getCurrentItem());
 
     }
 
@@ -90,25 +91,26 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     }
 
     private void ViewSelection(View view) {
-        if(previousView!=null) {
+        if (previousView != null) {
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
-        }else{
-            getViewByPosition(0,performanceList).setBackgroundColor((Color.parseColor("#3f3f3f")));
+        } else {
+            getViewByPosition(0, performanceList).setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
 
         view.setBackgroundColor((Color.parseColor("#657FBD")));
-        previousView=view;
+        previousView = view;
 
     }
 
 
     @Override
-    public void onPageScrolled(int i, float v, int i2) { }
+    public void onPageScrolled(int i, float v, int i2) {
+    }
 
     @Override
     public void onPageSelected(int i) {
-       Log.d("Performance", "VIEW " + getViewByPosition(i, performanceList));
-        ViewSelection(getViewByPosition(i,performanceList));
+        Log.d("Performance", "VIEW " + getViewByPosition(i, performanceList));
+        ViewSelection(getViewByPosition(i, performanceList));
     }
 
     @Override
@@ -120,7 +122,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
             return listView.getAdapter().getView(pos, null, listView);
         } else {
             final int childIndex = pos - firstListItemPosition;

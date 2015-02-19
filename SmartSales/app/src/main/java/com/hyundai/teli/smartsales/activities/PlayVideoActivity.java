@@ -32,37 +32,37 @@ public class PlayVideoActivity extends ActionBarActivity {
     @InjectView(R.id.videoPlay)
     VideoView videoView;
 
-//    @InjectView(R.id.progress_bar)
+    //    @InjectView(R.id.progress_bar)
 //    ProgressBar mPbar;
-        ProgressDialog mPbar;
+    ProgressDialog mPbar;
 
 
     MediaController controller;
     public DownloadManager downloadManager;
-    public long myDownloadReference ;
+    public long myDownloadReference;
     public BroadcastReceiver rceiverDownloadComplete;
     public BroadcastReceiver receiverDownloadClicked;
     public String videoUrl;
     public String videoId;
-    public Boolean isDownloadig=false;
-    static final String VIDEO_URL="video_url";
-    static final String VIDEO_ID="video_id";
-
+    public Boolean isDownloadig = false;
+    static final String VIDEO_URL = "video_url";
+    static final String VIDEO_ID = "video_id";
 
 
     private String videoUrlplay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videoplay);
         ButterKnife.inject(this);
-        controller=new MediaController(this);
+        controller = new MediaController(this);
         controller.setAnchorView(videoView);
 
 
-        downloadManager= (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
-        mPbar =new ProgressDialog(PlayVideoActivity.this);
+        mPbar = new ProgressDialog(PlayVideoActivity.this);
         mPbar.setTitle("Downloading video please wait...");
         mPbar.setCancelable(false);
 
@@ -80,32 +80,32 @@ public class PlayVideoActivity extends ActionBarActivity {
 //        videoView.setVideoURI(Uri.parse("/storage/emulated/0/Android/data/com.hyundai.teli.smartsales/files/Download/hyundai-1.mp4"));
 //        videoView.start();
 
-        if (getIntent().hasExtra("video_url")){
-            Log.d("VIDEOId,VideoURL",getIntent().getStringExtra(VIDEO_URL));
+        if (getIntent().hasExtra("video_url")) {
+            Log.d("VIDEOId,VideoURL", getIntent().getStringExtra(VIDEO_URL));
 
-            downloadVideo(getIntent().getStringExtra(VIDEO_ID),getIntent().getStringExtra(VIDEO_URL));
+            downloadVideo(getIntent().getStringExtra(VIDEO_ID), getIntent().getStringExtra(VIDEO_URL));
         }
 
 
     }
 
-    public void downloadVideo(String Id,String Url){
+    public void downloadVideo(String Id, String Url) {
 
-        videoUrl=Url;
-        videoId=Id;
+        videoUrl = Url;
+        videoId = Id;
         Log.d("VIDEOId,VideoURL", "" + videoId + " " + videoUrl);
 
 
         SharedPreferences prefs = getSharedPreferences("HYUNDAYVIDEO", MODE_PRIVATE);
         String getSavedPath = prefs.getString(videoId, null);
-        if(getSavedPath==null){
+        if (getSavedPath == null) {
             Log.d("VIDEO", "Downloading first time");
 
 //            mPbar.setVisibility(View.VISIBLE);
             mPbar.show();
 
-            Uri uri= Uri.parse(videoUrl);
-            DownloadManager.Request request=new DownloadManager.Request(uri);
+            Uri uri = Uri.parse(videoUrl);
+            DownloadManager.Request request = new DownloadManager.Request(uri);
             request.setDescription("Video Download").
                     setTitle("downloading");
 
@@ -117,9 +117,9 @@ public class PlayVideoActivity extends ActionBarActivity {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
                     DownloadManager.Request.NETWORK_MOBILE);
 
-            myDownloadReference=downloadManager.enqueue(request);
+            myDownloadReference = downloadManager.enqueue(request);
 
-        }else {
+        } else {
             Log.d("VIDEO", "Video Already downloaded");
 //            mPbar.setVisibility(View.INVISIBLE);
             mPbar.dismiss();
@@ -136,8 +136,8 @@ public class PlayVideoActivity extends ActionBarActivity {
 
         Log.d("VideoURL", "" + videoUrl);
 
-        IntentFilter intentFilter=new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);
-        receiverDownloadClicked=new BroadcastReceiver() {
+        IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);
+        receiverDownloadClicked = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String extraId = DownloadManager
@@ -154,11 +154,11 @@ public class PlayVideoActivity extends ActionBarActivity {
             }
         };
 
-        registerReceiver(receiverDownloadClicked,intentFilter);
+        registerReceiver(receiverDownloadClicked, intentFilter);
 
         // filter for download
-        IntentFilter intentFilter1=new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-        rceiverDownloadComplete=new BroadcastReceiver() {
+        IntentFilter intentFilter1 = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        rceiverDownloadComplete = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
@@ -191,15 +191,15 @@ public class PlayVideoActivity extends ActionBarActivity {
                             Log.d("PlayVideo", "savedURLpath =" + savedFilePath);
 
                             SharedPreferences.Editor editor = getSharedPreferences("HYUNDAYVIDEO", MODE_PRIVATE).edit();
-                            editor.putString(videoId,savedFilePath);
+                            editor.putString(videoId, savedFilePath);
                             editor.apply();
 //                            mPbar.setVisibility(View.GONE);
                             mPbar.dismiss();
-                            isDownloadig=false;
+                            isDownloadig = false;
 
                             videoView.setVideoURI(Uri.parse(savedFilePath));
                             videoView.start();
-                            if(mPbar.isShowing())
+                            if (mPbar.isShowing())
                                 mPbar.dismiss();
 
                             break;

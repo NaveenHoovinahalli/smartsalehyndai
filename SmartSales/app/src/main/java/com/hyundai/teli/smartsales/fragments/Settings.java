@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class Settings extends BaseFragment implements ViewPager.OnPageChangeListener{
+public class Settings extends BaseFragment implements ViewPager.OnPageChangeListener {
 
     @InjectView(R.id.settings_container)
     ViewPager viewPager;
@@ -44,15 +44,15 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_settings,null);
+        View view = inflater.inflate(R.layout.fragment_settings, null);
         ButterKnife.inject(this, view);
         mAdapter = new TabsPagerAdapter(getActivity(), getActivity().getSupportFragmentManager());
         viewPager.setAdapter(mAdapter);
         viewPager.setOnPageChangeListener(this);
         Bundle bundle = getArguments();
-        if (bundle.containsKey("TAB")){
+        if (bundle.containsKey("TAB")) {
             String tab = bundle.getString("TAB");
-            switch (tab){
+            switch (tab) {
                 case "UPDATE":
                     mCheckUpdate.setSelected(true);
                     break;
@@ -69,10 +69,9 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
                     mSurvey.setSelected(true);
                     break;
             }
-        }else{
+        } else {
             mCheckUpdate.setSelected(true);
         }
-
 
 
         return view;
@@ -80,8 +79,8 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
 
 
     @OnClick({R.id.check_update, R.id.my_info, R.id.customer_management, R.id.survey})
-    public void onSettingsTabClick(View view){
-        switch(view.getId()){
+    public void onSettingsTabClick(View view) {
+        switch (view.getId()) {
             case R.id.check_update:
                 removeRegistrationFragment();
                 viewPager.setCurrentItem(0);
@@ -110,7 +109,7 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     @Override
     public void onPageSelected(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 mMyInfo.setSelected(false);
                 mCustomerManagement.setSelected(false);
@@ -139,9 +138,10 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onPageScrollStateChanged(int state) {
+    }
 
-    public void addRegistrationFragment(){
+    public void addRegistrationFragment() {
         viewPager.setVisibility(View.GONE);
         registrationContainer.setVisibility(View.VISIBLE);
         Registration registration = new Registration();

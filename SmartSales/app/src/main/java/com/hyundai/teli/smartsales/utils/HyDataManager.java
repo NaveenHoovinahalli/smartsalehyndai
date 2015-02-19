@@ -8,24 +8,24 @@ import android.content.SharedPreferences;
  */
 public class HyDataManager {
 
-    private static final String VIDEO_PATH="video_path";
+    private static final String VIDEO_PATH = "video_path";
     private final SharedPreferences msharedpreference;
     private final Context context;
 
-    public static HyDataManager init(Context context){
+    public static HyDataManager init(Context context) {
         return new HyDataManager(context);
     }
 
-    public HyDataManager(Context context){
+    public HyDataManager(Context context) {
         this.context = context;
         msharedpreference = context.getSharedPreferences(Constants.PREFS, Context.MODE_PRIVATE);
     }
 
-    public void saveVideoPath(String url){
-        msharedpreference.edit().putString(VIDEO_PATH,url).apply();
+    public void saveVideoPath(String url) {
+        msharedpreference.edit().putString(VIDEO_PATH, url).apply();
     }
 
-    public String getVideoPath(){
-        return msharedpreference.getString(VIDEO_PATH,"");
+    public String getVideoPath() {
+        return msharedpreference.getString(VIDEO_PATH, "");
     }
 }

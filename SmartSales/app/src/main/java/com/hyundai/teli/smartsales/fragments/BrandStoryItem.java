@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class BrandStoryItem extends Fragment {
+public class BrandStory extends Fragment {
 
 //    @InjectView(R.id.brand_video_icon)
 //    ImageButton brandVideo;
@@ -31,16 +31,16 @@ public class BrandStoryItem extends Fragment {
     @InjectView(R.id.brand_rl)
     RelativeLayout playButton;
 
-    public static BrandStoryItem newInstance(){
-        BrandStoryItem bBragment=new BrandStoryItem();
+    public static BrandStory newInstance() {
+        BrandStory bBragment = new BrandStory();
         return bBragment;
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.brand_pager_item,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.item_brand_pager, null);
+        ButterKnife.inject(this, view);
         return view;
     }
 
@@ -50,11 +50,11 @@ public class BrandStoryItem extends Fragment {
     }
 
     @OnClick(R.id.brand_rl)
-    public void onVideoBottonClicked(){
+    public void onVideoBottonClicked() {
         Toast.makeText(getActivity(), "Video Selected", Toast.LENGTH_SHORT).show();
-        Intent playVideo=new Intent(getActivity(), PlayVideoActivity.class);
-       playVideo.putExtra("video_id","1");
-        playVideo.putExtra("video_url","http://d359qmh6f57zs7.cloudfront.net/videos/Hyundai.mp4");
+        Intent playVideo = new Intent(getActivity(), PlayVideoActivity.class);
+        playVideo.putExtra("video_id", "1");
+        playVideo.putExtra("video_url", "http://d359qmh6f57zs7.cloudfront.net/videos/Hyundai.mp4");
         startActivity(playVideo);
 
     }

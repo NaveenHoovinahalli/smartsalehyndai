@@ -20,7 +20,7 @@ import butterknife.InjectView;
  * Created by Nitish Kulkarni on 2/8/15.
  */
 @SuppressLint("ValidFragment")
-public class SpecificationFragment  extends Fragment {
+public class SpecificationFragment extends Fragment {
 
     @InjectView(R.id.performance_pager_image)
     ImageView imageView;
@@ -28,13 +28,13 @@ public class SpecificationFragment  extends Fragment {
     int imagepth;
 
     @SuppressLint("ValidFragment")
-    public SpecificationFragment(int imagepath){
-        this.imagepth=imagepath;
+    public SpecificationFragment(int imagepath) {
+        this.imagepth = imagepath;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.specification_pager_item,null);
+        View view = inflater.inflate(R.layout.specification_pager_item, null);
         ButterKnife.inject(this, view);
         Log.d("PerformancePager", "ImagePath" + imagepth);
 //        Picasso.with(getActivity()).load(imagepth).

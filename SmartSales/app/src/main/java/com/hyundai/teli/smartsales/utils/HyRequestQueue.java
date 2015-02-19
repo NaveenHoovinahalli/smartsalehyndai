@@ -13,13 +13,13 @@ public class HyRequestQueue {
     private RequestQueue mRequestQueue;
     private static Context mContext;
 
-    private HyRequestQueue(Context context){
+    private HyRequestQueue(Context context) {
         this.mContext = context;
         this.mRequestQueue = getRequestQueue();
     }
 
-    public static synchronized HyRequestQueue getInstance(Context context){
-        if(mInstance == null){
+    public static synchronized HyRequestQueue getInstance(Context context) {
+        if (mInstance == null) {
             mInstance = new HyRequestQueue(context);
         }
 
@@ -27,7 +27,7 @@ public class HyRequestQueue {
     }
 
     public RequestQueue getRequestQueue() {
-        if(mRequestQueue == null){
+        if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(mContext.getApplicationContext());
         }
         return mRequestQueue;

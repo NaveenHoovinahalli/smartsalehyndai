@@ -25,7 +25,7 @@ public class Catalog extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_catalog,null);
+        View view = inflater.inflate(R.layout.fragment_catalog, null);
         ButterKnife.inject(this, view);
         setPdf();
         return view;
@@ -33,11 +33,11 @@ public class Catalog extends BaseFragment {
 
     private void setPdf() {
 //        File file=new File("/mnt/sdcard/Download/catalog.pdf");
-        File file=new File( Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
-        if(!file.exists()) {
-           file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
+        File file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
+        if (!file.exists()) {
+            file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
         }
-        if(file.exists()) {
+        if (file.exists()) {
             pdfView.fromFile(file)
                     .pages(0, 2, 1, 3, 3, 3)
                     .defaultPage(1)

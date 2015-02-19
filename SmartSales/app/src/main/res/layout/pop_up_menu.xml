@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/menuListView"
@@ -12,46 +11,42 @@
         android:id="@+id/fakeButton"
         android:layout_width="130px"
         android:layout_height="110px"
-        android:src="@android:color/transparent"/>
+        android:src="@android:color/transparent" />
 
     <ImageView
         android:id="@+id/menuHome"
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/quick_menu_btn_home"
-        android:layout_below="@+id/fakeButton"/>
+        android:layout_below="@+id/fakeButton" />
 
     <ImageView
         android:id="@+id/menuBrandStory"
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/quick_menu_btn_brand"
-        android:layout_below="@+id/menuHome"/>
+        android:layout_below="@+id/menuHome" />
 
     <ImageView
         android:id="@+id/menuConsultation"
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/quick_menu_btn_consultation"
-        android:layout_below="@+id/menuBrandStory"/>
+        android:layout_below="@+id/menuBrandStory" />
 
     <ImageView
         android:id="@+id/menuNDE"
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/quick_menu_btn_nde"
-        android:layout_below="@+id/menuConsultation"/>
+        android:layout_below="@+id/menuConsultation" />
 
     <ImageView
         android:id="@+id/menuBoard"
         android:layout_width="130px"
         android:layout_height="130px"
         android:src="@drawable/quick_menu_btn_board"
-        android:layout_below="@+id/menuNDE"/>
-
-
-
-
+        android:layout_below="@+id/menuNDE" />
 
 
 </RelativeLayout>

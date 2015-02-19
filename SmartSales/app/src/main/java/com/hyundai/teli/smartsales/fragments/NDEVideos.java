@@ -25,7 +25,7 @@ import butterknife.OnClick;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class NDEVideos extends Fragment{
+public class NDEVideos extends Fragment {
 
     @InjectView(R.id.nde_pager_image)
     ImageView imageView;
@@ -39,51 +39,51 @@ public class NDEVideos extends Fragment{
     String isVideo;
     String path;
     String id;
-    int images[]={R.drawable.nde1,R.drawable.nde2,R.drawable.nde3,R.drawable.nde4,R.drawable.nde5,R.drawable.nde6,R.drawable.nde7,
-            R.drawable.nde8,R.drawable.nde9,R.drawable.nde10,R.drawable.nde11};
+    int images[] = {R.drawable.nde1, R.drawable.nde2, R.drawable.nde3, R.drawable.nde4, R.drawable.nde5, R.drawable.nde6, R.drawable.nde7,
+            R.drawable.nde8, R.drawable.nde9, R.drawable.nde10, R.drawable.nde11};
 
     @SuppressLint("ValidFragment")
     public NDEVideos(NDEDetail ndeDetail) {
 
         Log.d("NDEVideos", "category" + ndeDetail.getCategory());
-        Log.d("NDEVideos","Id"+ ndeDetail.getId());
-        Log.d("NDEVideos","video"+ ndeDetail.getIsVideo());
-        Log.d("NDEVideos","path"+ ndeDetail.getPath());
-        isVideo=ndeDetail.getIsVideo();
-        path=ndeDetail.getPath();
-        id=ndeDetail.getId();
+        Log.d("NDEVideos", "Id" + ndeDetail.getId());
+        Log.d("NDEVideos", "video" + ndeDetail.getIsVideo());
+        Log.d("NDEVideos", "path" + ndeDetail.getPath());
+        isVideo = ndeDetail.getIsVideo();
+        path = ndeDetail.getPath();
+        id = ndeDetail.getId();
 
     }
 
-    public NDEVideos(){
+    public NDEVideos() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.ndevideos_pager_item,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.ndevideos_pager_item, null);
+        ButterKnife.inject(this, view);
 
         try {
             imageView.setImageResource(images[Integer.parseInt(id)]);
-        }catch(Exception e){
-            Log.d("IMAGEVIEW","error"+e);
+        } catch (Exception e) {
+            Log.d("IMAGEVIEW", "error" + e);
 
         }
-        Toast.makeText(getActivity(),"Inside Pager",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Inside Pager", Toast.LENGTH_SHORT).show();
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        controller=new MediaController(getActivity());
+        controller = new MediaController(getActivity());
         controller.setAnchorView(playVideo);
 
-     }
+    }
 
     @OnClick(R.id.nde_pager_video)
-    public void onVideoButtonClicked(){
+    public void onVideoButtonClicked() {
 
 //        Uri videoUri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/intro");
 //            playVideo.setVideoURI(videoUri);
@@ -92,14 +92,14 @@ public class NDEVideos extends Fragment{
     }
 
     @OnClick(R.id.nde_pager_image)
-    public void onImageClicked(){
-        Toast.makeText(getActivity(),"IMAGE",Toast.LENGTH_SHORT).show();
+    public void onImageClicked() {
+        Toast.makeText(getActivity(), "IMAGE", Toast.LENGTH_SHORT).show();
 
-        if(isVideo.toLowerCase().equals("true")){
-            if(path!=null && !path.isEmpty()){
+        if (isVideo.toLowerCase().equals("true")) {
+            if (path != null && !path.isEmpty()) {
                 imageView.setVisibility(View.INVISIBLE);
                 playVideo.setVisibility(View.VISIBLE);
-                Toast.makeText(getActivity(),"VIDEO",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "VIDEO", Toast.LENGTH_SHORT).show();
                 Uri videoUri = Uri.parse("android.resource://" + getActivity().getPackageName() + "/raw/intro");
                 playVideo.setVideoURI(videoUri);
                 playVideo.start();

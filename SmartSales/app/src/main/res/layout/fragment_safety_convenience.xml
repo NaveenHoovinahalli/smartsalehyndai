@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg_consultation"
 
@@ -9,17 +10,15 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/safety_pager"
         android:layout_width="939dp"
-        android:layout_height="fill_parent"
-       >
+        android:layout_height="fill_parent">
 
-       </android.support.v4.view.ViewPager>
+    </android.support.v4.view.ViewPager>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
+        android:paddingRight="10dp">
 
         <LinearLayout
             android:id="@+id/safety_main_names_ll"
@@ -27,6 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <ImageButton
                 android:id="@+id/safety_button"
                 android:layout_width="fill_parent"
@@ -38,7 +38,6 @@
                 android:background="#000000"
 
                 />
-            <!--android:background="#3f3f3f"-->
 
             <ImageButton
                 android:id="@+id/convenience_button"
@@ -48,9 +47,8 @@
                 android:src="@drawable/btn_convenience_bg"
                 android:layout_marginLeft="5dp"
                 android:scaleType="fitXY"
-                android:background="#000000"
-                />
-            </LinearLayout>
+                android:background="#000000" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/safety_list"
@@ -59,9 +57,8 @@
             android:layout_height="fill_parent"
             android:dividerHeight="8dp"
             android:layout_marginTop="8dp"
-            android:background="#3f3f3f"
-                    />
+            android:background="#3f3f3f" />
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

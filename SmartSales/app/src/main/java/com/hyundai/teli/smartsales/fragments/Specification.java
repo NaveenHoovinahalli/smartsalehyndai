@@ -34,14 +34,14 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 
     ArrayList<String> images;
     ArrayList<PerformanceFragment> fragments;
-    int[] image= new int[]{R.drawable.spec1,R.drawable.spec2,R.drawable.spec3,R.drawable.spec4};
+    int[] image = new int[]{R.drawable.spec1, R.drawable.spec2, R.drawable.spec3, R.drawable.spec4};
     String[] specificationListValues;
     View previousView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_specification,null);
+        View view = inflater.inflate(R.layout.fragment_specification, null);
         ButterKnife.inject(this, view);
         setList();
         setPager();
@@ -60,19 +60,19 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
 
     }
 
-    private void setList(){
-        specificationListValues=new String[]{"Specification 1","Specification 2","Specification 3","Specification 4"};
+    private void setList() {
+        specificationListValues = new String[]{"Specification 1", "Specification 2", "Specification 3", "Specification 4"};
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,specificationListValues);
 
-        specificationList.setAdapter(new ListAdapter(specificationListValues,getActivity(),true));
+        specificationList.setAdapter(new ListAdapter(specificationListValues, getActivity(), true));
         specificationList.setOnItemClickListener(this);
 
     }
 
     private void setPager() {
 
-        PagerAdapter mPagerAdapter = new SpecificationAdapter(getActivity().getSupportFragmentManager(),image);
+        PagerAdapter mPagerAdapter = new SpecificationAdapter(getActivity().getSupportFragmentManager(), image);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
         specificationPager.setAdapter(mPagerAdapter);
         Log.d("Performance", "Position" + specificationPager.getCurrentItem());
@@ -83,32 +83,33 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         ViewSelection(view);
-       specificationList.setSelection(position);
+        specificationList.setSelection(position);
         specificationPager.setCurrentItem(position);
         view.setBackgroundColor((Color.parseColor("#657FBD")));
 
     }
 
     private void ViewSelection(View view) {
-        if(previousView!=null) {
+        if (previousView != null) {
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
-        }else{
-            getViewByPosition(0,specificationList).setBackgroundColor((Color.parseColor("#3f3f3f")));
+        } else {
+            getViewByPosition(0, specificationList).setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
 
         view.setBackgroundColor((Color.parseColor("#657FBD")));
-        previousView=view;
+        previousView = view;
 
     }
 
 
     @Override
-    public void onPageScrolled(int i, float v, int i2) { }
+    public void onPageScrolled(int i, float v, int i2) {
+    }
 
     @Override
     public void onPageSelected(int i) {
         Log.d("Performance", "VIEW " + getViewByPosition(i, specificationList));
-        ViewSelection(getViewByPosition(i,specificationList));
+        ViewSelection(getViewByPosition(i, specificationList));
     }
 
     @Override
@@ -120,7 +121,7 @@ public class Specification extends BaseFragment implements ViewPager.OnPageChang
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
             return listView.getAdapter().getView(pos, null, listView);
         } else {
             final int childIndex = pos - firstListItemPosition;

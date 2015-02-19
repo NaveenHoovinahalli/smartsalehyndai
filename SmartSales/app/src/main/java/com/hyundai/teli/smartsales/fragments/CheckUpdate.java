@@ -28,7 +28,7 @@ public class CheckUpdate extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_update_all,null);
+        View view = inflater.inflate(R.layout.fragment_update_all, null);
         ButterKnife.inject(this, view);
         carNames = new ArrayList<>();
         carNames.add("Elantra");

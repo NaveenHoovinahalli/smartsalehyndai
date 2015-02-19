@@ -2,16 +2,24 @@
 
 
 <rotate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:pivotX="50%" android:pivotY="50%" android:fromDegrees="0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:fromDegrees="0"
     android:toDegrees="360">
-    <shape android:shape="ring" android:innerRadiusRatio="3"
-        android:thicknessRatio="8" android:useLevel="false">
+    <shape
+        android:shape="ring"
+        android:innerRadiusRatio="3"
+        android:thicknessRatio="8"
+        android:useLevel="false">
 
-        <size android:width="176dip" android:height="176dip" />
-        <gradient android:type="sweep" android:useLevel="false"
+        <size
+            android:width="176dip"
+            android:height="176dip" />
+        <gradient
+            android:type="sweep"
+            android:useLevel="false"
             android:startColor="#0067A1"
             android:endColor="#F7941E"
-            android:angle="0"
-            />
+            android:angle="0" />
     </shape>
 </rotate>

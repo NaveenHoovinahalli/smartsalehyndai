@@ -19,12 +19,14 @@ public class ListAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Context context;
     boolean viewColor;
-    public ListAdapter(String[] listValues, Context context,boolean viewColor){
-        this.listValues=listValues;
-        this.context=context;
-        this.viewColor=viewColor;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    public ListAdapter(String[] listValues, Context context, boolean viewColor) {
+        this.listValues = listValues;
+        this.context = context;
+        this.viewColor = viewColor;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
     @Override
     public int getCount() {
         return listValues.length;
@@ -43,14 +45,14 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view=View.inflate(context,
+        View view = View.inflate(context,
                 R.layout.list_item,
                 null);
 
-        if(position==0 && viewColor){
+        if (position == 0 && viewColor) {
             view.setBackgroundColor((Color.parseColor("#657FBD")));
         }
-        HTextView textView= (HTextView) view.findViewById(R.id.list_item_text);
+        HTextView textView = (HTextView) view.findViewById(R.id.list_item_text);
         textView.setText(listValues[position]);
         return view;
     }
