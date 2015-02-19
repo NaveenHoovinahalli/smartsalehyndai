@@ -32,18 +32,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:src="@drawable/btn_safety_select"
-                android:background="#3f3f3f"
+                android:src="@drawable/btn_safety_bg"
                 android:scaleType="fitXY"
                 android:layout_marginRight="5dp"
-
                 />
+            <!--android:background="#3f3f3f"-->
+
             <ImageButton
                 android:id="@+id/convenience_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/btn_conv_normal"
+                android:src="@drawable/btn_convenience_bg"
                 android:layout_marginLeft="5dp"
                 android:scaleType="fitXY"
                 android:background="#000000"

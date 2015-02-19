@@ -63,23 +63,28 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     @OnClick(R.id.safety_button)
     public void onSafetyClicked(){
         previousView=null;
-        convenienceButton.setImageResource(R.drawable.btn_conv_normal);
-        convenienceButton.setBackgroundColor(Color.parseColor("#000000"));
-        safetyButton.setImageResource(R.drawable.btn_safety_select);
+        convenienceButton.setSelected(false);
+        safetyButton.setSelected(true);
+//        convenienceButton.setImageResource(R.drawable.btn_conv_normal);
+//        convenienceButton.setBackgroundColor(Color.parseColor("#000000"));
+//        safetyButton.setImageResource(R.drawable.btn_safety_select);
         setForSafety();
     }
 
     @OnClick(R.id.convenience_button)
     public void onConvenienceClicked(){
         previousView=null;
-         convenienceButton.setImageResource(R.drawable.btn_conv_select);
-        safetyButton.setImageResource(R.drawable.btn_safety_normal);
-        safetyButton.setBackgroundColor(Color.parseColor("#000000"));
+        convenienceButton.setSelected(true);
+        safetyButton.setSelected(false);
+//         convenienceButton.setImageResource(R.drawable.btn_conv_select);
+//        safetyButton.setImageResource(R.drawable.btn_safety_normal);
+//        safetyButton.setBackgroundColor(Color.parseColor("#000000"));
 
         setForConvenience();
 
     }
     private void setForSafety(){
+        safetyButton.setSelected(true);
         setList(safetyListValues);
         setPager(safetyImages);
     }

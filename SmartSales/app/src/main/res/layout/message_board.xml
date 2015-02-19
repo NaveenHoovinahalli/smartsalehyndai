@@ -44,10 +44,10 @@
         android:id="@+id/linear_header"
         android:layout_below="@+id/view"
         android:layout_width="1150dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
-        android:background="#D3D3D3"
+        android:background="@drawable/message_top_gradient"
         android:layout_centerInParent="true"
         >
         <View
