@@ -1,10 +1,12 @@
 package com.hyundai.teli.smartsales.activities;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -12,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
-import com.hyundai.teli.smartsales.fragments.Estimate;
 import com.hyundai.teli.smartsales.fragments.Photo;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
@@ -49,9 +50,10 @@ public class Consultation extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultation);
+        Log.d("Consultation", "OnCreate");
         ButterKnife.inject(this);
         Intent receivedIntent = getIntent();
-        if (receivedIntent.hasExtra("SCREEN")) {
+        if (receivedIntent != null && receivedIntent.hasExtra("SCREEN")) {
             String category = receivedIntent.getStringExtra("SCREEN");
             switch (category) {
 
@@ -70,8 +72,20 @@ public class Consultation extends ActionBarActivity {
                 case "SURVEY":
                     loadSettings(category);
                     break;
+                default:
+                    loadShowRoom();
             }
         } else {
+            loadShowRoom();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean isPaused = getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+                .getBoolean("PAUSED", false);
+        if (isPaused) {
             loadShowRoom();
         }
     }
@@ -105,8 +119,13 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.estimate:
                 setSelected(view.getId());
-                Estimate estimate = new Estimate();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
+                String carName = getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).getString("CAR", "");
+                if (!carName.isEmpty() && !carName.equals("")) {
+                    Intent openCarDetails = new Intent(Consultation.this, CarDetails.class);
+                    openCarDetails.putExtra("TAB", "ESTIMATE");
+                    startActivity(openCarDetails);
+                } else
+                    Toast.makeText(getApplicationContext(), "Please Select a Car", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.photo:
                 setSelected(view.getId());
@@ -119,7 +138,6 @@ public class Consultation extends ActionBarActivity {
                 break;
         }
     }
-
 
     private void setSelected(int id) {
         mShowRoom.setTextColor(Color.parseColor("#FFFFFF"));
@@ -216,4 +234,21 @@ public class Consultation extends ActionBarActivity {
         }
     };
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("PAUSED", true)
+                .commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("PAUSED", false)
+                .commit();
+    }
 }

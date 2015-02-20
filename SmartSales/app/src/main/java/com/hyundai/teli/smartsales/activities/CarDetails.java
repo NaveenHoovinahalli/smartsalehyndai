@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.fragments.Catalog;
-import com.hyundai.teli.smartsales.fragments.Comparing;
+import com.hyundai.teli.smartsales.fragments.Compare;
 import com.hyundai.teli.smartsales.fragments.Estimate;
 import com.hyundai.teli.smartsales.fragments.Performance;
 import com.hyundai.teli.smartsales.fragments.Safety;
@@ -67,13 +67,23 @@ public class CarDetails extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
         ButterKnife.inject(this);
-        loadVirtualReality();
-    }
-
-    private void loadVirtualReality() {
-        mVirtualReality.setTextColor(Color.parseColor("#657FBD"));
-        VirtualReality virtualReality = new VirtualReality();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, virtualReality).commit();
+        Intent receivedIntent = getIntent();
+        if (receivedIntent != null && receivedIntent.hasExtra("TAB")) {
+            switch (receivedIntent.getStringExtra("TAB")) {
+                case "VR":
+                    loadVirtualReality();
+                    break;
+                case "INFO":
+                    loadSpecification();
+                    break;
+                case "ESTIMATE":
+                    loadEstimate();
+                    break;
+                case "COMPARE":
+                    loadCompare();
+                    break;
+            }
+        }
     }
 
     @OnClick({R.id.catalogueMenu, R.id.virtualReality, R.id.style, R.id.performance, R.id.specification,
@@ -102,9 +112,8 @@ public class CarDetails extends ActionBarActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, performance).commit();
                 break;
             case R.id.specification:
+                loadSpecification();
                 setSelected(view.getId());
-                Specification specification = new Specification();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, specification).commit();
                 break;
             case R.id.safetyConvenience:
                 setSelected(view.getId());
@@ -112,14 +121,12 @@ public class CarDetails extends ActionBarActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, safety).commit();
                 break;
             case R.id.estimate:
+                loadEstimate();
                 setSelected(view.getId());
-                Estimate estimate = new Estimate();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
                 break;
             case R.id.comparing:
+                loadCompare();
                 setSelected(view.getId());
-                Comparing comparing = new Comparing();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, comparing).commit();
                 break;
             case R.id.catalog:
                 setSelected(view.getId());
@@ -127,6 +134,30 @@ public class CarDetails extends ActionBarActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, catalog).commit();
                 break;
         }
+    }
+
+    private void loadVirtualReality() {
+        mVirtualReality.setTextColor(Color.parseColor("#657FBD"));
+        VirtualReality virtualReality = new VirtualReality();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, virtualReality).commit();
+    }
+
+    private void loadSpecification() {
+        mSpecification.setTextColor(Color.parseColor("#657FBD"));
+        Specification specification = new Specification();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, specification).commit();
+    }
+
+    private void loadEstimate() {
+        mEstimate.setTextColor(Color.parseColor("#657FBD"));
+        Estimate estimate = new Estimate();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, estimate).commit();
+    }
+
+    private void loadCompare() {
+        mComparing.setTextColor(Color.parseColor("#657FBD"));
+        Compare compare = new Compare();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, compare).commit();
     }
 
     private void setSelected(int id) {
