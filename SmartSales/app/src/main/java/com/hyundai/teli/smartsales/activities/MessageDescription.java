@@ -28,6 +28,7 @@ public class MessageDescription extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +36,15 @@ public class MessageDescription extends ActionBarActivity {
         ButterKnife.inject(this);
     }
 
- @OnClick(R.id.image_list)
-    public void callActivity(){
-     Intent intent=new Intent(this,MessageBoard.class);
-     startActivity(intent);
-     finish();
- }
+    @OnClick(R.id.image_list)
+    public void callActivity() {
+        Intent intent = new Intent(this, MessageBoard.class);
+        startActivity(intent);
+        finish();
+    }
 
     @OnClick(R.id.catalogueMenu)
-    public void onMenuClicked(){
+    public void onMenuClicked() {
         if (mQuickMenu == null || !mQuickMenu.isShowing())
             showQuickMenu();
 
@@ -51,7 +52,7 @@ public class MessageDescription extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(this,MessageBoard.class);
+        Intent intent = new Intent(this, MessageBoard.class);
         startActivity(intent);
         super.onBackPressed();
 
@@ -67,19 +68,19 @@ public class MessageDescription extends ActionBarActivity {
             mQuickMenu.setOutsideTouchable(true);
             mQuickMenu.setBackgroundDrawable(getResources().getDrawable(R.drawable.no_bg));
 
-            ImageView menuFake          = (ImageView) popupView.findViewById(R.id.fakeButton);
-            ImageView menuHome          = (ImageView) popupView.findViewById(R.id.menuHome);
-            ImageView menuBrandStory    = (ImageView) popupView.findViewById(R.id.menuBrandStory);
-            ImageView menuConsultation  = (ImageView) popupView.findViewById(R.id.menuConsultation);
-            ImageView menuNDE           = (ImageView) popupView.findViewById(R.id.menuNDE);
-            ImageView menuBoard         = (ImageView) popupView.findViewById(R.id.menuBoard);
+            ImageView menuFake = (ImageView) popupView.findViewById(R.id.fakeButton);
+            ImageView menuHome = (ImageView) popupView.findViewById(R.id.menuHome);
+            ImageView menuBrandStory = (ImageView) popupView.findViewById(R.id.menuBrandStory);
+            ImageView menuConsultation = (ImageView) popupView.findViewById(R.id.menuConsultation);
+            ImageView menuNDE = (ImageView) popupView.findViewById(R.id.menuNDE);
+            ImageView menuBoard = (ImageView) popupView.findViewById(R.id.menuBoard);
 
-            menuFake        .setOnClickListener(menuClickListener);
-            menuHome        .setOnClickListener(menuClickListener);
-            menuBrandStory  .setOnClickListener(menuClickListener);
+            menuFake.setOnClickListener(menuClickListener);
+            menuHome.setOnClickListener(menuClickListener);
+            menuBrandStory.setOnClickListener(menuClickListener);
             menuConsultation.setOnClickListener(menuClickListener);
-            menuNDE         .setOnClickListener(menuClickListener);
-            menuBoard       .setOnClickListener(menuClickListener);
+            menuNDE.setOnClickListener(menuClickListener);
+            menuBoard.setOnClickListener(menuClickListener);
         }
 
         if (!mQuickMenu.isShowing()) {
@@ -93,13 +94,13 @@ public class MessageDescription extends ActionBarActivity {
 
             mQuickMenu.dismiss();
 
-            switch (view.getId()){
+            switch (view.getId()) {
 
                 case R.id.fakeButton:
                     mQuickMenu.dismiss();
                     break;
                 case R.id.menuHome:
-                     finish();
+                    finish();
                     break;
                 case R.id.menuBrandStory:
                     Intent openBrandStory = new Intent(MessageDescription.this, BrandStory.class);
@@ -107,6 +108,9 @@ public class MessageDescription extends ActionBarActivity {
                     finish();
                     break;
                 case R.id.menuConsultation:
+                    Intent consultation = new Intent(MessageDescription.this, Consultation.class);
+                    startActivity(consultation);
+                    finish();
                     break;
                 case R.id.menuNDE:
                     Intent openNDE = new Intent(MessageDescription.this, NDE.class);

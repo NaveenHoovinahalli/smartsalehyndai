@@ -34,7 +34,6 @@
             android:layout_below="@+id/specification_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#3f3f3f"
             android:layout_marginTop="10dp"
             android:dividerHeight="8dp" />
 

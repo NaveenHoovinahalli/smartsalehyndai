@@ -106,6 +106,9 @@ public class MessageBoard extends ActionBarActivity {
                     finish();
                     break;
                 case R.id.menuConsultation:
+                    Intent consultation = new Intent(MessageBoard.this, Consultation.class);
+                    startActivity(consultation);
+                    finish();
                     break;
                 case R.id.menuNDE:
                     Intent openNDE = new Intent(MessageBoard.this, NDE.class);
@@ -113,9 +116,9 @@ public class MessageBoard extends ActionBarActivity {
                     finish();
                     break;
                 case R.id.menuBoard:
-                    Intent openMessageBoard = new Intent(MessageBoard.this, MessageBoard.class);
-                    startActivity(openMessageBoard);
-                    finish();
+//                    Intent openMessageBoard = new Intent(MessageBoard.this, MessageBoard.class);
+//                    startActivity(openMessageBoard);
+//                    finish();
                     break;
             }
         }

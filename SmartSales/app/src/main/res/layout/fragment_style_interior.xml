@@ -11,17 +11,24 @@
         android:layout_width="940dp"
         android:layout_height="fill_parent">
 
+
         <android.support.v4.view.ViewPager
             android:id="@+id/interior_pager"
             android:layout_width="940dp"
             android:layout_height="fill_parent"
-            android:visibility="invisible" />
+            android:visibility="visible" />
+        <RelativeLayout
+            android:id="@+id/interior_main_image_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/interior_main_image"
+                android:layout_width="940dp"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:visibility="invisible"/>
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/interior_main_image"
-            android:layout_width="940dp"
-            android:layout_height="fill_parent"
-            android:scaleType="fitXY" />
     </RelativeLayout>
 
 
@@ -85,7 +92,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
-            android:dividerHeight="8dp" />
+            android:dividerHeight="8dp"
+           />
 
     </RelativeLayout>
 

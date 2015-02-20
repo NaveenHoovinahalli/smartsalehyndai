@@ -37,13 +37,13 @@
     <LinearLayout
         android:id="@+id/linear_header"
         android:layout_width="1150dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/view"
-        android:layout_centerInParent="true"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:background="#D3D3D3"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:layout_below="@+id/view"
+        android:background="@drawable/message_top_gradient"
+        android:layout_centerInParent="true"
+        >
         <View
             android:layout_width="1dp"
             android:layout_height="40dp"

@@ -87,6 +87,8 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
                 return false;
             }
         }
+
+
     }
 
     @OnClick(R.id.btn_vr_exterior)
