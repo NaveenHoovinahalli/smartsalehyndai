@@ -40,16 +40,16 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     PagerAdapter pagerAdapter;
     View previousView;
 
-    int[] safetyImages={R.drawable.s1, R.drawable.s2,R.drawable.s3,R.drawable.s4,R.drawable.s5,R.drawable.s6};
-    int[] convenienceImages={R.drawable.c1,R.drawable.c2,R.drawable.c3,R.drawable.c4,R.drawable.c5,R.drawable.c6};
-    String[] safetyListValues={"Safety 1","Safety 2","Safety 3","Safety 4","Safety 5","Safety 6"};
-    String[] conveienceListValues={"Convenience 1","Convenience 2","Convenience 3","Convenience 4","Convenience 5","Convenience 6"};
+    int[] safetyImages = {R.drawable.s1, R.drawable.s2, R.drawable.s3, R.drawable.s4, R.drawable.s5, R.drawable.s6};
+    int[] convenienceImages = {R.drawable.c1, R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5, R.drawable.c6};
+    String[] safetyListValues = {"Safety 1", "Safety 2", "Safety 3", "Safety 4", "Safety 5", "Safety 6"};
+    String[] conveienceListValues = {"Convenience 1", "Convenience 2", "Convenience 3", "Convenience 4", "Convenience 5", "Convenience 6"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_safety_convenience,null);
-        ButterKnife.inject(this,view);
+        View view = inflater.inflate(R.layout.fragment_safety_convenience, null);
+        ButterKnife.inject(this, view);
         setForSafety();
         return view;
     }
@@ -61,8 +61,8 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     }
 
     @OnClick(R.id.safety_button)
-    public void onSafetyClicked(){
-        previousView=null;
+    public void onSafetyClicked() {
+        previousView = null;
         convenienceButton.setSelected(false);
         safetyButton.setSelected(true);
 //        convenienceButton.setImageResource(R.drawable.btn_conv_normal);
@@ -72,8 +72,8 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     }
 
     @OnClick(R.id.convenience_button)
-    public void onConvenienceClicked(){
-        previousView=null;
+    public void onConvenienceClicked() {
+        previousView = null;
         convenienceButton.setSelected(true);
         safetyButton.setSelected(false);
 //         convenienceButton.setImageResource(R.drawable.btn_conv_select);
@@ -83,13 +83,14 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         setForConvenience();
 
     }
-    private void setForSafety(){
+
+    private void setForSafety() {
         safetyButton.setSelected(true);
         setList(safetyListValues);
         setPager(safetyImages);
     }
 
-    private void setForConvenience(){
+    private void setForConvenience() {
         setList(conveienceListValues);
         setPager(convenienceImages);
     }
@@ -98,13 +99,13 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,listValues);
 
-        listView.setAdapter(new ListAdapter(listValues,getActivity(),true));
+        listView.setAdapter(new ListAdapter(listValues, getActivity(), true));
         listView.setOnItemClickListener(this);
     }
 
     private void setPager(int[] images) {
 
-        pagerAdapter=new PerformanceAdapter(getActivity().getSupportFragmentManager(),images);
+        pagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), images);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOnPageChangeListener(this);
     }
@@ -116,7 +117,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     @Override
     public void onPageSelected(int i) {
-      ViewSelection(getViewByPosition(i,listView));
+        ViewSelection(getViewByPosition(i, listView));
     }
 
     @Override
@@ -125,17 +126,16 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     }
 
 
+    private void ViewSelection(View view) {
 
-    private void ViewSelection(View view){
-
-        if(previousView!=null) {
+        if (previousView != null) {
             previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
-        }else{
-            getViewByPosition(0,listView).setBackgroundColor((Color.parseColor("#3f3f3f")));
+        } else {
+            getViewByPosition(0, listView).setBackgroundColor((Color.parseColor("#3f3f3f")));
         }
 
         view.setBackgroundColor((Color.parseColor("#657FBD")));
-        previousView=view;
+        previousView = view;
 
     }
 
@@ -150,7 +150,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
 
-        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
             return listView.getAdapter().getView(pos, null, listView);
         } else {
             final int childIndex = pos - firstListItemPosition;

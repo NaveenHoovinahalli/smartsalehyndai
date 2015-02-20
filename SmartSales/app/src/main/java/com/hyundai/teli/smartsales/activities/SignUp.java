@@ -75,24 +75,24 @@ public class SignUp extends Activity {
     }
 
     @OnClick(R.id.pic_view)
-    public void onPicClicked(){
+    public void onPicClicked() {
         showAlert();
     }
 
     private void showAlert() {
-        final CharSequence[] options={"Take Photo","Chose from Gallery"};
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        final CharSequence[] options = {"Take Photo", "Chose from Gallery"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Photo");
-        builder.setItems(options,new DialogInterface.OnClickListener() {
+        builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-           if(options[which].equals("Take Photo")){
-               Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-               startActivityForResult(intent,1);
-           }else if(options[which].equals("Chose from Gallery")){
-               Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               startActivityForResult(intent, 2);
-           }
+                if (options[which].equals("Take Photo")) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, 1);
+                } else if (options[which].equals("Chose from Gallery")) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+                }
             }
         });
         builder.show();
@@ -101,13 +101,13 @@ public class SignUp extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK && requestCode==1){
-            Bundle bundle=data.getExtras();
-            bmp=(Bitmap) bundle.get("data");
-            bmp=getResizedBitmap(bmp,150,225);
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            Bundle bundle = data.getExtras();
+            bmp = (Bitmap) bundle.get("data");
+            bmp = getResizedBitmap(bmp, 150, 225);
             mDealerPic.setImageBitmap(bmp);
         }
-        if(resultCode==RESULT_OK && requestCode==2){
+        if (resultCode == RESULT_OK && requestCode == 2) {
             InputStream stream = null;
             try {
                 if (bmp != null) {
@@ -117,7 +117,7 @@ public class SignUp extends Activity {
                 try {
                     bmp = BitmapFactory.decodeStream(stream);
                     bmp = getResizedBitmap(bmp, 150, 225);
-                }catch (OutOfMemoryError e){
+                } catch (OutOfMemoryError e) {
 
                 }
 //               bmp=getRoundedShape(bmp);
@@ -140,24 +140,23 @@ public class SignUp extends Activity {
     }
 
     @OnClick(R.id.btn_next)
-    public void OnNextClick(View view){
+    public void OnNextClick(View view) {
 
-        if(!AndroidUtils.isNetworkOnline(this)){
+        if (!AndroidUtils.isNetworkOnline(this)) {
             Toast.makeText(getApplicationContext(), "Sorry! No Internet Connection", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(validateDetails()!= null){
-            Toast.makeText(this,validateDetails(),Toast.LENGTH_SHORT).show();
-        }else {
+        if (validateDetails() != null) {
+            Toast.makeText(this, validateDetails(), Toast.LENGTH_SHORT).show();
+        } else {
 
-            Log.d("SignUpActivity","Name prefix::" +mDealerPrefix.getSelectedItem().toString());
-            Log.d("SignUpActivity","Name::" +mDealerName.getText().toString());
-            Log.d("SignUpActivity","Email::" +mDealerEmail.getText().toString());
-            Log.d("SignUpActivity","Dealer ID::" +mDealerId.getText().toString());
-            Log.d("SignUpActivity","Branch::" +mDealerBranch.getText().toString());
+            Log.d("SignUpActivity", "Name prefix::" + mDealerPrefix.getSelectedItem().toString());
+            Log.d("SignUpActivity", "Name::" + mDealerName.getText().toString());
+            Log.d("SignUpActivity", "Email::" + mDealerEmail.getText().toString());
+            Log.d("SignUpActivity", "Dealer ID::" + mDealerId.getText().toString());
+            Log.d("SignUpActivity", "Branch::" + mDealerBranch.getText().toString());
             Log.d("SignUpActivity", "Branch No::" + mDealerBranchNo.getText().toString());
-            Log.d("SignUpActivity","Mobile No::" +mDealerMobileNo.getText().toString());
-
+            Log.d("SignUpActivity", "Mobile No::" + mDealerMobileNo.getText().toString());
 
 
             DealerInfo dealerInfo = new DealerInfo();
@@ -189,9 +188,9 @@ public class SignUp extends Activity {
             return "Please enter branch name.";
         else if (mDealerBranchNo.getText().toString().isEmpty())
             return "Please enter branch no";
-        else if (mDealerMobileNo.getText().toString().length()<10)
+        else if (mDealerMobileNo.getText().toString().length() < 10)
             return "Please enter valid no.";
-        else if(bmp==null)
+        else if (bmp == null)
             return "Please update the picture";
         else if (!mDealerEmail.getText().toString().isEmpty() || !mDealerEmail.equals("E-mail Address")) {
             if (!isValidEmail(mDealerEmail.getText().toString().trim()))
@@ -218,6 +217,7 @@ public class SignUp extends Activity {
         }
         return isValid;
     }
+
     public Bitmap getResizedBitmap(Bitmap image, int bitmapWidth, int bitmapHeight) {
         return Bitmap.createScaledBitmap(image, bitmapWidth, bitmapHeight,
                 true);

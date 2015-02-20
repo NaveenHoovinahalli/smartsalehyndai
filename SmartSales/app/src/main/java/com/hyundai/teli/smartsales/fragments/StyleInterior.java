@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
@@ -46,10 +45,10 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @InjectView(R.id.style_interior_exterior_ll)
     LinearLayout linearLayoutInterior;
 
-    @InjectView(R.id.relativeLayout_hotspot)
+    @InjectView(R.id.interior_main_image_layout)
     RelativeLayout layoutHotspot;
 
-    int[] images = {R.drawable.int1, R.drawable.int2, R.drawable.int3,
+    int[] images = {R.drawable.int0, R.drawable.int1, R.drawable.int2, R.drawable.int3,
             R.drawable.int4, R.drawable.int5, R.drawable.int6};
     String[] names = {"Interior 1", "Interior 2", "Interior 3", "Interior 4", "Interior 5",
             "Interior 6"};
@@ -90,17 +89,6 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
             imageView.setTag(i);
             layoutHotspot.addView(imageView, params);
             imageView.setOnClickListener(this);
-//            imageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position= (int) imageView.getTag();
-//                    setPager();
-//                    interiorPager.setCurrentItem(position-1);
-//                    Toast.makeText(getActivity(),"Position"+position,Toast.LENGTH_SHORT).show();
-//                    ViewSelection(getViewByPosition((position-1),styleInteriorList));
-//
-//                }
-//            });
 
         }
 
@@ -118,8 +106,8 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     @OnClick(R.id.style_interior_exterior_ll)
     public void onMainImageButtonClicked() {
-        interiorMainImage.setVisibility(View.VISIBLE);
-        interiorPager.setVisibility(View.INVISIBLE);
+        layoutHotspot.setVisibility(View.VISIBLE);
+        interiorPager.setCurrentItem(0);
 
         linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
         if (previousView != null)
@@ -135,13 +123,13 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (interiorMainImage.getVisibility() == View.VISIBLE)
-            interiorMainImage.setVisibility(View.INVISIBLE);
+        if (layoutHotspot.getVisibility() == View.VISIBLE)
+            layoutHotspot.setVisibility(View.INVISIBLE);
         if (interiorPager.getVisibility() == View.INVISIBLE)
             interiorPager.setVisibility(View.VISIBLE);
         linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
         ViewSelection(view);
-        interiorPager.setCurrentItem(position);
+        interiorPager.setCurrentItem(position+1);
     }
 
     @Override
@@ -152,7 +140,22 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onPageSelected(int i) {
 
-        ViewSelection(getViewByPosition((i), styleInteriorList));
+        if(i>0) {
+            layoutHotspot.setVisibility(View.INVISIBLE);
+            ViewSelection(getViewByPosition((i - 1), styleInteriorList));
+            linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
+
+        }
+        else {
+            layoutHotspot.setVisibility(View.VISIBLE);
+            linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
+            if (previousView != null) {
+                previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
+            }
+        }
+
+
+
     }
 
     @Override
@@ -185,12 +188,13 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onClick(View v) {
 
+        layoutHotspot.setVisibility(View.INVISIBLE);
+        interiorPager.setVisibility(View.VISIBLE);
+        linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
 
         int position = (int) v.getTag();
-//                    setPager();
-        interiorPager.setCurrentItem(position - 1);
-        Toast.makeText(getActivity(), "Position" + position, Toast.LENGTH_SHORT).show();
-        ViewSelection(getViewByPosition((position - 1), styleInteriorList));
+        interiorPager.setCurrentItem(position);
+        ViewSelection(getViewByPosition((position-1 ), styleInteriorList));
 
     }
 }
