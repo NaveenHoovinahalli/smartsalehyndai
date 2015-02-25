@@ -1,6 +1,8 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -11,8 +13,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
-import com.squareup.picasso.Picasso;
+import com.hyundai.teli.smartsales.models.VRInteriorMain;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -28,12 +32,11 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
 
     private static final int SWIPE_MIN_DISTANCE = 10;
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
+    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public VRInteriorMain vrInteriorMain;
+    public String VRINTERIOR_MAIN_PATH;
 
-    private int[] convenience_car_array = {
-            R.drawable.vr1,
-            R.drawable.vr2,
-            R.drawable.vr3
-    };
+    private String[] vrinteriorImages ;
 
     GestureDetector detector;
 
@@ -41,17 +44,43 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_virtual_interior, null);
         ButterKnife.inject(this, view);
+        VRINTERIOR_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"vr_interior/";
+
+        setValues();
         mVRIntFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
-        for (int i = 0; i < convenience_car_array.length; i++) {
-            ImageView image = new ImageView(getActivity());
-            image.setScaleType(ImageView.ScaleType.FIT_XY);
-            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
-//            image.setImageResource(convenience_car_array[i]);
-            mVRIntFlipper.addView(image);
-        }
+
 
         return view;
+    }
+
+    private void setValues() {
+        parceJson();
+        for (int i = 0; i < vrinteriorImages.length; i++) {
+            ImageView image = new ImageView(getActivity());
+            image.setScaleType(ImageView.ScaleType.FIT_XY);
+            image.setImageURI(Uri.parse(vrinteriorImages[i]));
+            mVRIntFlipper.addView(image);
+        }
+    }
+
+    private void parceJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        vrInteriorMain=gson.fromJson(json,VRInteriorMain.class);
+        for(int i=0;i<vrInteriorMain.getVrInteriorMain().size();i++){
+            vrinteriorImages=new String[vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size()];
+            for(int j=0;j<vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size();j++){
+
+                String image= vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().get(j).getInteriorImage();
+                String seperator[]= image.split("/");
+                String imageFinalPath=VRINTERIOR_MAIN_PATH+seperator[seperator.length-1];
+
+                vrinteriorImages[j]=imageFinalPath;
+
+            }
+        }
     }
 
     @Override
@@ -66,7 +95,7 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
         public boolean onFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
             try {
                 if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    if (mVRIntFlipper.indexOfChild(mVRIntFlipper.getCurrentView()) == convenience_car_array.length - 1) {
+                    if (mVRIntFlipper.indexOfChild(mVRIntFlipper.getCurrentView()) == vrinteriorImages.length - 1) {
                         return false;
                     }
                     mVRIntFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.anim_left_in));

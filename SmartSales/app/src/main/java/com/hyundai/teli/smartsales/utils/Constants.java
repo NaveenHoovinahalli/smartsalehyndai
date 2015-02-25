@@ -6,7 +6,7 @@ package com.hyundai.teli.smartsales.utils;
 public class Constants {
 
     public static final String LOG = "TeliBrahma HYUNDAI_TABLET";
-    public static final String BASE_URL = "http://192.168.2.70:8080/hyundai_models/";
+    public static final String BASE_URL = "http://hyundainew.gobuzz.mobi/";
     public static final String MEDIA = "http://192.168.2.70:8080/media/";
     public static final String ALL_MODELS_NAMES = BASE_URL + "all_model_names/";
     public static final String ALL_MODELS_DETAILS = BASE_URL + "all_models_details/";
@@ -20,4 +20,7 @@ public class Constants {
     public static final String SDCARD_STYLE = ".Hyundai/Style";
     public static final String SDCARD_SAFETY = ".Hyundai/Safety";
     public static final String PREFS = "HyPreference";
+    public static final String MESSAGE_BOARD_URL=BASE_URL + "tablet_services/get_notification_messages/";
+    public static final String BRAND_STORY_URL= BASE_URL + "tablet_services/get_brandstory_videos/";
+    public static final String NDE_URL=BASE_URL + "tablet_services/get_nde_videos/";
 }

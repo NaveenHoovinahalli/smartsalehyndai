@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class NDEPagerAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<NDEVideos> fragments = new ArrayList<>();
-    NDEMain ndeMain;
+    ArrayList<NDEMain> ndeMain = new ArrayList<>();
+//    NDEMain ndeMain;
 
-    public NDEPagerAdapter(FragmentManager fm, NDEMain ndeMain) {
+    public NDEPagerAdapter(FragmentManager fm, ArrayList<NDEMain> ndeMain) {
         super(fm);
         this.ndeMain = ndeMain;
     }
@@ -25,12 +25,12 @@ public class NDEPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int i) {
 //        return fragments.get(i);
-        return new NDEVideos(ndeMain.getContents().get(i));
+        return new NDEVideos(ndeMain.get(i));
     }
 
     @Override
     public int getCount() {
 //        return fragments.size();
-        return ndeMain.getContents().size();
+        return ndeMain.size();
     }
 }

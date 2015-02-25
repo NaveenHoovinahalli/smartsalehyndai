@@ -12,8 +12,24 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.MessageListAdapter;
+import com.hyundai.teli.smartsales.models.MessageBoardValues;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
+import com.hyundai.teli.smartsales.utils.Constants;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
+import com.hyundai.teli.smartsales.utils.HyRequestQueue;
+
+import org.json.JSONArray;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -31,7 +47,7 @@ public class MessageBoard extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
-
+   ArrayList<MessageBoardValues> messageBoardValues;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -39,7 +55,51 @@ public class MessageBoard extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_board);
         ButterKnife.inject(this);
-        listMessage.setAdapter(new MessageListAdapter(this));
+        if(AndroidUtils.isNetworkOnline(this)) {
+            fetchValues();
+        }else {
+          String json= HyDataManager.init(this).getMessageJson();
+           if(!json.isEmpty()) {
+
+               Type listType = new TypeToken<List<MessageBoardValues>>() {
+               }.getType();
+               List<MessageBoardValues> message = (List<MessageBoardValues>) new Gson().fromJson(json, listType);
+               listMessage.setAdapter(new MessageListAdapter(this,message));
+
+           }
+        }
+
+    }
+
+    private void fetchValues() {
+
+        String url=String.format(Constants.MESSAGE_BOARD_URL);
+
+
+        JsonArrayRequest messageRequest=new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        HyDataManager.init(MessageBoard.this).saveMessageJson(response.toString());
+                        parceJson(response);
+                    }
+                },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        HyRequestQueue.getInstance(this).getRequestQueue().add(messageRequest);
+
+    }
+
+    private void parceJson(JSONArray jsonArray) {
+
+        Gson gson=new Gson();
+
+        messageBoardValues=gson.fromJson(jsonArray.toString(),new TypeToken<List<MessageBoardValues>>(){}.getType());
+        listMessage.setAdapter(new MessageListAdapter(this,messageBoardValues));
+
 
     }
 

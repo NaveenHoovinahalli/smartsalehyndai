@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -14,19 +15,31 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.NDEPagerAdapter;
 import com.hyundai.teli.smartsales.models.NDEMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
+import com.hyundai.teli.smartsales.utils.Constants;
+import com.hyundai.teli.smartsales.utils.HyRequestQueue;
 import com.hyundai.teli.smartsales.views.HTextView;
+
+import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -58,9 +71,13 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     private boolean menuClicked = false;
     NDEPagerAdapter ndePagerAdapter;
     ArrayList<String> ndeTabPage = new ArrayList<String>();
+    ArrayList<NDEMain> ndeMain;
 
-    NDEMain ndeMain;
     PopupWindow mQuickMenu;
+
+    public static File NDE_FOLDER;
+    public static final String BASE_PATH="/Hyundai/NDE";
+    public static String JsonFile="/nde.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,22 +85,119 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         setContentView(R.layout.activity_nde);
         ButterKnife.inject(this);
 
-        checkFile();
-    }
+        NDE_FOLDER=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+BASE_PATH);
+        if(!NDE_FOLDER.exists())
+            NDE_FOLDER.mkdirs();
 
-    public void checkFile() {
+        loadNdeVideos();
 
-        if (readJson()) {
-//        DownloadFile();/mnt/sdcard/Download/nde.zip///mnt/sdcard/Download/nde.json
-            loadNdeVideos();
-            ndePagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
-            ndePager.setAdapter(ndePagerAdapter);
-            ndePager.setOnPageChangeListener(this);
-        } else {
-//             Toast.makeText(this,"File Not Found",Toast.LENGTH_SHORT).show();
-//             finish();
+        if(AndroidUtils.isNetworkOnline(NDE.this)) {
+            fetchValues();
+
+        }else {
+
+            parceJson();
         }
 
+    }
+
+    private void fetchValues() {
+
+        String url= String.format(Constants.NDE_URL);
+
+        JsonArrayRequest request=new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        Log.d("NDE",""+response);
+                       writeToSdcard(response.toString());
+
+                    }
+                },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        HyRequestQueue.getInstance(this).getRequestQueue().add(request);
+
+    }
+
+    private void writeToSdcard(String jsonResponse) {
+        try {
+
+
+            File file = new File(NDE_FOLDER + JsonFile );
+            Log.d("NDE", "write to sd card" + file);
+            if (file.exists())
+                file.delete();
+
+            file.createNewFile();
+            file.setReadable(true);
+            file.setExecutable(true);
+            file.setWritable(true);
+
+            Log.d("NDE", "write to sd card");
+            FileOutputStream fOut = new FileOutputStream(file);
+            OutputStreamWriter myOutWriter =
+                    new OutputStreamWriter(fOut);
+            myOutWriter.append(jsonResponse);
+            myOutWriter.close();
+            fOut.close();
+            parceJson();
+        } catch (Exception e) {
+            Log.d("NDE","Exception" + e.toString());
+        }
+
+
+    }
+    public void parceJson(){
+
+        String parcedJson=readFromFile();
+        Gson gson=new Gson();
+
+        ndeMain=gson.fromJson(parcedJson,new TypeToken<List<NDEMain>>(){}.getType());
+        setPager();
+
+    }
+
+    public void setPager(){
+        PagerAdapter mPagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
+        ndePager.setAdapter(mPagerAdapter);
+        ndePager.setOnPageChangeListener(this);
+
+    }
+
+
+    public String readFromFile(){
+
+        InputStream is = null;
+        try {
+
+            File jsonPath = new File( NDE_FOLDER + JsonFile);
+
+            if (jsonPath.exists()) {
+                FileInputStream fIn = new FileInputStream(jsonPath);
+                BufferedReader myReader = new BufferedReader(
+                        new InputStreamReader(fIn));
+
+                String aDataRow = "";
+                String aBuffer = "";
+                while ((aDataRow = myReader.readLine()) != null) {
+                    aBuffer += aDataRow + "\n";
+                }
+                Log.d("NDE", "Buffer::" + aBuffer);
+                return aBuffer.toString();
+
+            } else {
+                Toast.makeText(this, "File Not Found", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
 
@@ -103,19 +217,35 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
                     mQuickMenu.dismiss();
                 break;
             case R.id.nde_video:
+                setCurrentPage("NDE VIDEO");
                 setSelected(view.getId());
                 break;
             case R.id.nde_dealer_vision:
+                setCurrentPage("DEALER VISION AND MISSION");
                 setSelected(view.getId());
                 break;
             case R.id.nde_sales:
+                setCurrentPage("NDE SALES PROCESS");
                 setSelected(view.getId());
                 break;
             case R.id.nde_dealership_experience:
+                setCurrentPage("NEW DEALERSHIP EXPERIENCE");
                 setSelected(view.getId());
                 break;
         }
 
+    }
+
+    private void setCurrentPage(String category) {
+
+        for(int i=0;i<ndeMain.size();i++){
+
+            if(ndeMain.get(i).getCategory().equals(category)){
+                ndePager.setCurrentItem(i);
+                break;
+            }
+
+        }
     }
 
     private void setSelected(int id) {
@@ -140,78 +270,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         }
     }
 
-    public boolean readJson() {
 
 
-        String parcedJson = loadJSONFromFile();
-        Log.d("Specification", "JSON" + parcedJson);
-        if (!parcedJson.isEmpty()) {
-            ndeMain = new Gson().fromJson(parcedJson.toString(), NDEMain.class);
-
-            for (int i = 0; i < ndeMain.getContents().size(); i++) {
-                Log.d("Specification", "" + ndeMain.getContents().get(i).getCategory());
-                Log.d("Specification", "" + ndeMain.getContents().get(i).getId());
-                Log.d("Specification", "" + ndeMain.getContents().get(i).getIsVideo());
-                Log.d("Specification", "" + ndeMain.getContents().get(i).getPath());
-
-                ndeTabPage.add(ndeMain.getContents().get(i).getCategory());
-            }
-            return true;
-        } else {
-            Log.d("Specification", "JSON is empty -" + parcedJson);
-            return false;
-
-        }
-    }
-
-    public String loadJSONFromFile() {
-        String htmlPath = "";
-
-
-        InputStream is = null;
-        try {
-
-            File jsonPath = new File(Environment.getExternalStorageDirectory()
-                    + File.separator
-                    + "/" + "Download/nde.json");
-
-            File file = new File(jsonPath, "");
-            //is = open(hyundaiPath + "specification.js");
-
-            if (file.exists()) {
-                FileInputStream fIn = new FileInputStream(file);
-                BufferedReader myReader = new BufferedReader(
-                        new InputStreamReader(fIn));
-
-                String content = String.valueOf(myReader.read());
-
-
-                String aDataRow = "";
-                String aBuffer = "{";
-                while ((aDataRow = myReader.readLine()) != null) {
-                    aBuffer += aDataRow + "\n";
-
-                }
-
-                Log.d("Specification", "Buffer::" + aBuffer);
-
-                String replacedString = "";
-
-
-                Log.d("Specification", "replacedString::" + replacedString);
-                return aBuffer;
-
-
-            } else {
-                Toast.makeText(this, "File Not Found", Toast.LENGTH_SHORT).show();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return "";
-
-    }
 
     @Override
     public void onPageScrolled(int i, float v, int i2) {
@@ -221,18 +281,20 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     @Override
     public void onPageSelected(int i) {
 
-        int item = Integer.parseInt(ndeTabPage.get(i));
-        switch (item) {
-            case 1:
+        String category=ndeMain.get(i).getCategory();
+        Log.d("NDE",""+category);
+
+        switch (category) {
+            case "NDE VIDEO":
                 setSelected(R.id.nde_video);
                 break;
-            case 2:
+            case "DEALER VISION AND MISSION":
                 setSelected(R.id.nde_dealer_vision);
                 break;
-            case 3:
+            case "NDE SALES PROCESS":
                 setSelected(R.id.nde_sales);
                 break;
-            case 4:
+            case "NEW DEALERSHIP EXPERIENCE":
                 setSelected(R.id.nde_dealership_experience);
                 break;
         }

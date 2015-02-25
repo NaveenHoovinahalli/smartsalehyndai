@@ -3,7 +3,6 @@ package com.hyundai.teli.smartsales.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
-import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
 
 import java.util.ArrayList;
 
@@ -36,9 +34,11 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     ArrayList<PerformanceFragment> fragments;
     int[] image = new int[]{R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5,
             R.drawable.p6, R.drawable.p7};
-    String[] performancelistValuse;
+    ArrayList<String> performancelistValuse;
     int position = 0;
     View previousView = null;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,8 +63,8 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     }
 
     private void setList() {
-        performancelistValuse = new String[]{"Performance 1", "Performance 2", "Performance 3", "Performance 4",
-                "Performance 5", "Performance 6", "Performance 7"};
+//        performancelistValuse = new String[]{"Performance 1", "Performance 2", "Performance 3", "Performance 4",
+//                "Performance 5", "Performance 6", "Performance 7"};
 //        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
 //                android.R.layout.simple_list_item_1,performancelistValuse);
 
@@ -75,9 +75,9 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     private void setPager() {
 
-        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), image);
+//        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), image);
 //            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
-        performancePager.setAdapter(mPagerAdapter);
+//        performancePager.setAdapter(mPagerAdapter);
         Log.d("Performance", "Position" + performancePager.getCurrentItem());
 
     }

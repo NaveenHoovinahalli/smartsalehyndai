@@ -1,6 +1,7 @@
 package com.hyundai.teli.smartsales.fragments;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.hyundai.teli.smartsales.R;
-import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,10 +25,10 @@ public class PerformanceFragment extends Fragment {
     @InjectView(R.id.performance_pager_image)
     ImageView imageView;
 
-    int imagepth;
+    String imagepth;
 
     @SuppressLint("ValidFragment")
-    public PerformanceFragment(int imagepath) {
+    public PerformanceFragment(String imagepath) {
         this.imagepth = imagepath;
     }
 
@@ -37,14 +37,8 @@ public class PerformanceFragment extends Fragment {
         View view = inflater.inflate(R.layout.performance_pager_item, null);
         ButterKnife.inject(this, view);
         Log.d("PerformancePager", "ImagePath" + imagepth);
-//        Picasso.with(getActivity()).load(imagepth).
-//                placeholder(R.drawable.btn_add_plus).into(imageView);
-        try {
-            Picasso.with(getActivity()).load(imagepth).into(imageView);
-        } catch (Exception e) {
-            Log.d("IMAGEVIEW", "error" + e);
 
-        }
+        imageView.setImageURI(Uri.parse(imagepth));
 
         return view;
     }

@@ -63,6 +63,7 @@
             android:gravity="center" />
 
         <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/title"
             android:layout_width="600dp"
             android:layout_height="fill_parent"
             android:text="Notice"
@@ -77,6 +78,7 @@
             android:gravity="center" />
 
         <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/date"
             android:layout_width="150dp"
             android:layout_height="fill_parent"
             android:text="22-22-2"
@@ -91,6 +93,7 @@
             android:gravity="center" />
 
         <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/no"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:text="1"
@@ -107,7 +110,8 @@
         android:layout_centerHorizontal="true"
         android:background="#D3D3D3">
 
-        <TextView
+        <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/description"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Hello Desc"

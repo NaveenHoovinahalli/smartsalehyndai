@@ -12,8 +12,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -45,8 +47,8 @@ public class PlayVideoActivity extends ActionBarActivity {
     public String videoUrl;
     public String videoId;
     public Boolean isDownloadig = false;
-    static final String VIDEO_URL = "video_url";
-    static final String VIDEO_ID = "video_id";
+    public static final String VIDEO_URL = "video_url";
+    public static final String VIDEO_ID = "video_id";
 
 
     private String videoUrlplay;
@@ -59,6 +61,9 @@ public class PlayVideoActivity extends ActionBarActivity {
         controller = new MediaController(this);
         controller.setAnchorView(videoView);
 
+        Log.d("PlayVideo","oncreate");
+
+
 
         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
@@ -67,24 +72,30 @@ public class PlayVideoActivity extends ActionBarActivity {
         mPbar.setCancelable(false);
 
 
-//        if(getIntent().hasExtra("video_url")){
-//            Log.d("SavedUrl", "" + videoUrlplay);
-////            Uri videoUri = Uri.parse("storage/emulated/0/Android/data/com.hyundai.teli.smartsales/files/Download/hyundai-1.mp4");
-////            Uri videoUri = Uri.parse("http://d359qmh6f57zs7.cloudfront.net/videos/Hyundai.mp4");
-//            Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/raw/intro");
-//            videoView.setVideoURI(videoUri);
-//            videoView.start();
-//
-//        }
-//        videoView.setMediaController(controller);
-//        videoView.setVideoURI(Uri.parse("/storage/emulated/0/Android/data/com.hyundai.teli.smartsales/files/Download/hyundai-1.mp4"));
-//        videoView.start();
 
-        if (getIntent().hasExtra("video_url")) {
-            Log.d("VIDEOId,VideoURL", getIntent().getStringExtra(VIDEO_URL));
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoView.getLayoutParams();
+        params.width = metrics.widthPixels;
+        params.height = metrics.heightPixels;
+        videoView.setLayoutParams(params);
 
-            downloadVideo(getIntent().getStringExtra(VIDEO_ID), getIntent().getStringExtra(VIDEO_URL));
+
+        if(getIntent().hasExtra(VIDEO_URL)){
+            String url=getIntent().getStringExtra(VIDEO_URL);
+            Log.d("PlayVideo","url"+url);
+            videoView.setMediaController(controller);
+            videoView.setVideoURI(Uri.parse(url));
+            videoView.start();
+
         }
+
+
+//        if (getIntent().hasExtra("video_url")) {
+//            Log.d("VIDEOId,VideoURL", getIntent().getStringExtra(VIDEO_URL));
+//
+//            downloadVideo(getIntent().getStringExtra(VIDEO_ID), getIntent().getStringExtra(VIDEO_URL));
+//        }
 
 
     }
@@ -93,7 +104,6 @@ public class PlayVideoActivity extends ActionBarActivity {
 
         videoUrl = Url;
         videoId = Id;
-        Log.d("VIDEOId,VideoURL", "" + videoId + " " + videoUrl);
 
 
         SharedPreferences prefs = getSharedPreferences("HYUNDAYVIDEO", MODE_PRIVATE);

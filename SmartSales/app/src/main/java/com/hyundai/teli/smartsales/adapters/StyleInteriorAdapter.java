@@ -11,11 +11,11 @@ import com.hyundai.teli.smartsales.fragments.PerformanceFragment;
  */
 public class StyleInteriorAdapter extends FragmentStatePagerAdapter {
 
-    int[] images;
+    String[] images;
 
     public StyleInteriorAdapter(FragmentManager fm, int[] images) {
         super(fm);
-        this.images = images;
+//        this.images = images;
     }
 
     @Override

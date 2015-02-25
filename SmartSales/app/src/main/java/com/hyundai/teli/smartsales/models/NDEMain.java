@@ -5,22 +5,76 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
 public class NDEMain implements Parcelable {
 
-    @SerializedName("contents")
-    ArrayList<NDEDetail> contents = new ArrayList<NDEDetail>();
 
-    public ArrayList<NDEDetail> getContents() {
-        return contents;
+    @SerializedName("id")
+    String id;
+
+    @SerializedName("is_video")
+    String isVideo;
+
+    @SerializedName("video_thumbnail_file")
+    String videoThumbnail;
+
+    @SerializedName("category")
+    String category;
+
+    @SerializedName("title")
+    String title;
+
+    @SerializedName("nde_video_file")
+    String videoFile;
+
+    public String getId() {
+        return id;
     }
 
-    public void setContents(ArrayList<NDEDetail> contents) {
-        this.contents = contents;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIsVideo() {
+        return isVideo;
+    }
+
+    public void setIsVideo(String isVideo) {
+        this.isVideo = isVideo;
+    }
+
+    public String getVideoThumbnail() {
+        return videoThumbnail;
+    }
+
+    public void setVideoThumbnail(String videoThumbnail) {
+        this.videoThumbnail = videoThumbnail;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getVideoFile() {
+        return videoFile;
+    }
+
+    public void setVideoFile(String videoFile) {
+        this.videoFile = videoFile;
     }
 
     @Override
@@ -30,14 +84,24 @@ public class NDEMain implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeSerializable(this.contents);
+        dest.writeString(this.id);
+        dest.writeString(this.isVideo);
+        dest.writeString(this.videoThumbnail);
+        dest.writeString(this.category);
+        dest.writeString(this.title);
+        dest.writeString(this.videoFile);
     }
 
     public NDEMain() {
     }
 
     private NDEMain(Parcel in) {
-        this.contents = (ArrayList<NDEDetail>) in.readSerializable();
+        this.id = in.readString();
+        this.isVideo = in.readString();
+        this.videoThumbnail = in.readString();
+        this.category = in.readString();
+        this.title = in.readString();
+        this.videoFile = in.readString();
     }
 
     public static final Parcelable.Creator<NDEMain> CREATOR = new Parcelable.Creator<NDEMain>() {

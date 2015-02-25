@@ -18,6 +18,8 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.StyleInteriorAdapter;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -50,8 +52,8 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     int[] images = {R.drawable.int0, R.drawable.int1, R.drawable.int2, R.drawable.int3,
             R.drawable.int4, R.drawable.int5, R.drawable.int6};
-    String[] names = {"Interior 1", "Interior 2", "Interior 3", "Interior 4", "Interior 5",
-            "Interior 6"};
+    ArrayList<String> names = new ArrayList<String>();
+
     View previousView = null;
 
     @Override
