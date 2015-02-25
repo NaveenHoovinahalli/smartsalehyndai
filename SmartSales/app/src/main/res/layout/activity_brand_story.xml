@@ -33,23 +33,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/view" />
-<com.hyundai.teli.smartsales.views.HTextView
-    android:id="@+id/tv_header"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/view"
-    android:layout_centerInParent="true"
-    android:gravity="center"
-    android:textSize="30sp"
-    android:padding="10dp"
-    android:layout_marginTop="30dp"
-    android:textColor="@color/white"
-    android:text="@string/brand_story_heading"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/brand_pager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/tv_header" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/view" />
 
 </RelativeLayout>

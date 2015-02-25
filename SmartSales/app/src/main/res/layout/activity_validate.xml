@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome_pin">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp" />
+
+        <com.hyundai.teli.smartsales.views.spinner_wheel.WheelVerticalView
+            android:id="@+id/password8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/pwd_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INVALID PIN"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="160dp"
+        android:layout_below="@+id/linearLayout2"/>
+
+</RelativeLayout>

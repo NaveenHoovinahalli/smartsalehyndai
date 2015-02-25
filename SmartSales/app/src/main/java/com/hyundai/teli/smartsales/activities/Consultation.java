@@ -4,7 +4,10 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +21,11 @@ import com.hyundai.teli.smartsales.fragments.Photo;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
 import com.hyundai.teli.smartsales.views.HTextView;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -45,6 +53,11 @@ public class Consultation extends ActionBarActivity {
 
     Settings settings;
     PopupWindow mQuickMenu;
+
+    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    private static final String IMAGE_DIRECTORY_NAME = ".Hyundai";
+    private Uri fileUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +96,17 @@ public class Consultation extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        boolean isPaused = getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+        Log.d("Consultation","onResume");
+        boolean isPaused = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .getBoolean("PAUSED", false);
-        if (isPaused) {
+        boolean isCamera = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                .getBoolean("CAMERA", false);
+        if (isPaused && !isCamera) {
             loadShowRoom();
+            setSelected(0);
+        }else if(isPaused && isCamera){
+            Photo photo = new Photo();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
         }
     }
 
@@ -119,7 +139,11 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.estimate:
                 setSelected(view.getId());
-                String carName = getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).getString("CAR", "");
+                getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("ESTIMATE", true)
+                        .commit();
+                String carName = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE).getString("CAR", "");
                 if (!carName.isEmpty() && !carName.equals("")) {
                     Intent openCarDetails = new Intent(Consultation.this, CarDetails.class);
                     openCarDetails.putExtra("TAB", "ESTIMATE");
@@ -129,8 +153,7 @@ public class Consultation extends ActionBarActivity {
                 break;
             case R.id.photo:
                 setSelected(view.getId());
-                Photo photo = new Photo();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
+                capturePhoto();
                 break;
             case R.id.settings:
                 loadSettings("UPDATE");
@@ -237,18 +260,93 @@ public class Consultation extends ActionBarActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+        getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean("PAUSED", true)
+                .commit();
+        getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("ESTIMATE", false)
                 .commit();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+        getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean("PAUSED", false)
                 .commit();
+    }
+
+    public void capturePhoto() {
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+        getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                .edit()
+                .putString("PHOTO_PATH", fileUri.toString())
+                .commit();
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+
+        // start the image capture Intent
+        startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+    }
+
+    public Uri getOutputMediaFileUri(int type) {
+        return Uri.fromFile(getOutputMediaFile(type));
+    }
+
+    private static File getOutputMediaFile(int type) {
+
+        File mediaStorageDir = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                IMAGE_DIRECTORY_NAME);
+
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator
+                    + "IMG_" + timeStamp + ".jpg");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
+        Log.d("Consultation","onActivityResult");
+        if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("CAMERA", true)
+                        .commit();
+
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(),
+                        "User cancelled image capture", Toast.LENGTH_SHORT)
+                        .show();
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
     }
 }

@@ -77,7 +77,7 @@ public class Videofragment extends Fragment {
         Log.d("VIDEOId,VideoURL", "" + videoId + " " + videoUrl);
 
 
-        SharedPreferences prefs = getActivity().getSharedPreferences("SharingUrlKPCC", getActivity().MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("HYUNDAI_PREFERENCE", getActivity().MODE_PRIVATE);
         String restoredText = prefs.getString(videoId, null);
 
         Log.d("VIDEO", "Downloading first time");
@@ -167,7 +167,7 @@ public class Videofragment extends Fragment {
 
                             Log.d("TestDownload", "URL =" + savedFilePath);
 
-                            SharedPreferences.Editor editor = getActivity().getSharedPreferences("SharingUrlKPCC", getActivity().MODE_PRIVATE).edit();
+                            SharedPreferences.Editor editor = getActivity().getSharedPreferences("HYUNDAI_PREFERENCE", getActivity().MODE_PRIVATE).edit();
                             editor.putString(videoId, savedFilePath);
                             editor.apply();
                             mPbar.setVisibility(View.GONE);

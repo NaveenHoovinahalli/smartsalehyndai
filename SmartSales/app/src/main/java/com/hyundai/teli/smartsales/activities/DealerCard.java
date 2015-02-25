@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.hyundai.teli.smartsales.R;
-import com.hyundai.teli.smartsales.models.DealerInfo;
+import com.hyundai.teli.smartsales.db_models.DealerInfo;
 import com.hyundai.teli.smartsales.views.HTextView;
 
 import butterknife.ButterKnife;

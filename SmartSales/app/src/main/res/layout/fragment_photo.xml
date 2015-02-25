@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bg_consultation"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PHOTO"
-        android:id="@+id/textView"
-        android:textSize="30sp"
+    <ImageView
+        android:id="@+id/photo_captured"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:id="@+id/photo_view_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone">
+
+        <LinearLayout android:id="@+id/photo_btn_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="90dp">
+
+            <ImageButton android:id="@+id/btn_retry"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:color/transparent"
+                android:background="@drawable/photo_btn_retry"
+                android:layout_marginRight="52dp" />
+
+            <ImageButton android:id="@+id/btn_facebook"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:color/transparent"
+                android:background="@drawable/photo_btn_share" />
+
+            <ImageButton android:id="@+id/btn_delete"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:color/transparent"
+                android:background="@drawable/photo_btn_delete"
+                android:layout_marginLeft="52dp" />
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

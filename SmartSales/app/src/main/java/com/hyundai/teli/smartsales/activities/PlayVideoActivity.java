@@ -96,7 +96,7 @@ public class PlayVideoActivity extends ActionBarActivity {
         Log.d("VIDEOId,VideoURL", "" + videoId + " " + videoUrl);
 
 
-        SharedPreferences prefs = getSharedPreferences("HYUNDAYVIDEO", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("HYUNDAI_PREFERENCE", MODE_PRIVATE);
         String getSavedPath = prefs.getString(videoId, null);
         if (getSavedPath == null) {
             Log.d("VIDEO", "Downloading first time");
@@ -190,7 +190,7 @@ public class PlayVideoActivity extends ActionBarActivity {
 
                             Log.d("PlayVideo", "savedURLpath =" + savedFilePath);
 
-                            SharedPreferences.Editor editor = getSharedPreferences("HYUNDAYVIDEO", MODE_PRIVATE).edit();
+                            SharedPreferences.Editor editor = getSharedPreferences("HYUNDAI_PREFERENCE", MODE_PRIVATE).edit();
                             editor.putString(videoId, savedFilePath);
                             editor.apply();
 //                            mPbar.setVisibility(View.GONE);

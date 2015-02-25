@@ -30,8 +30,8 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     @InjectView(R.id.vr_layout)
     RelativeLayout vrLayout;
 
-    private static final int SWIPE_MIN_DISTANCE = 150;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 20;
+    private static final int SWIPE_MIN_DISTANCE = 100;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 10;
 
     private int[] convenience_car_array = {
             R.drawable.elantra_teight_blue0,
@@ -108,11 +108,11 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         @Override
         public boolean onScroll(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
             try {
-                if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE) {
+                if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE && (velocityX - velocityY) > SWIPE_THRESHOLD_VELOCITY) {
                     mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_in));
                     mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_out));
                     mVRFlipper.showPrevious();
-                } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
+                } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE && (velocityY - velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                     mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_in));
                     mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_out));
                     mVRFlipper.showNext();

@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.hyundai.teli.smartsales.R;
@@ -49,7 +48,6 @@ public class Splash extends Activity implements MediaPlayer.OnCompletionListener
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        Toast.makeText(getApplicationContext(), "Splash Ended", Toast.LENGTH_SHORT).show();
         boolean isRegistered = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE).getBoolean("SIGN_UP", false);
         if (isRegistered) {
             Intent openHome = new Intent(this, Home.class);

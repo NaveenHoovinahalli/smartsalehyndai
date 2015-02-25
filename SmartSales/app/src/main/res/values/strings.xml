@@ -71,5 +71,6 @@
     <string name="email2">Email</string>
     <string name="total_price">Total Price</string>
     <string name="brand_story_heading">HYUNDAI MOTOR BRAND STORY</string>
+    <string name="title_activity_validate">Validate</string>
 
 </resources>

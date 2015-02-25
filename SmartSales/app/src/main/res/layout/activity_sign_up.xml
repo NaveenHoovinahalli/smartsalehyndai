@@ -14,7 +14,7 @@
 
     <ImageView
         android:id="@+id/pic_view"
-        android:layout_width="230dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:src="@drawable/pic_view"
         android:scaleType="fitXY"
@@ -64,7 +64,7 @@
         android:maxLength="30"
         android:inputType="textEmailAddress" />
 
-    <com.hyundai.teli.smartsales.views.HEditText
+    <!--<com.hyundai.teli.smartsales.views.HEditText
         android:id="@+id/dealer_id"
         style="@style/SettingInputBox02"
         android:layout_width="352dp"
@@ -74,7 +74,7 @@
         android:layout_marginBottom="6dp"
         android:hint="@string/dealer_id"
         android:maxLength="30"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress" />-->
 
     <com.hyundai.teli.smartsales.views.HEditText
         android:id="@+id/dealer_branch"
@@ -82,7 +82,7 @@
         android:layout_width="352dp"
         android:layout_height="40dp"
         android:layout_alignLeft="@id/tv_name"
-        android:layout_below="@id/dealer_id"
+        android:layout_below="@id/dealer_email"
         android:layout_marginBottom="6dp"
         android:hint="@string/prompt_input_branch"
         android:maxLength="20"
