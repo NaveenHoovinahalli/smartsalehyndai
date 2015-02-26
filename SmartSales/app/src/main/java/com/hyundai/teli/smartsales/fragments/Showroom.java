@@ -2,17 +2,48 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
+import com.hyundai.teli.smartsales.models.CarName;
+import com.hyundai.teli.smartsales.utils.Constants;
+import com.hyundai.teli.smartsales.utils.HyRequestQueue;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -25,6 +56,9 @@ public class Showroom extends BaseFragment {
 
     @InjectView(R.id.car_container)
     LinearLayout carContainer;
+
+    @InjectView(R.id.progressBar)
+    ProgressBar mProgressBar;
 
     ArrayList<ImageView> carDescriptionList = new ArrayList<>();
 
@@ -53,34 +87,197 @@ public class Showroom extends BaseFragment {
     };
     private LinearLayout carDetailIcons;
     private int previousId = -1;
+    Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_showroom, null);
         ButterKnife.inject(this, view);
-        addCars();
+        mContext = getActivity();
+//        addCars();
+        parseJson();
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    private void parseJson() {
+        try {
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Hyundai/Thumbnails/allcars.json");
+            if (!file.exists()) {
+                fetchCarInfo();
+            } else {
+                FileInputStream stream = new FileInputStream(file);
+                String jsonStr = null;
+                try {
+                    FileChannel fc = stream.getChannel();
+                    MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+
+                    jsonStr = Charset.defaultCharset().decode(bb).toString();
+
+                } finally {
+                    stream.close();
+                }
+                JSONArray response = new JSONArray(jsonStr);
+                Type listType = new TypeToken<ArrayList<CarName>>() {
+                }.getType();
+                final ArrayList<CarName> carNames = new Gson().fromJson(response.toString(), listType);
+                checkDirectory(carNames);
+                Log.d("Showroom", "Response::" + carNames);
+
+            }
+        } catch (IOException fe) {
+            fe.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void addCars() {
-        for (int i = 0; i < cars.length; i++) {
-            final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(0, 0, 50, 0);
+    private void fetchCarInfo() {
+        JsonArrayRequest carsRequest = new JsonArrayRequest(Constants.ALL_CARS,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("Showroom", "Response Fetch Car Info Success::" + response);
+                        Type listType = new TypeToken<ArrayList<CarName>>() {
+                        }.getType();
+                        final ArrayList<CarName> carNames = new Gson().fromJson(response.toString(), listType);
+                        try {
+                            FileWriter fw = new FileWriter(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Hyundai/Thumbnails/allcars.json");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.write(response.toString());
+                            bw.flush();
+                            bw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Handler mHandler = new Handler();
 
-            final LinearLayout carHolder = new LinearLayout(getActivity());
+                        final Runnable myRunnable = new Runnable() {
+                            public void run() {
+                                checkDirectory(carNames);
+                            }
+                        };
+                        mHandler.post(myRunnable);
+//                        showToast();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Showroom", "Response Error::" + error);
+                        mProgressBar.setVisibility(View.GONE);
+                    }
+                });
+        HyRequestQueue.getInstance(getActivity()).getRequestQueue().add(carsRequest);
+    }
+
+    private void checkDirectory(ArrayList<CarName> carNames) {
+        try {
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                File thumbnailsPath = new File(Environment.getExternalStorageDirectory()
+                        + File.separator
+                        + Constants.SDCARD_THUMBNAILS);
+                Log.d("Showroom","Thumbnail Path::" + thumbnailsPath);
+                if (!thumbnailsPath.exists())
+                    thumbnailsPath.mkdirs();
+
+                for (int i = 0; i < carNames.size(); i++) {
+                    File carFolder = new File(thumbnailsPath + "/" + carNames.get(i).getCarName());
+                    if (!carFolder.exists()) {
+                        carFolder.mkdirs();
+                    }
+                    Log.d("Showroom","Car Folder Path::" + carFolder);
+                    File image = new File(carFolder + "/" , carNames.get(i).getCarThumbnail().replace("/media/tablet_images/"
+                            + carNames.get(i).getCarName().replace(" ", "") + "/thumbnail/", ""));
+                    Log.d("Showroom","Image Path::" + image);
+                    if (!image.exists()) {
+                        Log.d("Showroom","No Image !!");
+                        downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarThumbnail());
+                        downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarDescription());
+                        downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarLogo());
+                    }
+                }
+                showCars(carNames);
+            } else {
+                Toast.makeText(getActivity(), "Error! No SDCARD Found!", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void downloadImages(final File carFolderPath, final String carName, final String imagePath) {
+        Log.d("Showroom", "Download Images::");
+        Target mTarget = new Target() {
+
+            @Override
+            public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+                // Perform simple file operation to store this bitmap to your sd card
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        File file = new File(carFolderPath + "/" +
+                                imagePath.replace("/media/tablet_images/" +
+                                        carName.replace(" ", "") + "/thumbnail/", ""));
+                        try {
+                            if (!file.exists()) {
+                                file.createNewFile();
+                                FileOutputStream fostream = new FileOutputStream(file);
+                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fostream);
+                                fostream.close();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }).start();
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                Log.d("Showroom", "ALL_MODELS_NAMES onBitmapFailed::" + errorDrawable);
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+            }
+        };
+        mProgressBar.setVisibility(View.GONE);
+        if (getActivity() != null)
+            Picasso.with(mContext).load(Uri.parse(Constants.BASE_URL + imagePath)).into(mTarget);
+    }
+
+    private void showCars(ArrayList<CarName> carNames) {
+        for (int i = 0; i < carNames.size(); i++) {
+            String thumbnailpath = "file://" + Environment.getExternalStorageDirectory() + File.separator + "Hyundai/Thumbnails" +
+                    File.separator + carNames.get(i).getCarName() + File.separator +
+                    carNames.get(i).getCarThumbnail().replace("/media/tablet_images/" + carNames.get(i).
+                            getCarName().replace(" ", "") + "/thumbnail/", "");
+            String descriptionPath = "file://" + Environment.getExternalStorageDirectory() + File.separator + "Hyundai/Thumbnails" +
+                    File.separator + carNames.get(i).getCarName() + File.separator +
+                    carNames.get(i).getCarDescription().replace("/media/tablet_images/" + carNames.get(i).
+                            getCarName().replace(" ", "") + "/thumbnail/", "");
+            Log.d("Showroom", "Path::" + thumbnailpath);
+            final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 0, 50, 0);
+            LinearLayout.LayoutParams carImageParams = new LinearLayout.LayoutParams(484, 650);
+            LinearLayout.LayoutParams carDescImageParams = new LinearLayout.LayoutParams(484, 372);
+
+            final LinearLayout carHolder = new LinearLayout(mContext);
             carHolder.setLayoutParams(lp);
             carHolder.setOrientation(LinearLayout.VERTICAL);
 
-            ImageView carImage = new ImageView(getActivity());
-            carImage.setImageResource(cars[i]);
+            ImageView carImage = new ImageView(mContext);
+            carImage.setLayoutParams(carImageParams);
+            carImage.setScaleType(ImageView.ScaleType.FIT_XY);
+//            carImage.setImageResource(cars[i]);
+            Picasso.with(mContext).load(Uri.parse(thumbnailpath)).placeholder(R.drawable.car_placeholder).into(carImage);
 
-            final ImageView carDescription = new ImageView(getActivity());
-            carDescription.setImageResource(carsDesc[i]);
+            final ImageView carDescription = new ImageView(mContext);
+            carDescription.setLayoutParams(carDescImageParams);
+            carDescription.setScaleType(ImageView.ScaleType.FIT_XY);
+//            carDescription.setImageResource(carsDesc[i]);
+            Picasso.with(mContext).load(Uri.parse(descriptionPath)).placeholder(R.drawable.car_description).into(carDescription);
 
             carHolder.addView(carImage);
             carHolder.addView(carDescription);
@@ -107,7 +304,7 @@ public class Showroom extends BaseFragment {
 
                 @Override
                 public void onClick(View view) {
-                    if(previousId !=view.getId() && previousId!=-1){
+                    if (previousId != view.getId() && previousId != -1) {
                         carDetailIcons.findViewById(previousId);
                         carDetailIcons.setVisibility(View.GONE);
                         carDescriptionList.get(previousId).setVisibility(View.VISIBLE);
@@ -115,7 +312,7 @@ public class Showroom extends BaseFragment {
                     carDescription.setVisibility(View.GONE);
                     previousId = view.getId();
                     LayoutInflater inflater = (LayoutInflater)
-                            getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                            mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     carDetailIcons = (LinearLayout) inflater.inflate(R.layout.popup_shortcuts, null);
                     carHolder.addView(carDetailIcons);
                     ImageView btnVR = (ImageView) carDetailIcons.findViewById(R.id.pop_main_vr);

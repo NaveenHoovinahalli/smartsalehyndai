@@ -12,8 +12,8 @@
 
         <RelativeLayout
             android:id="@+id/pic_group"
-            android:layout_width="492dp"
-            android:layout_height="618dp"
+            android:layout_width="490dp"
+            android:layout_height="620dp"
             android:layout_marginLeft="67dp"
             android:layout_marginTop="75dp"
             android:background="@drawable/pic_bg">
@@ -22,20 +22,20 @@
                 android:id="@+id/name_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="77dp"
+                android:layout_marginTop="72dp"
+                android:minLines="2"
                 style="@style/profilePicGroupName"
-                android:text="Antonio Banderas" />
+                android:text="Nitish Kulkarni"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
             <ImageView
                 android:id="@+id/bc_pic_view"
-                android:layout_width="205dp"
-                android:layout_height="258dp"
-                android:layout_alignLeft="@id/name_view"
-                android:layout_below="@id/name_view"
-                android:layout_marginTop="30dp" />
+                android:layout_width="280dp"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:layout_below="@+id/name_view"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
         <RelativeLayout

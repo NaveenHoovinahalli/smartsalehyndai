@@ -3,19 +3,36 @@ package com.hyundai.teli.smartsales.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
 public class CarName implements Parcelable {
 
+    @SerializedName("car_id")
+    String id;
+
+    @SerializedName("car_name")
     String carName;
 
-    String baseLine;
+    @SerializedName("car_logo_image_file")
+    String carLogo;
 
-    String description;
+    @SerializedName("car_thumbnail_image_file")
+    String carThumbnail;
 
-    String thumbnail;
+    @SerializedName("car_description_image_file")
+    String carDescription;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCarName() {
         return carName;
@@ -25,29 +42,30 @@ public class CarName implements Parcelable {
         this.carName = carName;
     }
 
-    public String getBaseLine() {
-        return baseLine;
+    public String getCarLogo() {
+        return carLogo;
     }
 
-    public void setBaseLine(String baseLine) {
-        this.baseLine = baseLine;
+    public void setCarLogo(String carLogo) {
+        this.carLogo = carLogo;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCarThumbnail() {
+        return carThumbnail;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCarThumbnail(String carThumbnail) {
+        this.carThumbnail = carThumbnail;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public String getCarDescription() {
+        return carDescription;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setCarDescription(String carDescription) {
+        this.carDescription = carDescription;
     }
+
 
     @Override
     public int describeContents() {
@@ -56,20 +74,22 @@ public class CarName implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
         dest.writeString(this.carName);
-        dest.writeString(this.baseLine);
-        dest.writeString(this.description);
-        dest.writeString(this.thumbnail);
+        dest.writeString(this.carLogo);
+        dest.writeString(this.carThumbnail);
+        dest.writeString(this.carDescription);
     }
 
     public CarName() {
     }
 
     private CarName(Parcel in) {
+        this.id = in.readString();
         this.carName = in.readString();
-        this.baseLine = in.readString();
-        this.description = in.readString();
-        this.thumbnail = in.readString();
+        this.carLogo = in.readString();
+        this.carThumbnail = in.readString();
+        this.carDescription = in.readString();
     }
 
     public static final Creator<CarName> CREATOR = new Creator<CarName>() {

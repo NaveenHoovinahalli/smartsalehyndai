@@ -29,8 +29,8 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     ImageButton interiourButton;
 
 
-    private static final int SWIPE_MIN_DISTANCE = 10;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 20;
+    private static final int SWIPE_MIN_DISTANCE = 100;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 10;
 
     private int[] convenience_car_array = {
             R.drawable.elantra_teight_blue0,

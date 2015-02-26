@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.TabsPagerAdapter;
@@ -138,15 +137,13 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {
-    }
+    public void onPageScrollStateChanged(int state) {}
 
     public void addRegistrationFragment() {
         viewPager.setVisibility(View.GONE);
         registrationContainer.setVisibility(View.VISIBLE);
         Registration registration = new Registration();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.registration_container, registration).commit();
-        Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show();
     }
 
     public void removeRegistrationFragment() {

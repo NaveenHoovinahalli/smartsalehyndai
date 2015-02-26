@@ -25,7 +25,7 @@ public class Estimate extends BaseFragment {
     }
 
     private void removeCar() {
-        getActivity().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
+        getActivity().getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .edit()
                 .putString("CAR", "")
                 .commit();
