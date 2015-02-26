@@ -105,14 +105,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         mVRFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
 
-        ImageView hotspot_image = new ImageView(getActivity());
-        hotspot_image.setImageResource(R.drawable.hotspot_blue);
-        hotspot_image.setX(150.0f);
-        hotspot_image.setY(150.0f);
-        vrLayout.addView(hotspot_image);
-
-
-        return view;
+            return view;
     }
 
     private void fetchValues() {
