@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.joanzapata.pdfview.PDFView;
 
 import java.io.File;
@@ -23,19 +24,20 @@ public class Catalog extends BaseFragment {
     @InjectView(R.id.pdfview)
     PDFView pdfView;
 
-    public static String CATALOG_PATH = "/Hyundai/Cars/grandi10/catalogue/";
+    public static String CATALOG_PATH;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_catalog, null);
         ButterKnife.inject(this, view);
+        CATALOG_PATH = ((CarDetails)getActivity()).getBasePath() + File.separator + "catalogue/";
         setPdf();
         return view;
     }
 
     private void setPdf() {
 //        File file=new File("/mnt/sdcard/Download/catalog.pdf");
-        File file = new File(Environment.getExternalStorageDirectory() + CATALOG_PATH + "catalog.pdf");
+        File file = new File(CATALOG_PATH + "catalog.pdf");
         if (!file.exists()) {
 //            file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
         }
