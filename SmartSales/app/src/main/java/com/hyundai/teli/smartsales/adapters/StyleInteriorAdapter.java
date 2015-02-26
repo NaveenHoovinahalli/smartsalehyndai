@@ -6,25 +6,27 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.hyundai.teli.smartsales.fragments.PerformanceFragment;
 
+import java.util.ArrayList;
+
 /**
  * Created by naveen on 16/2/15.
  */
 public class StyleInteriorAdapter extends FragmentStatePagerAdapter {
 
-    String[] images;
+    ArrayList<String> images=new ArrayList<String>();
 
-    public StyleInteriorAdapter(FragmentManager fm, int[] images) {
+    public StyleInteriorAdapter(FragmentManager fm, ArrayList<String> images) {
         super(fm);
-//        this.images = images;
+        this.images = images;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return new PerformanceFragment(images[i]);
+        return new PerformanceFragment(images.get(i));
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return images.size();
     }
 }

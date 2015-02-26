@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
@@ -64,10 +63,9 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     private String Base_Path="/Hyundai/Cars/Grandi10/";
     private String VIRTUALEXTERIOR_MAIN_PATH;
     private VrExteriorMain vrExteriorMain;
-    private String SELECTED_CAR_COLOR="winered";
 
 
-    private static final int SWIPE_MIN_DISTANCE = 150;
+    private static final int SWIPE_MIN_DISTANCE = 10;
     private static final int SWIPE_THRESHOLD_VELOCITY = 20;
 
 
@@ -80,6 +78,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
 
     GestureDetector detector;
+    ImageView previousView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -120,6 +119,10 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         parceJson();
         getValuesforColorSelection(0);
         setColorPallet();
+        colorPallet.get(0).setImageURI(Uri.parse(colorImagePathselected.get(0)));
+
+        setViewFlipper();
+
 
     }
 
@@ -138,7 +141,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     private void setColorPallet() {
         for(int i=0;i<colorCount;i++){
             colorPallet.get(i).setVisibility(View.VISIBLE);
-            colorPallet.get(i).setImageURI(Uri.parse(colorImagePathselected.get(i)));
+            colorPallet.get(i).setImageURI(Uri.parse(colorImagePathNotselected.get(i)));
 
         }
 
@@ -147,40 +150,72 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     @OnClick({R.id.colorPallet0,R.id.colorPallet1,R.id.colorPallet2,R.id.colorPallet3,R.id.colorPallet4,R.id.colorPallet5,R.id.colorPallet6,
             R.id.colorPallet7,R.id.colorPallet8,R.id.colorPallet9,R.id.colorPallet10})
     public void onColorButtonSelected(View view){
+        ImageView view1;
         switch (view.getId()){
             case R.id.colorPallet0:
                 getValuesforColorSelection(0);
-//                setCollorPalletSelecion(view);
+                setColorPallet();
+                 view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(0)));
                 break;
             case R.id.colorPallet1:
                 getValuesforColorSelection(1);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(1)));
                 break;
             case R.id.colorPallet2:
                 getValuesforColorSelection(2);
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(2)));
                 break;
             case R.id.colorPallet3:
                 getValuesforColorSelection(3);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(3)));
                 break;
             case R.id.colorPallet4:
                 getValuesforColorSelection(4);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(4)));
                 break;
             case R.id.colorPallet5:
                 getValuesforColorSelection(5);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(5)));
                 break;
             case R.id.colorPallet6:
                 getValuesforColorSelection(6);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(6)));
                 break;
             case R.id.colorPallet7:
                 getValuesforColorSelection(7);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(7)));
                 break;
             case R.id.colorPallet8:
                 getValuesforColorSelection(7);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(8)));
                 break;
             case R.id.colorPallet9:
                 getValuesforColorSelection(9);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(9)));
                 break;
             case R.id.colorPallet10:
                 getValuesforColorSelection(10);
+                setColorPallet();
+                view1= (ImageView) view;
+                view1.setImageURI(Uri.parse(colorImagePathselected.get(10)));
                 break;
         }
 
@@ -197,7 +232,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
         }
 
-        setViewFlipper();
     }
 
     private void parceJson() {
@@ -205,12 +239,14 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
         vrExteriorMain=gson.fromJson(json,VrExteriorMain.class);
 
+        String savingGson= new Gson().toJson(vrExteriorMain);
+        Log.d("SAVINGGSON",""+savingGson);
+
             colorImagePathNotselected.clear();
               colorImagePathselected.clear();
 
                 colorCount=vrExteriorMain.getVrExteriorCars().size();
                 for(int i=0;i<vrExteriorMain.getVrExteriorCars().size();i++){
-
 
 
                     String image= vrExteriorMain.getVrExteriorCars().get(i).getColorPalletSelected();
@@ -221,14 +257,11 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
                     String imagetwo= vrExteriorMain.getVrExteriorCars().get(i).getColorPalletNotSelected();
                     String seperatortwo[]= imagetwo.split("/");
-                    String imagetwoFinalPath=VIRTUALEXTERIOR_MAIN_PATH+seperator[seperator.length-2]+"/"+seperator[seperator.length-1];
+                    String imagetwoFinalPath=VIRTUALEXTERIOR_MAIN_PATH+seperatortwo[seperatortwo.length-2]+"/"+seperatortwo[seperatortwo.length-1];
                     colorImagePathNotselected.add(imagetwoFinalPath);
                     Log.d("NOTSELECTOR",imagetwoFinalPath);
 
 
-//                    for(int j=0;j<vrExteriorMain.getVrExteriorCars().get(i).getVrExteriorImageArray().size();j++){
-//
-//            }
         }
     }
 
@@ -263,12 +296,12 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         public boolean onScroll(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
             try {
                 if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE) {
-                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_in));
-                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_out));
+//                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_in));
+//                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.left_out));
                     mVRFlipper.showPrevious();
                 } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
-                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_in));
-                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_out));
+//                    mVRFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_in));
+//                    mVRFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.right_out));
                     mVRFlipper.showNext();
                 }
                 return true;

@@ -51,10 +51,10 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     SafetyMain safetyMains;
     ConvenienceMain convenienceMain;
 
-    ArrayList<String> safetyImages ;
-    ArrayList<String> safetyListValues;
-    ArrayList<String> convenienceImages ;
-    ArrayList<String> convenienceListValues;
+    ArrayList<String> safetyImages=new ArrayList<String>() ;
+    ArrayList<String> safetyListValues=new ArrayList<String>() ;
+    ArrayList<String> convenienceImages= new ArrayList<String>() ;
+    ArrayList<String> convenienceListValues=new ArrayList<String>() ;
 
     public String Base_Path="/Hyundai/Cars/Grandi10/";
     public static String SAFETY_CONVENIENCE_MAIN_PATH;
@@ -111,6 +111,8 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
         safetyMains=gson.fromJson(json,SafetyMain.class);
         Log.d("Safety","from method"+json);
+        safetyImages.clear();
+        safetyListValues.clear();
 
         for(int i=0;i<safetyMains.getSafetyMainArray().size();i++){
 
@@ -135,6 +137,9 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
         convenienceMain=gson.fromJson(json,ConvenienceMain.class);
         Log.d("Safety","from method"+json);
+
+        convenienceImages.clear();
+        convenienceListValues.clear();
 
         for(int i=0;i<convenienceMain.getConvenienceMainArray().size();i++){
 

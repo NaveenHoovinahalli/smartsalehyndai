@@ -14,4 +14,20 @@ public class StyleInteriorArray {
 
     @SerializedName("style_interior_hotspot")
     ArrayList<String> hotSpots;
+
+    public String getInteriorImage() {
+        return interiorImage;
+    }
+
+    public void setInteriorImage(String interiorImage) {
+        this.interiorImage = interiorImage;
+    }
+
+    public ArrayList<String> getHotSpots() {
+        return hotSpots;
+    }
+
+    public void setHotSpots(ArrayList<String> hotSpots) {
+        this.hotSpots = hotSpots;
+    }
 }

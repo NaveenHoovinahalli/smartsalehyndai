@@ -119,8 +119,9 @@ public class NDEVideos extends Fragment {
         }
 
         File imagefile=new File(file+"/"+imageName);
-        if(imagefile.exists() && imageName.equals(HyDataManager.init(getActivity()).getNdeImageName(id+"image"))) {
-           imageView.setImageURI(Uri.parse(imagefile.toString()));
+        if(imagefile.exists()) {
+            HyDataManager.init(getActivity()).saveNdeVideoName(id+"image",fileName);
+            imageView.setImageURI(Uri.parse(imagefile.toString()));
         }else {
             if(imagefile.exists())
                 imagefile.delete();
@@ -150,9 +151,10 @@ public class NDEVideos extends Fragment {
             String videoName = separated[separated.length - 1];
 
             File videofile = new File(file + "/" + videoName);
-            if (videofile.exists() && videoName.equals(HyDataManager.init(getActivity()).getNdeVideoName(id+"video"))) {
+            if (videofile.exists()) {
                 Log.d("BrandStory", "fileexists");
 
+                HyDataManager.init(getActivity()).saveNdeVideoName(id+"video",fileName);
                 Intent intent=new Intent(getActivity(), PlayVideoActivity.class);
                 intent.putExtra(PlayVideoActivity.VIDEO_URL,videofile.toString());
                 startActivity(intent);

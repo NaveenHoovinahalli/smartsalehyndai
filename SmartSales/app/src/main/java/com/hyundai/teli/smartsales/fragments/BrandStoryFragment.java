@@ -143,8 +143,9 @@ public class BrandStoryFragment extends Fragment {
 
 
         File imagefile=new File(file+"/"+imageName);
-        if(imagefile.exists() && imageName.equals(HyDataManager.init(getActivity()).getBrandImageName(id+"brandimage"))) {
+        if(imagefile.exists()) {
             Log.d("BrandStory","fileexists");
+            HyDataManager.init(getActivity()).saveBrandImageName(id+"brandimage",fileName);
             videoThumbail.setImageURI(Uri.parse(imagefile.toString()));
         }else {
             if(imagefile.exists())
@@ -174,9 +175,9 @@ public class BrandStoryFragment extends Fragment {
 
 
         File nvideofile=new File(file+"/"+videoName);
-        if(nvideofile.exists() && videoName.equals(HyDataManager.init(getActivity()).getBrandVideoName(id+"brandvideo"))) {
+        if(nvideofile.exists()) {
             Log.d("BrandStory","fileexists" +nvideofile);
-
+            HyDataManager.init(getActivity()).saveBrandVideoName(id+"brandvideo",fileName);
             Intent intent=new Intent(getActivity(), PlayVideoActivity.class);
             intent.putExtra(PlayVideoActivity.VIDEO_URL,nvideofile.toString());
             startActivity(intent);
@@ -194,7 +195,7 @@ public class BrandStoryFragment extends Fragment {
     public void downloadVideo(String name, String Url,String type) {
 
         fileUrl =Url;
-        fileName = name;
+        fileName =name;
         this.type=type;
         Log.d("VIDEOId,VideoURL", "" + fileName + " " + fileUrl);
 

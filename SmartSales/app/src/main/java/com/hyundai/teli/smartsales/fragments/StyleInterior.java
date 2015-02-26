@@ -2,8 +2,10 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.StyleInteriorAdapter;
+import com.hyundai.teli.smartsales.models.StyleInteriorMain;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.util.ArrayList;
 
@@ -50,8 +55,13 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @InjectView(R.id.interior_main_image_layout)
     RelativeLayout layoutHotspot;
 
-    int[] images = {R.drawable.int0, R.drawable.int1, R.drawable.int2, R.drawable.int3,
-            R.drawable.int4, R.drawable.int5, R.drawable.int6};
+
+    ArrayList<String> interiorImages=new ArrayList<String>();
+    StyleInteriorMain styleInteriorMain;
+    private String Base_Path="/Hyundai/Cars/Grandi10/";
+    private String STYLEINTERIOR_MAIN_PATH;
+
+
     ArrayList<String> names = new ArrayList<String>();
 
     View previousView = null;
@@ -60,9 +70,35 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_style_interior, null);
         ButterKnife.inject(this, view);
-        interiorMainImage.setImageResource(R.drawable.int0);
-        setFragment();
+        STYLEINTERIOR_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"style_interior/";
+        setValues();
+
         return view;
+    }
+
+    private void setValues() {
+        parceJson();
+        setFragment();
+    }
+
+    private void parceJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        styleInteriorMain=gson.fromJson(json,StyleInteriorMain.class);
+
+        interiorImages.clear();
+       for(int i=0;i<styleInteriorMain.getStyleInterior().size();i++){
+           String image= styleInteriorMain.getStyleInterior().get(i).getInteriorImage();
+           String seperator[]= image.split("/");
+           String imageFinalPath=STYLEINTERIOR_MAIN_PATH+seperator[seperator.length-1];
+           interiorImages.add(imageFinalPath);
+           Log.d("IMAGE",""+imageFinalPath);
+       }
+
+
+
+
     }
 
     private void setFragment() {
@@ -81,23 +117,25 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     private void setImageHotSpot() {
 
 
-        for (int i = 1; i < 7; i++) {
-            final RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.leftMargin = 30 * i;
-            params.rightMargin = 35 * i;
-            params.topMargin = 30 * i;
-            final ImageView imageView = new ImageView(getActivity());
-            imageView.setImageResource(R.drawable.btn_add_plus);
-            imageView.setTag(i);
-            layoutHotspot.addView(imageView, params);
-            imageView.setOnClickListener(this);
-
-        }
+//        for (int i = 1; i < 7; i++) {
+//            final RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//            params.leftMargin = 30 * i;
+//            params.rightMargin = 35 * i;
+//            params.topMargin = 30 * i;
+//            final ImageView imageView = new ImageView(getActivity());
+//            imageView.setImageResource(R.drawable.btn_add_plus);
+//            imageView.setTag(i);
+//            layoutHotspot.addView(imageView, params);
+//            imageView.setOnClickListener(this);
+//
+//        }
 
     }
 
     private void setPager() {
-        interiorPager.setAdapter(new StyleInteriorAdapter(getActivity().getSupportFragmentManager(), images));
+        interiorPager.setAdapter(new StyleInteriorAdapter(getActivity().getSupportFragmentManager(), interiorImages));
+        interiorPager.setVisibility(View.VISIBLE);
+        interiorPager.setCurrentItem(0);
         interiorPager.setOnPageChangeListener(this);
     }
 

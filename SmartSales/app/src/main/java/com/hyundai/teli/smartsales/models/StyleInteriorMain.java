@@ -11,4 +11,12 @@ public class StyleInteriorMain {
 
     @SerializedName("style_interior")
     ArrayList<StyleInteriorArray> styleInterior;
+
+    public ArrayList<StyleInteriorArray> getStyleInterior() {
+        return styleInterior;
+    }
+
+    public void setStyleInterior(ArrayList<StyleInteriorArray> styleInterior) {
+        this.styleInterior = styleInterior;
+    }
 }
