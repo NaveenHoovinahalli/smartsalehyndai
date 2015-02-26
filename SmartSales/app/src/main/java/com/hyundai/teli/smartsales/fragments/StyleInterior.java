@@ -2,7 +2,6 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -23,7 +22,6 @@ import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.StyleInteriorAdapter;
 import com.hyundai.teli.smartsales.models.StyleInteriorMain;
 import com.hyundai.teli.smartsales.utils.AndroidUtils;
-import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.io.File;
 import java.util.ArrayList;

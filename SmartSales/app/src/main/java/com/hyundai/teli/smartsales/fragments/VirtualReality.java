@@ -2,7 +2,6 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -19,7 +18,6 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.VrExteriorMain;
 import com.hyundai.teli.smartsales.utils.AndroidUtils;
-import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -165,6 +163,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
                 break;
             case R.id.colorPallet2:
                 getValuesforColorSelection(2);
+                setColorPallet();
                 view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(2)));
                 break;
@@ -199,7 +198,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(7)));
                 break;
             case R.id.colorPallet8:
-                getValuesforColorSelection(7);
+                getValuesforColorSelection(8);
                 setColorPallet();
                 view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(8)));

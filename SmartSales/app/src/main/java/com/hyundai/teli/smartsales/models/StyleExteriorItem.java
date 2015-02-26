@@ -16,7 +16,7 @@ public class StyleExteriorItem {
     String imageFile;
 
     @SerializedName("style_exterior_hotspot")
-    ArrayList<String> hotspot;
+    ArrayList<StyleExteriorHotspot> hotspot=new ArrayList<StyleExteriorHotspot>();
 
     public String getImageId() {
         return imageId;
@@ -34,11 +34,11 @@ public class StyleExteriorItem {
         this.imageFile = imageFile;
     }
 
-    public ArrayList<String> getHotspot() {
+    public ArrayList<StyleExteriorHotspot> getHotspot() {
         return hotspot;
     }
 
-    public void setHotspot(ArrayList<String> hotspot) {
+    public void setHotspot(ArrayList<StyleExteriorHotspot> hotspot) {
         this.hotspot = hotspot;
     }
 }
