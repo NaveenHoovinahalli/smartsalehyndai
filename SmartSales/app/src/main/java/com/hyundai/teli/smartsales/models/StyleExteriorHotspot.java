@@ -1,17 +1,20 @@
 package com.hyundai.teli.smartsales.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by naveen on 26/2/15.
  */
-public class StyleExteriorHotspot {
+public class StyleExteriorHotspot implements Parcelable{
 
     @SerializedName("exterior_hotspot_id")
-    String hotspotId;
+    String hotSpotId;
 
     @SerializedName("style_exterior_hotspotdetails")
-    StyleExteriorHotspotObject styleExteriorHotspotObject= new StyleExteriorHotspotObject();
+    StyleExteriorHotspotDetails styleExteriorHotspotDetails;
 
     @SerializedName("X")
     String xValue;
@@ -19,20 +22,20 @@ public class StyleExteriorHotspot {
     @SerializedName("Y")
     String yValue;
 
-    public String getHotspotId() {
-        return hotspotId;
+    public String getHotSpotId() {
+        return hotSpotId;
     }
 
-    public void setHotspotId(String hotspotId) {
-        this.hotspotId = hotspotId;
+    public void setHotSpotId(String hotSpotId) {
+        this.hotSpotId = hotSpotId;
     }
 
-    public StyleExteriorHotspotObject getStyleExteriorHotspotObject() {
-        return styleExteriorHotspotObject;
+    public StyleExteriorHotspotDetails getStyleExteriorHotspotDetails() {
+        return styleExteriorHotspotDetails;
     }
 
-    public void setStyleExteriorHotspotObject(StyleExteriorHotspotObject styleExteriorHotspotObject) {
-        this.styleExteriorHotspotObject = styleExteriorHotspotObject;
+    public void setStyleExteriorHotspotDetails(StyleExteriorHotspotDetails styleExteriorHotspotDetails) {
+        this.styleExteriorHotspotDetails = styleExteriorHotspotDetails;
     }
 
     public String getxValue() {
@@ -50,4 +53,37 @@ public class StyleExteriorHotspot {
     public void setyValue(String yValue) {
         this.yValue = yValue;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.hotSpotId);
+        dest.writeParcelable(this.styleExteriorHotspotDetails, 0);
+        dest.writeString(this.xValue);
+        dest.writeString(this.yValue);
+    }
+
+    public StyleExteriorHotspot() {
+    }
+
+    private StyleExteriorHotspot(Parcel in) {
+        this.hotSpotId = in.readString();
+        this.styleExteriorHotspotDetails = in.readParcelable(StyleExteriorHotspotDetails.class.getClassLoader());
+        this.xValue = in.readString();
+        this.yValue = in.readString();
+    }
+
+    public static final Creator<StyleExteriorHotspot> CREATOR = new Creator<StyleExteriorHotspot>() {
+        public StyleExteriorHotspot createFromParcel(Parcel source) {
+            return new StyleExteriorHotspot(source);
+        }
+
+        public StyleExteriorHotspot[] newArray(int size) {
+            return new StyleExteriorHotspot[size];
+        }
+    };
 }

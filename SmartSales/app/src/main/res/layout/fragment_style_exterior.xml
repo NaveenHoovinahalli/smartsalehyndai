@@ -6,12 +6,23 @@
     android:background="@drawable/settings_bg"
     android:weightSum="3">
 
-    <ViewFlipper
-        android:id="@+id/exterior_flipper"
-        android:layout_width="940dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent">
 
-    </ViewFlipper>
+        <ViewFlipper
+            android:id="@+id/exterior_flipper"
+            android:layout_width="940dp"
+            android:layout_height="fill_parent">
+
+        </ViewFlipper>
+        <RelativeLayout
+            android:id="@+id/hotspot_container"
+            android:layout_width="940dp"
+            android:layout_height="fill_parent">
+
+        </RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
