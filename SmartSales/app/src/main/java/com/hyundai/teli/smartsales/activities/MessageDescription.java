@@ -11,6 +11,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.views.HTextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -27,13 +28,39 @@ public class MessageDescription extends ActionBarActivity {
     @InjectView(R.id.catalogueMenu)
     ImageView mCatalogMenu;
 
+    @InjectView(R.id.title)
+    HTextView messageTitle;
+
+    @InjectView(R.id.date)
+     HTextView messageDate;
+
+    @InjectView(R.id.no)
+     HTextView messageNo;
+
+    @InjectView(R.id.description)
+      HTextView messageDesription;
+
     PopupWindow mQuickMenu;
+
+    public static final String TITLE="title";
+    public static final String DESCRIPTION="description";
+    public static final String DATE="date";
+    public static final String NO="no";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_description);
         ButterKnife.inject(this);
+
+        if(getIntent().hasExtra(TITLE)){
+            messageNo.setText(getIntent().getStringExtra(NO));
+            messageTitle.setText(getIntent().getStringExtra(TITLE));
+            messageDate.setText(getIntent().getStringExtra(DATE));
+            messageDesription.setText(getIntent().getStringExtra(DESCRIPTION));
+
+        }
+
     }
 
     @OnClick(R.id.image_list)

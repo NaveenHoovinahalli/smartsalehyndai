@@ -10,17 +10,19 @@ import android.widget.BaseAdapter;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.views.HTextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
 public class ListAdapter extends BaseAdapter {
 
-    String[] listValues;
+    ArrayList<String> listValues;
     LayoutInflater inflater;
     Context context;
     boolean viewColor;
 
-    public ListAdapter(String[] listValues, Context context, boolean viewColor) {
+    public ListAdapter(ArrayList<String> listValues, Context context, boolean viewColor) {
         this.listValues = listValues;
         this.context = context;
         this.viewColor = viewColor;
@@ -29,12 +31,12 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listValues.length;
+        return listValues.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listValues[position];
+        return listValues.get(position);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class ListAdapter extends BaseAdapter {
             view.setBackgroundColor((Color.parseColor("#657FBD")));
         }
         HTextView textView = (HTextView) view.findViewById(R.id.list_item_text);
-        textView.setText(listValues[position]);
+        textView.setText(listValues.get(position));
         return view;
     }
 }

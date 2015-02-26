@@ -2,9 +2,11 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,15 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
+import com.hyundai.teli.smartsales.models.ConvenienceMain;
+import com.hyundai.teli.smartsales.models.SafetyMain;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,10 +48,17 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     PagerAdapter pagerAdapter;
     View previousView;
 
-    int[] safetyImages = {R.drawable.s1, R.drawable.s2, R.drawable.s3, R.drawable.s4, R.drawable.s5, R.drawable.s6};
-    int[] convenienceImages = {R.drawable.c1, R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5, R.drawable.c6};
-    String[] safetyListValues = {"Safety 1", "Safety 2", "Safety 3", "Safety 4", "Safety 5", "Safety 6"};
-    String[] conveienceListValues = {"Convenience 1", "Convenience 2", "Convenience 3", "Convenience 4", "Convenience 5", "Convenience 6"};
+    SafetyMain safetyMains;
+    ConvenienceMain convenienceMain;
+
+    ArrayList<String> safetyImages=new ArrayList<String>() ;
+    ArrayList<String> safetyListValues=new ArrayList<String>() ;
+    ArrayList<String> convenienceImages= new ArrayList<String>() ;
+    ArrayList<String> convenienceListValues=new ArrayList<String>() ;
+
+    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public static String SAFETY_CONVENIENCE_MAIN_PATH;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,9 +80,6 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         previousView = null;
         convenienceButton.setSelected(false);
         safetyButton.setSelected(true);
-//        convenienceButton.setImageResource(R.drawable.btn_conv_normal);
-//        convenienceButton.setBackgroundColor(Color.parseColor("#000000"));
-//        safetyButton.setImageResource(R.drawable.btn_safety_select);
         setForSafety();
     }
 
@@ -76,34 +88,94 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
         previousView = null;
         convenienceButton.setSelected(true);
         safetyButton.setSelected(false);
-//         convenienceButton.setImageResource(R.drawable.btn_conv_select);
-//        safetyButton.setImageResource(R.drawable.btn_safety_normal);
-//        safetyButton.setBackgroundColor(Color.parseColor("#000000"));
 
         setForConvenience();
 
     }
 
     private void setForSafety() {
+        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"safety/";
+
+        parcesafetyJson();
+
         safetyButton.setSelected(true);
-        setList(safetyListValues);
-        setPager(safetyImages);
+        if(safetyListValues.size()>0 && safetyImages.size()>0) {
+            setList(safetyListValues);
+            setPager(safetyImages);
+        }
+    }
+
+    private void parcesafetyJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
+        safetyMains=gson.fromJson(json,SafetyMain.class);
+        Log.d("Safety","from method"+json);
+        safetyImages.clear();
+        safetyListValues.clear();
+
+        for(int i=0;i<safetyMains.getSafetyMainArray().size();i++){
+
+            for(int j=0;j<safetyMains.getSafetyMainArray().get(i).getSafetyImages().size();j++){
+                Log.d("Safety","title"+safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyTitle());
+                Log.d("Safety","image"+safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage());
+                safetyListValues.add(safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyTitle());
+                String image= safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage();
+                String seperator[]= image.split("/");
+                String imageFinalPath=SAFETY_CONVENIENCE_MAIN_PATH+seperator[seperator.length-1];
+
+                safetyImages.add(imageFinalPath);
+            }
+        }
+
+
+    }
+
+    private void parceConvenienceJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
+        convenienceMain=gson.fromJson(json,ConvenienceMain.class);
+        Log.d("Safety","from method"+json);
+
+        convenienceImages.clear();
+        convenienceListValues.clear();
+
+        for(int i=0;i<convenienceMain.getConvenienceMainArray().size();i++){
+
+            for(int j=0;j<convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().size();j++){
+
+                convenienceListValues.add(convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().get(j).getConvenienceyTitle());
+                String image= convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().get(j).getConvenienceImage();
+                String seperator[]= image.split("/");
+                String imageFinalPath=SAFETY_CONVENIENCE_MAIN_PATH+seperator[seperator.length-1];
+
+                convenienceImages.add(imageFinalPath);
+            }
+        }
+
+
     }
 
     private void setForConvenience() {
-        setList(conveienceListValues);
-        setPager(convenienceImages);
+
+        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"convenience/";
+
+        parceConvenienceJson();
+        if(convenienceImages.size()>0 && convenienceListValues.size()>0) {
+
+            setList(convenienceListValues);
+            setPager(convenienceImages);
+        }
     }
 
-    private void setList(String[] listValues) {
-//        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
-//                android.R.layout.simple_list_item_1,listValues);
+    private void setList(ArrayList<String> listValues) {
 
         listView.setAdapter(new ListAdapter(listValues, getActivity(), true));
         listView.setOnItemClickListener(this);
     }
 
-    private void setPager(int[] images) {
+    private void setPager(ArrayList<String> images) {
 
         pagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), images);
         viewPager.setAdapter(pagerAdapter);

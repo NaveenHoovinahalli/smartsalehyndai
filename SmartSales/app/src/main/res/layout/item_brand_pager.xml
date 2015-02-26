@@ -1,38 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/hmc_bg"
-    android:weightSum="2">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_brand_story"
+    >
+
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/brand_head"
+        android:layout_marginTop="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="30sp"
+        android:text="Brand Story"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_below="@+id/brand_head"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="2">
 
     <RelativeLayout
         android:id="@+id/brand_rl"
         android:layout_weight="1"
-        android:layout_width="1280px"
-        android:layout_height="730px"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="225dp">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="30dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="654dp"
+            android:layout_height="377dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/bg_brand_video_frame" >
+        <ImageView
+            android:id="@+id/video_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            android:layout_centerInParent="true"
+
+            />
 
         <ImageButton
+            android:id="@+id/image_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/hmc_btn_play"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
-
+        </RelativeLayout>
     </RelativeLayout>
     <ScrollView
         android:layout_weight="1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="30dp">
 
         <com.hyundai.teli.smartsales.views.HTextView
+            android:id="@+id/video_description"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="hello"/>
+            android:text="hello"
+            android:textSize="25sp"
+            android:textColor="@color/white"/>
 
         </ScrollView>
+    </LinearLayout>
 
+<VideoView
+    android:id="@+id/brand_video"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+     android:visibility="gone"
+    />
 
-</LinearLayout>
+</RelativeLayout>

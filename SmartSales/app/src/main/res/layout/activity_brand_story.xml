@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_consultation"
+    android:background="@drawable/bg_brand_story"
     tools:context="com.hyundai.teli.smartsales.activities.BrandStory">
 
     <android.support.v7.widget.Toolbar
@@ -36,9 +36,10 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/brand_pager"
+        android:layout_below="@id/catalogueMenu"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/view" />
+        android:layout_marginTop="30dp"
+         />
 
 </RelativeLayout>

@@ -39,4 +39,85 @@
         android:layout_centerInParent="true"
         />
 
+    <LinearLayout
+        android:id="@+id/colorPalletLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:id="@+id/colorPallet0"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+        />
+        <!--android:scaleType="fitXY"-->
+        <ImageView
+            android:id="@+id/colorPallet1"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            />
+        <ImageView
+            android:id="@+id/colorPallet2"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet3"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet4"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet5"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/colorPallet6"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/colorPallet7"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet8"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet9"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/colorPallet10"
+            android:layout_width="20dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+    </LinearLayout>
+
 </RelativeLayout>

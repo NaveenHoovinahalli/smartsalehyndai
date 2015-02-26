@@ -1,7 +1,10 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -11,7 +14,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.models.StyleExteriorMain;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
+
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -28,30 +36,14 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     @InjectView(R.id.interior_button)
     ImageButton interiourButton;
 
+    ArrayList<String> exteriorImages=new ArrayList<String>();
+    StyleExteriorMain styleExteriorMain;
+    private String Base_Path="/Hyundai/Cars/Grandi10/";
+    private String STYLEEXTERIOR_MAIN_PATH;
 
     private static final int SWIPE_MIN_DISTANCE = 100;
     private static final int SWIPE_THRESHOLD_VELOCITY = 10;
 
-    private int[] convenience_car_array = {
-            R.drawable.elantra_teight_blue0,
-            R.drawable.elantra_teight_blue1,
-            R.drawable.elantra_teight_blue2,
-            R.drawable.elantra_teight_blue3,
-            R.drawable.elantra_teight_blue4,
-            R.drawable.elantra_teight_blue5,
-            R.drawable.elantra_teight_blue6,
-            R.drawable.elantra_teight_blue7,
-            R.drawable.elantra_teight_blue8,
-            R.drawable.elantra_teight_blue9,
-            R.drawable.elantra_teight_blue10,
-            R.drawable.elantra_teight_blue11,
-            R.drawable.elantra_teight_blue12,
-            R.drawable.elantra_teight_blue13,
-            R.drawable.elantra_teight_blue14,
-            R.drawable.elantra_teight_blue15,
-            R.drawable.elantra_teight_blue16,
-            R.drawable.elantra_teight_blue17
-    };
 
     GestureDetector detector;
 
@@ -59,16 +51,51 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_style_exterior, null);
         ButterKnife.inject(this, view);
+
+        STYLEEXTERIOR_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"style_exterior/";
+        setValues();
         mExteriorFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
-        for (int i = 0; i < convenience_car_array.length; i++) {
+
+        return view;
+    }
+
+    private void setValues() {
+        parceJson();
+        setFlipper();
+    }
+
+    private void setFlipper() {
+        mExteriorFlipper.removeAllViews();
+        for (int i = 0; i < exteriorImages.size(); i++) {
             ImageView image = new ImageView(getActivity());
-            image.setImageResource(convenience_car_array[i]);
+            image.setImageURI(Uri.parse(exteriorImages.get(i)));
             mExteriorFlipper.addView(image);
 //            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
         }
         mExteriorFlipper.setDisplayedChild(0);
-        return view;
+    }
+
+    private void parceJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        styleExteriorMain=gson.fromJson(json,StyleExteriorMain.class);
+
+        exteriorImages.clear();
+
+        for(int i=0;i<styleExteriorMain.getStyleExteriorArrays().size();i++){
+            for(int j=0;j<styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().size();j++){
+
+                String image= styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().get(j).getImageFile();
+                String seperator[]= image.split("/");
+                String imageFinalPath=STYLEEXTERIOR_MAIN_PATH+seperator[seperator.length-1];
+                exteriorImages.add(imageFinalPath);
+                Log.d("IMAGES",""+imageFinalPath);
+            }
+        }
+
+
     }
 
     @Override

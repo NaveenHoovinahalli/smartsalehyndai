@@ -2,6 +2,7 @@ package com.hyundai.teli.smartsales.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
+import com.hyundai.teli.smartsales.models.PerformanceMain;
+import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.util.ArrayList;
 
@@ -32,23 +36,62 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     @InjectView(R.id.performance_list)
     ListView performanceList;
 
-    ArrayList<String> images;
+    ArrayList<String> perforanceimages=new  ArrayList<String>();
     ArrayList<PerformanceFragment> fragments;
-    int[] image = new int[]{R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5,
-            R.drawable.p6, R.drawable.p7};
-    String[] performancelistValuse;
+
+    ArrayList<String> performancelistValuse=new ArrayList<String>();
     int position = 0;
     View previousView = null;
+    PerformanceMain performanceMain;
+
+    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public static String PERFORMANCE_MAIN_PATH;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_performance, null);
         ButterKnife.inject(this, view);
+        PERFORMANCE_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"performance/";
+
+        setValues();
+//        setList();
+//        setPager();
+//        performancePager.setOnPageChangeListener(this);
+        return view;
+    }
+
+    private void setValues() {
+        parceJson();
         setList();
         setPager();
-        performancePager.setOnPageChangeListener(this);
-        return view;
+//        performancePager.setOnPageChangeListener(this);
+    }
+
+    private void parceJson() {
+
+        Gson gson=new Gson();
+        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        performanceMain=gson.fromJson(json,PerformanceMain.class);
+
+        perforanceimages.clear();
+        performancelistValuse.clear();
+
+        for(int i=0;i<performanceMain.getPerformanceArrays().size();i++){
+            for(int j=0;j<performanceMain.getPerformanceArrays().get(i).getPerformanceItems().size();j++){
+
+                String image=performanceMain.getPerformanceArrays().get(i).getPerformanceItems().get(j).getPerfromanceImage();
+                String seperator[]= image.split("/");
+                String imageFinalPath=PERFORMANCE_MAIN_PATH+seperator[seperator.length-1];
+
+                perforanceimages.add(imageFinalPath);
+                performancelistValuse.add(performanceMain.getPerformanceArrays().get(i).getPerformanceItems().get(i).getTitle());
+            }
+        }
+
+
     }
 
     @Override
@@ -63,10 +106,6 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     }
 
     private void setList() {
-        performancelistValuse = new String[]{"Performance 1", "Performance 2", "Performance 3", "Performance 4",
-                "Performance 5", "Performance 6", "Performance 7"};
-//        ArrayAdapter<String> listAdapter=new ArrayAdapter<String>(getActivity(),
-//                android.R.layout.simple_list_item_1,performancelistValuse);
 
         performanceList.setAdapter(new ListAdapter(performancelistValuse, getActivity(), true));
         performanceList.setOnItemClickListener(this);
@@ -75,9 +114,9 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     private void setPager() {
 
-        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), image);
-//            NDEPagerAdapter videoAdapter=new NDEPagerAdapter(getActivity().getSupportFragmentManager(),fragments);
+        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),perforanceimages);
         performancePager.setAdapter(mPagerAdapter);
+        performancePager.setOnPageChangeListener(this);
         Log.d("Performance", "Position" + performancePager.getCurrentItem());
 
     }

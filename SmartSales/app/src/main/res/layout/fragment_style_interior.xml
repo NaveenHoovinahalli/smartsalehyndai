@@ -12,22 +12,24 @@
         android:layout_height="fill_parent">
 
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/interior_pager"
-            android:layout_width="940dp"
-            android:layout_height="fill_parent"
-            android:visibility="visible" />
+
         <RelativeLayout
             android:id="@+id/interior_main_image_layout"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:visibility="gone">
             <ImageView
                 android:id="@+id/interior_main_image"
                 android:layout_width="940dp"
                 android:layout_height="fill_parent"
                 android:scaleType="fitXY"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
         </RelativeLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/interior_pager"
+            android:layout_width="940dp"
+            android:layout_height="fill_parent"
+             />
 
     </RelativeLayout>
 
