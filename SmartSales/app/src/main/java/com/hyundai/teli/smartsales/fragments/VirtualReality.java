@@ -36,7 +36,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     @InjectView(R.id.vr_layout)
     RelativeLayout vrLayout;
 
-
     @InjectView(R.id.colorPallet0)
     ImageView colorPallet0;
     @InjectView(R.id.colorPallet1)
@@ -101,7 +100,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
         fetchValues();
 
-        mVRFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
 
         ImageView hotspot_image = new ImageView(getActivity());
@@ -120,8 +118,9 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         getValuesforColorSelection(0);
         setColorPallet();
         colorPallet.get(0).setImageURI(Uri.parse(colorImagePathselected.get(0)));
-
         setViewFlipper();
+        mVRFlipper.setOnTouchListener(this);
+
 
 
     }
@@ -132,7 +131,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         for (int i = 0; i < vrexteriorImages.size(); i++) {
             ImageView image = new ImageView(getActivity());
             Log.d("EXTERIOR","IMAGE"+vrexteriorImages.get(i));
-//            Picasso.with(getActivity()).load(Uri.parse("file://"+vrexteriorImages.get(i))).into(image);
             image.setImageURI(Uri.parse(vrexteriorImages.get(i)));
             mVRFlipper.addView(image);
         }
