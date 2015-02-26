@@ -40,7 +40,7 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
     public VRInteriorMain vrInteriorMain;
     public String VRINTERIOR_MAIN_PATH;
 
-    private String[] vrinteriorImages ;
+    private String[] vrinteriorImages;
 
     GestureDetector detector;
 
@@ -48,8 +48,8 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_virtual_interior, null);
         ButterKnife.inject(this, view);
-        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
-        VRINTERIOR_MAIN_PATH=Base_Path +"vr_interior/";
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        VRINTERIOR_MAIN_PATH = Base_Path + "vr_interior/";
 
         setValues();
         mVRIntFlipper.setOnTouchListener(this);
@@ -71,18 +71,18 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
 
     private void parceJson() {
 
-        Gson gson=new Gson();
-        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
-        vrInteriorMain=gson.fromJson(json,VRInteriorMain.class);
-        for(int i=0;i<vrInteriorMain.getVrInteriorMain().size();i++){
-            vrinteriorImages=new String[vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size()];
-            for(int j=0;j<vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size();j++){
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        vrInteriorMain = gson.fromJson(json, VRInteriorMain.class);
+        for (int i = 0; i < vrInteriorMain.getVrInteriorMain().size(); i++) {
+            vrinteriorImages = new String[vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size()];
+            for (int j = 0; j < vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size(); j++) {
 
-                String image= vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().get(j).getInteriorImage();
-                String seperator[]= image.split("/");
-                String imageFinalPath=VRINTERIOR_MAIN_PATH+seperator[seperator.length-1];
+                String image = vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().get(j).getInteriorImage();
+                String seperator[] = image.split("/");
+                String imageFinalPath = VRINTERIOR_MAIN_PATH + seperator[seperator.length - 1];
 
-                vrinteriorImages[j]=imageFinalPath;
+                vrinteriorImages[j] = imageFinalPath;
 
             }
         }

@@ -39,10 +39,10 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     @InjectView(R.id.performance_list)
     ListView performanceList;
 
-    ArrayList<String> perforanceimages=new  ArrayList<String>();
+    ArrayList<String> perforanceimages = new ArrayList<String>();
     ArrayList<PerformanceFragment> fragments;
 
-    ArrayList<String> performancelistValuse=new ArrayList<String>();
+    ArrayList<String> performancelistValuse = new ArrayList<String>();
     int position = 0;
     View previousView = null;
     PerformanceMain performanceMain;
@@ -51,14 +51,13 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     public static String PERFORMANCE_MAIN_PATH;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_performance, null);
         ButterKnife.inject(this, view);
-        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
-        PERFORMANCE_MAIN_PATH= Base_Path +"performance/";
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        PERFORMANCE_MAIN_PATH = Base_Path + "performance/";
 
         setValues();
 //        setList();
@@ -76,19 +75,19 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     private void parceJson() {
 
-        Gson gson=new Gson();
-        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
-        performanceMain=gson.fromJson(json,PerformanceMain.class);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        performanceMain = gson.fromJson(json, PerformanceMain.class);
 
         perforanceimages.clear();
         performancelistValuse.clear();
 
-        for(int i=0;i<performanceMain.getPerformanceArrays().size();i++){
-            for(int j=0;j<performanceMain.getPerformanceArrays().get(i).getPerformanceItems().size();j++){
+        for (int i = 0; i < performanceMain.getPerformanceArrays().size(); i++) {
+            for (int j = 0; j < performanceMain.getPerformanceArrays().get(i).getPerformanceItems().size(); j++) {
 
-                String image=performanceMain.getPerformanceArrays().get(i).getPerformanceItems().get(j).getPerfromanceImage();
-                String seperator[]= image.split("/");
-                String imageFinalPath=PERFORMANCE_MAIN_PATH+seperator[seperator.length-1];
+                String image = performanceMain.getPerformanceArrays().get(i).getPerformanceItems().get(j).getPerfromanceImage();
+                String seperator[] = image.split("/");
+                String imageFinalPath = PERFORMANCE_MAIN_PATH + seperator[seperator.length - 1];
 
                 perforanceimages.add(imageFinalPath);
                 performancelistValuse.add(performanceMain.getPerformanceArrays().get(i).getPerformanceItems().get(i).getTitle());
@@ -118,7 +117,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
     private void setPager() {
 
-        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(),perforanceimages);
+        PagerAdapter mPagerAdapter = new PerformanceAdapter(getActivity().getSupportFragmentManager(), perforanceimages);
         performancePager.setAdapter(mPagerAdapter);
         performancePager.setOnPageChangeListener(this);
         Log.d("Performance", "Position" + performancePager.getCurrentItem());

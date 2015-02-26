@@ -24,8 +24,8 @@ public class Constants {
     public static final String SDCARD_STYLE = ".Hyundai/Style";
     public static final String SDCARD_SAFETY = ".Hyundai/Safety";
     public static final String PREFS = "HyPreference";
-    public static final String MESSAGE_BOARD_URL=BASE_URL+"/tablet_services/get_notification_messages/";
-    public static final String BRAND_STORY_URL=BASE_URL+"/tablet_services/get_brandstory_videos/";
-    public static final String NDE_URL=BASE_URL+"/tablet_services/get_nde_videos/";
-    public static final String SPECIFICATION_HTML= BASE_URL +"/tablet_services/get_specification_template_file/";
+    public static final String MESSAGE_BOARD_URL = BASE_URL + "/tablet_services/get_notification_messages/";
+    public static final String BRAND_STORY_URL = BASE_URL + "/tablet_services/get_brandstory_videos/";
+    public static final String NDE_URL = BASE_URL + "/tablet_services/get_nde_videos/";
+    public static final String SPECIFICATION_HTML = BASE_URL + "/tablet_services/get_specification_template_file/";
 }

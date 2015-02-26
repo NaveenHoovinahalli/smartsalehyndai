@@ -57,8 +57,8 @@ public class BrandStory extends ActionBarActivity {
     ArrayList<BrandStoryFragment> fragments;
     ArrayList<BrandStoryValues> brandStoryValueses;
     public static File BRAND_STORY_FOLDER;
-    public static final String BASE_PATH="/Hyundai/Brandstory";
-    public static String JsonFile="/brandstory.json";
+    public static final String BASE_PATH = "/Hyundai/Brandstory";
+    public static String JsonFile = "/brandstory.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +66,15 @@ public class BrandStory extends ActionBarActivity {
         setContentView(R.layout.activity_brand_story);
         ButterKnife.inject(this);
 
-        BRAND_STORY_FOLDER=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+BASE_PATH);
-           if(!BRAND_STORY_FOLDER.exists())
-               BRAND_STORY_FOLDER.mkdirs();
+        BRAND_STORY_FOLDER = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + BASE_PATH);
+        if (!BRAND_STORY_FOLDER.exists())
+            BRAND_STORY_FOLDER.mkdirs();
 
 
-        if(AndroidUtils.isNetworkOnline(BrandStory.this)) {
+        if (AndroidUtils.isNetworkOnline(BrandStory.this)) {
             fetchValues();
 
-        }else {
+        } else {
 
             parceJson();
         }
@@ -83,18 +83,18 @@ public class BrandStory extends ActionBarActivity {
 
     private void fetchValues() {
 
-  String url= String.format(Constants.BRAND_STORY_URL);
+        String url = String.format(Constants.BRAND_STORY_URL);
 
-        JsonArrayRequest request=new JsonArrayRequest(url,
+        JsonArrayRequest request = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
 
-                        Log.d("BRAND",""+response);
+                        Log.d("BRAND", "" + response);
                         writeToSdcard(response.toString());
 
                     }
-                },new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -104,14 +104,15 @@ public class BrandStory extends ActionBarActivity {
 
     }
 
-    public void parceJson(){
+    public void parceJson() {
 
-        String parcedJson=readFromFile();
-        Gson gson=new Gson();
+        String parcedJson = readFromFile();
+        Gson gson = new Gson();
 
 //       brandStoryValueses= new Gson().fromJson(parcedJson,BrandStoryValues.class);
 
-        brandStoryValueses=gson.fromJson(parcedJson,new TypeToken<List<BrandStoryValues>>(){}.getType());
+        brandStoryValueses = gson.fromJson(parcedJson, new TypeToken<List<BrandStoryValues>>() {
+        }.getType());
         setFragment(brandStoryValueses);
         setPager();
 
@@ -122,7 +123,7 @@ public class BrandStory extends ActionBarActivity {
         try {
 
 
-            File file = new File(BRAND_STORY_FOLDER + JsonFile );
+            File file = new File(BRAND_STORY_FOLDER + JsonFile);
             Log.d("BRAND", "write to sd card" + file);
             if (file.exists())
                 file.delete();
@@ -140,7 +141,7 @@ public class BrandStory extends ActionBarActivity {
             myOutWriter.close();
             fOut.close();
         } catch (Exception e) {
-            Log.d("BRAND","Exception" + e.toString());
+            Log.d("BRAND", "Exception" + e.toString());
         }
 
         parceJson();
@@ -148,13 +149,13 @@ public class BrandStory extends ActionBarActivity {
     }
 
 
-    public String readFromFile(){
+    public String readFromFile() {
 
 
 //        InputStream is = null;
         try {
 
-            File jsonPath = new File( BRAND_STORY_FOLDER + JsonFile);
+            File jsonPath = new File(BRAND_STORY_FOLDER + JsonFile);
 
             if (jsonPath.exists()) {
                 FileInputStream fIn = new FileInputStream(jsonPath);
@@ -180,6 +181,7 @@ public class BrandStory extends ActionBarActivity {
 
         return "";
     }
+
     @OnClick(R.id.catalogueMenu)
     public void OnClickListener(View view) {
         if (mQuickMenu == null || !mQuickMenu.isShowing())
@@ -188,7 +190,7 @@ public class BrandStory extends ActionBarActivity {
             mQuickMenu.dismiss();
     }
 
-    private void setFragment(ArrayList<BrandStoryValues> brandStoryValueses ) {
+    private void setFragment(ArrayList<BrandStoryValues> brandStoryValueses) {
         fragments = new ArrayList<BrandStoryFragment>();
         for (int i = 0; i < brandStoryValueses.size(); i++) {
             BrandStoryFragment brandStoryPager = BrandStoryFragment.newInstance(brandStoryValueses.get(i));

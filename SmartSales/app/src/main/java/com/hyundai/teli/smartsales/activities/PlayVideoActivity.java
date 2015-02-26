@@ -61,8 +61,7 @@ public class PlayVideoActivity extends ActionBarActivity {
         controller = new MediaController(this);
         controller.setAnchorView(videoView);
 
-        Log.d("PlayVideo","oncreate");
-
+        Log.d("PlayVideo", "oncreate");
 
 
         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
@@ -70,7 +69,6 @@ public class PlayVideoActivity extends ActionBarActivity {
         mPbar = new ProgressDialog(PlayVideoActivity.this);
         mPbar.setTitle("Downloading video please wait...");
         mPbar.setCancelable(false);
-
 
 
         DisplayMetrics metrics = new DisplayMetrics();
@@ -81,9 +79,9 @@ public class PlayVideoActivity extends ActionBarActivity {
         videoView.setLayoutParams(params);
 
 
-        if(getIntent().hasExtra(VIDEO_URL)){
-            String url=getIntent().getStringExtra(VIDEO_URL);
-            Log.d("PlayVideo","url"+url);
+        if (getIntent().hasExtra(VIDEO_URL)) {
+            String url = getIntent().getStringExtra(VIDEO_URL);
+            Log.d("PlayVideo", "url" + url);
             videoView.setMediaController(controller);
             videoView.setVideoURI(Uri.parse(url));
             videoView.start();

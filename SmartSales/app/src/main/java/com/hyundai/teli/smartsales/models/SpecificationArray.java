@@ -13,7 +13,7 @@ public class SpecificationArray {
     String engineType;
 
     @SerializedName("specs")
-    ArrayList<SpecificationItem> specsArray=new ArrayList<SpecificationItem>();
+    ArrayList<SpecificationItem> specsArray = new ArrayList<SpecificationItem>();
 
     public String getEngineType() {
         return engineType;

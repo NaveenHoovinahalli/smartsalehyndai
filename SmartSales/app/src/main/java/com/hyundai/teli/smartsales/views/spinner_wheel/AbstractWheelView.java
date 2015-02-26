@@ -202,11 +202,11 @@ public abstract class AbstractWheelView extends AbstractWheel {
     @Override
     protected void recreateAssets(int width, int height) {
         Log.d("Abstract", "Width::" + width);
-        Log.d("Abstract","Height::" + height);
-        if(width<=0)
-            width=77;
-        if(height<=0)
-            height=532;
+        Log.d("Abstract", "Height::" + height);
+        if (width <= 0)
+            width = 77;
+        if (height <= 0)
+            height = 532;
         mSpinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mSeparatorsBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         setSelectorPaintCoeff(0);

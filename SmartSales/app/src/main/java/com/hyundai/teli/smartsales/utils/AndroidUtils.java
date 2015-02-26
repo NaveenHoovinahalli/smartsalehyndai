@@ -254,7 +254,7 @@ public abstract class AndroidUtils {
 
     }
 
-    public static String readJsonfromSdcard(String jsonPathSdcard){
+    public static String readJsonfromSdcard(String jsonPathSdcard) {
 
 
         try {

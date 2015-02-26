@@ -72,7 +72,7 @@ public class NDEVideos extends Fragment {
         isVideo = ndeDetail.getIsVideo();
         imagepath = ndeDetail.getVideoThumbnail();
         id = ndeDetail.getId();
-        videoPath=ndeDetail.getVideoFile();
+        videoPath = ndeDetail.getVideoFile();
 
     }
 
@@ -100,47 +100,43 @@ public class NDEVideos extends Fragment {
 
     private void setValues() {
 
-        if(isVideo.toLowerCase().equals("true"))
+        if (isVideo.toLowerCase().equals("true"))
             videoViewIcon.setVisibility(View.VISIBLE);
 
-        String imageServerPath= Constants.BASE_URL+imagepath;
+        String imageServerPath = Constants.BASE_URL + imagepath;
 
         String[] separated = imagepath.split("/");
-        Log.d("SEPERATER",separated[separated.length-1]);
-        String imageName=separated[separated.length-1];
+        Log.d("SEPERATER", separated[separated.length - 1]);
+        String imageName = separated[separated.length - 1];
 
 
-
-        file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+ NDE.BASE_PATH);
+        file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + NDE.BASE_PATH);
         boolean value;
-        if(!file.exists()) {
+        if (!file.exists()) {
             value = file.mkdirs();
-            Log.d("BrandStory","created directory"+file);
+            Log.d("BrandStory", "created directory" + file);
         }
 
-        File imagefile=new File(file+"/"+imageName);
-        if(imagefile.exists()) {
-            HyDataManager.init(getActivity()).saveNdeVideoName(id+"image",fileName);
+        File imagefile = new File(file + "/" + imageName);
+        if (imagefile.exists()) {
+            HyDataManager.init(getActivity()).saveNdeVideoName(id + "image", fileName);
             imageView.setImageURI(Uri.parse(imagefile.toString()));
-        }else {
-            if(imagefile.exists())
+        } else {
+            if (imagefile.exists())
                 imagefile.delete();
-            Log.d("BrandStory","filenotexists");
-            if(AndroidUtils.isNetworkOnline(getActivity()))
-                downloadVideo(imageName, imageServerPath,"image");
+            Log.d("BrandStory", "filenotexists");
+            if (AndroidUtils.isNetworkOnline(getActivity()))
+                downloadVideo(imageName, imageServerPath, "image");
         }
 
 
     }
 
 
-
-
-
-    @OnClick({R.id.nde_pager_image,R.id.nde_pager_video})
+    @OnClick({R.id.nde_pager_image, R.id.nde_pager_video})
     public void onImageClicked() {
 
-        if(isVideo.toLowerCase().equals("true")) {
+        if (isVideo.toLowerCase().equals("true")) {
 
             Toast.makeText(getActivity(), "video", Toast.LENGTH_SHORT).show();
 
@@ -154,17 +150,17 @@ public class NDEVideos extends Fragment {
             if (videofile.exists()) {
                 Log.d("BrandStory", "fileexists");
 
-                HyDataManager.init(getActivity()).saveNdeVideoName(id+"video",fileName);
-                Intent intent=new Intent(getActivity(), PlayVideoActivity.class);
-                intent.putExtra(PlayVideoActivity.VIDEO_URL,videofile.toString());
+                HyDataManager.init(getActivity()).saveNdeVideoName(id + "video", fileName);
+                Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+                intent.putExtra(PlayVideoActivity.VIDEO_URL, videofile.toString());
                 startActivity(intent);
 
             } else {
-                if(videofile.exists())
+                if (videofile.exists())
                     videofile.delete();
                 String videoServerUrl = Constants.BASE_URL + videoPath;
                 Log.d("BrandStory", "filenotexists");
-                if(AndroidUtils.isNetworkOnline(getActivity()))
+                if (AndroidUtils.isNetworkOnline(getActivity()))
                     downloadVideo(videoName, videoServerUrl, "video");
 
             }
@@ -173,11 +169,11 @@ public class NDEVideos extends Fragment {
     }
 
 
-    public void downloadVideo(String name, String Url,String type) {
+    public void downloadVideo(String name, String Url, String type) {
 
         fileUrl = Url;
         fileName = name;
-        this.type=type;
+        this.type = type;
         Log.d("VIDEOId,VideoURL", "" + fileName + " " + fileUrl);
 
         mPbar.show();
@@ -188,8 +184,8 @@ public class NDEVideos extends Fragment {
                 setTitle("downloading");
 
 
-        Uri downloadLocatin=Uri.fromFile(new File(Environment.getExternalStorageDirectory()+NDE.BASE_PATH+"/",fileName));
-        Log.d("NDE","location"+downloadLocatin);
+        Uri downloadLocatin = Uri.fromFile(new File(Environment.getExternalStorageDirectory() + NDE.BASE_PATH + "/", fileName));
+        Log.d("NDE", "location" + downloadLocatin);
 
         request.setDestinationUri(downloadLocatin);
 
@@ -200,7 +196,6 @@ public class NDEVideos extends Fragment {
                 DownloadManager.Request.NETWORK_MOBILE);
 
         myDownloadReference = downloadManager.enqueue(request);
-
 
 
     }
@@ -268,15 +263,15 @@ public class NDEVideos extends Fragment {
 //                            mPbar.setVisibility(View.GONE);
                             mPbar.dismiss();
                             isDownloadig = false;
-                            if(type.equals("image")) {
-                                HyDataManager.init(getActivity()).saveNdeImageName(id+"image",fileName);
+                            if (type.equals("image")) {
+                                HyDataManager.init(getActivity()).saveNdeImageName(id + "image", fileName);
 
                                 imageView.setImageURI(Uri.parse(savedFilePath));
-                            }else {
+                            } else {
 
-                                HyDataManager.init(getActivity()).saveNdeVideoName(id+"video",fileName);
-                                Intent intentplay=new Intent(getActivity(), PlayVideoActivity.class);
-                                intentplay.putExtra(PlayVideoActivity.VIDEO_URL,savedFilePath);
+                                HyDataManager.init(getActivity()).saveNdeVideoName(id + "video", fileName);
+                                Intent intentplay = new Intent(getActivity(), PlayVideoActivity.class);
+                                intentplay.putExtra(PlayVideoActivity.VIDEO_URL, savedFilePath);
                                 startActivity(intentplay);
                             }
                             if (mPbar.isShowing())

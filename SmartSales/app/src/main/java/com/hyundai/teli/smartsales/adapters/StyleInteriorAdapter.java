@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class StyleInteriorAdapter extends FragmentStatePagerAdapter {
 
-    ArrayList<String> images=new ArrayList<String>();
+    ArrayList<String> images = new ArrayList<String>();
 
     public StyleInteriorAdapter(FragmentManager fm, ArrayList<String> images) {
         super(fm);

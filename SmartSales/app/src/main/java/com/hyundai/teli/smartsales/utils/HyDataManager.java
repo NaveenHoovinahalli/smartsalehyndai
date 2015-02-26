@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 public class HyDataManager {
 
     private static final String VIDEO_PATH = "video_path";
-    private static final String MESSAGE_JSON="message_json";
+    private static final String MESSAGE_JSON = "message_json";
     private final SharedPreferences msharedpreference;
     private final Context context;
 
@@ -30,23 +30,23 @@ public class HyDataManager {
     }
 
 
-
-    public void saveMessageJson(String json){
-        msharedpreference.edit().putString(MESSAGE_JSON,json).apply();
+    public void saveMessageJson(String json) {
+        msharedpreference.edit().putString(MESSAGE_JSON, json).apply();
     }
 
-    public String getMessageJson(){
-        return  msharedpreference.getString(MESSAGE_JSON,"");
+    public String getMessageJson() {
+        return msharedpreference.getString(MESSAGE_JSON, "");
     }
 
-    public void saveNdeImageName(String id,String name){
-        msharedpreference.edit().putString(id,name).apply();
+    public void saveNdeImageName(String id, String name) {
+        msharedpreference.edit().putString(id, name).apply();
     }
 
-    public String getNdeImageName(String id){
-        return msharedpreference.getString(id,"");
+    public String getNdeImageName(String id) {
+        return msharedpreference.getString(id, "");
     }
-    public void saveNdeVideoName(String id,String name) {
+
+    public void saveNdeVideoName(String id, String name) {
         msharedpreference.edit().putString(id, name).apply();
     }
 
@@ -55,15 +55,15 @@ public class HyDataManager {
     }
 
 
-
-    public void saveBrandImageName(String id,String name){
-        msharedpreference.edit().putString(id,name).apply();
+    public void saveBrandImageName(String id, String name) {
+        msharedpreference.edit().putString(id, name).apply();
     }
 
-    public String getBrandImageName(String id){
-        return msharedpreference.getString(id,"");
+    public String getBrandImageName(String id) {
+        return msharedpreference.getString(id, "");
     }
-    public void saveBrandVideoName(String id,String name) {
+
+    public void saveBrandVideoName(String id, String name) {
         msharedpreference.edit().putString(id, name).apply();
     }
 

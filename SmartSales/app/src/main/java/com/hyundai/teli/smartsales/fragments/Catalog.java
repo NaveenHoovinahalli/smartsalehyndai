@@ -23,7 +23,7 @@ public class Catalog extends BaseFragment {
     @InjectView(R.id.pdfview)
     PDFView pdfView;
 
-    public static String CATALOG_PATH="/Hyundai/Cars/grandi10/catalogue/";
+    public static String CATALOG_PATH = "/Hyundai/Cars/grandi10/catalogue/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class Catalog extends BaseFragment {
 
     private void setPdf() {
 //        File file=new File("/mnt/sdcard/Download/catalog.pdf");
-        File file = new File(Environment.getExternalStorageDirectory() + CATALOG_PATH +"catalog.pdf");
+        File file = new File(Environment.getExternalStorageDirectory() + CATALOG_PATH + "catalog.pdf");
         if (!file.exists()) {
 //            file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
         }

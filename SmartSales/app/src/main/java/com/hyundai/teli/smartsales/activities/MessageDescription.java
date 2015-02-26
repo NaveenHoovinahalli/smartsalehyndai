@@ -32,20 +32,20 @@ public class MessageDescription extends ActionBarActivity {
     HTextView messageTitle;
 
     @InjectView(R.id.date)
-     HTextView messageDate;
+    HTextView messageDate;
 
     @InjectView(R.id.no)
-     HTextView messageNo;
+    HTextView messageNo;
 
     @InjectView(R.id.description)
-      HTextView messageDesription;
+    HTextView messageDesription;
 
     PopupWindow mQuickMenu;
 
-    public static final String TITLE="title";
-    public static final String DESCRIPTION="description";
-    public static final String DATE="date";
-    public static final String NO="no";
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String DATE = "date";
+    public static final String NO = "no";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MessageDescription extends ActionBarActivity {
         setContentView(R.layout.message_description);
         ButterKnife.inject(this);
 
-        if(getIntent().hasExtra(TITLE)){
+        if (getIntent().hasExtra(TITLE)) {
             messageNo.setText(getIntent().getStringExtra(NO));
             messageTitle.setText(getIntent().getStringExtra(TITLE));
             messageDate.setText(getIntent().getStringExtra(DATE));

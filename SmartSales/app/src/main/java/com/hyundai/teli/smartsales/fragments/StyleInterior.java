@@ -59,7 +59,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     RelativeLayout layoutHotspot;
 
 
-    ArrayList<String> interiorImages=new ArrayList<String>();
+    ArrayList<String> interiorImages = new ArrayList<String>();
     StyleInteriorMain styleInteriorMain;
     private String Base_Path;
     private String STYLEINTERIOR_MAIN_PATH;
@@ -73,8 +73,8 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_style_interior, null);
         ButterKnife.inject(this, view);
-        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
-        STYLEINTERIOR_MAIN_PATH= Base_Path +"style_interior/";
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        STYLEINTERIOR_MAIN_PATH = Base_Path + "style_interior/";
         setValues();
 
         return view;
@@ -87,20 +87,18 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     private void parceJson() {
 
-        Gson gson=new Gson();
-        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
-        styleInteriorMain=gson.fromJson(json,StyleInteriorMain.class);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        styleInteriorMain = gson.fromJson(json, StyleInteriorMain.class);
 
         interiorImages.clear();
-       for(int i=0;i<styleInteriorMain.getStyleInterior().size();i++){
-           String image= styleInteriorMain.getStyleInterior().get(i).getInteriorImage();
-           String seperator[]= image.split("/");
-           String imageFinalPath=STYLEINTERIOR_MAIN_PATH+seperator[seperator.length-1];
-           interiorImages.add(imageFinalPath);
-           Log.d("IMAGE",""+imageFinalPath);
-       }
-
-
+        for (int i = 0; i < styleInteriorMain.getStyleInterior().size(); i++) {
+            String image = styleInteriorMain.getStyleInterior().get(i).getInteriorImage();
+            String seperator[] = image.split("/");
+            String imageFinalPath = STYLEINTERIOR_MAIN_PATH + seperator[seperator.length - 1];
+            interiorImages.add(imageFinalPath);
+            Log.d("IMAGE", "" + imageFinalPath);
+        }
 
 
     }
@@ -173,7 +171,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
             interiorPager.setVisibility(View.VISIBLE);
         linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
         ViewSelection(view);
-        interiorPager.setCurrentItem(position+1);
+        interiorPager.setCurrentItem(position + 1);
     }
 
     @Override
@@ -184,20 +182,18 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @Override
     public void onPageSelected(int i) {
 
-        if(i>0) {
+        if (i > 0) {
             layoutHotspot.setVisibility(View.INVISIBLE);
             ViewSelection(getViewByPosition((i - 1), styleInteriorList));
             linearLayoutInterior.setBackgroundColor((Color.parseColor("#3f3f3f")));
 
-        }
-        else {
+        } else {
             layoutHotspot.setVisibility(View.VISIBLE);
             linearLayoutInterior.setBackgroundColor((Color.parseColor("#657FBD")));
             if (previousView != null) {
                 previousView.setBackgroundColor((Color.parseColor("#3f3f3f")));
             }
         }
-
 
 
     }
@@ -238,7 +234,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
         int position = (int) v.getTag();
         interiorPager.setCurrentItem(position);
-        ViewSelection(getViewByPosition((position-1 ), styleInteriorList));
+        ViewSelection(getViewByPosition((position - 1), styleInteriorList));
 
     }
 }
