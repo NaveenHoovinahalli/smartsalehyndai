@@ -15,11 +15,14 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
 import com.hyundai.teli.smartsales.models.PerformanceMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -44,7 +47,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     View previousView = null;
     PerformanceMain performanceMain;
 
-    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public String Base_Path;
     public static String PERFORMANCE_MAIN_PATH;
 
 
@@ -54,7 +57,8 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
 
         View view = inflater.inflate(R.layout.fragment_performance, null);
         ButterKnife.inject(this, view);
-        PERFORMANCE_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"performance/";
+        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
+        PERFORMANCE_MAIN_PATH= Base_Path +"performance/";
 
         setValues();
 //        setList();
@@ -73,7 +77,7 @@ public class Performance extends BaseFragment implements AdapterView.OnItemClick
     private void parceJson() {
 
         Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
         performanceMain=gson.fromJson(json,PerformanceMain.class);
 
         perforanceimages.clear();

@@ -18,11 +18,14 @@ import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.StyleInteriorAdapter;
 import com.hyundai.teli.smartsales.models.StyleInteriorMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -58,7 +61,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
     ArrayList<String> interiorImages=new ArrayList<String>();
     StyleInteriorMain styleInteriorMain;
-    private String Base_Path="/Hyundai/Cars/Grandi10/";
+    private String Base_Path;
     private String STYLEINTERIOR_MAIN_PATH;
 
 
@@ -70,7 +73,8 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_style_interior, null);
         ButterKnife.inject(this, view);
-        STYLEINTERIOR_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"style_interior/";
+        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
+        STYLEINTERIOR_MAIN_PATH= Base_Path +"style_interior/";
         setValues();
 
         return view;
@@ -84,7 +88,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     private void parceJson() {
 
         Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
         styleInteriorMain=gson.fromJson(json,StyleInteriorMain.class);
 
         interiorImages.clear();

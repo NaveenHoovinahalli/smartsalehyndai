@@ -59,6 +59,7 @@ public class Consultation extends ActionBarActivity {
     private static final String IMAGE_DIRECTORY_NAME = ".Hyundai";
     private Uri fileUri;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +93,8 @@ public class Consultation extends ActionBarActivity {
             loadShowRoom();
         }
     }
+
+
 
     @Override
     protected void onResume() {

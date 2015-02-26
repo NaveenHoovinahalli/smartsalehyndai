@@ -16,7 +16,9 @@ import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.SpecificationMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.io.File;
@@ -43,7 +45,7 @@ public class Specification extends BaseFragment  {
     @InjectView(R.id.specBar)
     ProgressBar specProgress;
 
-    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public String Base_Path;
     public static String SPECIFICATION_MAIN_PATH;
 
     ArrayList<String> images;
@@ -60,6 +62,7 @@ public class Specification extends BaseFragment  {
 
         View view = inflater.inflate(R.layout.fragment_specification, null);
         ButterKnife.inject(this, view);
+        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
         SPECIFICATION_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+"/Hyundai/specification/";
         file2=new File(SPECIFICATION_MAIN_PATH);
         if(!file2.exists())
@@ -83,7 +86,7 @@ public class Specification extends BaseFragment  {
     private void parceJsonandwritetosdcard() {
 
         Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
 
         specificationMain=gson.fromJson(json,SpecificationMain.class);
        String specJson= gson.toJson(specificationMain.getSpecificationArrays());
@@ -172,8 +175,5 @@ public class Specification extends BaseFragment  {
             super.onPageFinished(view, url);
         }
     }
-
-
-
 }
 

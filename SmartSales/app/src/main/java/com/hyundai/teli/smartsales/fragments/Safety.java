@@ -16,12 +16,15 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
 import com.hyundai.teli.smartsales.models.ConvenienceMain;
 import com.hyundai.teli.smartsales.models.SafetyMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -65,6 +68,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
         View view = inflater.inflate(R.layout.fragment_safety_convenience, null);
         ButterKnife.inject(this, view);
+        Base_Path = ((CarDetails)getActivity()).getBasePath() + File.separator;
         setForSafety();
         return view;
     }
@@ -94,7 +98,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     }
 
     private void setForSafety() {
-        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"safety/";
+        SAFETY_CONVENIENCE_MAIN_PATH=Base_Path +"safety/";
 
         parcesafetyJson();
 
@@ -108,7 +112,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     private void parcesafetyJson() {
 
         Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
+        String json= AndroidUtils.readJsonfromSdcard(Base_Path+"data.json");
         safetyMains=gson.fromJson(json,SafetyMain.class);
         Log.d("Safety","from method"+json);
         safetyImages.clear();
@@ -134,7 +138,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     private void parceConvenienceJson() {
 
         Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
+        String json= AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
         convenienceMain=gson.fromJson(json,ConvenienceMain.class);
         Log.d("Safety","from method"+json);
 
@@ -159,7 +163,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     private void setForConvenience() {
 
-        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"convenience/";
+        SAFETY_CONVENIENCE_MAIN_PATH=Base_Path +"convenience/";
 
         parceConvenienceJson();
         if(convenienceImages.size()>0 && convenienceListValues.size()>0) {
