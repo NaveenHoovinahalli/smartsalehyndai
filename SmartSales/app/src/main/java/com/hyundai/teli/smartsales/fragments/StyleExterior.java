@@ -127,11 +127,17 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
                 } else if (me2.getX() - me1.getX() > SWIPE_MIN_DISTANCE) {
                     mExteriorFlipper.showNext();
                 }
+                showHotSpot();
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return false;
         }
+    }
+
+    private void showHotSpot() {
+        int DisplayedChild = mExteriorFlipper.getDisplayedChild();
+        Log.d("StyleExterior","Child::" + DisplayedChild);
     }
 }
