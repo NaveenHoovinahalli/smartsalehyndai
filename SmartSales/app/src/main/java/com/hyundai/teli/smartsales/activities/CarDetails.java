@@ -63,6 +63,8 @@ public class CarDetails extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
+    private String mBasePath;
+    private String mCarName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,8 @@ public class CarDetails extends ActionBarActivity {
         Intent receivedIntent = getIntent();
         if (receivedIntent != null) {
             Toast.makeText(getApplicationContext(), receivedIntent.getStringExtra("TAB"), Toast.LENGTH_SHORT).show();
+            mBasePath = receivedIntent.getStringExtra("BASE_PATH");
+            mCarName = receivedIntent.getStringExtra("CAR_NAME");
             switch (receivedIntent.getStringExtra("TAB")) {
                 case "VR":
                     loadVirtualReality();
@@ -87,6 +91,14 @@ public class CarDetails extends ActionBarActivity {
                     break;
             }
         }
+    }
+
+    public String getBasePath() {
+        return mBasePath;
+    }
+
+    public String getCarName() {
+        return mCarName;
     }
 
     @OnClick({R.id.catalogueMenu, R.id.virtualReality, R.id.style, R.id.performance, R.id.specification,

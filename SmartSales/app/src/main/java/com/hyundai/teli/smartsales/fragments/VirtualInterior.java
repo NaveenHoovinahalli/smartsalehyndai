@@ -15,8 +15,12 @@ import android.widget.ViewFlipper;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.VRInteriorMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
+
+import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -32,11 +36,11 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
 
     private static final int SWIPE_MIN_DISTANCE = 10;
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
-    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public String Base_Path;
     public VRInteriorMain vrInteriorMain;
     public String VRINTERIOR_MAIN_PATH;
 
-    private String[] vrinteriorImages ;
+    private String[] vrinteriorImages;
 
     GestureDetector detector;
 
@@ -44,7 +48,8 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_virtual_interior, null);
         ButterKnife.inject(this, view);
-        VRINTERIOR_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"vr_interior/";
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        VRINTERIOR_MAIN_PATH = Base_Path + "vr_interior/";
 
         setValues();
         mVRIntFlipper.setOnTouchListener(this);
@@ -66,18 +71,18 @@ public class VirtualInterior extends BaseFragment implements View.OnTouchListene
 
     private void parceJson() {
 
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
-        vrInteriorMain=gson.fromJson(json,VRInteriorMain.class);
-        for(int i=0;i<vrInteriorMain.getVrInteriorMain().size();i++){
-            vrinteriorImages=new String[vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size()];
-            for(int j=0;j<vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size();j++){
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        vrInteriorMain = gson.fromJson(json, VRInteriorMain.class);
+        for (int i = 0; i < vrInteriorMain.getVrInteriorMain().size(); i++) {
+            vrinteriorImages = new String[vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size()];
+            for (int j = 0; j < vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().size(); j++) {
 
-                String image= vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().get(j).getInteriorImage();
-                String seperator[]= image.split("/");
-                String imageFinalPath=VRINTERIOR_MAIN_PATH+seperator[seperator.length-1];
+                String image = vrInteriorMain.getVrInteriorMain().get(i).getVrInteriorArray().get(j).getInteriorImage();
+                String seperator[] = image.split("/");
+                String imageFinalPath = VRINTERIOR_MAIN_PATH + seperator[seperator.length - 1];
 
-                vrinteriorImages[j]=imageFinalPath;
+                vrinteriorImages[j] = imageFinalPath;
 
             }
         }

@@ -16,9 +16,15 @@ import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -245,6 +251,38 @@ public abstract class AndroidUtils {
             e.printStackTrace();
             return false;
         }
+
+    }
+
+    public static String readJsonfromSdcard(String jsonPathSdcard) {
+
+
+        try {
+
+            File jsonPath = new File(jsonPathSdcard);
+
+            if (jsonPath.exists()) {
+                FileInputStream fIn = new FileInputStream(jsonPath);
+                BufferedReader myReader = new BufferedReader(
+                        new InputStreamReader(fIn));
+
+                String aDataRow = "";
+                String aBuffer = "";
+                while ((aDataRow = myReader.readLine()) != null) {
+                    aBuffer += aDataRow + "\n";
+
+                }
+                Log.d("JSONFROMSDCARD", "Buffer::" + aBuffer);
+
+                return aBuffer.toString();
+
+            } else {
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";
 
     }
 

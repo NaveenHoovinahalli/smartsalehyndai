@@ -137,7 +137,8 @@ public class Settings extends BaseFragment implements ViewPager.OnPageChangeList
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onPageScrollStateChanged(int state) {
+    }
 
     public void addRegistrationFragment() {
         viewPager.setVisibility(View.GONE);

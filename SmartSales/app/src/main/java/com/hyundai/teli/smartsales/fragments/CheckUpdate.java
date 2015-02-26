@@ -43,7 +43,7 @@ import butterknife.InjectView;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class CheckUpdate extends BaseFragment{
+public class CheckUpdate extends BaseFragment {
 
     @InjectView(R.id.updates_view)
     GridView mUpdateView;
@@ -71,7 +71,7 @@ public class CheckUpdate extends BaseFragment{
                 mUpdateView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 final int size = mUpdateView.getCount();
                 Log.d("CheckUpdate", "Size::" + size);
-                for(int i = 0; i < size; i++) {
+                for (int i = 0; i < size; i++) {
                     ViewGroup gridChild = (ViewGroup) mUpdateView.getChildAt(0);
                     Log.d("CheckUpdate", "Grid Child Size::" + mUpdateView.getChildAt(0));
 
@@ -114,7 +114,8 @@ public class CheckUpdate extends BaseFragment{
                 }
                 JSONArray response = new JSONArray(jsonStr);
                 Log.d("Update", "Update Response::" + response.toString());
-                Type listType = new TypeToken<ArrayList<CarName>>() {}.getType();
+                Type listType = new TypeToken<ArrayList<CarName>>() {
+                }.getType();
                 carInfo = new Gson().fromJson(response.toString(), listType);
 
             }

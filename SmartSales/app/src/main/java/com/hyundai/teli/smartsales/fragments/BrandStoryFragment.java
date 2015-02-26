@@ -43,11 +43,11 @@ import butterknife.OnClick;
 public class BrandStoryFragment extends Fragment {
 
 
-    private static final String ID="id";
-    private static final String TITLE="title";
-    private static final String DESCRIPTION="description";
-    private static final String IMAGE_FILE="image_file";
-    private static final String VIDEO_FILE="video_file";
+    private static final String ID = "id";
+    private static final String TITLE = "title";
+    private static final String DESCRIPTION = "description";
+    private static final String IMAGE_FILE = "image_file";
+    private static final String VIDEO_FILE = "video_file";
 
     //Download
     ProgressDialog mPbar;
@@ -60,7 +60,7 @@ public class BrandStoryFragment extends Fragment {
     public String fileName;
     public Boolean isDownloadig = false;
 
-    public File file,file1;
+    public File file, file1;
     public String videoFile;
     public String type;
 
@@ -84,12 +84,12 @@ public class BrandStoryFragment extends Fragment {
 
     public static BrandStoryFragment newInstance(BrandStoryValues brandStoryValues) {
         BrandStoryFragment bBragment = new BrandStoryFragment();
-        Bundle args=new Bundle();
-        args.putString(ID,brandStoryValues.getId());
-        args.putString(TITLE,brandStoryValues.getTitle());
-        args.putString(DESCRIPTION,brandStoryValues.getDescription());
-        args.putString(IMAGE_FILE,brandStoryValues.getImageFile());
-        args.putString(VIDEO_FILE,brandStoryValues.getVideoFile());
+        Bundle args = new Bundle();
+        args.putString(ID, brandStoryValues.getId());
+        args.putString(TITLE, brandStoryValues.getTitle());
+        args.putString(DESCRIPTION, brandStoryValues.getDescription());
+        args.putString(IMAGE_FILE, brandStoryValues.getImageFile());
+        args.putString(VIDEO_FILE, brandStoryValues.getVideoFile());
 
         bBragment.setArguments(args);
         return bBragment;
@@ -110,8 +110,8 @@ public class BrandStoryFragment extends Fragment {
         mPbar.setTitle("Downloading  please wait...");
         mPbar.setCancelable(false);
 
-        Bundle args=getArguments();
-        if(args != null){
+        Bundle args = getArguments();
+        if (args != null) {
             initilizeViews(args);
         }
         return view;
@@ -119,40 +119,39 @@ public class BrandStoryFragment extends Fragment {
 
     private void initilizeViews(Bundle args) {
 
-        id=args.getString(ID);
+        id = args.getString(ID);
 
         brandHead.setText(args.getString(TITLE));
         videoDescription.setText(args.getString(DESCRIPTION));
-        String imagePath= Constants.BASE_URL +args.getString(IMAGE_FILE);
-        String path=args.getString(IMAGE_FILE);
+        String imagePath = Constants.BASE_URL + args.getString(IMAGE_FILE);
+        String path = args.getString(IMAGE_FILE);
 
-        videoFile=Constants.BASE_URL+args.getString(VIDEO_FILE);
+        videoFile = Constants.BASE_URL + args.getString(VIDEO_FILE);
 
         String[] separated = path.split("/");
-        Log.d("SEPERATER",separated[separated.length-1]);
-        String imageName=separated[separated.length-1];
+        Log.d("SEPERATER", separated[separated.length - 1]);
+        String imageName = separated[separated.length - 1];
 
 
-
-        file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+ BrandStory.BASE_PATH);
+        file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + BrandStory.BASE_PATH);
         boolean value;
-        if(!file.exists()) {
-             value = file.mkdirs();
-            Log.d("BrandStory","created directory"+file);
+        if (!file.exists()) {
+            value = file.mkdirs();
+            Log.d("BrandStory", "created directory" + file);
         }
 
 
-        File imagefile=new File(file+"/"+imageName);
-        if(imagefile.exists()) {
-            Log.d("BrandStory","fileexists");
-            HyDataManager.init(getActivity()).saveBrandImageName(id+"brandimage",fileName);
+        File imagefile = new File(file + "/" + imageName);
+        if (imagefile.exists()) {
+            Log.d("BrandStory", "fileexists");
+            HyDataManager.init(getActivity()).saveBrandImageName(id + "brandimage", fileName);
             videoThumbail.setImageURI(Uri.parse(imagefile.toString()));
-        }else {
-            if(imagefile.exists())
+        } else {
+            if (imagefile.exists())
                 imagefile.delete();
-            Log.d("BrandStory","filenotexists");
-           if(AndroidUtils.isNetworkOnline(getActivity()))
-            downloadVideo(imageName, imagePath,"image");
+            Log.d("BrandStory", "filenotexists");
+            if (AndroidUtils.isNetworkOnline(getActivity()))
+                downloadVideo(imageName, imagePath, "image");
         }
 
     }
@@ -162,49 +161,48 @@ public class BrandStoryFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    @OnClick({R.id.brand_rl,R.id.image_button})
+    @OnClick({R.id.brand_rl, R.id.image_button})
     public void onVideoBottonClicked() {
         Toast.makeText(getActivity(), "Video Selected", Toast.LENGTH_SHORT).show();
 
-        file=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+BrandStory.BASE_PATH);
+        file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + BrandStory.BASE_PATH);
 
         String[] separated = videoFile.split("/");
-        Log.d("SEPERATER",separated[separated.length-1]);
-        String videoName=separated[separated.length-1];
+        Log.d("SEPERATER", separated[separated.length - 1]);
+        String videoName = separated[separated.length - 1];
 
 
-
-        File nvideofile=new File(file+"/"+videoName);
-        if(nvideofile.exists()) {
-            Log.d("BrandStory","fileexists" +nvideofile);
-            HyDataManager.init(getActivity()).saveBrandVideoName(id+"brandvideo",fileName);
-            Intent intent=new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra(PlayVideoActivity.VIDEO_URL,nvideofile.toString());
+        File nvideofile = new File(file + "/" + videoName);
+        if (nvideofile.exists()) {
+            Log.d("BrandStory", "fileexists" + nvideofile);
+            HyDataManager.init(getActivity()).saveBrandVideoName(id + "brandvideo", fileName);
+            Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+            intent.putExtra(PlayVideoActivity.VIDEO_URL, nvideofile.toString());
             startActivity(intent);
-        }else {
-            if(nvideofile.exists())
+        } else {
+            if (nvideofile.exists())
                 nvideofile.delete();
-            Log.d("BrandStory","filenotexists");
+            Log.d("BrandStory", "filenotexists");
 
-            if(AndroidUtils.isNetworkOnline(getActivity()))
+            if (AndroidUtils.isNetworkOnline(getActivity()))
                 downloadVideo(videoName, videoFile, "video");
         }
 
     }
 
-    public void downloadVideo(String name, String Url,String type) {
+    public void downloadVideo(String name, String Url, String type) {
 
-        fileUrl =Url;
-        fileName =name;
-        this.type=type;
+        fileUrl = Url;
+        fileName = name;
+        this.type = type;
         Log.d("VIDEOId,VideoURL", "" + fileName + " " + fileUrl);
 
         mPbar.show();
 
-            Uri uri = Uri.parse(fileUrl);
-            DownloadManager.Request request = new DownloadManager.Request(uri);
-            request.setDescription("Video Download").
-                    setTitle("downloading");
+        Uri uri = Uri.parse(fileUrl);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setDescription("Video Download").
+                setTitle("downloading");
 
 //        request.setDestinationInExternalFilesDir(getActivity(),
 //                Environment.DIRECTORY_DOWNLOADS, fileName);
@@ -217,19 +215,18 @@ public class BrandStoryFragment extends Fragment {
 //                    path, fileName);
 
 
-       Uri downloadLocatin=Uri.fromFile(new File(Environment.getExternalStorageDirectory()+BrandStory.BASE_PATH+"/",fileName));
-        Log.d("BrandStory","location"+downloadLocatin);
+        Uri downloadLocatin = Uri.fromFile(new File(Environment.getExternalStorageDirectory() + BrandStory.BASE_PATH + "/", fileName));
+        Log.d("BrandStory", "location" + downloadLocatin);
 
         request.setDestinationUri(downloadLocatin);
 
 
         request.setVisibleInDownloadsUi(true);
 
-            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
-                    DownloadManager.Request.NETWORK_MOBILE);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
+                DownloadManager.Request.NETWORK_MOBILE);
 
-            myDownloadReference = downloadManager.enqueue(request);
-
+        myDownloadReference = downloadManager.enqueue(request);
 
 
     }
@@ -297,16 +294,16 @@ public class BrandStoryFragment extends Fragment {
 //                            mPbar.setVisibility(View.GONE);
                             mPbar.dismiss();
                             isDownloadig = false;
-                            if(type.equals("image")) {
-                                HyDataManager.init(getActivity()).saveBrandImageName(id+"brandimage",fileName);
+                            if (type.equals("image")) {
+                                HyDataManager.init(getActivity()).saveBrandImageName(id + "brandimage", fileName);
 
                                 videoThumbail.setImageURI(Uri.parse(savedFilePath));
-                            }else {
-                                HyDataManager.init(getActivity()).saveBrandVideoName(id+"brandvideo",fileName);
+                            } else {
+                                HyDataManager.init(getActivity()).saveBrandVideoName(id + "brandvideo", fileName);
 
                                 Log.d("PlayVideo", "savedURLpath in video =" + savedFilePath);
-                                Intent intentplay=new Intent(getActivity(), PlayVideoActivity.class);
-                                intentplay.putExtra(PlayVideoActivity.VIDEO_URL,savedFilePath);
+                                Intent intentplay = new Intent(getActivity(), PlayVideoActivity.class);
+                                intentplay.putExtra(PlayVideoActivity.VIDEO_URL, savedFilePath);
                                 startActivity(intentplay);
                             }
                             if (mPbar.isShowing())
@@ -321,7 +318,7 @@ public class BrandStoryFragment extends Fragment {
                 }
             }
         };
-       getActivity().registerReceiver(rceiverDownloadComplete, intentFilter1);
+        getActivity().registerReceiver(rceiverDownloadComplete, intentFilter1);
 
     }
 
@@ -331,7 +328,6 @@ public class BrandStoryFragment extends Fragment {
         getActivity().unregisterReceiver(rceiverDownloadComplete);
         getActivity().unregisterReceiver(receiverDownloadClicked);
     }
-
 
 
 }

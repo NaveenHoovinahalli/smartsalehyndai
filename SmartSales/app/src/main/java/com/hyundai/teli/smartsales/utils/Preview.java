@@ -46,7 +46,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
                     try {
                         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 
-                        File file = new File(Environment.getExternalStorageDirectory()+ File.separator + ".Hyundai/image.jpg");
+                        File file = new File(Environment.getExternalStorageDirectory() + File.separator + ".Hyundai/image.jpg");
                         file.createNewFile();
                         outStream = new FileOutputStream(file);
                         outStream.write(bytes.toByteArray());

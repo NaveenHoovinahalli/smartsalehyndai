@@ -59,6 +59,7 @@ public class Consultation extends ActionBarActivity {
     private static final String IMAGE_DIRECTORY_NAME = ".Hyundai";
     private Uri fileUri;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,10 +94,11 @@ public class Consultation extends ActionBarActivity {
         }
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("Consultation","onResume");
+        Log.d("Consultation", "onResume");
         boolean isPaused = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .getBoolean("PAUSED", false);
         boolean isCamera = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
@@ -104,7 +106,7 @@ public class Consultation extends ActionBarActivity {
         if (isPaused && !isCamera) {
             loadShowRoom();
             setSelected(0);
-        }else if(isPaused && isCamera){
+        } else if (isPaused && isCamera) {
             Photo photo = new Photo();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
         }
@@ -331,7 +333,7 @@ public class Consultation extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
-        Log.d("Consultation","onActivityResult");
+        Log.d("Consultation", "onActivityResult");
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)

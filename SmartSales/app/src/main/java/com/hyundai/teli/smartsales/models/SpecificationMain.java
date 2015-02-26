@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SpecificationMain {
 
     @SerializedName("specification")
-    ArrayList<SpecificationArray> specificationArrays=new ArrayList<SpecificationArray>();
+    ArrayList<SpecificationArray> specificationArrays = new ArrayList<SpecificationArray>();
 
     public ArrayList<SpecificationArray> getSpecificationArrays() {
         return specificationArrays;

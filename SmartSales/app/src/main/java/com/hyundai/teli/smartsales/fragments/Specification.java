@@ -16,7 +16,9 @@ import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.SpecificationMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
 import java.io.File;
@@ -30,7 +32,7 @@ import butterknife.InjectView;
 /**
  * Created by Nitish Kulkarni on 2/8/15.
  */
-public class Specification extends BaseFragment  {
+public class Specification extends BaseFragment {
 
 //    @InjectView(R.id.specification_pager)
 //    ViewPager specificationPager;
@@ -43,7 +45,7 @@ public class Specification extends BaseFragment  {
     @InjectView(R.id.specBar)
     ProgressBar specProgress;
 
-    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public String Base_Path;
     public static String SPECIFICATION_MAIN_PATH;
 
     ArrayList<String> images;
@@ -60,10 +62,11 @@ public class Specification extends BaseFragment  {
 
         View view = inflater.inflate(R.layout.fragment_specification, null);
         ButterKnife.inject(this, view);
-        SPECIFICATION_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+"/Hyundai/specification/";
-        file2=new File(SPECIFICATION_MAIN_PATH);
-        if(!file2.exists())
-             file2.mkdirs();
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        SPECIFICATION_MAIN_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Hyundai/specification/";
+        file2 = new File(SPECIFICATION_MAIN_PATH);
+        if (!file2.exists())
+            file2.mkdirs();
 
         fetchValues();
 //        getActivity().finish();
@@ -82,29 +85,27 @@ public class Specification extends BaseFragment  {
 
     private void parceJsonandwritetosdcard() {
 
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
 
-        specificationMain=gson.fromJson(json,SpecificationMain.class);
-       String specJson= gson.toJson(specificationMain.getSpecificationArrays());
-        Log.d("SPECIFICATION",specJson);
-        writeToSdcard(specJson,"specification.json",0);
+        specificationMain = gson.fromJson(json, SpecificationMain.class);
+        String specJson = gson.toJson(specificationMain.getSpecificationArrays());
+        Log.d("SPECIFICATION", specJson);
+        writeToSdcard(specJson, "specification.json", 0);
 
-       featureMain=gson.fromJson(json,FeatureMain.class);
-        String feaJson= gson.toJson(featureMain.featureArrays);
-        Log.d("SPECIFICATION",feaJson);
-        writeToSdcard(feaJson,"feature.json",1);
-
-
+        featureMain = gson.fromJson(json, FeatureMain.class);
+        String feaJson = gson.toJson(featureMain.featureArrays);
+        Log.d("SPECIFICATION", feaJson);
+        writeToSdcard(feaJson, "feature.json", 1);
 
 
     }
 
-    private void writeToSdcard(String jsonResponse,String fileName,int flag) {
+    private void writeToSdcard(String jsonResponse, String fileName, int flag) {
         try {
 
 
-            File file = new File(file2 +"/"+fileName);
+            File file = new File(file2 + "/" + fileName);
             Log.d("NDE", "write to sd card" + file);
             if (file.exists())
                 file.delete();
@@ -122,19 +123,18 @@ public class Specification extends BaseFragment  {
             myOutWriter.close();
             fOut.close();
         } catch (Exception e) {
-            Log.d("NDE","Exception" + e.toString());
+            Log.d("NDE", "Exception" + e.toString());
         }
-        if(flag>0)
-        loadWebView(file2);
-
+        if (flag > 0)
+            loadWebView(file2);
     }
 
-    private  void loadWebView(File file) {
+    private void loadWebView(File file) {
 
         specWebView.getSettings().setJavaScriptEnabled(true);
         specWebView.getSettings().setAllowContentAccess(true);
         specWebView.getSettings().setAllowFileAccess(true);
-        if(Build.VERSION.SDK_INT >= 16){
+        if (Build.VERSION.SDK_INT >= 16) {
             specWebView.getSettings().setAllowFileAccessFromFileURLs(true);
             specWebView.getSettings().setAllowUniversalAccessFromFileURLs(true);
         }
@@ -143,11 +143,12 @@ public class Specification extends BaseFragment  {
         specWebView.setWebChromeClient(new MyWebChromeClient());
         specWebView.setWebViewClient(new MyWebViewClient());
         specWebView.loadUrl("about:blank");
-        specWebView.loadUrl("file:/"+file+"/index.html");
-        Log.d("Specification","HTML path::" +file+"/index.html");
+        specWebView.loadUrl("file://" + file + "/index.html");
+        Log.d("Specification", "HTML path::" + file + "/index.html");
 
     }
-    private  class MyWebChromeClient extends WebChromeClient {
+
+    private class MyWebChromeClient extends WebChromeClient {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
@@ -157,7 +158,7 @@ public class Specification extends BaseFragment  {
         }
     }
 
-    private  class MyWebViewClient extends WebViewClient {
+    private class MyWebViewClient extends WebViewClient {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -172,8 +173,5 @@ public class Specification extends BaseFragment  {
             super.onPageFinished(view, url);
         }
     }
-
-
-
 }
 

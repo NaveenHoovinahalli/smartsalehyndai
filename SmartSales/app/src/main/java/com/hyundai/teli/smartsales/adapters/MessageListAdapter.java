@@ -26,7 +26,7 @@ public class MessageListAdapter extends BaseAdapter {
 
     public MessageListAdapter(Context context, List<MessageBoardValues> messageBoardValues) {
         this.context = context;
-        this.messageBoardValueses=messageBoardValues;
+        this.messageBoardValueses = messageBoardValues;
     }
 
     @Override
@@ -58,14 +58,14 @@ public class MessageListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
 
-                    String date=messageBoardValueses.get(position).getCreatedDate();
-                    String time=messageBoardValueses.get(position).getCreatedTime();
-                    String dateTime= date+" "+time ;
+                    String date = messageBoardValueses.get(position).getCreatedDate();
+                    String time = messageBoardValueses.get(position).getCreatedTime();
+                    String dateTime = date + " " + time;
                     Intent intent = new Intent(context, MessageDescription.class);
-                    intent.putExtra(MessageDescription.NO,""+(position+1));
-                    intent.putExtra(MessageDescription.TITLE,messageBoardValueses.get(position).getMessageTitle());
-                    intent.putExtra(MessageDescription.DESCRIPTION,messageBoardValueses.get(position).getMessageDetails());
-                    intent.putExtra(MessageDescription.DATE,dateTime);
+                    intent.putExtra(MessageDescription.NO, "" + (position + 1));
+                    intent.putExtra(MessageDescription.TITLE, messageBoardValueses.get(position).getMessageTitle());
+                    intent.putExtra(MessageDescription.DESCRIPTION, messageBoardValueses.get(position).getMessageDetails());
+                    intent.putExtra(MessageDescription.DATE, dateTime);
 
                     context.startActivity(intent);
                 }
@@ -77,17 +77,16 @@ public class MessageListAdapter extends BaseAdapter {
         }
 
 
-
-        viewHolder.no.setText(""+(position+1));
+        viewHolder.no.setText("" + (position + 1));
         viewHolder.title.setText(messageBoardValueses.get(position).getMessageTitle().toString());
-        String date=messageBoardValueses.get(position).getCreatedDate();
-        String time=messageBoardValueses.get(position).getCreatedTime();
-        String dateTime= date+" "+time ;
+        String date = messageBoardValueses.get(position).getCreatedDate();
+        String time = messageBoardValueses.get(position).getCreatedTime();
+        String dateTime = date + " " + time;
         viewHolder.date.setText(dateTime);
-        String title=messageBoardValueses.get(position).getMessageTitle();
+        String title = messageBoardValueses.get(position).getMessageTitle();
 
         Log.d("MESSAGE", "title" + title);
-        Log.d("MESSAGE","Date"+dateTime);
+        Log.d("MESSAGE", "Date" + dateTime);
 
         return convertView;
     }

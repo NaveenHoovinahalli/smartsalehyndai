@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by naveen on 25/2/15.
  */
-public class VRInteriorArray  {
+public class VRInteriorArray {
 
     @SerializedName("vr_interior_image")
     ArrayList<VRInteriorItem> vrInteriorArray;

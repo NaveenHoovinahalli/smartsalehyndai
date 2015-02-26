@@ -384,8 +384,8 @@ public class SignUp extends Activity {
     public String getRealPathFromURI(Uri contentUri) {
 
         // can post image
-        String [] proj={MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery( contentUri,
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(contentUri,
                 proj, // Which columns to return
                 null,       // WHERE clause; which rows to return (all rows)
                 null,       // WHERE clause selection arguments (none)

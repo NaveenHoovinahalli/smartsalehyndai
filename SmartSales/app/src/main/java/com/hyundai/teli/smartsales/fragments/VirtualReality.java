@@ -16,9 +16,12 @@ import android.widget.ViewFlipper;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.VrExteriorMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -35,6 +38,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
     @InjectView(R.id.vr_layout)
     RelativeLayout vrLayout;
+
 
     @InjectView(R.id.colorPallet0)
     ImageView colorPallet0;
@@ -59,7 +63,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     @InjectView(R.id.colorPallet10)
     ImageView colorPallet10;
 
-    private String Base_Path="/Hyundai/Cars/Grandi10/";
+    private String Base_Path;
     private String VIRTUALEXTERIOR_MAIN_PATH;
     private VrExteriorMain vrExteriorMain;
 
@@ -68,12 +72,12 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     private static final int SWIPE_THRESHOLD_VELOCITY = 20;
 
 
-    private ArrayList<String> vrexteriorImages=new ArrayList<String>();
-    private int colorCount=0;
-    private ArrayList<String> colorImagePathselected=new ArrayList<String>();
-    private ArrayList<String> colorImagePathNotselected=new ArrayList<String>();
+    private ArrayList<String> vrexteriorImages = new ArrayList<String>();
+    private int colorCount = 0;
+    private ArrayList<String> colorImagePathselected = new ArrayList<String>();
+    private ArrayList<String> colorImagePathNotselected = new ArrayList<String>();
 
-    private ArrayList<ImageView> colorPallet=new ArrayList<ImageView>();
+    private ArrayList<ImageView> colorPallet = new ArrayList<ImageView>();
 
 
     GestureDetector detector;
@@ -83,7 +87,7 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_virtual_reality, null);
         ButterKnife.inject(this, view);
-
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
         colorPallet.add(colorPallet0);
         colorPallet.add(colorPallet1);
         colorPallet.add(colorPallet2);
@@ -96,10 +100,11 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         colorPallet.add(colorPallet9);
         colorPallet.add(colorPallet10);
 
-        VIRTUALEXTERIOR_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"vr_exterior/";
+        VIRTUALEXTERIOR_MAIN_PATH = Base_Path + "vr_exterior/";
 
         fetchValues();
 
+        mVRFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
 
         ImageView hotspot_image = new ImageView(getActivity());
@@ -107,7 +112,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         hotspot_image.setX(150.0f);
         hotspot_image.setY(150.0f);
         vrLayout.addView(hotspot_image);
-
 
 
         return view;
@@ -118,10 +122,6 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         getValuesforColorSelection(0);
         setColorPallet();
         colorPallet.get(0).setImageURI(Uri.parse(colorImagePathselected.get(0)));
-        setViewFlipper();
-        mVRFlipper.setOnTouchListener(this);
-
-
 
     }
 
@@ -130,14 +130,15 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
         mVRFlipper.removeAllViews();
         for (int i = 0; i < vrexteriorImages.size(); i++) {
             ImageView image = new ImageView(getActivity());
-            Log.d("EXTERIOR","IMAGE"+vrexteriorImages.get(i));
+            Log.d("EXTERIOR", "IMAGE" + vrexteriorImages.get(i));
+//            Picasso.with(getActivity()).load(Uri.parse("file://"+vrexteriorImages.get(i))).into(image);
             image.setImageURI(Uri.parse(vrexteriorImages.get(i)));
             mVRFlipper.addView(image);
         }
     }
 
     private void setColorPallet() {
-        for(int i=0;i<colorCount;i++){
+        for (int i = 0; i < colorCount; i++) {
             colorPallet.get(i).setVisibility(View.VISIBLE);
             colorPallet.get(i).setImageURI(Uri.parse(colorImagePathNotselected.get(i)));
 
@@ -145,74 +146,74 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
     }
 
-    @OnClick({R.id.colorPallet0,R.id.colorPallet1,R.id.colorPallet2,R.id.colorPallet3,R.id.colorPallet4,R.id.colorPallet5,R.id.colorPallet6,
-            R.id.colorPallet7,R.id.colorPallet8,R.id.colorPallet9,R.id.colorPallet10})
-    public void onColorButtonSelected(View view){
+    @OnClick({R.id.colorPallet0, R.id.colorPallet1, R.id.colorPallet2, R.id.colorPallet3, R.id.colorPallet4, R.id.colorPallet5, R.id.colorPallet6,
+            R.id.colorPallet7, R.id.colorPallet8, R.id.colorPallet9, R.id.colorPallet10})
+    public void onColorButtonSelected(View view) {
         ImageView view1;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.colorPallet0:
                 getValuesforColorSelection(0);
                 setColorPallet();
-                 view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(0)));
                 break;
             case R.id.colorPallet1:
                 getValuesforColorSelection(1);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(1)));
                 break;
             case R.id.colorPallet2:
                 getValuesforColorSelection(2);
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(2)));
                 break;
             case R.id.colorPallet3:
                 getValuesforColorSelection(3);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(3)));
                 break;
             case R.id.colorPallet4:
                 getValuesforColorSelection(4);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(4)));
                 break;
             case R.id.colorPallet5:
                 getValuesforColorSelection(5);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(5)));
                 break;
             case R.id.colorPallet6:
                 getValuesforColorSelection(6);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(6)));
                 break;
             case R.id.colorPallet7:
                 getValuesforColorSelection(7);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(7)));
                 break;
             case R.id.colorPallet8:
                 getValuesforColorSelection(7);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(8)));
                 break;
             case R.id.colorPallet9:
                 getValuesforColorSelection(9);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(9)));
                 break;
             case R.id.colorPallet10:
                 getValuesforColorSelection(10);
                 setColorPallet();
-                view1= (ImageView) view;
+                view1 = (ImageView) view;
                 view1.setImageURI(Uri.parse(colorImagePathselected.get(10)));
                 break;
         }
@@ -222,42 +223,43 @@ public class VirtualReality extends BaseFragment implements View.OnTouchListener
 
     private void getValuesforColorSelection(int i) {
         vrexteriorImages.clear();
-        for(int j=0;j<vrExteriorMain.getVrExteriorCars().get(i).getVrExteriorImageArray().size();j++){
-            String imagePath=vrExteriorMain.getVrExteriorCars().get(i).getVrExteriorImageArray().get(j).getVeExteriorImage();
-            String seperator[]= imagePath.split("/");
-            vrexteriorImages.add(VIRTUALEXTERIOR_MAIN_PATH+seperator[seperator.length-2]+"/"+seperator[seperator.length-1]);
-            Log.d("EXTERIOR","IMAGELOAD"+VIRTUALEXTERIOR_MAIN_PATH+seperator[seperator.length-2]+"/"+seperator[seperator.length-1]);
+        for (int j = 0; j < vrExteriorMain.getVrExteriorCars().get(i).getVrExteriorImageArray().size(); j++) {
+            String imagePath = vrExteriorMain.getVrExteriorCars().get(i).getVrExteriorImageArray().get(j).getVeExteriorImage();
+            String seperator[] = imagePath.split("/");
+            vrexteriorImages.add(VIRTUALEXTERIOR_MAIN_PATH + seperator[seperator.length - 2] + "/" + seperator[seperator.length - 1]);
+            Log.d("EXTERIOR", "IMAGELOAD" + VIRTUALEXTERIOR_MAIN_PATH + seperator[seperator.length - 2] + "/" + seperator[seperator.length - 1]);
 
         }
+        setViewFlipper();
 
     }
 
     private void parceJson() {
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
-        vrExteriorMain=gson.fromJson(json,VrExteriorMain.class);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        vrExteriorMain = gson.fromJson(json, VrExteriorMain.class);
 
-        String savingGson= new Gson().toJson(vrExteriorMain);
-        Log.d("SAVINGGSON",""+savingGson);
+        String savingGson = new Gson().toJson(vrExteriorMain);
+        Log.d("SAVINGGSON", "" + savingGson);
 
-            colorImagePathNotselected.clear();
-              colorImagePathselected.clear();
+        colorImagePathNotselected.clear();
+        colorImagePathselected.clear();
 
-                colorCount=vrExteriorMain.getVrExteriorCars().size();
-                for(int i=0;i<vrExteriorMain.getVrExteriorCars().size();i++){
+        colorCount = vrExteriorMain.getVrExteriorCars().size();
+        for (int i = 0; i < vrExteriorMain.getVrExteriorCars().size(); i++) {
 
 
-                    String image= vrExteriorMain.getVrExteriorCars().get(i).getColorPalletSelected();
-                    String seperator[]= image.split("/");
-                    String imageFinalPath=VIRTUALEXTERIOR_MAIN_PATH+seperator[seperator.length-2]+"/"+seperator[seperator.length-1];
-                    colorImagePathselected.add(imageFinalPath);
-                    Log.d("SELECTOR",imageFinalPath );
+            String image = vrExteriorMain.getVrExteriorCars().get(i).getColorPalletSelected();
+            String seperator[] = image.split("/");
+            String imageFinalPath = VIRTUALEXTERIOR_MAIN_PATH + seperator[seperator.length - 2] + "/" + seperator[seperator.length - 1];
+            colorImagePathselected.add(imageFinalPath);
+            Log.d("SELECTOR", imageFinalPath);
 
-                    String imagetwo= vrExteriorMain.getVrExteriorCars().get(i).getColorPalletNotSelected();
-                    String seperatortwo[]= imagetwo.split("/");
-                    String imagetwoFinalPath=VIRTUALEXTERIOR_MAIN_PATH+seperatortwo[seperatortwo.length-2]+"/"+seperatortwo[seperatortwo.length-1];
-                    colorImagePathNotselected.add(imagetwoFinalPath);
-                    Log.d("NOTSELECTOR",imagetwoFinalPath);
+            String imagetwo = vrExteriorMain.getVrExteriorCars().get(i).getColorPalletNotSelected();
+            String seperatortwo[] = imagetwo.split("/");
+            String imagetwoFinalPath = VIRTUALEXTERIOR_MAIN_PATH + seperatortwo[seperatortwo.length - 2] + "/" + seperatortwo[seperatortwo.length - 1];
+            colorImagePathNotselected.add(imagetwoFinalPath);
+            Log.d("NOTSELECTOR", imagetwoFinalPath);
 
 
         }

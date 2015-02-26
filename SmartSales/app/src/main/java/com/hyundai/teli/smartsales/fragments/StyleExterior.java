@@ -12,13 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.StyleExteriorMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -36,9 +40,9 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     @InjectView(R.id.interior_button)
     ImageButton interiourButton;
 
-    ArrayList<String> exteriorImages=new ArrayList<String>();
+    ArrayList<String> exteriorImages = new ArrayList<String>();
     StyleExteriorMain styleExteriorMain;
-    private String Base_Path="/Hyundai/Cars/Grandi10/";
+    private String Base_Path;
     private String STYLEEXTERIOR_MAIN_PATH;
 
     private static final int SWIPE_MIN_DISTANCE = 100;
@@ -51,8 +55,10 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_style_exterior, null);
         ButterKnife.inject(this, view);
-
-        STYLEEXTERIOR_MAIN_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"style_exterior/";
+        Toast.makeText(getActivity(), "Path::" + ((CarDetails) getActivity()).getBasePath(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "CAR::" + ((CarDetails) getActivity()).getCarName(), Toast.LENGTH_SHORT).show();
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
+        STYLEEXTERIOR_MAIN_PATH = Base_Path + "style_exterior/";
         setValues();
         mExteriorFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
@@ -78,20 +84,20 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
 
     private void parceJson() {
 
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath() + Base_Path + "data.json");
-        styleExteriorMain=gson.fromJson(json,StyleExteriorMain.class);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        styleExteriorMain = gson.fromJson(json, StyleExteriorMain.class);
 
         exteriorImages.clear();
 
-        for(int i=0;i<styleExteriorMain.getStyleExteriorArrays().size();i++){
-            for(int j=0;j<styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().size();j++){
+        for (int i = 0; i < styleExteriorMain.getStyleExteriorArrays().size(); i++) {
+            for (int j = 0; j < styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().size(); j++) {
 
-                String image= styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().get(j).getImageFile();
-                String seperator[]= image.split("/");
-                String imageFinalPath=STYLEEXTERIOR_MAIN_PATH+seperator[seperator.length-1];
+                String image = styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().get(j).getImageFile();
+                String seperator[] = image.split("/");
+                String imageFinalPath = STYLEEXTERIOR_MAIN_PATH + seperator[seperator.length - 1];
                 exteriorImages.add(imageFinalPath);
-                Log.d("IMAGES",""+imageFinalPath);
+                Log.d("IMAGES", "" + imageFinalPath);
             }
         }
 

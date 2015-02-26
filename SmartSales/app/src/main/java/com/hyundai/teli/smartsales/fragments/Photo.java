@@ -61,20 +61,20 @@ public class Photo extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.btn_retry,R.id.btn_facebook,R.id.btn_delete})
-    public void OnClickListener(View view){
-        switch(view.getId()){
+    @OnClick({R.id.btn_retry, R.id.btn_facebook, R.id.btn_delete})
+    public void OnClickListener(View view) {
+        switch (view.getId()) {
             case R.id.btn_retry:
-                ((Consultation)getActivity()).capturePhoto();
+                ((Consultation) getActivity()).capturePhoto();
                 break;
             case R.id.btn_facebook:
                 Toast.makeText(getActivity(), "Shared on Facebook", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_delete:
                 File file = new File(fileUri.getPath());
-                if(file.exists())
+                if (file.exists())
                     file.delete();
-                ((Consultation)getActivity()).capturePhoto();
+                ((Consultation) getActivity()).capturePhoto();
                 break;
         }
     }

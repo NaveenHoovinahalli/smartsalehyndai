@@ -16,12 +16,15 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
+import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.PerformanceAdapter;
 import com.hyundai.teli.smartsales.models.ConvenienceMain;
 import com.hyundai.teli.smartsales.models.SafetyMain;
+import com.hyundai.teli.smartsales.utils.AndroidUtils;
 import com.hyundai.teli.smartsales.utils.HyDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -51,12 +54,12 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     SafetyMain safetyMains;
     ConvenienceMain convenienceMain;
 
-    ArrayList<String> safetyImages=new ArrayList<String>() ;
-    ArrayList<String> safetyListValues=new ArrayList<String>() ;
-    ArrayList<String> convenienceImages= new ArrayList<String>() ;
-    ArrayList<String> convenienceListValues=new ArrayList<String>() ;
+    ArrayList<String> safetyImages = new ArrayList<String>();
+    ArrayList<String> safetyListValues = new ArrayList<String>();
+    ArrayList<String> convenienceImages = new ArrayList<String>();
+    ArrayList<String> convenienceListValues = new ArrayList<String>();
 
-    public String Base_Path="/Hyundai/Cars/Grandi10/";
+    public String Base_Path = "/Hyundai/Cars/Grandi10/";
     public static String SAFETY_CONVENIENCE_MAIN_PATH;
 
 
@@ -65,6 +68,7 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
         View view = inflater.inflate(R.layout.fragment_safety_convenience, null);
         ButterKnife.inject(this, view);
+        Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
         setForSafety();
         return view;
     }
@@ -94,12 +98,12 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
     }
 
     private void setForSafety() {
-        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"safety/";
+        SAFETY_CONVENIENCE_MAIN_PATH = Base_Path + "safety/";
 
         parcesafetyJson();
 
         safetyButton.setSelected(true);
-        if(safetyListValues.size()>0 && safetyImages.size()>0) {
+        if (safetyListValues.size() > 0 && safetyImages.size() > 0) {
             setList(safetyListValues);
             setPager(safetyImages);
         }
@@ -107,22 +111,22 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     private void parcesafetyJson() {
 
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
-        safetyMains=gson.fromJson(json,SafetyMain.class);
-        Log.d("Safety","from method"+json);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        safetyMains = gson.fromJson(json, SafetyMain.class);
+        Log.d("Safety", "from method" + json);
         safetyImages.clear();
         safetyListValues.clear();
 
-        for(int i=0;i<safetyMains.getSafetyMainArray().size();i++){
+        for (int i = 0; i < safetyMains.getSafetyMainArray().size(); i++) {
 
-            for(int j=0;j<safetyMains.getSafetyMainArray().get(i).getSafetyImages().size();j++){
-                Log.d("Safety","title"+safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyTitle());
-                Log.d("Safety","image"+safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage());
+            for (int j = 0; j < safetyMains.getSafetyMainArray().get(i).getSafetyImages().size(); j++) {
+                Log.d("Safety", "title" + safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyTitle());
+                Log.d("Safety", "image" + safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage());
                 safetyListValues.add(safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyTitle());
-                String image= safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage();
-                String seperator[]= image.split("/");
-                String imageFinalPath=SAFETY_CONVENIENCE_MAIN_PATH+seperator[seperator.length-1];
+                String image = safetyMains.getSafetyMainArray().get(i).getSafetyImages().get(j).getSafetyImage();
+                String seperator[] = image.split("/");
+                String imageFinalPath = SAFETY_CONVENIENCE_MAIN_PATH + seperator[seperator.length - 1];
 
                 safetyImages.add(imageFinalPath);
             }
@@ -133,22 +137,22 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     private void parceConvenienceJson() {
 
-        Gson gson=new Gson();
-        String json= HyDataManager.readJsonfromSdcard(Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path+"data.json");
-        convenienceMain=gson.fromJson(json,ConvenienceMain.class);
-        Log.d("Safety","from method"+json);
+        Gson gson = new Gson();
+        String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
+        convenienceMain = gson.fromJson(json, ConvenienceMain.class);
+        Log.d("Safety", "from method" + json);
 
         convenienceImages.clear();
         convenienceListValues.clear();
 
-        for(int i=0;i<convenienceMain.getConvenienceMainArray().size();i++){
+        for (int i = 0; i < convenienceMain.getConvenienceMainArray().size(); i++) {
 
-            for(int j=0;j<convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().size();j++){
+            for (int j = 0; j < convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().size(); j++) {
 
                 convenienceListValues.add(convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().get(j).getConvenienceyTitle());
-                String image= convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().get(j).getConvenienceImage();
-                String seperator[]= image.split("/");
-                String imageFinalPath=SAFETY_CONVENIENCE_MAIN_PATH+seperator[seperator.length-1];
+                String image = convenienceMain.getConvenienceMainArray().get(i).getConvenienceImages().get(j).getConvenienceImage();
+                String seperator[] = image.split("/");
+                String imageFinalPath = SAFETY_CONVENIENCE_MAIN_PATH + seperator[seperator.length - 1];
 
                 convenienceImages.add(imageFinalPath);
             }
@@ -159,10 +163,10 @@ public class Safety extends BaseFragment implements ViewPager.OnPageChangeListen
 
     private void setForConvenience() {
 
-        SAFETY_CONVENIENCE_MAIN_PATH=Environment.getExternalStorageDirectory().getAbsolutePath()+ Base_Path +"convenience/";
+        SAFETY_CONVENIENCE_MAIN_PATH = Base_Path + "convenience/";
 
         parceConvenienceJson();
-        if(convenienceImages.size()>0 && convenienceListValues.size()>0) {
+        if (convenienceImages.size() > 0 && convenienceListValues.size() > 0) {
 
             setList(convenienceListValues);
             setPager(convenienceImages);

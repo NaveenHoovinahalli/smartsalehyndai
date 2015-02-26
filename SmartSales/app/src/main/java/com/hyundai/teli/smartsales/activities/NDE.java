@@ -76,8 +76,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     PopupWindow mQuickMenu;
 
     public static File NDE_FOLDER;
-    public static final String BASE_PATH="/Hyundai/NDE";
-    public static String JsonFile="/nde.json";
+    public static final String BASE_PATH = "/Hyundai/NDE";
+    public static String JsonFile = "/nde.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,16 +85,16 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         setContentView(R.layout.activity_nde);
         ButterKnife.inject(this);
 
-        NDE_FOLDER=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+BASE_PATH);
-        if(!NDE_FOLDER.exists())
+        NDE_FOLDER = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + BASE_PATH);
+        if (!NDE_FOLDER.exists())
             NDE_FOLDER.mkdirs();
 
         loadNdeVideos();
 
-        if(AndroidUtils.isNetworkOnline(NDE.this)) {
+        if (AndroidUtils.isNetworkOnline(NDE.this)) {
             fetchValues();
 
-        }else {
+        } else {
 
             parceJson();
         }
@@ -103,18 +103,18 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
 
     private void fetchValues() {
 
-        String url= String.format(Constants.NDE_URL);
+        String url = String.format(Constants.NDE_URL);
 
-        JsonArrayRequest request=new JsonArrayRequest(url,
+        JsonArrayRequest request = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
 
-                        Log.d("NDE",""+response);
-                       writeToSdcard(response.toString());
+                        Log.d("NDE", "" + response);
+                        writeToSdcard(response.toString());
 
                     }
-                },new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -128,7 +128,7 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
         try {
 
 
-            File file = new File(NDE_FOLDER + JsonFile );
+            File file = new File(NDE_FOLDER + JsonFile);
             Log.d("NDE", "write to sd card" + file);
             if (file.exists())
                 file.delete();
@@ -147,22 +147,24 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
             fOut.close();
             parceJson();
         } catch (Exception e) {
-            Log.d("NDE","Exception" + e.toString());
+            Log.d("NDE", "Exception" + e.toString());
         }
 
 
     }
-    public void parceJson(){
 
-        String parcedJson=readFromFile();
-        Gson gson=new Gson();
+    public void parceJson() {
 
-        ndeMain=gson.fromJson(parcedJson,new TypeToken<List<NDEMain>>(){}.getType());
+        String parcedJson = readFromFile();
+        Gson gson = new Gson();
+
+        ndeMain = gson.fromJson(parcedJson, new TypeToken<List<NDEMain>>() {
+        }.getType());
         setPager();
 
     }
 
-    public void setPager(){
+    public void setPager() {
         PagerAdapter mPagerAdapter = new NDEPagerAdapter(getSupportFragmentManager(), ndeMain);
         ndePager.setAdapter(mPagerAdapter);
         ndePager.setOnPageChangeListener(this);
@@ -170,12 +172,12 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     }
 
 
-    public String readFromFile(){
+    public String readFromFile() {
 
         InputStream is = null;
         try {
 
-            File jsonPath = new File( NDE_FOLDER + JsonFile);
+            File jsonPath = new File(NDE_FOLDER + JsonFile);
 
             if (jsonPath.exists()) {
                 FileInputStream fIn = new FileInputStream(jsonPath);
@@ -238,9 +240,9 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
 
     private void setCurrentPage(String category) {
 
-        for(int i=0;i<ndeMain.size();i++){
+        for (int i = 0; i < ndeMain.size(); i++) {
 
-            if(ndeMain.get(i).getCategory().equals(category)){
+            if (ndeMain.get(i).getCategory().equals(category)) {
                 ndePager.setCurrentItem(i);
                 break;
             }
@@ -271,8 +273,6 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     }
 
 
-
-
     @Override
     public void onPageScrolled(int i, float v, int i2) {
 
@@ -281,8 +281,8 @@ public class NDE extends ActionBarActivity implements ViewPager.OnPageChangeList
     @Override
     public void onPageSelected(int i) {
 
-        String category=ndeMain.get(i).getCategory();
-        Log.d("NDE",""+category);
+        String category = ndeMain.get(i).getCategory();
+        Log.d("NDE", "" + category);
 
         switch (category) {
             case "NDE VIDEO":

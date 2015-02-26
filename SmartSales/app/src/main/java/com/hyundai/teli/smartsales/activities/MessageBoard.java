@@ -47,7 +47,7 @@ public class MessageBoard extends ActionBarActivity {
     ImageView mCatalogMenu;
 
     PopupWindow mQuickMenu;
-   ArrayList<MessageBoardValues> messageBoardValues;
+    ArrayList<MessageBoardValues> messageBoardValues;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -55,35 +55,35 @@ public class MessageBoard extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_board);
         ButterKnife.inject(this);
-        if(AndroidUtils.isNetworkOnline(this)) {
+        if (AndroidUtils.isNetworkOnline(this)) {
             fetchValues();
-        }else {
-          String json= HyDataManager.init(this).getMessageJson();
-           if(!json.isEmpty()) {
+        } else {
+            String json = HyDataManager.init(this).getMessageJson();
+            if (!json.isEmpty()) {
 
-               Type listType = new TypeToken<List<MessageBoardValues>>() {
-               }.getType();
-               List<MessageBoardValues> message = (List<MessageBoardValues>) new Gson().fromJson(json, listType);
-               listMessage.setAdapter(new MessageListAdapter(this,message));
+                Type listType = new TypeToken<List<MessageBoardValues>>() {
+                }.getType();
+                List<MessageBoardValues> message = (List<MessageBoardValues>) new Gson().fromJson(json, listType);
+                listMessage.setAdapter(new MessageListAdapter(this, message));
 
-           }
+            }
         }
 
     }
 
     private void fetchValues() {
 
-        String url=String.format(Constants.MESSAGE_BOARD_URL);
+        String url = String.format(Constants.MESSAGE_BOARD_URL);
 
 
-        JsonArrayRequest messageRequest=new JsonArrayRequest(url,
+        JsonArrayRequest messageRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         HyDataManager.init(MessageBoard.this).saveMessageJson(response.toString());
                         parceJson(response);
                     }
-                },new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -95,10 +95,11 @@ public class MessageBoard extends ActionBarActivity {
 
     private void parceJson(JSONArray jsonArray) {
 
-        Gson gson=new Gson();
+        Gson gson = new Gson();
 
-        messageBoardValues=gson.fromJson(jsonArray.toString(),new TypeToken<List<MessageBoardValues>>(){}.getType());
-        listMessage.setAdapter(new MessageListAdapter(this,messageBoardValues));
+        messageBoardValues = gson.fromJson(jsonArray.toString(), new TypeToken<List<MessageBoardValues>>() {
+        }.getType());
+        listMessage.setAdapter(new MessageListAdapter(this, messageBoardValues));
 
 
     }
