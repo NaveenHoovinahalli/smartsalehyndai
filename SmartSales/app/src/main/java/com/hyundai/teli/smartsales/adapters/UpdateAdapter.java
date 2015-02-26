@@ -14,8 +14,10 @@ import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.models.CarName;
+import com.hyundai.teli.smartsales.utils.BusProvider;
 import com.hyundai.teli.smartsales.utils.Constants;
 import com.hyundai.teli.smartsales.views.HTextView;
+import com.squareup.otto.Produce;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -38,6 +40,7 @@ public class UpdateAdapter extends BaseAdapter {
     private ArrayList<CarName> mCarInfo;
     private Activity mContext;
     private ViewHolder viewHolder;
+    private String mProgress;
 
     public UpdateAdapter(Activity context, ArrayList<CarName> carInfo) {
         this.mContext = context;
@@ -72,11 +75,8 @@ public class UpdateAdapter extends BaseAdapter {
             viewHolder.progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
             viewHolder.progress = (HTextView) view.findViewById(R.id.progress_view);
             viewHolder.status = (HTextView) view.findViewById(R.id.state_view);
-
             view.setTag(viewHolder);
-
         } else {
-
             viewHolder = (ViewHolder) view.getTag();
         }
 
@@ -84,17 +84,13 @@ public class UpdateAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "Position::" + mCarInfo.get(position).getId(), Toast.LENGTH_SHORT).show();
-                new DownloadFileFromURL(viewHolder).execute(mCarInfo.get(position).getId());
+                viewHolder.desc.setText("Vehicle update is available");
+                viewHolder.status.setText("Downloading...");
+                new DownloadFileFromURL().execute(mCarInfo.get(position).getId());
 
             }
         });
         viewHolder.carName.setText(mCarInfo.get(position).getCarName());
-        viewHolder.date.setId(position);
-        viewHolder.desc.setTag(position);
-        viewHolder.progressBar.setTag(position);
-        viewHolder.progress.setTag(position);
-        viewHolder.status.setTag(position);
-
         return view;
     }
 
@@ -110,27 +106,14 @@ public class UpdateAdapter extends BaseAdapter {
 
     class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
-        ViewHolder viewHolder;
-
-        public DownloadFileFromURL(ViewHolder viewHolder) {
-        }
-
-        /**
-         * Before starting background thread
-         * Show Progress Bar Dialog
-         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            viewHolder.status.setText("Downloading...");
         }
 
-        /**
-         * Downloading file in background thread
-         */
         @Override
         protected String doInBackground(String... id) {
-                Log.d("Update Adapter", "DOWNLOAD ID::" + id);
+            Log.d("Update Adapter", "DOWNLOAD ID::" + id);
             int count;
             try {
                 URL url = new URL(Constants.DOWNLOAD + id[0] + "/");
@@ -177,19 +160,18 @@ public class UpdateAdapter extends BaseAdapter {
 
         protected void onProgressUpdate(String... progress) {
             // setting progress percentage
-            viewHolder.progressBar.setProgress(Integer.parseInt(progress[0]));
+//            BusProvider.getInstance().post(progress[0]);
+            mProgress = progress[0];
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            viewHolder.desc.setText("Standby");
-            viewHolder.status.setText("Vehicle is Updated");
-            Date date = Calendar.getInstance().getTime();
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            String today = formatter.format(date);
-            viewHolder.date.setText(today);
-
         }
     }
+
+    /*@Produce
+    public String produceEvent() {
+        return mProgress;
+    }*/
 }

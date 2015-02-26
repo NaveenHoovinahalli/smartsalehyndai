@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.fragments.Catalog;
@@ -68,7 +70,8 @@ public class CarDetails extends ActionBarActivity {
         setContentView(R.layout.activity_car_details);
         ButterKnife.inject(this);
         Intent receivedIntent = getIntent();
-        if (receivedIntent != null && receivedIntent.hasExtra("TAB")) {
+        if (receivedIntent != null) {
+            Toast.makeText(getApplicationContext(), receivedIntent.getStringExtra("TAB"), Toast.LENGTH_SHORT).show();
             switch (receivedIntent.getStringExtra("TAB")) {
                 case "VR":
                     loadVirtualReality();

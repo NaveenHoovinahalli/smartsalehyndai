@@ -3,6 +3,8 @@ package com.hyundai.teli.smartsales.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -176,7 +178,7 @@ public class Showroom extends BaseFragment {
                 File thumbnailsPath = new File(Environment.getExternalStorageDirectory()
                         + File.separator
                         + Constants.SDCARD_THUMBNAILS);
-                Log.d("Showroom","Thumbnail Path::" + thumbnailsPath);
+                Log.d("Showroom", "Thumbnail Path::" + thumbnailsPath);
                 if (!thumbnailsPath.exists())
                     thumbnailsPath.mkdirs();
 
@@ -185,12 +187,12 @@ public class Showroom extends BaseFragment {
                     if (!carFolder.exists()) {
                         carFolder.mkdirs();
                     }
-                    Log.d("Showroom","Car Folder Path::" + carFolder);
-                    File image = new File(carFolder + "/" , carNames.get(i).getCarThumbnail().replace("/media/tablet_images/"
+                    Log.d("Showroom", "Car Folder Path::" + carFolder);
+                    File image = new File(carFolder + "/", carNames.get(i).getCarThumbnail().replace("/media/tablet_images/"
                             + carNames.get(i).getCarName().replace(" ", "") + "/thumbnail/", ""));
-                    Log.d("Showroom","Image Path::" + image);
+                    Log.d("Showroom", "Image Path::" + image);
                     if (!image.exists()) {
-                        Log.d("Showroom","No Image !!");
+                        Log.d("Showroom", "No Image !!");
                         downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarThumbnail());
                         downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarDescription());
                         downloadImages(carFolder, carNames.get(i).getCarName(), carNames.get(i).getCarLogo());
@@ -211,7 +213,7 @@ public class Showroom extends BaseFragment {
 
             @Override
             public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
-                // Perform simple file operation to store this bitmap to your sd card
+                // Perform simple file operation tor store this bitmap to your sd card
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -247,7 +249,7 @@ public class Showroom extends BaseFragment {
             Picasso.with(mContext).load(Uri.parse(Constants.BASE_URL + imagePath)).into(mTarget);
     }
 
-    private void showCars(ArrayList<CarName> carNames) {
+    private void showCars(final ArrayList<CarName> carNames) {
         for (int i = 0; i < carNames.size(); i++) {
             String thumbnailpath = "file://" + Environment.getExternalStorageDirectory() + File.separator + "Hyundai/Thumbnails" +
                     File.separator + carNames.get(i).getCarName() + File.separator +
@@ -271,7 +273,17 @@ public class Showroom extends BaseFragment {
             carImage.setLayoutParams(carImageParams);
             carImage.setScaleType(ImageView.ScaleType.FIT_XY);
 //            carImage.setImageResource(cars[i]);
-            Picasso.with(mContext).load(Uri.parse(thumbnailpath)).placeholder(R.drawable.car_placeholder).into(carImage);
+            final File carPath = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + File.separator + "Hyundai/cars/" + carNames.get(i).getCarName().replace(" ", ""));
+            if (carPath.exists())
+                Picasso.with(mContext).load(Uri.parse(thumbnailpath)).placeholder(R.drawable.car_placeholder).into(carImage);
+            else {
+                Bitmap bitmapImage = BitmapFactory.decodeFile(thumbnailpath.replace("file://", ""));
+                Drawable drawableImage = new BitmapDrawable(bitmapImage);
+                carImage.setBackgroundDrawable(drawableImage);
+                carImage.setImageResource(R.drawable.car_placeholder);
+            }
+
 
             final ImageView carDescription = new ImageView(mContext);
             carDescription.setLayoutParams(carDescImageParams);
@@ -290,13 +302,26 @@ public class Showroom extends BaseFragment {
 
             carDescriptionList.add(carDescription);
 
+            final int finalI = i;
             carImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getActivity().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("CAR", "ELANTRA")
-                            .commit();
+                    if (carPath.exists()) {
+                        boolean estimate = getActivity().getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE).getBoolean("ESTIMATE", false);
+                        if (estimate) {
+                            Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
+                            openCarDetails.putExtra("CAR_NAME", carNames.get(finalI).getCarName());
+                            openCarDetails.putExtra("BASE_PATH", carPath.getPath());
+                            openCarDetails.putExtra("TAB", "ESTIMATE");
+                            startActivity(openCarDetails);
+                        } else {
+                            getActivity().getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
+                                    .edit()
+                                    .putString("CAR", carNames.get(finalI).getCarName())
+                                    .putString("BASE_PATH", carPath.getPath())
+                                    .commit();
+                        }
+                    }
                 }
             });
 
@@ -304,6 +329,10 @@ public class Showroom extends BaseFragment {
 
                 @Override
                 public void onClick(View view) {
+                    if (!carPath.exists()) {
+                        showToast();
+                        return;
+                    }
                     if (previousId != view.getId() && previousId != -1) {
                         carDetailIcons.findViewById(previousId);
                         carDetailIcons.setVisibility(View.GONE);
@@ -323,37 +352,65 @@ public class Showroom extends BaseFragment {
                     btnVR.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
-                            openCarDetails.putExtra("TAB", "VR");
-                            startActivity(openCarDetails);
+
+                            if (carPath.exists()) {
+                                Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
+                                openCarDetails.putExtra("CAR_NAME", carNames.get(finalI).getCarName());
+                                openCarDetails.putExtra("BASE_PATH", carPath.getPath());
+                                openCarDetails.putExtra("TAB", "VR");
+                                startActivity(openCarDetails);
+                            } else
+                                showToast();
                         }
                     });
                     btnInfo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
-                            openCarDetails.putExtra("TAB", "INFO");
-                            startActivity(openCarDetails);
+
+                            if (carPath.exists()) {
+                                Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
+                                openCarDetails.putExtra("CAR_NAME", carNames.get(finalI).getCarName());
+                                openCarDetails.putExtra("BASE_PATH", carPath.getPath());
+                                openCarDetails.putExtra("TAB", "INFO");
+                                startActivity(openCarDetails);
+                            } else
+                                showToast();
                         }
                     });
                     btnEstimate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
-                            openCarDetails.putExtra("TAB", "ESTIMATE");
-                            startActivity(openCarDetails);
+                            if (carPath.exists()) {
+                                Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
+                                openCarDetails.putExtra("CAR_NAME", carNames.get(finalI).getCarName());
+                                openCarDetails.putExtra("BASE_PATH", carPath.getPath());
+                                openCarDetails.putExtra("TAB", "ESTIMATE");
+                                startActivity(openCarDetails);
+                            } else
+                                showToast();
                         }
                     });
                     btnComparing.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
-                            openCarDetails.putExtra("TAB", "COMPARE");
-                            startActivity(openCarDetails);
+                            if (carPath.exists()) {
+                                Intent openCarDetails = new Intent(getActivity(), CarDetails.class);
+                                openCarDetails.putExtra("CAR_NAME", carNames.get(finalI).getCarName());
+                                openCarDetails.putExtra("BASE_PATH", carPath.getPath());
+                                openCarDetails.putExtra("TAB", "COMPARE");
+                                startActivity(openCarDetails);
+                            } else
+                                showToast();
                         }
                     });
                 }
             });
         }
+    }
+
+    private void showToast() {
+        Toast.makeText(getActivity(), "Sorry! No Data to Display." +
+                        "\n" + "Go to SETTINGS and Download Data",
+                Toast.LENGTH_SHORT).show();
     }
 }

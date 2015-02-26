@@ -138,6 +138,7 @@ public class Consultation extends ActionBarActivity {
                 setSelected(view.getId());
                 break;
             case R.id.estimate:
+                loadShowRoom();
                 setSelected(view.getId());
                 getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                         .edit()
