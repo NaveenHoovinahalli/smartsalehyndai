@@ -1,5 +1,6 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,15 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
-import com.hyundai.teli.smartsales.models.StyleExteriorMain;
+import com.hyundai.teli.smartsales.models.CarInfo;
+import com.hyundai.teli.smartsales.models.StyleExteriorHotspot;
+import com.hyundai.teli.smartsales.models.StyleExteriorImage;
 import com.hyundai.teli.smartsales.utils.AndroidUtils;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,8 +42,9 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
     @InjectView(R.id.interior_button)
     ImageButton interiourButton;
 
-    ArrayList<String> exteriorImages = new ArrayList<String>();
-    StyleExteriorMain styleExteriorMain;
+    @InjectView(R.id.hotspot_container)
+    RelativeLayout hotspotContainer;
+
     private String Base_Path;
     private String STYLEEXTERIOR_MAIN_PATH;
 
@@ -48,6 +53,10 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
 
 
     GestureDetector detector;
+    private CarInfo carInfo;
+    ArrayList<StyleExteriorHotspot> styleExteriorHotspots = new ArrayList<>();
+    ArrayList<StyleExteriorImage> styleExteriorImages = new ArrayList<>();
+    private ImageView hotspotImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,9 +66,9 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
         Toast.makeText(getActivity(), "CAR::" + ((CarDetails) getActivity()).getCarName(), Toast.LENGTH_SHORT).show();
         Base_Path = ((CarDetails) getActivity()).getBasePath() + File.separator;
         STYLEEXTERIOR_MAIN_PATH = Base_Path + "style_exterior/";
-        setValues();
         mExteriorFlipper.setOnTouchListener(this);
         detector = new GestureDetector(new SwipeGestureDetector());
+        setValues();
 
         return view;
     }
@@ -71,36 +80,35 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
 
     private void setFlipper() {
         mExteriorFlipper.removeAllViews();
-        for (int i = 0; i < exteriorImages.size(); i++) {
-            ImageView image = new ImageView(getActivity());
-           Picasso.with(getActivity()).load(exteriorImages.get(i)).into(image);
+        if (carInfo.getStyleExterior().size() > 0) {
+            for (int i = 0; i < carInfo.getStyleExterior().size(); i++) {
+                if (carInfo.getStyleExterior().get(i).getStyleExteriorImages().size() > 0) {
+                    for (int j = 0; j < carInfo.getStyleExterior().get(i).getStyleExteriorImages().size(); j++) {
 
-//            image.setImageURI(Uri.parse(exteriorImages.get(i)));
-            mExteriorFlipper.addView(image);
+                        ImageView image = new ImageView(getActivity());
+                        image.setImageURI(Uri.parse(Base_Path + carInfo.getStyleExterior().get(i).
+                                getStyleExteriorImages().get(j).getGetStyleExteriorImageFile().
+                                replace("/media/tablet_images/" + carInfo.getCarName().replace(" ", "") + "/", "")));
+                        mExteriorFlipper.addView(image);
+                        styleExteriorImages.add(carInfo.getStyleExterior().get(i).getStyleExteriorImages().get(j));
+                        if (carInfo.getStyleExterior().get(i).getStyleExteriorImages().get(j).getStyleExteriorHotspots().size() > 0) {
+                            for (int k = 0; k < carInfo.getStyleExterior().get(i).getStyleExteriorImages().get(j).getStyleExteriorHotspots().size(); k++) {
+                                styleExteriorHotspots.add(carInfo.getStyleExterior().get(i).
+                                        getStyleExteriorImages().get(j).getStyleExteriorHotspots().get(k));
+                            }
+                        }
+                    }
+                }
+            }
         }
+        showHotSpot();
         mExteriorFlipper.setDisplayedChild(0);
     }
 
     private void parceJson() {
-
         Gson gson = new Gson();
         String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
-        styleExteriorMain = gson.fromJson(json, StyleExteriorMain.class);
-
-        exteriorImages.clear();
-
-        for (int i = 0; i < styleExteriorMain.getStyleExteriorArrays().size(); i++) {
-            for (int j = 0; j < styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().size(); j++) {
-
-                String image = styleExteriorMain.getStyleExteriorArrays().get(i).getStyleImageArray().get(j).getImageFile();
-                String seperator[] = image.split("/");
-                String imageFinalPath = STYLEEXTERIOR_MAIN_PATH + seperator[seperator.length - 1];
-                exteriorImages.add(imageFinalPath);
-                Log.d("IMAGES", "" + imageFinalPath);
-            }
-        }
-
-
+        carInfo = gson.fromJson(json, CarInfo.class);
     }
 
     @Override
@@ -120,6 +128,7 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
 
         @Override
         public boolean onScroll(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+            removeHotSpot();
             try {
                 if (me1.getX() - me2.getX() > SWIPE_MIN_DISTANCE) {
                     mExteriorFlipper.showPrevious();
@@ -135,8 +144,25 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
         }
     }
 
+    private void removeHotSpot() {
+        hotspotContainer.removeAllViews();
+    }
+
     private void showHotSpot() {
-        int DisplayedChild = mExteriorFlipper.getDisplayedChild();
-        Log.d("StyleExterior","Child::" + DisplayedChild);
+        int displayedChild = mExteriorFlipper.getDisplayedChild();
+        if(styleExteriorImages.get(displayedChild) != null) {
+            if(styleExteriorHotspots.size()<=0)
+                return;
+            for (int i=0; i<styleExteriorHotspots.size(); i++) {
+                hotspotImage = new ImageView(getActivity());
+                hotspotImage.setImageResource(R.drawable.btn_add_plus);
+                float x = Float.parseFloat(styleExteriorHotspots.get(displayedChild).getxValue());
+                float y = Float.parseFloat(styleExteriorHotspots.get(displayedChild).getyValue());
+                hotspotImage.setX(x);
+                hotspotImage.setY(y);
+                hotspotContainer.addView(hotspotImage);
+                Log.d("StyleExterior", "HotSpotID::" + styleExteriorHotspots.get(displayedChild).getHotSpotId());
+            }
+        }
     }
 }
