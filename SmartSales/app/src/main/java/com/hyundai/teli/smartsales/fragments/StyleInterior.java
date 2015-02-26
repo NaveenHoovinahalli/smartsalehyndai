@@ -20,6 +20,7 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.adapters.ListAdapter;
 import com.hyundai.teli.smartsales.adapters.StyleInteriorAdapter;
+import com.hyundai.teli.smartsales.models.StyleInteriorHotspot;
 import com.hyundai.teli.smartsales.models.StyleInteriorMain;
 import com.hyundai.teli.smartsales.utils.AndroidUtils;
 
@@ -61,9 +62,10 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     StyleInteriorMain styleInteriorMain;
     private String Base_Path;
     private String STYLEINTERIOR_MAIN_PATH;
+    ArrayList<StyleInteriorHotspot> styleInteriorHotspots=new ArrayList<StyleInteriorHotspot>();
 
 
-    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<String> hotspotnames = new ArrayList<String>();
 
     View previousView = null;
 
@@ -89,13 +91,36 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
         String json = AndroidUtils.readJsonfromSdcard(Base_Path + "data.json");
         styleInteriorMain = gson.fromJson(json, StyleInteriorMain.class);
 
+
         interiorImages.clear();
+        styleInteriorHotspots.clear();
+        hotspotnames.clear();
         for (int i = 0; i < styleInteriorMain.getStyleInterior().size(); i++) {
             String image = styleInteriorMain.getStyleInterior().get(i).getInteriorImage();
             String seperator[] = image.split("/");
             String imageFinalPath = STYLEINTERIOR_MAIN_PATH + seperator[seperator.length - 1];
             interiorImages.add(imageFinalPath);
             Log.d("IMAGE", "" + imageFinalPath);
+
+            for(int j=0;j<styleInteriorMain.getStyleInterior().get(i).getHotSpots().size();j++){
+
+                styleInteriorHotspots.add(styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j));
+
+                styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getHotspotId();
+                hotspotnames.add(styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getHotspotheader());
+                styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getHotspotDescription();
+              String x= styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getxValue();
+              String y=  styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getyValue();
+              String hotspotImage=styleInteriorMain.getStyleInterior().get(i).getHotSpots().get(j).getHotspotImage();
+
+
+                String seperatortwo[] = hotspotImage.split("/");
+                String hotspotfinalImage = STYLEINTERIOR_MAIN_PATH + seperatortwo[seperatortwo.length - 1];
+                interiorImages.add(hotspotfinalImage);
+
+                Log.d("HOTSPOTDETAILS",""+x+y+hotspotImage);
+
+            }
         }
 
 
@@ -117,18 +142,20 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     private void setImageHotSpot() {
 
 
-//        for (int i = 1; i < 7; i++) {
-//            final RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//            params.leftMargin = 30 * i;
-//            params.rightMargin = 35 * i;
-//            params.topMargin = 30 * i;
-//            final ImageView imageView = new ImageView(getActivity());
-//            imageView.setImageResource(R.drawable.btn_add_plus);
-//            imageView.setTag(i);
-//            layoutHotspot.addView(imageView, params);
-//            imageView.setOnClickListener(this);
-//
-//        }
+        for (int i = 1; i < styleInteriorHotspots.size()+1; i++) {
+            styleInteriorHotspots.get(i-1);
+            String x=styleInteriorHotspots.get(i-1).getxValue();
+            String y=styleInteriorHotspots.get(i-1).getyValue();
+            Log.d("XYVALUES",""+x+y);
+            final ImageView imageView = new ImageView(getActivity());
+            imageView.setImageResource(R.drawable.btn_add_plus);
+            imageView.setX(Float.parseFloat(x));
+            imageView.setY(Float.parseFloat(y));
+            imageView.setTag(i);
+            layoutHotspot.addView(imageView);
+            imageView.setOnClickListener(this);
+
+        }
 
     }
 
@@ -140,7 +167,7 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     }
 
     private void setList() {
-        styleInteriorList.setAdapter(new ListAdapter(names, getActivity(), false));
+        styleInteriorList.setAdapter(new ListAdapter(hotspotnames, getActivity(), false));
         styleInteriorList.setOnItemClickListener(this);
     }
 

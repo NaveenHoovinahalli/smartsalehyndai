@@ -1,8 +1,6 @@
 package com.hyundai.teli.smartsales.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -20,7 +18,7 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
 import com.hyundai.teli.smartsales.models.StyleExteriorMain;
 import com.hyundai.teli.smartsales.utils.AndroidUtils;
-import com.hyundai.teli.smartsales.utils.HyDataManager;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -75,9 +73,10 @@ public class StyleExterior extends BaseFragment implements View.OnTouchListener 
         mExteriorFlipper.removeAllViews();
         for (int i = 0; i < exteriorImages.size(); i++) {
             ImageView image = new ImageView(getActivity());
-            image.setImageURI(Uri.parse(exteriorImages.get(i)));
+           Picasso.with(getActivity()).load(exteriorImages.get(i)).into(image);
+
+//            image.setImageURI(Uri.parse(exteriorImages.get(i)));
             mExteriorFlipper.addView(image);
-//            Picasso.with(getActivity()).load(convenience_car_array[i]).into(image);
         }
         mExteriorFlipper.setDisplayedChild(0);
     }
