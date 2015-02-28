@@ -209,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp">
 
@@ -223,7 +223,8 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="25dp">
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -385,195 +386,386 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/abcTextView"
+                        android:layout_marginTop="30dp"
+                        >
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView13"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/abcTextView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Hazard Warning" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView14"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView1"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView1"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Bluetooth and Steering Mounted Controls" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView15"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView2"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView2"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Headlight Levelers" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView16"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Gear Shifting Hand Break Lever" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView17"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="ORVMs" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView18"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Power Socket" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/abcTextView"
+                        android:layout_marginTop="30dp"
+                        >
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView19"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/abcTextView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Tilt and Telescopic Steering" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView20"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView1"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView1"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Jack Mounting Points" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView21"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView2"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView2"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Rear Defogger" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView22"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Jack and Tool Kit Location" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView23"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Towing Hook" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView24"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Wiper Functions" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/abcTextView"
+                        android:layout_marginTop="30dp"
+                        >
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView25"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/abcTextView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Break Oil Engine Oil" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView26"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView1"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView1"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Ignition Keys Central Locking" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextView27"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView2"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView2"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Music System Controls" />
+
+                    </LinearLayout>
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/abcTextView2"
+                        style="@style/CustomerText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Please acknowledge the receipt of the following items:" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/abcTextView"
+                        android:layout_marginTop="30dp"
+                        >
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextb1"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/abcTextView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Owner's Manual cum Free Service Coupons" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb2"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView1"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView1"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Toll Kit" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb3"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView2"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView2"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Jack" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb4"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="First Aid Kit" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb5"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Warning Triangle" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb6"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Insurance Papers" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/abcTextView"
+                        android:layout_marginTop="30dp"
+                        >
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextb7"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/abcTextView"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Registration Documents" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb8"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView1"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView1"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Roadside Assistance Details" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb9"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView2"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView2"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Sales Invoce" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb10"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Payment Receipts" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb11"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Finance Documents" />
+
+                        <com.hyundai.teli.smartsales.views.HCheckBox
+                            android:id="@+id/abcCheckedTextViewb12"
+                            style="@style/DeliveryText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/abcCheckedTextView3"
+                            android:layout_marginLeft="28dp"
+                            android:layout_toRightOf="@id/abcCheckedTextView3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:text="Extended Warranty Policy" />
+
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 
-                <!--<com.hyundai.teli.smartsales.views.HTextView-->
-                    <!--android:id="@+id/aftersalesTextView"-->
-                    <!--style="@style/CustomerText1"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/abcCheckedTextView1"-->
-                    <!--android:layout_marginTop="15dp"-->
-                    <!--android:text="Aftersales" />-->
 
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/aftersalesCheckedTextView1"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignLeft="@+id/aftersalesTextView"-->
-                    <!--android:layout_below="@id/aftersalesTextView"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Introduce Service Advisior" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/aftersalesCheckedTextView2"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/aftersalesCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/aftersalesCheckedTextView1"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Explain service warranty ＆ terms" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/aftersalesCheckedTextView3"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/aftersalesCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/aftersalesCheckedTextView2"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Explain emergency service" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/aftersalesCheckedTextView4"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/aftersalesCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/aftersalesCheckedTextView3"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Explain maintenance schedule" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HTextView-->
-                    <!--android:id="@+id/featuresTextView"-->
-                    <!--style="@style/CustomerText1"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/aftersalesCheckedTextView1"-->
-                    <!--android:layout_marginTop="15dp"-->
-                    <!--android:text="Features ＆ Controls" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView1"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/featuresTextView"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Seat adjustment" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView2"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView1"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Gear change" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView3"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView2"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Indicator ＆ Dip lights" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView4"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView3"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Windshield wiper" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView5"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView1"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView4"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Bluetooth connectivity" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView6"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_below="@id/featuresCheckedTextView1"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Clock" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView7"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView6"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView6"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Defrost" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView8"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView6"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView7"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Warning/Service indicator" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView9"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView6"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView8"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Seat belt" />-->
-
-                <!--<com.hyundai.teli.smartsales.views.HCheckBox-->
-                    <!--android:id="@+id/featuresCheckedTextView10"-->
-                    <!--style="@style/DeliveryText2"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignTop="@id/featuresCheckedTextView6"-->
-                    <!--android:layout_marginLeft="28dp"-->
-                    <!--android:layout_toRightOf="@id/featuresCheckedTextView9"-->
-                    <!--android:drawablePadding="10dp"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:text="- Bluelink" />-->
             </RelativeLayout>
 
             <ImageView

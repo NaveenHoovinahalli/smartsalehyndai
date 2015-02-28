@@ -19,6 +19,12 @@
         android:layout_alignEnd="@+id/scrollView">
 
         <Button
+            android:id="@+id/deliveryCheckListBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/customer_btn_nodata_delivery_selector" />
+
+        <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,13 +46,14 @@
 
     </RelativeLayout>
 
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/customer_bg"
         android:layout_marginBottom="30dp"
@@ -61,190 +68,288 @@
             android:paddingRight="90dp"
             android:paddingTop="35dp">
 
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_name"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="NAME"
-                android:gravity="center" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/full_name"
-                style="@style/SettingInputBox02"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_alignTop="@id/tv_name"
-                android:layout_toRightOf="@id/tv_name"
-                android:layout_marginBottom="6dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:hint="@string/prompt_input_full_name"
-                android:maxLength="20"
-                android:singleLine="true" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_age"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="AGE"
-                android:gravity="center"
-                android:layout_marginLeft="75dp"
-                android:layout_toRightOf="@+id/full_name"
-                android:layout_toEndOf="@+id/full_name"
-                android:layout_centerHorizontal="true" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/age"
-                style="@style/SettingInputBox02"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_alignTop="@id/tv_age"
-                android:layout_marginBottom="6dp"
-                android:hint="@string/age"
-                android:maxLength="20"
-                android:singleLine="true"
-                android:layout_alignParentRight="true" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_email"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Email"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:layout_below="@+id/tv_name" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/customer_email"
-                style="@style/SettingInputBox02"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_alignTop="@id/tv_email"
-                android:layout_toRightOf="@id/tv_email"
-                android:layout_marginBottom="6dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:hint="@string/prompt_input_email"
-                android:maxLength="20"
-                android:singleLine="true"
-                android:layout_alignRight="@+id/full_name"
-                android:layout_alignEnd="@+id/full_name" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_sex"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Sex"
-                android:gravity="center"
-                android:layout_alignTop="@+id/customer_email"
-                android:layout_alignLeft="@+id/tv_age"
-                android:layout_alignStart="@+id/tv_age" />
-
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_alignTop="@+id/tv_sex"
-                android:layout_alignLeft="@+id/age"
-                android:layout_alignStart="@+id/age">
-
-                <RadioButton
-                    android:id="@+id/radio_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:layout_marginRight="50dp" />
-
-                <RadioButton
-                    android:id="@+id/radio_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female" />
-            </RadioGroup>
-
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_mobile"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Mobile"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:layout_below="@+id/tv_email" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/customer_mobile"
-                style="@style/SettingInputBox02"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_alignTop="@id/tv_mobile"
-                android:layout_toRightOf="@id/tv_mobile"
-                android:layout_marginBottom="6dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:hint="@string/prompt_input_mobile"
-                android:maxLength="20"
-                android:singleLine="true"
-                android:layout_toLeftOf="@+id/tv_age"
-                android:layout_toStartOf="@+id/tv_age" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_model"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="@string/model_of"
-                android:gravity="center"
-                android:layout_alignTop="@+id/customer_mobile"
-                android:layout_alignLeft="@+id/tv_sex"
-                android:layout_alignStart="@+id/tv_sex" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/model_of_interest"
-                style="@style/SettingInputBox02"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_alignTop="@id/tv_model"
-                android:layout_marginBottom="6dp"
-                android:hint="@string/model"
-                android:maxLength="20"
-                android:singleLine="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignLeft="@+id/radio_group"
-                android:layout_alignStart="@+id/radio_group" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/tv_memo"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:text="Memo"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:layout_below="@+id/tv_mobile" />
-
-            <com.hyundai.teli.smartsales.views.HEditText
-                android:id="@+id/customer_memo"
-                style="@style/SettingInputBox02"
-                android:layout_width="250dp"
-                android:layout_height="150dp"
-                android:layout_alignTop="@id/tv_memo"
-                android:layout_toRightOf="@id/tv_memo"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:hint="@string/prompt_input_memo"
-                android:maxLength="20"
-                android:singleLine="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-            <Button
-                android:id="@+id/deliveryCheckListBtn"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/customer_memo"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/customer_btn_nodata_delivery_selector" />
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/enq_source"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Enquire Source"
+                        />
+                    <Spinner
+                        android:id="@+id/enq_source_spinner"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/enquire_source"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_customerType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Customer Type"
+                        />
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/etCustometType"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_enquireDate"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="150dp"
+                        android:layout_height="40dp"
+                        android:text="Enquiry date"
+                        />
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/etdatepicker"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    >
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="NAME"
+                        android:gravity="center"
+                        />
+
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/full_name"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/prompt_input_full_name"
+                        android:maxLength="20"
+                        android:singleLine="true" />
+
+
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Sex"
+                        />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/radio_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male"
+                           />
+
+                        <RadioButton
+                            android:id="@+id/radio_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female"
+
+                            />
+                    </RadioGroup>
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_follow_date"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_height="40dp"
+                        android:text="Next follow up date"
+                        />
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/etfollowdatepicked"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    >
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Email"
+                        android:layout_below="@+id/tv_name" />
+
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/customer_email"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/prompt_input_email"
+                        android:maxLength="20"
+                          android:singleLine="true"
+                       />
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_mobile"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Mobile"
+                        android:layout_below="@+id/tv_email" />
+
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/customer_mobile"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/prompt_input_mobile"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:inputType="number"
+                         />
+
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_model"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Model"
+                        android:layout_below="@+id/tv_email" />
+
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/et_model"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        />
+
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    >
+
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_fuelType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Fuel Type"
+                         />
+
+                    <com.hyundai.teli.smartsales.views.HEditText
+                        android:id="@+id/et_fueltype"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:hint="@string/fuel_type"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        />
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_enquiryType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Enquiry Type"
+                        />
+                    <Spinner
+                        android:id="@+id/enq_type_spinner"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/enquire_type"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_testDrive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Enquiry Type"
+                        />
+                    <Spinner
+                        android:id="@+id/testdrive_spinner"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/test_drive"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+
+
+                    <com.hyundai.teli.smartsales.views.HTextView
+                        android:id="@+id/tv_presentcar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:text="Enquiry Type"
+                        />
+                    <Spinner
+                        android:id="@+id/present_spinner"
+                        style="@style/SettingInputBox02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:entries="@array/present_car"
+                        android:maxLength="20"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+
+           </LinearLayout>
+
 
         </RelativeLayout>
     </ScrollView>

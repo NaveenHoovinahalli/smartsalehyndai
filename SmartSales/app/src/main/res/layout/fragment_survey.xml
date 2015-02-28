@@ -40,14 +40,87 @@
                 android:layout_toEndOf="@+id/tv_name" />
 
             <com.hyundai.teli.smartsales.views.HTextView
+                android:id="@+id/survey_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/survey_text"
+                android:text="@string/survey_head"
+                android:layout_below="@+id/tv_name"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_alignStart="@+id/tv_name" />
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tv_name"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                >
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="25sp"
+                    android:layout_weight="1"/>
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9"
+                    android:textSize="25sp"
+                    android:layout_weight="1"/>
+                <com.hyundai.teli.smartsales.views.HTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:layout_weight="1"
+                    android:textSize="25sp"/>
+                </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/survey_line"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_alignStart="@+id/tv_name"
+                android:layout_below="@+id/survey_head" />
+
+            <com.hyundai.teli.smartsales.views.HTextView
                 android:id="@+id/survey_question1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/survey_text"
                 android:text="@string/survey_text1"
-                android:layout_below="@+id/tv_name"
+                android:layout_below="@+id/survey_head"
                 android:layout_alignLeft="@+id/tv_name"
                 android:layout_alignStart="@+id/tv_name" />
+
+            <RadioGroup
+                android:id="@+id/radio_group1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question1"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button1_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="fill_parent"
@@ -71,6 +144,30 @@
                 android:layout_alignLeft="@+id/survey_question1"
                 android:layout_alignStart="@+id/survey_question1" />
 
+            <RadioGroup
+                android:id="@+id/radio_group2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question2"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button2_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button2_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -92,6 +189,30 @@
                 android:layout_below="@+id/survey_question2"
                 android:layout_alignLeft="@+id/survey_question2"
                 android:layout_alignStart="@+id/survey_question2" />
+
+            <RadioGroup
+                android:id="@+id/radio_group3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question3"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button3_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="fill_parent"
@@ -115,6 +236,30 @@
                 android:layout_alignLeft="@+id/survey_question3"
                 android:layout_alignStart="@+id/survey_question3" />
 
+            <RadioGroup
+                android:id="@+id/radio_group4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question4"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button4_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button4_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button4_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -136,6 +281,30 @@
                 android:layout_below="@+id/survey_question4"
                 android:layout_alignLeft="@+id/survey_question4"
                 android:layout_alignStart="@+id/survey_question4" />
+
+            <RadioGroup
+                android:id="@+id/radio_group5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question5"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button5_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button5_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button5_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="fill_parent"
@@ -159,6 +328,30 @@
                 android:layout_alignLeft="@+id/survey_question5"
                 android:layout_alignStart="@+id/survey_question5" />
 
+            <RadioGroup
+                android:id="@+id/radio_group6"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question6"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button6_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button6_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button6_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -180,6 +373,30 @@
                 android:layout_below="@+id/survey_question6"
                 android:layout_alignLeft="@+id/survey_question6"
                 android:layout_alignStart="@+id/survey_question6" />
+
+            <RadioGroup
+                android:id="@+id/radio_group7"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question7"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button7_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button7_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="fill_parent"
@@ -203,6 +420,31 @@
                 android:layout_alignLeft="@+id/survey_question7"
                 android:layout_alignStart="@+id/survey_question7" />
 
+            <RadioGroup
+                android:id="@+id/radio_group8"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question8"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button8_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button8_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -220,41 +462,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/survey_text"
-                android:text="@string/survey_text8"
+                android:text="@string/survey_text9"
                 android:layout_below="@+id/survey_question8"
                 android:layout_alignLeft="@+id/survey_question8"
                 android:layout_alignStart="@+id/survey_question8" />
 
-            <View
-                android:layout_width="fill_parent"
+            <RadioGroup
+                android:id="@+id/radio_group9"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/survey_line"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_alignLeft="@+id/survey_question9"
-                android:layout_alignStart="@+id/survey_question9"
-                android:layout_below="@+id/survey_question9" />
-
-            <com.hyundai.teli.smartsales.views.HTextView
-                android:id="@+id/survey_question10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/survey_text"
-                android:text="@string/survey_text10"
-                android:layout_below="@+id/survey_question9"
-                android:layout_alignLeft="@+id/survey_question9"
-                android:layout_alignStart="@+id/survey_question9" />
+                android:orientation="horizontal"
+                android:layout_alignTop="@+id/survey_question9"
+                android:layout_alignParentRight="true">
+                <RadioButton
+                    android:id="@+id/radio_button9_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/radio_button9_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:layout_alignLeft="@+id/survey_question10"
-                android:layout_alignStart="@+id/survey_question10"
-                android:layout_below="@+id/survey_question10" />
+                android:layout_alignLeft="@+id/survey_question9"
+                android:layout_alignStart="@+id/survey_question9"
+                android:layout_below="@+id/survey_question9" />
 
         </RelativeLayout>
 
@@ -266,8 +510,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/btn_register" />
+    
+    <ImageView
+        android:id="@+id/survey_thanks"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/survey_result_bg"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

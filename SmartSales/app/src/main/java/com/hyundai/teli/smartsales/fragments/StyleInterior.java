@@ -1,9 +1,12 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
 import com.hyundai.teli.smartsales.R;
@@ -48,14 +50,14 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
     @InjectView(R.id.style_list)
     ListView styleInteriorList;
 
-    @InjectView(R.id.interior_main_image)
-    ImageView interiorMainImage;
+//    @InjectView(R.id.interior_main_image)
+//    ImageView interiorMainImage;
 
     @InjectView(R.id.style_interior_exterior_ll)
     LinearLayout linearLayoutInterior;
 
     @InjectView(R.id.interior_main_image_layout)
-    RelativeLayout layoutHotspot;
+    LinearLayout layoutHotspot;
 
 
     ArrayList<String> interiorImages = new ArrayList<String>();
@@ -143,15 +145,35 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
 
 
         for (int i = 1; i < styleInteriorHotspots.size()+1; i++) {
+
             styleInteriorHotspots.get(i-1);
             String x=styleInteriorHotspots.get(i-1).getxValue();
             String y=styleInteriorHotspots.get(i-1).getyValue();
-            Log.d("XYVALUES",""+x+y);
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+//            int left= (int) ((1.6*(Float.parseFloat(x)))+13);
+//            int top=(int) ((1.6*(Float.parseFloat(y)))+13);
+            int left= (int) Float.parseFloat(x);
+            int top= (int) Float.parseFloat(y);
+
+
+            int xnew= dpToPx(left);
+            int ynew=dpToPx(top+30);
+
+//            int xnew=dpToPx(939+50);
+//            int ynew=dpToPx(717+50);
+            params.setMargins(xnew,ynew,0,0);
+
+
+            Log.d("XYVALUES",""+x+"-"+y);
+            Log.d("XYVALUESLeft",""+xnew);
+            Log.d("XYVALUESRight",""+ynew);
             final ImageView imageView = new ImageView(getActivity());
             imageView.setImageResource(R.drawable.btn_add_plus);
-            imageView.setX(Float.parseFloat(x));
-            imageView.setY(Float.parseFloat(y));
+            imageView.setX((float) (xnew*1.6));
+            imageView.setY((float) (ynew*1.6));
+
             imageView.setTag(i);
+//            imageView.setLayoutParams(params);
             layoutHotspot.addView(imageView);
             imageView.setOnClickListener(this);
 
@@ -220,7 +242,6 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
             }
         }
 
-
     }
 
     @Override
@@ -262,4 +283,21 @@ public class StyleInterior extends BaseFragment implements AdapterView.OnItemCli
         ViewSelection(getViewByPosition((position - 1), styleInteriorList));
 
     }
+
+
+    public static float convertPixelsToDp(float px, Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dp = px / (metrics.densityDpi / 160f);
+        Log.d("DP",""+dp);
+        return dp;
+    }
+
+    public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
+        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return px;
+    }
+
+
 }

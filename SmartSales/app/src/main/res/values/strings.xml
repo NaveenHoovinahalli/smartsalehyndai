@@ -8,6 +8,8 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="prompt_input_full_name">Full Name</string>
     <string name="prompt_input_mobile">Mobile</string>
+    <string name="fuel_type">Fuel Type</string>
+
     <string name="prompt_input_phone">Branch Tel.</string>
     <string name="prompt_input_branch">Branch</string>
     <string name="prompt_input_branch_tel">Branch Tel.</string>
@@ -36,16 +38,17 @@
     <string name="update_started">Standby</string>
     <string name="update_fetching">Downloading...</string>
     <string name="update_lately_version">All data has been updated</string>
-    <string name="survey_text1">1. Did your dealer fully answer your questions kindly?</string>
-    <string name="survey_text2">2. Do you think your dealer gave you enough car information?</string>
-    <string name="survey_text3">3. Do you think this tablet app was helpful getting car information?</string>
-    <string name="survey_text4">4. Was this tablet app convenient enough for you?</string>
-    <string name="survey_text5">5. What is your overall rate for this tablet app?</string>
-    <string name="survey_text6">6. What was your impression about this visitation?</string>
-    <string name="survey_text7">7. Did this visit affect your desire to buy Hyundai cars?</string>
-    <string name="survey_text8">8. How much is your interest about Hyundai brand?</string>
-    <string name="survey_text9">9. Do you think that Hyundai brand is well known to people?</string>
-    <string name="survey_text10">10. Would you recommend Hyundai car to others?</string>
+    <string name="survey_head">Your satisfaction rating on the following</string>
+
+    <string name="survey_text1">1. Welcome and greetings extended to you?</string>
+    <string name="survey_text2">2. Clean and comfortable dealership facility?</string>
+    <string name="survey_text3">3. Knowledge and behaviour of the sales consultant?</string>
+    <string name="survey_text4">4. Your test drive experience?</string>
+    <string name="survey_text5">5. Fast,easy and clearly explained paperwork?</string>
+    <string name="survey_text6">6. On time car delivery with all commitments fulfilled?</string>
+    <string name="survey_text7">7. Explanation on the car features,warranty and service schedule?</string>
+    <string name="survey_text8">8. Your \'New car delivery ceremony\'?</string>
+    <string name="survey_text9">9. Your overall car purchase experience?</string>
     <string name="vehicle_update">The Vehicle Update</string>
     <string name="delete_account">Delete</string>
     <string name="desc_profile_result">Information is entered, the next will look like the above quote</string>

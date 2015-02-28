@@ -108,7 +108,7 @@ public class BrandStoryFragment extends Fragment {
 
         mPbar = new ProgressDialog(getActivity());
         mPbar.setTitle("Downloading  please wait...");
-        mPbar.setCancelable(false);
+        mPbar.setCancelable(true);
 
         Bundle args = getArguments();
         if (args != null) {

@@ -5,4 +5,27 @@
         <item>Ms</item>
         <item>Mrs</item>
     </string-array>
+    
+    <string-array name="enquire_source">
+        <item>Walk in</item>
+        <item>Cold call</item>
+        <item>Rural marketing</item>
+    </string-array>
+    
+    <string-array name="enquire_type">
+        <item>Hot</item>
+        <item>Warm</item>
+        <item>Cold</item>
+    </string-array>
+    
+    <string-array name="test_drive">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Refused</item>
+    </string-array>
+    
+    <string-array name="present_car">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>
