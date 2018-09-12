@@ -103,7 +103,7 @@
                     <com.hyundai.teli.smartsales.views.HEditText
                         android:id="@+id/etCustometType"
                         style="@style/SettingInputBox02"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:maxLength="20"
                         android:singleLine="true"
@@ -159,13 +159,17 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="40dp"
                         android:text="Sex"
+                        android:gravity="center"
                         />
 
                     <RadioGroup
                         android:id="@+id/radio_group"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="40dp"
                         android:orientation="horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp"
                         >
 
                         <RadioButton
@@ -187,7 +191,7 @@
                     <com.hyundai.teli.smartsales.views.HTextView
                         android:id="@+id/tv_follow_date"
                         android:layout_width="wrap_content"
-                        android:layout_marginLeft="40dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_height="40dp"
                         android:text="Next follow up date"
                         />
@@ -223,13 +227,13 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:hint="@string/prompt_input_email"
-                        android:maxLength="20"
+                        android:maxLength="35"
                           android:singleLine="true"
                        />
 
                     <com.hyundai.teli.smartsales.views.HTextView
                         android:id="@+id/tv_mobile"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="40dp"
                         android:text="Mobile"
@@ -250,7 +254,7 @@
 
                     <com.hyundai.teli.smartsales.views.HTextView
                         android:id="@+id/tv_model"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="40dp"
                         android:text="Model"
@@ -314,7 +318,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="40dp"
-                        android:text="Enquiry Type"
+                        android:text="Test Drive"
                         />
                     <Spinner
                         android:id="@+id/testdrive_spinner"
@@ -333,7 +337,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="40dp"
-                        android:text="Enquiry Type"
+                        android:text="Present Car"
                         />
                     <Spinner
                         android:id="@+id/present_spinner"

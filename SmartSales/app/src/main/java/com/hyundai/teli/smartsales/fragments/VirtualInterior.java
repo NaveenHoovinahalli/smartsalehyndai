@@ -27,7 +27,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by nith on 2/19/15.
+ * Created by naveen on 2/19/15.
  */
 public class VirtualInterior extends BaseFragment implements View.OnTouchListener {
 

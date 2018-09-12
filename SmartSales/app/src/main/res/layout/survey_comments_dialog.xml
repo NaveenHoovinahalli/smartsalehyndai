@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/dialog"
+    android:padding="15dp"
+    >
+
+    <com.hyundai.teli.smartsales.views.HTextView
+        android:id="@+id/tvsubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter comment"
+        android:padding="5dp"
+        />
+
+    <com.hyundai.teli.smartsales.views.HEditText
+        android:id="@+id/et_comments"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:minLines="3"
+        >
+        <requestFocus/>
+    </com.hyundai.teli.smartsales.views.HEditText>
+
+    <Button
+        android:id="@+id/butto_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="OK"/>
+
+</LinearLayout>

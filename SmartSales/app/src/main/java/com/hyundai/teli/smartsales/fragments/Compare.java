@@ -1,5 +1,7 @@
 package com.hyundai.teli.smartsales.fragments;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,12 +19,16 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.activities.CarDetails;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class Compare extends BaseFragment {
 
@@ -46,6 +52,7 @@ public class Compare extends BaseFragment {
         if(!file.exists())
             file.mkdirs();
         copyFile();
+        readFontFile(getActivity(),file);
         loadWebView(file);
         return view;
     }
@@ -113,5 +120,58 @@ public class Compare extends BaseFragment {
             super.onPageFinished(view, url);
         }
     }
+
+    public static void readFontFile(Context context,File path) {
+
+        AssetManager assetManager = context.getAssets();
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = assetManager.open("fonts/ModernH-Bold.ttf");
+
+            if(path.exists()){
+                File fontPath = new File(path+"/" +"hyundaib.ttf");
+                Log.d("FILESpec","path "+fontPath);
+                if(!fontPath.exists()){
+                    Log.d("FILESpec","pathexits  false");
+                    out = new FileOutputStream(fontPath);
+                    copyFile(in, out);
+                }
+                fontPath.setReadable(true);
+                fontPath.setWritable(true);
+                fontPath.setExecutable(true);
+            }
+        } catch(IOException e) {
+            Log.e("FILESpec", "Failed to copy asset file: ", e);
+        }
+        finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    // NOOP
+                }
+            }
+        }
+    }
+
+
+    private static void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
+    }
+
 
 }

@@ -3,8 +3,9 @@
     xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_consultation"
     tools:context="com.hyundai.teli.smartsales.activities.Home">
+    <!--android:background="@drawable/bg_consultation"-->
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/view"

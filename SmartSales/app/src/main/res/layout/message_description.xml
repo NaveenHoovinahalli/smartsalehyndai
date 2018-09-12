@@ -115,6 +115,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Hello Desc"
+            android:textSize="20sp"
             android:padding="5dp" />
 
     </ScrollView>

@@ -34,7 +34,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class StyleInterior extends BaseFragment implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener, View.OnClickListener {
 

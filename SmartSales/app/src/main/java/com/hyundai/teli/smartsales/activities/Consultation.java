@@ -20,6 +20,7 @@ import com.hyundai.teli.smartsales.R;
 import com.hyundai.teli.smartsales.fragments.Photo;
 import com.hyundai.teli.smartsales.fragments.Settings;
 import com.hyundai.teli.smartsales.fragments.Showroom;
+import com.hyundai.teli.smartsales.models.CustomerWalkinFromServer;
 import com.hyundai.teli.smartsales.views.HTextView;
 
 import java.io.File;
@@ -103,10 +104,7 @@ public class Consultation extends ActionBarActivity {
                 .getBoolean("PAUSED", false);
         boolean isCamera = getSharedPreferences("HYUNDAI_PREFERENCE", Context.MODE_PRIVATE)
                 .getBoolean("CAMERA", false);
-        if (isPaused && !isCamera) {
-            loadShowRoom();
-            setSelected(0);
-        } else if (isPaused && isCamera) {
+       if (isPaused && isCamera) {
             Photo photo = new Photo();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, photo).commit();
         }
@@ -187,8 +185,21 @@ public class Consultation extends ActionBarActivity {
     }
 
     public void showRegistration() {
-        Toast.makeText(getApplicationContext(), "Consultation", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Consultation", Toast.LENGTH_SHORT).show();
         settings.addRegistrationFragment();
+    }
+
+    public void setIdCustomer(String id,CustomerWalkinFromServer oneItem){
+
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("ONECUSTOMER", oneItem);
+        Log.d("Consulation","From customer");
+
+//        settings = new Settings();
+//        settings.setArguments(bundle);
+//
+//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, settings).commit();
+
     }
 
     public void hideRegistration() {

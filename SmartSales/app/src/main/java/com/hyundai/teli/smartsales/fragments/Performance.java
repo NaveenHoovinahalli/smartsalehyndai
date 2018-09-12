@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class Performance extends BaseFragment implements AdapterView.OnItemClickListener, ViewPager.OnPageChangeListener {
 

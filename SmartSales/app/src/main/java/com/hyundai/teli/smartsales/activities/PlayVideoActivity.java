@@ -27,7 +27,7 @@ import butterknife.InjectView;
 ;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class PlayVideoActivity extends ActionBarActivity {
 
@@ -61,9 +61,6 @@ public class PlayVideoActivity extends ActionBarActivity {
         controller = new MediaController(this);
         controller.setAnchorView(videoView);
 
-        Log.d("PlayVideo", "oncreate");
-
-
         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
         mPbar = new ProgressDialog(PlayVideoActivity.this);
@@ -88,12 +85,6 @@ public class PlayVideoActivity extends ActionBarActivity {
 
         }
 
-
-//        if (getIntent().hasExtra("video_url")) {
-//            Log.d("VIDEOId,VideoURL", getIntent().getStringExtra(VIDEO_URL));
-//
-//            downloadVideo(getIntent().getStringExtra(VIDEO_ID), getIntent().getStringExtra(VIDEO_URL));
-//        }
 
 
     }
@@ -142,7 +133,6 @@ public class PlayVideoActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
 
-        Log.d("VideoURL", "" + videoUrl);
 
         IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);
         receiverDownloadClicked = new BroadcastReceiver() {

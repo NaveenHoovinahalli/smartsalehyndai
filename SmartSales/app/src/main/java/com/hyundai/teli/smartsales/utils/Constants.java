@@ -28,4 +28,8 @@ public class Constants {
     public static final String BRAND_STORY_URL = BASE_URL + "/tablet_services/get_brandstory_videos/";
     public static final String NDE_URL = BASE_URL + "/tablet_services/get_nde_videos/";
     public static final String SPECIFICATION_HTML = BASE_URL + "/tablet_services/get_specification_template_file/";
+    public static final String CUSTOMER_WALKIN=BASE_URL + "/tablet_services/insert_customer_walkin_details/";
+    public static final String CUSTOMER_DELIVERY_CHECKLIST   =BASE_URL + "/tablet_services/insert_customer_delivery_checklist/";
+    public static final String CUSTOMER_SURVEY=BASE_URL + "/tablet_services/insert_customer_survey/";
+    public static final String CUSTOMER_DETAILS=BASE_URL + "/tablet_services/get_all_customers/%s/%s/";
 }

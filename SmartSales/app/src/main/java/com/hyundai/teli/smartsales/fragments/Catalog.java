@@ -1,7 +1,6 @@
 package com.hyundai.teli.smartsales.fragments;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class Catalog extends BaseFragment {
 
@@ -36,20 +35,17 @@ public class Catalog extends BaseFragment {
     }
 
     private void setPdf() {
-//        File file=new File("/mnt/sdcard/Download/catalog.pdf");
         File file = new File(CATALOG_PATH + "catalog.pdf");
-        if (!file.exists()) {
-//            file = new File(Environment.getExternalStorageDirectory() + "/Download/catalog.pdf");
-        }
-        if (file.exists()) {
-            pdfView.fromFile(file)
-                    .pages(0, 2, 1, 3, 3, 3)
-                    .defaultPage(1)
-                    .showMinimap(false)
-                    .enableSwipe(true)
-//               .onLoad(onLoadCompleteListener)
-//               .onPageChange(onPageChangeListener)
-                    .load();
+
+              if (file.exists()) {
+                     pdfView.fromFile(file)
+//                             .pages(0, 2, 1, 3, 3, 3)
+                             .defaultPage(1)
+                             .showMinimap(false)
+                             .enableSwipe(true)
+                             .load();
+
+
         }
     }
 }

@@ -33,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by Nitish Kulkarni on 2/8/15.
+ * Created by naveen on 2/8/15.
  */
 public class UpdateAdapter extends BaseAdapter {
 

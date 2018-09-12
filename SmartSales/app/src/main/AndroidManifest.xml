@@ -119,6 +119,13 @@
             android:name=".activities.Validate"
             android:label="@string/title_activity_validate" >
         </activity>
+        <activity
+            android:name=".activities.CaptureSignature"
+            android:label="@string/title_activity_validate"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="1563474210557285"/>
+
     </application>
 
 </manifest>
